@@ -22,7 +22,7 @@ void test_calc()
 {
    test_calc_1();
    test_calc_2();
-   test_calc_3()
+   test_calc_3();
 }
 
 int main(void)
