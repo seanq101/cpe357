@@ -2,7 +2,7 @@
 
 #include "part4.h"
 
-char mystr [6] = "HeLlO";
+char mystr [6] = "HeLlO\0";
 
 void test_strlower_1(){
 	char buff[6] = "     ";
