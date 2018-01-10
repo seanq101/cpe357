@@ -16,6 +16,7 @@ void test_strlower_1(){
 		if (temp <= 96 || temp >= 122){
 			printf("Test 1 failed\n");		
 		}
+		idx++;
 	}
 	printf("Test 1 passed\n");
 	
