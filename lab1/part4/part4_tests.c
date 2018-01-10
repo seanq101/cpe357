@@ -80,7 +80,7 @@ void test_strlower()
    test_strlower_1();
    test_strlower_2();
    test_strlower_3();
-   
+   test_str_lowermutate_1();
    
 }
 
