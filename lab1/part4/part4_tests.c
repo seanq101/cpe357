@@ -7,8 +7,9 @@ char mystr [6] = "HeLlO";
 void test_strlower_1(){
 	char buff[6] = "     ";
 	int idx = 0;
-	strlower(mystr, buff);
 	int temp;
+	strlower(mystr, buff);
+	
 	while (buff[idx]){
 		printf("Hello\n");
 		temp = buff[idx];
