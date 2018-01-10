@@ -10,3 +10,13 @@ void strlower(char input[], char buffer[]){
 	}
 	buffer[index] = '\0';
 }
+
+void str_lowermutate(char input[]){
+	int index = 0;
+
+	while (input[index]){
+		input[index] = tolower(input[index]);
+		index++;
+	}
+	input[index] = '\0';
+}

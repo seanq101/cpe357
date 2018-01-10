@@ -58,6 +58,22 @@ void test_strlower_3(){
 	
 }
 
+void test_str_lowermutate_1(){
+	char mystr [6] = "HeLlO";
+	int idx = 0;
+	int temp;
+	str_lowermutate(char input[]);
+	
+	while (mystr[idx]){
+		temp = mystr[idx];
+		if (temp <= 96 || temp >= 122){
+			printf("Test 1 mutate failed\n");		
+		}
+		idx++;
+	}
+	printf("Test 1 mutate passed, %s\n", mystr);
+	
+}
 
 void test_strlower()
 {
