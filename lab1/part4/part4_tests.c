@@ -62,7 +62,7 @@ void test_str_lowermutate_1(){
 	char mystr [6] = "HeLlO";
 	int idx = 0;
 	int temp;
-	str_lowermutate(char input[]);
+	str_lowermutate(mystr);
 	
 	while (mystr[idx]){
 		temp = mystr[idx];
