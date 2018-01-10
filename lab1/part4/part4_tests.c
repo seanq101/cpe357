@@ -18,7 +18,7 @@ void test_strlower_1(){
 		}
 		idx++;
 	}
-	printf("Test 1 passed, %s\n", buff);
+	printf("Test 1 passed, %s\n", mystr);
 	
 }
 
@@ -70,7 +70,7 @@ void test_strlower()
 
 int main(void)
 {
-   test_strlower_1();
+   test_strlower();
 
    return 0;
  }
