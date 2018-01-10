@@ -23,7 +23,7 @@ void test_strlower_1(){
 }
 
 void test_strlower_2(){
-	char mystr [6] = "HeLlO";
+	char mystr [6] = "hello";
 	char buff[6] = "     ";
 	int idx = 0;
 	int temp;
@@ -36,7 +36,7 @@ void test_strlower_2(){
 		}
 		idx++;
 	}
-	printf("Test 2 passed, %s\n", buff);
+	printf("Test 2 passed, %s\n", mystr);
 	
 }
 
