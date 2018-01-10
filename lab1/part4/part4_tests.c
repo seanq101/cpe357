@@ -7,7 +7,7 @@ char mystr [6] = "HeLlO";
 void test_strlower_1(){
 	char buff[6] = "     ";
 	strlower(mystr, buff);
-	int idx =0;
+	int idx = 0;
 	while (buff[idx]){
 		int temp = buff[idx];
 		if (temp <= 96 || temp >= 122){
