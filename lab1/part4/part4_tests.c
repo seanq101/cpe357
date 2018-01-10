@@ -7,9 +7,9 @@ char mystr [6] = "HeLlO";
 void test_strlower_1(){
 	char buff[6] = "     ";
 	strlower(mystr, buff);
-	int index =0;
-	while (buff[index]){
-		int temp = buff[index];
+	int idx =0;
+	while (buff[idx]){
+		int temp = buff[idx];
 		if (temp <= 96 || temp >= 122){
 			printf("Test 1 failed\n");		
 		}
@@ -21,7 +21,7 @@ void test_strlower_1(){
 
 void test_strlower()
 {
-   test_trlower_1();
+   test_strlower_1();
    
    
 }
