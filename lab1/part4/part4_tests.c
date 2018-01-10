@@ -11,7 +11,7 @@ void test_strlower_1(){
 	int temp;
 	while (buff[idx]){
 		printf("Hello\n");
-		int temp = buff[idx];
+		temp = buff[idx];
 		if (temp <= 96 || temp >= 122){
 			printf("Test 1 failed\n");		
 		}
