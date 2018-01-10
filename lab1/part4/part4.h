@@ -3,4 +3,6 @@
 
 void strlower(char input[], char result[]);
 
+void str_lowermutate(char input[]);
+
 #endif
