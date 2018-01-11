@@ -24,16 +24,18 @@ void test_is_a_square1(void){
    int res;
    struct point p1 = create_point(1,1);
    struct point p2 = create_point(2,0);
-   struct rectangle r = create_rectangle(p1,p2);
+   struct rectangle r ;
+   r = create_rectangle(p1,p2);
    res = is_a_square(r);
    checkit_int(res,1);
 }
 
-void test_is_a_square1(void){
+void test_is_a_square2(void){
    int res;
    struct point p1 = create_point(0,0);
    struct point p2 = create_point(2,1);
-   struct rectangle r = create_rectangle(p1,p2);
+   struct rectangle r ;
+   r = create_rectangle(p1,p2);
    res = is_a_square(r);
    checkit_int(res,0);
 }
