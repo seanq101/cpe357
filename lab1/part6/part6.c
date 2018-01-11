@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include "part6.h"
 
 struct point create_point(double x, double y)
@@ -15,8 +16,8 @@ struct rectangle create_rectangle(struct point p1, struct point p2){
 
 int is_a_square(struct rectangle rect){
 	int xDist, yDist;
-	xDist = rect.topLeft.x - rect.bottomRight.x;
-	yDist = rect.topLeft.y - rect.bottomRight.y;
+	xDist = abs(rect.topLeft.x - rect.bottomRight.x);
+	yDist = abs(rect.topLeft.y - rect.bottomRight.y);
 	if(xDist == yDist)
 		return 1;
 	return 0;
