@@ -11,7 +11,9 @@ struct point create_point(double thex, double they)
 
 
 struct rectangle create_rectangle(struct point p1, struct point p2){
-	struct rectangle r = {p1,p2};
+	struct rectangle r;
+	r.topLeft = p1;
+	r.bottomRight = p2;
 	return r;
 }
 
