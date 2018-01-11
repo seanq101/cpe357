@@ -1,9 +1,11 @@
 #include <stdlib.h>
 #include "part6.h"
 
-struct point create_point(double x, double y)
+struct point create_point(double thex, double they)
 {
-   struct point p = {x, y};
+   struct point p;
+   p.x = thex;
+   p.y = they;
    return p;
 }
 
