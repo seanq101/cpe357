@@ -14,8 +14,6 @@ int main(int arg, char *argv[])
 	while (argv[idx] != NULL){
 		if(argv[idx][0] == '-'){
 			printf("%s\n",argv[idx]);
-		}else{
-			printf("NO: %s\n", argv[idx]);
 		}
 		idx++;
 	}
