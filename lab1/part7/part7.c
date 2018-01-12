@@ -4,8 +4,17 @@
 int main(int arg, char *argv[])
 {
 	char *token;
+	int idx;
 	const char s[2] = " ";
+	idx = 0;
 
+	while (argv != NULL){
+		if(argv[idx][0] == '-'){
+			printf("%s\n",argv[idx]);
+		}
+	}
+
+	/*
 	token = strtok(argv, s);
 
 	while (token != NULL){
@@ -13,4 +22,5 @@ int main(int arg, char *argv[])
 			printf("%s\n", token);
 	}
 	return 0;
+	*/
 }
