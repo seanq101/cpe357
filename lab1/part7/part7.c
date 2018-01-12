@@ -15,6 +15,7 @@ int main(int arg, char *argv[])
 		if(argv[idx][0] == '-'){
 			printf("%s\n",argv[idx]);
 		}
+		idx++;
 	}
 
 	/*
