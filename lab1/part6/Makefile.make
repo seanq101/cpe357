@@ -3,7 +3,7 @@ CFLAGS = -Wall -ansi -pedantic
 MAIN = part6_tests
 OBJS = part6_tests.o part6.o
 all : $(MAIN)
-
+ 
 $(MAIN) : $(OBJS) part6.h checkit.h
 	$(CC) $(CFLAGS) -o $(MAIN) $(OBJS)
 
