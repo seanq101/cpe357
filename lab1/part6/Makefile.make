@@ -15,4 +15,4 @@ part6.o : part6.c part6.h
 
 clean :
 	rm *.o $(MAIN) core
- 
+  
