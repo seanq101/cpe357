@@ -4,7 +4,9 @@
 int main(int arg, char *argv[])
 {
 	char *token;
-	token = strtok(argv, ' ');
+	const char s[2] = " ";
+
+	token = strtok(argv, s);
 
 	while (token != NULL){
 		if(token[0] == '-')
