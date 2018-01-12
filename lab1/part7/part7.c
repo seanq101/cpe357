@@ -3,9 +3,12 @@
 
 int main(int arg, char *argv[])
 {
+	/*
 	char *token;
-	int idx;
+	
 	const char s[2] = " ";
+	*/
+	int idx;
 	idx = 0;
 
 	while (argv != NULL){
@@ -21,6 +24,7 @@ int main(int arg, char *argv[])
 		if(token[0] == '-')
 			printf("%s\n", token);
 	}
-	return 0;
+	
 	*/
+	return 0;
 }
