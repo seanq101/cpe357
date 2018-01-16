@@ -1,0 +1,22 @@
+Sean Quinn
+CPE 357
+1/15/2018
+
+Problem Statement:
+	Implement a (feature-reduced) version of the Unix tr program. This program “translates” characters
+	based on a user-specified mapping. 
+
+Data Structures:
+	Array of ints representing the new mapping as defined by the argument sets.
+
+Parse command-line arguments
+	Test: unit tests with specified arrays of strings, or system tests by echoing user input
+Verify command-line arguments
+ 	Test: unit tests with specified arrays of strings or, system tests by echoing user input
+Simplify sets by reducing escape sequences to single characters.
+	- Translate characters in the sets to their ASCII value to ensure correctness
+ 	Test: unit tests on various string arguments
+Read/write input character-by-character (getchar/putchar)
+	– Translate according to mapping defined by sets, if translate mode.
+	– Remove characters listed in set, if delete mode.
+	Test: system tests with correct and erroneous input, diff mytr output with tr output
