@@ -8,10 +8,10 @@ int main(int argc, char *argv[]) {
 
 	FILE *fileInput;
 	FILE *fileOutput;
+/*
 
 	int index;
-	/*
-	int arr[256];
+		int arr[256];
 	char *set1;
 	char *set2;
 	*/
