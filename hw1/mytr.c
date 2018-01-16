@@ -1,5 +1,4 @@
-#include <stdin.h>
-#include <stdout.h>
+#include <stdio.h>
 #include <stderr.h>
 #include <string.h>
 #include <stdlib.h>
