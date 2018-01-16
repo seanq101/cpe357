@@ -32,17 +32,28 @@ int main(int argc, char *argv[]) {
 	for ( index = 0; index < 256; index++ ) {
       arr[ index ] = index; 
    }
-   
-	
 	
 	set1 = argv[1];
-	set2 = argv[2];
 
-  
-   
+	set2 = argv[2];
+	while (strlen(set1) > strlen (set2)){
+		set2[strlen(set2)] = set2[strlen(set2) - 1];
+	}
+
+	for(index = 0; index <= strlen(set1); index++){
+		arr[ int( set1[index] ) ] = int( set2[index] );
+	}
+
+
+
 	fileOutput= fopen(argv[4], "w+");
+
    
 	fprintf(fileOutput, "%s %s %s %s %s\n", argv[0], argv[1], argv[2],argv[3],argv[4]);
+	for(index = 0; index < 256; index ++){
+		fprintf(fileOutput, "%d, ", arr[index]);
+	}
+	
 
 	return 0;
 }
