@@ -11,8 +11,8 @@ int main(int argc, char *argv[]) {
 
 	int index;
 	int arr[256];
-	char set1[4];
-	char set2[4];
+	char *set1;
+	char *set2;
 
 	if(argc != 5) {
 		printf("mytr: improper number of arguments\nUsage: %s <filename> <word>\n", argv[0]);
