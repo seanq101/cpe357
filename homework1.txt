@@ -1,7 +1,7 @@
 Sean Quinn
 CPE 357
 1/15/2018
-
+ 
 Problem Statement:
 	Implement a (feature-reduced) version of the Unix tr program. This program “translates” characters
 	based on a user-specified mapping. 
