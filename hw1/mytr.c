@@ -19,6 +19,7 @@ int main(int argc, char *argv[]) {
 		return 1;
 	}
 
+	printf("%s %s %s %s %s\n", argv[0], argv[1], argv[2],argv[3],argv[4]);
 
 	fileInput = fopen(argv[3], "r");
 		
