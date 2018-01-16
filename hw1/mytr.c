@@ -7,6 +7,7 @@
 int main(int argc, char *argv[]) {
 
 	FILE *file;
+	int index;
 
 
 	if(argc != 5) {
@@ -20,6 +21,10 @@ int main(int argc, char *argv[]) {
 	if(file == NULL) {
 		printf("Unable to open file: %s\n", argv[1]);
 		return 1;	
+	}
+
+	for(index = 0; index <= 255, index++){
+		printf("%d, ", index);
 	}
 
 	printf("%s %s %s %s %s\n", argv[0], argv[1], argv[2],argv[3],argv[4]);
