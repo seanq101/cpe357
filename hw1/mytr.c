@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
 		return 1;	
 	}
 
-	for(index = 0; index <= 255, index++){
+	for(index = 0; index <= 255; index++){
 		printf("%d, ", index);
 	}
 
