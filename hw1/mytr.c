@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
 	fileInput = fopen(argv[3], "r");
 		
 	if(fileInput == NULL) {
-		printf("Unable to open file: %s\n", argv[1]);
+		printf("Unable to open file: %s\n", argv[3]);
 		return 1;	
 	}
 
