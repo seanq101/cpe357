@@ -74,9 +74,10 @@ char * checkEscaped(char *set){
 		if(*set == 92 && (*(set + 1) == 92 || *(set + 1) == 110 || *(set + 1) == 116)){
 			*set = *(set + 1);
 			set++;
-			set++;
-			printf("Hello\n");
+			
+			printf("Heasdasdas\n");
 		}
+		set++;
 	}
 	return set;
 		
