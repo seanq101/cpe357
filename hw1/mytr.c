@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 #include "mytr.h"
-
+/*
 int main(int argc, char *argv[]) {
 
 	
@@ -29,8 +29,7 @@ int main(int argc, char *argv[]) {
 		set2[strlen(set2)] = set2[strlen(set2) - 1];
 	}
 
-	/*  Alters mapping based on the sets
-	*/
+	
 	for(index = 0; index <= strlen(set1); index++){
 		arr[  set1[index] - '0' + '0'] =  set2[index] - '0' + '0';
 	}
@@ -41,20 +40,21 @@ int main(int argc, char *argv[]) {
 
    printf("%c\n",argv[2][2] );
 	for(index = 0; index < 256; index ++){
-		fprintf(fileOutput, "%d, ", arr[index]);
+		printf(fileOutput, "%d, ", arr[index]);
 	}
 	
 
 	return 0;
 }
 
+*/
+
 int checkArgs(int argc, char *argv[]){
 	FILE *fileInput;
 	if(argc != 5) {
-		printf("mytr: improper number of arguments\nUsage: %s <filename> <word>\n", argv[0]);
+		printf("Usage: mytr [-d] set1 set2\n");
 		return 1;
 	}
-
 	fileInput = fopen(argv[3], "r");
 		
 	if(fileInput == NULL) {
@@ -65,3 +65,28 @@ int checkArgs(int argc, char *argv[]){
 	return 0;
 
 }
+
+int checkFileOrTerminal(char *argv[]){
+	int index = 0;
+	while(*argv){
+		for (index = 0; index < strlen(argv[index]); index++){
+
+		}
+	}
+}
+
+char * checkEscaped(char *set){
+	
+	char
+	while(*set){
+		if(*set == 92 && (*(set + 1) == 92 || *(set + 1) == 110 || *(set + 1) == 116)){
+			*set = *(set + 1);
+			set++;
+			set++;
+		}
+	}
+		
+	
+}
+
+

@@ -3,4 +3,5 @@
 
 int checkArgs(int argc, char *argv[]);
 
+char * checkEscaped(char *set);
 #endif
