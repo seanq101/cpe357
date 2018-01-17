@@ -41,7 +41,7 @@ int main(int argc, char *argv[]) {
 	}
 
 	for(index = 0; index <= strlen(set1); index++){
-		arr[ int( set1[index] ) ] = int( set2[index] );
+		arr[  set1[index]  ] =  set2[index] ;
 	}
 
 
