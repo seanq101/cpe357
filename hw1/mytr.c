@@ -75,6 +75,7 @@ char * checkEscaped(char *set){
 			*set = *(set + 1);
 			set++;
 			set++;
+			printf("Hello\n");
 		}
 	}
 	return set;
