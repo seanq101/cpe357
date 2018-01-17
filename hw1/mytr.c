@@ -66,25 +66,18 @@ int checkArgs(int argc, char *argv[]){
 
 }
 
-int checkFileOrTerminal(char *argv[]){
-	int index = 0;
-	while(*argv){
-		for (index = 0; index < strlen(argv[index]); index++){
 
-		}
-	}
-}
 
 char * checkEscaped(char *set){
 	
-	char
-	while(*set){
+	while (*set){
 		if(*set == 92 && (*(set + 1) == 92 || *(set + 1) == 110 || *(set + 1) == 116)){
 			*set = *(set + 1);
 			set++;
 			set++;
 		}
 	}
+	return set;
 		
 	
 }
