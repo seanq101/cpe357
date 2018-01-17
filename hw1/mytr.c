@@ -55,13 +55,13 @@ int checkArgs(int argc, char *argv[]){
 		return 1;
 	}
 
-	
-
 	fileInput = fopen(argv[3], "r");
 		
 	if(fileInput == NULL) {
 		printf("Unable to open file: %s\n", argv[3]);
 		return 1;	
 	}
+
+	return 0;
 
 }
