@@ -6,7 +6,7 @@
 
 int main(int argc, char *argv[]) {
 
-	FILE *fileInput;
+	
 	FILE *fileOutput;
 
 
@@ -47,6 +47,7 @@ int main(int argc, char *argv[]) {
 }
 
 void checkArgs(int argc, char *argv[]){
+	FILE *fileInput;
 	if(argc != 5) {
 		printf("mytr: improper number of arguments\nUsage: %s <filename> <word>\n", argv[0]);
 		return 1;
