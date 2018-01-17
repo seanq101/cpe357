@@ -41,7 +41,7 @@ int main(int argc, char *argv[]) {
 	}
 
 	for(index = 0; index <= strlen(set1); index++){
-		arr[  set1[index] - '0' ] =  set2[index] - '0' ;
+		arr[  set1[index] - '0' + '0'] =  set2[index] - '0' + '0';
 	}
 
 
