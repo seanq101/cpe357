@@ -15,7 +15,9 @@ int main(int argc, char *argv[]) {
 	char *set1;
 	char *set2;
 	
-	checkArgs(argc, argv);
+	if(checkArgs(argc, argv) == 1){
+		return 1;
+	}
 
 	for ( index = 0; index < 256; index++ ) {
       arr[ index ] = index; 
@@ -46,7 +48,7 @@ int main(int argc, char *argv[]) {
 	return 0;
 }
 
-void checkArgs(int argc, char *argv[]){
+int checkArgs(int argc, char *argv[]){
 	FILE *fileInput;
 	if(argc != 5) {
 		printf("mytr: improper number of arguments\nUsage: %s <filename> <word>\n", argv[0]);
