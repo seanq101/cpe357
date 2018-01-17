@@ -15,19 +15,7 @@ int main(int argc, char *argv[]) {
 	char *set1;
 	char *set2;
 	
-	if(argc != 5) {
-		printf("mytr: improper number of arguments\nUsage: %s <filename> <word>\n", argv[0]);
-		return 1;
-	}
-
-	printf("%s %s %s %s %s\n", argv[0], argv[1], argv[2],argv[3],argv[4]);
-
-	fileInput = fopen(argv[3], "r");
-		
-	if(fileInput == NULL) {
-		printf("Unable to open file: %s\n", argv[3]);
-		return 1;	
-	}
+	checkArgs(argc, argv);
 
 	for ( index = 0; index < 256; index++ ) {
       arr[ index ] = index; 
@@ -49,11 +37,28 @@ int main(int argc, char *argv[]) {
 
 	fileOutput= fopen(argv[4], "w+");
 
-   printf("%c\n",argv[2][3] );
+   printf("%c\n",argv[2][2] );
 	for(index = 0; index < 256; index ++){
 		fprintf(fileOutput, "%d, ", arr[index]);
 	}
 	
 
 	return 0;
+}
+
+void checkArgs(int argc, char *argv[]){
+	if(argc != 5) {
+		printf("mytr: improper number of arguments\nUsage: %s <filename> <word>\n", argv[0]);
+		return 1;
+	}
+
+	
+
+	fileInput = fopen(argv[3], "r");
+		
+	if(fileInput == NULL) {
+		printf("Unable to open file: %s\n", argv[3]);
+		return 1;	
+	}
+
 }
