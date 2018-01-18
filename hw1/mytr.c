@@ -64,6 +64,8 @@ int main(int argc, char *argv[]) {
 Assuming its not delete, args are at 1 and 2
 */
 
+	checkArgs(argc, argv);
+
 	buildArr(argv[1], argv[2]);
 
 	translate(false);
