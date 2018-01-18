@@ -105,12 +105,12 @@ void buildArr(char *setA, char *setB){
 	initArr();
 
 	while(*setA){
-		if(*setB = '\\' && *(setB + 1)){
+		if(*setB == '\\' && *(setB + 1)){
 			setB++;
-			*setB = findEscaped(*setAB);
+			*setB = findEscaped(*setB);
 		}
 
-		if(*setA = '\\' && *(setA + 1)){
+		if(*setA == '\\' && *(setA + 1)){
 			setA++;
 			*setA = findEscaped(*setA);
 		}
