@@ -48,25 +48,16 @@ int main(int argc, char *argv[]) {
 }
 
 
+*/
 
-int checkArgs(int argc, char *argv[]){
-	FILE *fileInput;
-	if(argc != 5) {
-		printf("Usage: mytr [-d] set1 set2\n");
-		return 1;
-	}
-	fileInput = fopen(argv[3], "r");
-		
-	if(fileInput == NULL) {
-		printf("Unable to open file: %s\n", argv[3]);
-		return 1;	
-	}
-
-	return 0;
+void checkArgs(int argc, char *argv[]){
+	if( argc < 3){
+		printf("tr: missing operand\nTry 'tr --help' for more information.\n");
+	}else if(arg)
 
 }
 
-*/
+
 
 int main(int argc, char *argv[]) {
 /*
