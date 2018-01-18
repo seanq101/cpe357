@@ -55,7 +55,7 @@ int checkArgs(int argc, char *argv[]){
 		printf("tr: missing operand\nTry 'tr --help' for more information.\n");
 		return 1;
 	}
-
+	return 0;
 }
 
 
