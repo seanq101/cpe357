@@ -50,9 +50,10 @@ int main(int argc, char *argv[]) {
 
 */
 
-void checkArgs(int argc, char *argv[]){
+int checkArgs(int argc, char *argv[]){
 	if( argc < 3){
 		printf("tr: missing operand\nTry 'tr --help' for more information.\n");
+		return 1;
 	}
 
 }
@@ -64,7 +65,9 @@ int main(int argc, char *argv[]) {
 Assuming its not delete, args are at 1 and 2
 */
 
-	checkArgs(argc, argv);
+	if(checkArgs(argc, argv) == 1){
+		return 1;
+	}
 
 	buildArr(argv[1], argv[2]);
 
