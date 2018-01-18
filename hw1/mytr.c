@@ -76,6 +76,8 @@ Assuming its not delete, args are at 1 and 2
 	buildArr(argv[1], argv[2]);
 
 	translate(false);
+
+	return 0;
 }
 
 char findEscaped(char c){
@@ -116,10 +118,10 @@ void buildArr(char *setA, char *setB){
 		}
 
 		arr[(int) *setA] = *setB;
-		*setA++;
+		setA++;
 
 		if(*(setB + 1)){
-			*setB++;
+			setB++;
 		}
 	}
 }
@@ -128,7 +130,7 @@ void buildArr(char *setA, char *setB){
 void translate(bool del){
 	char c;
 
-	while((c == getchar()) != EOF){
+	while((c = getchar()) != EOF){
 		if(del == false){
 			putchar(arr[(int) c]);
 		}else if(arr[(int) c] == c){
