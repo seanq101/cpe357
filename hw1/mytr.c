@@ -54,7 +54,7 @@ int checkArgs(int argc, char *argv[]){
 	if( argc < 3){
 		printf("tr: missing operand\nTry 'tr --help' for more information.\n");
 		return 1;
-	}else if(argv[1] == "-d" && argc > 3){
+	}else if(strcmp(argv[1],"-d") == 0 && argc > 3){
 		prinf("tr: extra operand '%s'\nOnly one string may be given when deleting without squeezing repeats.\nTry 'tr --help' for more information.", argv[3]);
 		return 1;
 	}
