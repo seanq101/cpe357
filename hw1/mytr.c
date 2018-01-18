@@ -47,7 +47,7 @@ int main(int argc, char *argv[]) {
 	return 0;
 }
 
-*/
+
 
 int checkArgs(int argc, char *argv[]){
 	FILE *fileInput;
@@ -66,23 +66,74 @@ int checkArgs(int argc, char *argv[]){
 
 }
 
+*/
 
+int main(int argc, char *argv[]) {
+/*
+Assuming its not delete, args are at 1 and 2
+*/
 
-char * checkEscaped(char *set){
-	
-	while (*set){
-		if(*set == 92 && (*(set + 1) == 92 || *(set + 1) == 110 || *(set + 1) == 116)){
-			*set = *(set + 1);
-			set++;
-			
-			
-		}
-		printf("Heasdasdas\n");
-		set++;
-	}
-	return set;
-		
-	
+	buildArr(argv[1], argv[2]);
+
+	translate(false);
 }
 
+char findEscaped(char c){
+	
+	switch (c)
+	{
+		case 't':
+			return '\t';
+		case 'n':
+			return '\n';
+		case '\\':
+			return '\\';
+		default:
+			return c;
+	}
+}
+
+void initArr(){
+	int index;
+	for(index = 0; index < 256; index++){
+		arr[index] = index;
+	}
+}
+
+void buildArr(char *setA, char *setB){
+
+	initArr();
+
+	while(*setA){
+		if(*setB = '\\' && *(setB + 1)){
+			setB++;
+			*setB = findEscaped(*setAB);
+		}
+
+		if(*setA = '\\' && *(setA + 1)){
+			setA++;
+			*setA = findEscaped(*setA);
+		}
+
+		arr[(int) *setA] = *setB;
+		*setA++;
+
+		if(*(setB + 1)){
+			*setB++;
+		}
+	}
+}
+
+
+void translate(bool del){
+	char c;
+
+	while((c == getchar()) != EOF){
+		if(del == false){
+			putchar(arr[(int) c]);
+		}else if(arr[(int) c] == c){
+			putchar(c);
+		}
+	}
+}
 

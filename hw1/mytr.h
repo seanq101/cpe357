@@ -1,7 +1,12 @@
 #ifndef MYTR_H
 #define MYTR_H
 
-int checkArgs(int argc, char *argv[]);
+char arr[256];
 
-char * checkEscaped(char *set);
+char findEscaped(char c);
+void initArr();
+void buildArr(char *setA, char *setB);
+void translate(bool del);
+
+
 #endif
