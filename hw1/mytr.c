@@ -53,7 +53,7 @@ int main(int argc, char *argv[]) {
 void checkArgs(int argc, char *argv[]){
 	if( argc < 3){
 		printf("tr: missing operand\nTry 'tr --help' for more information.\n");
-	}else if(arg)
+	}
 
 }
 
