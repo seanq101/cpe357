@@ -78,15 +78,29 @@ Assuming its not delete, args are at 1 and 2
 		return 1;
 	}
 
-	buildArr(argv[1], argv[2]);
+	initArr();
 
 	if(result == -1){
+		buildDelArr(argv[2]);
 		translate(true);
 	}else{
+		buildArr(argv[1], argv[2]);
 		translate(false);
 	}
-	
+
 	return 0;
+}
+
+void buildDelArr(*setA){
+	while(*setA){
+		if(*setA == '\\' && *(setA + 1)){
+			setA++;
+			*setA = findEscaped(*setA);
+		}
+
+		arr[(int) *setA] = NULL;
+		setA++;
+	}
 }
 
 char findEscaped(char c){
@@ -113,7 +127,7 @@ void initArr(){
 
 void buildArr(char *setA, char *setB){
 
-	initArr();
+	
 
 	while(*setA){
 		if(*setB == '\\' && *(setB + 1)){
