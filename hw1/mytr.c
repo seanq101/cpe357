@@ -60,7 +60,7 @@ int checkArgs(int argc, char *argv[]){
 	}else if (argc > 3){
 		printf("tr: extra operand ‘%s’\nTry 'tr --help' for more information.\n", argv[3]);
 		return 1;
-	}else if(argv[1] == "-d"){
+	}else if(strcmp(argv[1],"-d") == 0){
 		return -1;
 	}
 	return 0;
