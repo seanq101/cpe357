@@ -55,8 +55,13 @@ int checkArgs(int argc, char *argv[]){
 		printf("tr: missing operand\nTry 'tr --help' for more information.\n");
 		return 1;
 	}else if(strcmp(argv[1],"-d") == 0 && argc > 3){
-		printf("tr: extra operand '%s'\nOnly one string may be given when deleting without squeezing repeats.\nTry 'tr --help' for more information.", argv[3]);
+		printf("tr: extra operand '%s'\nOnly one string may be given when deleting without squeezing repeats.\nTry 'tr --help' for more information.\n", argv[3]);
 		return 1;
+	}else if (argc > 3){
+		printf("tr: extra operand ‘%s’\nTry 'tr --help' for more information.\n", argv[3]);
+		return 1;
+	}else if(argv[1] == "-d"){
+		return -1;
 	}
 	return 0;
 }
@@ -67,15 +72,20 @@ int main(int argc, char *argv[]) {
 /*
 Assuming its not delete, args are at 1 and 2
 */
-
-	if(checkArgs(argc, argv) == 1){
+	int result;
+	result = checkArgs(argc, argv);
+	if( result == 1 ){
 		return 1;
 	}
 
 	buildArr(argv[1], argv[2]);
 
-	translate(false);
-
+	if(result == -1){
+		translate(true);
+	}else{
+		translate(false);
+	}
+	
 	return 0;
 }
 
