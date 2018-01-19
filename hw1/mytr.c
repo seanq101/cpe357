@@ -97,16 +97,16 @@ void buildArr(char *setA, char *setB){
 	
 
 	while(*setA){
-		if(*setB == '\\' && *(setB + 1) && checkEscaped(*(setB + 1))){
+		if(*setB == '\\' && *(setB + 1) && (checkEscaped(*(setB + 1)) == 1) ){
 			setB++;
 			*setB = findEscaped(*setB);
 		}
 
-		if(*setA == '\\' && *(setA + 1) && checkEscaped(*(setA + 1))){
+		if(*setA == '\\' && *(setA + 1) && (checkEscaped(*(setA + 1)) == 1) ){
 			setA++;
 			*setA = findEscaped(*setA);
 		}
-		if(*setA == '\\' && *(setA + 1) && !(checkEscaped(*(setA + 1))) ) {
+		if(*setA == '\\' && *(setA + 1) && (checkEscaped(*(setA + 1)) == 0) ) {
 			setA++;
 			arr[(int) *setA] = *setA;
 			setA++;
