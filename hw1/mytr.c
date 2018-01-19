@@ -3,52 +3,27 @@
 #include <stdlib.h>
 
 #include "mytr.h"
-/*
+
 int main(int argc, char *argv[]) {
 
-	
-	FILE *fileOutput;
-
-
-	int index;
-		int arr[256];
-	char *set1;
-	char *set2;
-	
-	if(checkArgs(argc, argv) == 1){
+	int result;
+	result = checkArgs(argc, argv);
+	if( result == 1 ){
 		return 1;
 	}
 
-	for ( index = 0; index < 256; index++ ) {
-      arr[ index ] = index; 
-   }
-	
-	set1 = argv[1];
-	set2 = argv[2];
-	while (strlen(set1) > strlen (set2)){
-		set2[strlen(set2)] = set2[strlen(set2) - 1];
+	initArr();
+
+	if(result == -1){
+		buildDelArr(argv[2]);
+		translate(true);
+	}else{
+		buildArr(argv[1], argv[2]);
+		translate(false);
 	}
-
-	
-	for(index = 0; index <= strlen(set1); index++){
-		arr[  set1[index] - '0' + '0'] =  set2[index] - '0' + '0';
-	}
-
-
-
-	fileOutput= fopen(argv[4], "w+");
-
-   printf("%c\n",argv[2][2] );
-	for(index = 0; index < 256; index ++){
-		printf(fileOutput, "%d, ", arr[index]);
-	}
-	
 
 	return 0;
 }
-
-
-*/
 
 int checkArgs(int argc, char *argv[]){
 	if( argc < 3){
@@ -68,28 +43,6 @@ int checkArgs(int argc, char *argv[]){
 
 
 
-int main(int argc, char *argv[]) {
-/*
-Assuming its not delete, args are at 1 and 2
-*/
-	int result;
-	result = checkArgs(argc, argv);
-	if( result == 1 ){
-		return 1;
-	}
-
-	initArr();
-
-	if(result == -1){
-		buildDelArr(argv[2]);
-		translate(true);
-	}else{
-		buildArr(argv[1], argv[2]);
-		translate(false);
-	}
-
-	return 0;
-}
 
 void buildDelArr(char *setA){
 	while(*setA){
