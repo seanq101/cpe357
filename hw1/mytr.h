@@ -11,6 +11,6 @@ char findEscaped(char c);
 void initArr();
 void buildArr(char *setA, char *setB);
 void translate(bool del);
-
+void buildDelArr(char *setA);
 
 #endif
