@@ -56,6 +56,20 @@ void buildDelArr(char *setA){
 	}
 }
 
+int checkEscaped(char c){
+	switch (c)
+	{
+		case 't':
+			return 1;
+		case 'n':
+			return 1;
+		case '\\':
+			return 1;
+		default:
+			return 0;
+	}
+}
+
 char findEscaped(char c){
 	
 	switch (c)
@@ -83,12 +97,12 @@ void buildArr(char *setA, char *setB){
 	
 
 	while(*setA){
-		if(*setB == '\\' && *(setB + 1)){
+		if(*setB == '\\' && *(setB + 1) && checkEscaped(*(setB + 1))){
 			setB++;
 			*setB = findEscaped(*setB);
 		}
 
-		if(*setA == '\\' && *(setA + 1)){
+		if(*setA == '\\' && *(setA + 1) && checkEscaped(*(setA + 1))){
 			setA++;
 			*setA = findEscaped(*setA);
 		}
