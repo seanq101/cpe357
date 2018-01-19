@@ -91,7 +91,7 @@ Assuming its not delete, args are at 1 and 2
 	return 0;
 }
 
-void buildDelArr(*setA){
+void buildDelArr(char *setA){
 	while(*setA){
 		if(*setA == '\\' && *(setA + 1)){
 			setA++;
