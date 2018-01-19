@@ -98,7 +98,7 @@ void buildDelArr(char *setA){
 			*setA = findEscaped(*setA);
 		}
 
-		arr[(int) *setA] = NULL;
+		arr[(int) *setA] = '\0';
 		setA++;
 	}
 }
