@@ -3,6 +3,7 @@
 #include <stdlib.h>
 
 #include "mytr.h"
+/*
 
 int main(int argc, char *argv[]) {
 
@@ -24,6 +25,8 @@ int main(int argc, char *argv[]) {
 
 	return 0;
 }
+
+*/
 
 int checkArgs(int argc, char *argv[]){
 	if( argc < 3){
@@ -93,8 +96,6 @@ void initArr(){
 }
 
 void buildArr(char *setA, char *setB){
-
-	
 
 	while(*setA){
 		if(*setA == '\\' && *(setA + 1) && (checkEscaped(*(setA + 1)) == 0) ) {
