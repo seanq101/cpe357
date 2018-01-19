@@ -12,5 +12,6 @@ void initArr();
 void buildArr(char *setA, char *setB);
 void translate(bool del);
 void buildDelArr(char *setA);
+int checkArgs(int argc, char *argv[]);
 
 #endif
