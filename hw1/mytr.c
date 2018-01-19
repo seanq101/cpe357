@@ -106,9 +106,15 @@ void buildArr(char *setA, char *setB){
 			setA++;
 			*setA = findEscaped(*setA);
 		}
+		if(*setA == '\\' && *(setA + 1) && !(checkEscaped(*(setA + 1))) ) {
+			setA++;
+			arr[(int) *setA] = *setA;
+			setA++;
+		}else{
 
-		arr[(int) *setA] = *setB;
-		setA++;
+			arr[(int) *setA] = *setB;
+			setA++;
+		}
 
 		if(*(setB + 1)){
 			setB++;
