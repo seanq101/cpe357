@@ -3,17 +3,17 @@
 #include "mytr.h"
 
 
-void test_escaped_1(){
-	char * set1;
-	char * set2;
-	set1 = "hello\n";
-	set2 = checkEscaped(&set1);
-	printf("%s\n", set1);
+void test_checkEscaped_1(){
+	char c;
+	int result;
+	c = 'a';
+	result = checkEscaped(c);
+	printf("%d\n", result);
 }
 
 void test_escaped()
 {
-   test_escaped_1();
+   test_checkEscaped_1();
    
 
 }
