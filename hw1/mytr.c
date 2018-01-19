@@ -102,7 +102,6 @@ void buildArr(char *setA, char *setB){
 			setA++;
 			arr[(int) *setA] = *setA;
 			setA++;
-			printf("HELLO\n");
 		}else{
 			if(*setB == '\\' && *(setB + 1) && (checkEscaped(*(setB + 1)) == 1) ){
 				setB++;
