@@ -4,11 +4,14 @@
 
 
 void test_checkEscaped_1(){
-	char c;
-	int result;
-	c = 'a';
+	char c,d;
+
+	int result,res2;
+	c = '"';
+	d = '-'
 	result = checkEscaped(c);
-	printf("%d\n", result);
+	res2 = checkEscaped(d);
+	printf("%d, %d\n", result, res2);
 }
 
 void test_escaped()
