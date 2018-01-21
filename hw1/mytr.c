@@ -68,6 +68,10 @@ int checkEscaped(char c){
 			return 1;
 		case '\\':
 			return 1;
+		case '"':
+			return -1;
+		case '-':
+			return -1;
 		default:
 			return 0;
 	}
@@ -102,6 +106,11 @@ void buildArr(char *setA, char *setB){
 			setA++;
 			arr[(int) *setA] = *setA;
 			setA++;
+		}else if(*setA == '\\' && *(setA + 1) && (checkEscaped(*(setA + 1)) == -1) ){
+			setA++;
+			arr[(int) *setA] = *setB;
+			setA++;
+		
 		}else{
 			if(*setB == '\\' && *(setB + 1) && (checkEscaped(*(setB + 1)) == 1) ){
 				setB++;
