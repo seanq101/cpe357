@@ -35,7 +35,7 @@ int checkArgs(int argc, char *argv[]){
 	}else if( argc < 3 && strcmp(argv[1],"-d") == 0){
 		printf("tr: missing operand\nTry 'tr --help' for more information.\n");
 		return 1;
-	}else if( argc < 3 && strcmp(argv[1][0], "-") == 0 && strcmp(argv[1],"-d") != 0){
+	}else if( argc < 3 && strcmp(argv[1][0], '-') == 0 && strcmp(argv[1],"-d") != 0){
 		printf("tr: invalid option -- '%s'\nTry 'tr --help' for more information.\n", argv[1][1]);
 		return 1;
 	}else if(strcmp(argv[1],"-d") == 0 && argc > 3){
