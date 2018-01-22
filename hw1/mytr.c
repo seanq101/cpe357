@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 #include "mytr.h"
-/*
+
 
 int main(int argc, char *argv[]) {
 
@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
 
 	return 0;
 }
-*/
+
 
 
 int checkArgs(int argc, char *argv[]){
