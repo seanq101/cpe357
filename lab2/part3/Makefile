@@ -1,11 +1,11 @@
 CC = gcc
-CFLAGS = -Wall -ansi -pedantic
+CFLAGS = -Wall -ansi -pedantic -g
 MAIN = example
 OBJS = example.o
 all : $(MAIN)
 
 $(MAIN) : $(OBJS)
-	$(CC) $(CFLAGS) -o -g $(MAIN) $(OBJS)
+	$(CC) $(CFLAGS) -o $(MAIN) $(OBJS)
 
 example.o : example.c
 	$(CC) $(CFLAGS) -c example.c
