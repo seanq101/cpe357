@@ -10,7 +10,7 @@ void test_checkEscaped_1(){
 	b = "\n\t\\\\\\-";
 	a = "abcd";
 	buildArr(a,b);
-	for (index = 0; index< 256; index++){
+	for (index = 0; index < 256; index++){
 		printf("%d, ", arr[index]);
 	}
 
