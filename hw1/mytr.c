@@ -106,20 +106,17 @@ void buildArr(char *setA, char *setB){
 		/* Checks for not \n, \t, \\ case in set so it can echo it*/
 		if(*setA == '\\' && *(setA + 1) && (checkEscaped(*(setA + 1)) == 0) ) {
 			setA++;
-			printf("Hello 1 %d\n", (int) * setA);
 			arr[(int) *setA] = *setA;
 			setA++;
 		/* Checks for a \-, \" in setA, but not in setB */
 		}else{
 			if(*setA == '\\' && *(setA + 1) && (checkEscaped(*(setA + 1)) == -1) ){
 				setA++;
-				printf("Hello 2 %d\n", (int) * setA);
 			}
 			
 			/* Checks for a \-, \" in setB */
 			if (*setB == '\\' && *(setB + 1) && (checkEscaped(*(setB + 1)) == -1) ){
 				setB++;
-				printf("Hello 3%d\n", (int) * setB);
 			}
 			/* Checks for not \n, \t, \\ in setB */
 			if(*setB == '\\' && *(setB + 1) && (checkEscaped(*(setB + 1)) == 1) ){
@@ -132,7 +129,6 @@ void buildArr(char *setA, char *setB){
 				*setA = findEscaped(*setA);
 			}
 		
-			printf("Hello 4 %d %d\n", (int) * setA, (int) * setB);
 			arr[(int) *setA] = *setB;
 			setA++;
 		}
