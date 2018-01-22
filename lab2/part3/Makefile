@@ -5,7 +5,7 @@ OBJS = example.o
 all : $(MAIN)
 
 $(MAIN) : $(OBJS)
-	$(CC) $(CFLAGS) -o $(MAIN) $(OBJS)
+	$(CC) $(CFLAGS) -o -g $(MAIN) $(OBJS)
 
 example.o : example.c
 	$(CC) $(CFLAGS) -c example.c
