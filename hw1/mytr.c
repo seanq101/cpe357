@@ -29,15 +29,15 @@ int main(int argc, char *argv[]) {
 
 
 int checkArgs(int argc, char *argv[]){
-	if( argc < 3 && strcmp(argv[1],"-d") != 0){
-		printf("tr: missing operand after ‘abc’\nTwo strings must be given when translating.\nTry 'tr --help' for more information.\n");
+	if( argc < 3 && argv[1][0] == '-' && strcmp(argv[1],"-d") != 0){
+		printf("tr: invalid option -- '%c'\nTry 'tr --help' for more information.\n", argv[1][1]);
+		return 1;
+	}else if( argc < 3 && strcmp(argv[1],"-d") != 0){
+		printf("tr: missing operand after ‘%s’\nTwo strings must be given when translating.\nTry 'tr --help' for more information.\n", argv[1]);
 		return 1;
 	}else if( argc < 3 && strcmp(argv[1],"-d") == 0){
 		printf("tr: missing operand\nTry 'tr --help' for more information.\n");
-		return 1;
-	}else if( argc < 3 && argv[1][0] == '-' && strcmp(argv[1],"-d") != 0){
-		printf("tr: invalid option -- '%c'\nTry 'tr --help' for more information.\n", argv[1][1]);
-		return 1;
+		return 1; 
 	}else if(strcmp(argv[1],"-d") == 0 && argc > 3){
 		printf("tr: extra operand '%s'\nOnly one string may be given when deleting without squeezing repeats.\nTry 'tr --help' for more information.\n", argv[3]);
 		return 1;
