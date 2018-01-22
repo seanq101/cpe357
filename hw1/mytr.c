@@ -68,12 +68,13 @@ int checkEscaped(char c){
 			return 1;
 		case '\\':
 			return 1;
-		case '"':
-			return -1;
-		case '-':
-			return -1;
 		default:
-			return 0;
+			break;
+	}
+	if((int) c == 34 || (int) c == 45){
+		return -1;
+	}else{
+		return 0;
 	}
 }
 
