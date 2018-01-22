@@ -112,11 +112,13 @@ void buildArr(char *setA, char *setB){
 		}else{
 			if(*setA == '\\' && *(setA + 1) && (checkEscaped(*(setA + 1)) == -1) ){
 				setA++;
+				printf("%d\n", (int) * setA);
 			}
 			
 			/* Checks for a \-, \" in setB */
 			if (*setB == '\\' && *(setB + 1) && (checkEscaped(*(setB + 1)) == -1) ){
 				setB++;
+				printf("%d\n", (int) * setB);
 			}
 			/* Checks for not \n, \t, \\ in setB */
 			if(*setB == '\\' && *(setB + 1) && (checkEscaped(*(setB + 1)) == 1) ){
