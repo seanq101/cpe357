@@ -4,8 +4,8 @@
 
 
 void test_checkEscaped_1(){
-	char b [12];
-	char a [5];
+	char *b;
+	char *a;
 	int index;
 	b = "\n\t\\\\\\-";
 	a = "abcd";
