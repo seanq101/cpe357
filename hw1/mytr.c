@@ -102,21 +102,27 @@ void initArr(){
 void buildArr(char *setA, char *setB){
 
 	while(*setA){
+		/* Checks for not \n, \t, \\ case in set so it can echo it*/
 		if(*setA == '\\' && *(setA + 1) && (checkEscaped(*(setA + 1)) == 0) ) {
 			setA++;
 			arr[(int) *setA] = *setA;
 			setA++;
-		}else if(*setA == '\\' && *(setA + 1) && (checkEscaped(*(setA + 1)) == -1) ){
-			setA++;
-			arr[(int) *setA] = *setB;
-			setA++;
-		
+		/* Checks for a \-, \" in setA, but not in setB */
 		}else{
+			if(*setA == '\\' && *(setA + 1) && (checkEscaped(*(setA + 1)) == -1) ){
+				setA++;
+			}
+			
+			/* Checks for a \-, \" in setB */
+			if (*setB == '\\' && *(setB + 1) && (checkEscaped(*(setB + 1)) == -1) ){
+				setB++;
+			}
+			/* Checks for not \n, \t, \\ in setB */
 			if(*setB == '\\' && *(setB + 1) && (checkEscaped(*(setB + 1)) == 1) ){
 				setB++;
 				*setB = findEscaped(*setB);
 			}
-
+			/* Checks for not \n, \t, \\ in setB */
 			if(*setA == '\\' && *(setA + 1) && (checkEscaped(*(setA + 1)) == 1) ){
 				setA++;
 				*setA = findEscaped(*setA);
