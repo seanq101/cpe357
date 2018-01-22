@@ -4,14 +4,17 @@
 
 
 void test_checkEscaped_1(){
-	char c,d;
+	char b [12];
+	char a [5];
+	int index;
+	b = "\n\t\\\\\\-";
+	a = "abcd";
+	buildArr(a,b);
+	for (index = 0; index< 256; index++){
+		printf("%d, ", arr[index]);
+	}
 
-	int result,res2;
-	c = '"';
-	d = '-'
-	result = checkEscaped(c);
-	res2 = checkEscaped(d);
-	printf("%d, %d\n", result, res2);
+	
 }
 
 void test_escaped()
