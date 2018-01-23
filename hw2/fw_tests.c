@@ -6,9 +6,10 @@
 void test_isNumber(){
 	char *b;
 	char *a;
-	char *fishsticks;
+	char *c;
 	a = "-123";
 	b = "123";
+	c ="fishsticks";
 	if(isNumber(a) == 1){
 		printf("Test passed\n");
 	}else{
