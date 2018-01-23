@@ -8,12 +8,12 @@ void test_isNumber(){
 	char *a;
 	a = "-123";
 	b = "123";
-	if(!isNumber(a)){
+	if(isNumber(a) == 1){
 		printf("Test passed\n");
 	}else{
 		printf("-123 Failed\n");
 	}
-	if(isNumber(b)){
+	if(isNumber(b) == 0){
 		printf("Test passed\n");
 	}else{
 		printf("123 Failed\n");
