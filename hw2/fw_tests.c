@@ -6,7 +6,6 @@
 void test_isNumber(){
 	char *b;
 	char *a;
-	int index;
 	a = "-123";
 	b = "123";
 	if(!isNumber(a)){
