@@ -1,0 +1,38 @@
+Sean Quinn
+sequinn@calpoly.edu
+HW2 Decomposition
+
+Problem Statement -
+Write a program that will return a sorted list of the n most common words in a file or set of
+files, sorted by order of frequency.
+
+Logic of the Program -
+Parse Command Line Arguments and find out how many (k) words should be output
+Verify Command Line Arguments
+Read input character by character(getchar), adding words(defined by whitespace predecing or trailing a set of characters) to a HashTable
+Print out the top "k" words out of all unique words in the file
+
+Data Structures -
+Hash table used to store all unique words(with their frequency stored along with the word)
+
+Algorithms -
+Quicksort (nlogn) to sort the table by frequencies
+
+Methods -
+checkArguments(int argc, char *argv)
+initTable()
+fillTable()
+sortTable()
+printTopFrequencies(int num)
+
+Testing
+checkArguments
+	Test: unit tests with specified arrays of strings, or system tests by echoing user input
+initTable
+	Test: unit tests to verify it is a blank table of predetermined length
+fillTable
+	Test: system tests with correct and erroneous input, diff myfw output with instructor's fw output
+sortTable
+	Test: system tests with correct and erroneous input, diff myfw output with instructor's fw output
+printTopFrequencies(int num)
+	Test: system tests with correct and erroneous input, diff myfw output with instructor's fw output
