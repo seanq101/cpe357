@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 #include "fw.h"
 
@@ -21,16 +22,16 @@ int checkArgs(int argc, char *argv[]){
 		printf("usage: fw [-n num] [ file1 [ file 2 ...] ]\n");
 		return 1;
 	}
+	return 0;
 }
 
 int isNumber(char *input){
-	int i = 0;
 	/* Checks for a negative number */
 	if(*input == '-'){
 		return 1;
 	}
 	while(*input){
-		is( !(isdigit(*input)) ){
+		if( !(isdigit(*input)) ){
 			return 1;
 		}
 		input++;
