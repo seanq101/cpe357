@@ -57,7 +57,7 @@ struct map_table * parseFileNames(int argc, char *argv[]){
 
 	for(index = 1; index < argc; index++){
 		file = fopen(argv[index], "r");
-		if(*file){
+		if(file != NULL){
 			myMap = parseFile(file, myMap);
 		}else{
 			printf("Unable to open file: %s\n", argv[1]);
@@ -83,7 +83,7 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 	index = 0;
 	while((currentChar = fgetc(f)) ) {
 		if(currentChar == ' ' || currentChar == '\t' || currentChar == '\n'){
-			t = addToTable(t);
+			t = addToTable(t, currentWord);
 			index = 0;
 
 		}else{
@@ -104,26 +104,26 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 	struct map_table *newMap;
 	int quadratic = 1;
 
-	key = hash(currentWord)% t->map_size;
+	key = (int) hash(currentWord)% t->map_size;
 	
 	if(t->list[key] && strcmp(t->list[key]->value, currentWord) == 0){
 		t->list[key]->frequency++;
 	}else{
-		while(!t->list[key]]){
+		while(!t->list[key]) {
 			key = key + quadratic * quadratic;
 			key = key % t->map_size;
 			quadratic++;
 		}
 		ele = (struct map_element *)malloc(sizeof(struct map_element*));
-		ele->value->currentWord;
+		ele->value = currentWord;
 		ele->frequency = 0;
 		t->list[key] = ele;
 	}
 	
 	t->used_size = t->used_size + 1;
 
-	if( ((double) t->used_size / t->size ) >= .75) {
-		newMap = createBlankTable(t->size * 2);
+	if( ((double) t->used_size / t->map_size ) >= .75) {
+		newMap = createBlankTable(t->map_size * 2);
 		t = reassignNewMap(newMap, t);
 	}
 	return t;
@@ -132,9 +132,9 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 
 struct map_table * reassignNewMap(struct map_table *blank, struct map_table *original){
 	int index;
-	blank = createBlankTable(original->size * 2);
+	blank = createBlankTable(original->map_size * 2);
 
-	for (index = 0; index < original->size; index++){
+	for (index = 0; index < original->map_size; index++){
 		if(original->list[index]){
 			blank = addToTable(blank, original->list[index]->value);
 		}
@@ -148,14 +148,15 @@ struct map_table * reassignNewMap(struct map_table *blank, struct map_table *ori
 unsigned long hash(unsigned char *str){
     unsigned long hash = 5381;
     int c;
-    while (c = *str++)
+    while (c = *str++){
         hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
+    }
     return hash;
 }
 
 void printTable(struct map_table *t){
 	int index;
-	for (index = 0; index < t->size; index++){
+	for (index = 0; index < t->map_size; index++){
 		printf("Element:\t%d\tValue:\t%s\tFrequency:%d", index, t->list[index]->value, t->list[index]->frequency);
 	}
 }
