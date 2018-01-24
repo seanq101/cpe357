@@ -55,8 +55,9 @@ struct map_table * parseFileNames(int argc, char *argv[]){
 	FILE *file;
 	int index;
 	struct map_table *myMap;
+	printf("Hi\n");
 	myMap = createBlankTable(100);
-
+	printf("Made it bitch\n");
 	for(index = 1; index < argc; index++){
 		file = fopen(argv[index], "r");
 		if(file != NULL){
@@ -82,7 +83,7 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 	char currentWord[100];
 	char currentChar;
 	int index;
-	printf("Made it bitch");
+
 
 	index = 0;
 	while((currentChar = fgetc(f)) ) {
