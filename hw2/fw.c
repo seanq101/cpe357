@@ -128,22 +128,24 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 	}else{
 		printf("Hi1\n");
 		while(t->list[key]) {
-			printf("Hi2\n");
+			
 			key = key + quadratic * quadratic;
 			key = key % t->map_size;
 			quadratic++;
 		}
-		printf("Hi3\n");
+		
 		ele = (struct map_element *)malloc(sizeof(struct map_element*));
 		ele->value = currentWord;
 		ele->frequency = 0;
 		t->list[key] = ele;
-		printf("Hi4\n");
+		
 	}
-	
+	printf("%d\n", t->used_size);
 	t->used_size = t->used_size + 1;
+	printf("%d\n", t->used_size);
 
 	if( ((double) t->used_size / t->map_size ) >= .75) {
+		printf("Hi2\n");
 		newMap = createBlankTable(t->map_size * 2);
 		t = reassignNewMap(newMap, t);
 	}
