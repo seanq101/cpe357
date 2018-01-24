@@ -184,10 +184,11 @@ int ht_hash(char *key ) {
 }
 
 void printTable(struct map_table *t){
-	printf("Hi2\n");
 	int index;
 	for (index = 0; index < t->map_size; index++){
-		printf("Element:\t%d\tValue:\t%s\tFrequency:%d", index, t->list[index]->value, t->list[index]->frequency);
+		if(t->list[index]){
+			printf("Element:\t%d\tValue:\t%s\tFrequency:%d", index, t->list[index]->value, t->list[index]->frequency);
+		}
 	}
 }
 
