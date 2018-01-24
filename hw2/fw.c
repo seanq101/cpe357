@@ -8,8 +8,9 @@
 
 
 int main(int argc, char *argv[]) {
-	printf("Hi1\n");
+	
 	struct map_table *myMap;
+	printf("Hi1\n");
 	if(checkArgs(argc, argv) == 1){
 		return 0;
 	}
