@@ -55,7 +55,7 @@ struct map_table * parseFileNames(int argc, char *argv[]){
 	struct map_table *myMap;
 	myMap = createBlankTable(100);
 
-	for(index = 1; index < argv; index++){
+	for(index = 1; index < argc; index++){
 		file = fopen(argv[index], "r");
 		if(*file){
 			myMap = parseFile(file, myMap);
@@ -71,7 +71,7 @@ struct map_table * createBlankTable(int size){
 	struct map_table *myMap = (struct map_table *)malloc(sizeof(struct map_table));
 	myMap->map_size = size;
 	myMap->used_size = 0;
-	myMap->list = (struct map_element **)malloc(sizeof(struct map_element*) *map_size);
+	myMap->list = (struct map_element **)malloc(sizeof(struct map_element*) * myMap->map_size);
 	return myMap;
 }
 
