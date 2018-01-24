@@ -27,18 +27,27 @@ int checkArgs(int argc, char *argv[]){
 		printf("usage1: fw [-n num] [ file1 [ file 2 ...] ]\n");
 		return 1;
 	}
+	printf("Here1\n");
 	if (strcmp(argv[1], "-n") == 0 && argc < 4){
 		printf("usage2: fw [-n num] [ file1 [ file 2 ...] ]\n");
 		return 1;
 	}
+		printf("Here2\n");
+
 	if(strcmp(argv[1], "-n") && isNumber(argv[2]) == 1 ) {
 		printf("usage3: fw [-n num] [ file1 [ file 2 ...] ]\nNo negative number inputs\n");
 		return 1;
 	}
+		printf("Here3\n");
+
 	if(strcmp(argv[1], "-n") && isNumber(argv[2]) == 0 ){
-		NUMBER = atoi(argv[2]); 
+			printf("Here4\n");
+
+		freqOutput = atoi(argv[2]); 
 	}else{
-		NUMBER = 10;
+			printf("Here5\n");
+
+		freqOutput = 10;
 	}
 	return 0;
 }

@@ -1,7 +1,7 @@
 #ifndef FW_H
 #define FW_H
 
-int NUMBER;
+int freqOutput;
 
 struct map_element{
 	int frequency;
