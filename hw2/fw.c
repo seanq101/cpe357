@@ -34,7 +34,7 @@ int checkArgs(int argc, char *argv[]){
 	}
 		printf("Here2\n");
 
-	if(strcmp(argv[1], "-n") && isNumber(argv[2]) == 1 ) {
+	if(strcmp(argv[1], "-n") == 0 && isNumber(argv[2]) == 1 ) {
 		printf("usage3: fw [-n num] [ file1 [ file 2 ...] ]\nNo negative number inputs\n");
 		return 1;
 	}
