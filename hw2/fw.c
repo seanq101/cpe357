@@ -49,7 +49,7 @@ int isNumber(char *input){
 	return 0;
 }
 
-struct map_table * parseFileNames(int argc, *argv){
+struct map_table * parseFileNames(int argc, char *argv[]){
 	FILE *file;
 	int index;
 	struct map_table *myMap;
