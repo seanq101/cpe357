@@ -105,7 +105,7 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 	struct map_table *newMap;
 	int quadratic = 1;
 
-	key = (int) hash(currentWord)% t->map_size;
+	key = ht_hash(currentWord) % t->map_size;
 	
 	if(t->list[key] && strcmp(t->list[key]->value, currentWord) == 0){
 		t->list[key]->frequency++;
