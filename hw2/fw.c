@@ -118,24 +118,27 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 	struct map_element *ele;
 	struct map_table *newMap;
 	int quadratic = 1;
-	printf("Hi1\n");
+	
 	key = ht_hash(currentWord) % t->map_size;
-	printf("Hi2\n");
+	
 
 	if(t->list[key] && strcmp(t->list[key]->value, currentWord) == 0){
-		printf("Hi3\n");
+		
 		t->list[key]->frequency++;
 	}else{
-		printf("Hi4\n");
+		printf("Hi1\n");
 		while(!t->list[key]) {
+			printf("Hi2\n");
 			key = key + quadratic * quadratic;
 			key = key % t->map_size;
 			quadratic++;
 		}
+		printf("Hi3\n");
 		ele = (struct map_element *)malloc(sizeof(struct map_element*));
 		ele->value = currentWord;
 		ele->frequency = 0;
 		t->list[key] = ele;
+		printf("Hi4\n");
 	}
 	
 	t->used_size = t->used_size + 1;
