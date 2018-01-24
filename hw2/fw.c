@@ -13,7 +13,7 @@ int main(int argc, char *argv[]) {
 		return 0;
 	}
 	myMap = parseFileNames(argc, argv);
-	printf("Made it bitch");
+
 	printTable(myMap);
 
 	return 0;
@@ -78,6 +78,7 @@ struct map_table * createBlankTable(int size){
 }
 
 struct map_table * parseFile(FILE *f, struct map_table *t){
+	printf("Made it bitch");
 	char currentWord[100];
 	char currentChar;
 	int index;
