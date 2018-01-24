@@ -87,7 +87,7 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 	char currentWord[100];
 	char currentChar;
 	int index;
-	currentChar = 'a';
+	currentChar;
 
 
 	index = 0;
