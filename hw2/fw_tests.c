@@ -9,7 +9,7 @@ void test_isNumber(){
 	char *c;
 	a = "-123";
 	b = "123";
-	c ="fishsticks";
+	c = "fishsticks";
 	if(isNumber(a) == 1){
 		printf("Test passed\n");
 	}else{
