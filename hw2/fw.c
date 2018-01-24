@@ -40,7 +40,7 @@ int checkArgs(int argc, char *argv[]){
 	}
 		printf("Here3\n");
 
-	if(strcmp(argv[1], "-n") && isNumber(argv[2]) == 0 ){
+	if(strcmp(argv[1], "-n") == 0 && isNumber(argv[2]) == 0 ){
 			printf("Here4\n");
 
 		freqOutput = atoi(argv[2]); 
