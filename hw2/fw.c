@@ -23,7 +23,7 @@ int checkArgs(int argc, char *argv[]){
 		printf("usage1: fw [-n num] [ file1 [ file 2 ...] ]\n");
 		return 1;
 	}
-	if (strcmp(argv[1], "-n") && argc < 4){
+	if (strcmp(argv[1], "-n") == 0 && argc < 4){
 		printf("usage2: fw [-n num] [ file1 [ file 2 ...] ]\n");
 		return 1;
 	}
