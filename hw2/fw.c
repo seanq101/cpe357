@@ -140,12 +140,11 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 		t->list[key] = ele;
 		
 	}
-	printf("%d\n", t->used_size);
+	
 	t->used_size = t->used_size + 1;
-	printf("%d\n", t->used_size);
 
 	if( ((double) t->used_size / t->map_size ) >= .75) {
-		printf("Hi2\n");
+		
 		newMap = createBlankTable(t->map_size * 2);
 		t = reassignNewMap(newMap, t);
 	}
@@ -185,6 +184,7 @@ int ht_hash(char *key ) {
 }
 
 void printTable(struct map_table *t){
+	printf("Hi2\n");
 	int index;
 	for (index = 0; index < t->map_size; index++){
 		printf("Element:\t%d\tValue:\t%s\tFrequency:%d", index, t->list[index]->value, t->list[index]->frequency);
