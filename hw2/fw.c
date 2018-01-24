@@ -13,6 +13,7 @@ int main(int argc, char *argv[]) {
 		return 0;
 	}
 	myMap = parseFileNames(argc, argv);
+	printf("Made it bitch");
 	printTable(myMap);
 
 	return 0;
