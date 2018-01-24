@@ -1,18 +1,18 @@
 #ifndef FW_H
 #define FW_H
 
-#define int NUMBER;
+int NUMBER;
 
 struct map_element{
 	int frequency;
 	char *value;
-}
+};
 
 struct map_table{
 	int map_size;
 	int used_size;
 	struct map_element **list;
-}
+};
 
 int checkArgs(int argc, char *argv[]);
 int isNumber(char *input);
