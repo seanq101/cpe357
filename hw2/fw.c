@@ -8,10 +8,12 @@
 
 
 int main(int argc, char *argv[]) {
+	printf("Hi1\n");
 	struct map_table *myMap;
 	if(checkArgs(argc, argv) == 1){
 		return 0;
 	}
+	printf("Hi\n");
 	myMap = parseFileNames(argc, argv);
 
 	printTable(myMap);
@@ -55,9 +57,9 @@ struct map_table * parseFileNames(int argc, char *argv[]){
 	FILE *file;
 	int index;
 	struct map_table *myMap;
-	printf("Hi\n");
+	
 	myMap = createBlankTable(100);
-	printf("Made it bitch\n");
+	
 	for(index = 1; index < argc; index++){
 		file = fopen(argv[index], "r");
 		if(file != NULL){
