@@ -98,7 +98,7 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 			index = 0;
 
 		}else{
-			
+			if(currentChar != EOF)
 			currentWord[index] = currentChar;
 			index++;
 		}
