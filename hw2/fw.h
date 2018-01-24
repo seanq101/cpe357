@@ -21,7 +21,7 @@ struct map_table * createBlankTable(int size);
 struct map_table * parseFile(FILE *f, struct map_table *t);
 struct map_table * addToTable(struct map_table *t, char *currentWord);
 struct map_table * reassignNewMap(struct map_table *blank, struct map_table *original);
-unsigned long hash(unsigned char *str);
+int ht_hash(char *key );
 void printTable(struct map_table *t);
 
 #endif
