@@ -89,11 +89,12 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 	char currentChar;
 	char nextChar;
 	int index;
-	
+	currentChar = '';
 
 
 	index = 0;
-	while((currentChar = fgetc(f)) ) {
+	while( currentChar != EOF ) {
+		currentChar = fgetc(f);
 		if(currentChar == ' ' || currentChar == '\t' || currentChar == '\n'){
 			printf("Hi1\n");
 			t = addToTable(t, currentWord);
@@ -105,6 +106,7 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 			index++;
 		}
 	}
+	t = addToTable(t, currentWord);
 	return t;
 	
 
