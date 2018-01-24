@@ -13,7 +13,6 @@ int main(int argc, char *argv[]) {
 	if(checkArgs(argc, argv) == 1){
 		return 0;
 	}
-	printf("Hi\n");
 	myMap = parseFileNames(argc, argv);
 
 	printTable(myMap);
@@ -87,7 +86,6 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 
 	char currentWord[100];
 	char currentChar;
-	char nextChar;
 	int index;
 	currentChar = 'a';
 
