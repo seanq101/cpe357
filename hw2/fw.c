@@ -34,8 +34,11 @@ int checkArgs(int argc, char *argv[]){
 	if(strcmp(argv[1], "-n") && isNumber(argv[2]) == 1 ) {
 		printf("usage3: fw [-n num] [ file1 [ file 2 ...] ]\nNo negative number inputs\n");
 		return 1;
+	}
+	if(strcmp(argv[1], "-n") && isNumber(argv[2]) == 0 ){
+		NUMBER = atoi(argv[2]); 
 	}else{
-		NUMBER = atoi(argv[2]);
+		NUMBER = 10;
 	}
 	return 0;
 }
