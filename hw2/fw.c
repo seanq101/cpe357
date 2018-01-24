@@ -10,7 +10,6 @@
 int main(int argc, char *argv[]) {
 	
 	struct map_table *myMap;
-	printf("Hi1\n");
 	if(checkArgs(argc, argv) == 1){
 		return 0;
 	}
@@ -27,26 +26,19 @@ int checkArgs(int argc, char *argv[]){
 		printf("usage1: fw [-n num] [ file1 [ file 2 ...] ]\n");
 		return 1;
 	}
-	printf("Here1\n");
 	if (strcmp(argv[1], "-n") == 0 && argc < 4){
 		printf("usage2: fw [-n num] [ file1 [ file 2 ...] ]\n");
 		return 1;
 	}
-		printf("Here2\n");
 
 	if(strcmp(argv[1], "-n") == 0 && isNumber(argv[2]) == 1 ) {
 		printf("usage3: fw [-n num] [ file1 [ file 2 ...] ]\nNo negative number inputs\n");
 		return 1;
 	}
-		printf("Here3\n");
 
 	if(strcmp(argv[1], "-n") == 0 && isNumber(argv[2]) == 0 ){
-			printf("Here4\n");
-
 		freqOutput = atoi(argv[2]); 
 	}else{
-			printf("Here5\n");
-
 		freqOutput = 10;
 	}
 	return 0;
@@ -70,9 +62,9 @@ struct map_table * parseFileNames(int argc, char *argv[]){
 	FILE *file;
 	int index;
 	struct map_table *myMap;
-	
+	printf("Hi1\n");
 	myMap = createBlankTable(100);
-	
+	printf("Hi2\n");
 	for(index = 1; index < argc; index++){
 		file = fopen(argv[index], "r");
 		if(file != NULL){
