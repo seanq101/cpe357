@@ -145,14 +145,20 @@ struct map_table * reassignNewMap(struct map_table *blank, struct map_table *ori
 }
 
 
-int hash( char *str){
-    hash = 5381;
-    int c;
-    while (c = *str){
-        hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
-        str++;
-    }
-    return hash;
+/* Hash a string for a particular hash table. */
+int ht_hash(char *key ) {
+
+	unsigned long int hashval;
+	int i = 0;
+
+	/* Convert our string to an integer */
+	while( hashval < ULONG_MAX && i < strlen( key ) ) {
+		hashval = hashval << 8;
+		hashval += key[ i ];
+		i++;
+	}
+
+	return hashval;
 }
 
 void printTable(struct map_table *t){
