@@ -20,15 +20,15 @@ int main(int argc, char *argv[]) {
 
 int checkArgs(int argc, char *argv[]){
 	if(argc < 2){
-		printf("usage: fw [-n num] [ file1 [ file 2 ...] ]\n");
+		printf("usage1: fw [-n num] [ file1 [ file 2 ...] ]\n");
 		return 1;
 	}
 	if (strcmp(argv[1], "-n") && argc < 4){
-		printf("usage: fw [-n num] [ file1 [ file 2 ...] ]\n");
+		printf("usage2: fw [-n num] [ file1 [ file 2 ...] ]\n");
 		return 1;
 	}
 	if(strcmp(argv[1], "-n") && isNumber(argv[2]) == 1 ) {
-		printf("usage: fw [-n num] [ file1 [ file 2 ...] ]\nNo negative number inputs\n");
+		printf("usage3: fw [-n num] [ file1 [ file 2 ...] ]\nNo negative number inputs\n");
 		return 1;
 	}else{
 		NUMBER = atoi(argv[2]);
