@@ -98,6 +98,7 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 		if(currentChar == ' ' || currentChar == '\t' || currentChar == '\n'){
 			currentWord[index] = '\0';
 			t = addToTable(t, currentWord);
+			printTable(t);
 			index = 0;
 
 		}else{
@@ -109,7 +110,7 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 	}
 	currentWord[index] = '\0';
 	t = addToTable(t, currentWord);
-
+	printTable(t);
 	return t;
 
 }
@@ -153,7 +154,7 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 	
 	t->used_size = t->used_size + 1;
 	printf("%s\n", t->list[key]->value);
-	
+
 	if( ((double) t->used_size / t->map_size ) >= .75) {
 		newMap = createBlankTable(t->map_size * 2);
 		t = reassignNewMap(newMap, t);
