@@ -23,7 +23,7 @@ struct map_table * addToTable(struct map_table *t, char *currentWord);
 struct map_table * reassignNewMap(struct map_table *blank, struct map_table *original);
 int ht_hash(char *key );
 void printTable(struct map_table *t);
-
+/*
 void resetString(char *str, int size);
-
+*/
 #endif
