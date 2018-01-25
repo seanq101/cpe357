@@ -155,6 +155,7 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 		printf("WORD:%s\n",word );
 		printf("Test:%s", testptr);
 		t->list[key]->value = word;
+		printf("Val:%s\n", t->list[key]->value);
 		t->list[key]->frequency = 1;
 
 
