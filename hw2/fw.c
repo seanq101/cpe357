@@ -105,7 +105,7 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 	}
 	
 	t = addToTable(t, currentWord);
-	printf("%s\n", myMap->list[5]->value);
+	printf("%s\n", t->list[5]->value);
 	return t;
 	
 
