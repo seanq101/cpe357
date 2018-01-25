@@ -91,6 +91,7 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 	char currentWord[100];
 	char currentChar;
 	int index;
+	int pcount = 0;
 
 
 	index = 0;
@@ -99,9 +100,9 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 		if(currentChar == ' ' || currentChar == '\t' || currentChar == '\n'){
 			currentWord[index] = '\0';
 			t = addToTable(t, currentWord);
-			printf("%d\n", index);
+			printf("%d\n", pcount++);
 			printTable(t);
-			index ++;
+			index = 0;
 
 		}else{
 			if(currentChar != EOF){
@@ -118,14 +119,7 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 	return t;
 
 }
-/*
-void resetString(char *str, int size){
-	int index = 0;
-	for(index = 0; index < size; index++){
-		str[index] = '\0';
-	}
-}
-*/
+
 
 struct map_table * addToTable(struct map_table *t, char *currentWord){
 
