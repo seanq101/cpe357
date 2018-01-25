@@ -11,9 +11,12 @@ int main(int argc, char *argv[]) {
 	
 	struct map_table *myMap;
 	myMap = createBlankTable(100);
+	printf("hi1\n");
 	if(checkArgs(argc, argv) == 1){
 		return 0;
 	}
+	printf("hi2\n");
+
 	myMap = parseFileNames(argc, argv, myMap);
 
 	
@@ -67,6 +70,7 @@ struct map_table * parseFileNames(int argc, char *argv[],struct map_table *myMap
 		file = fopen(argv[index], "r");
 		if(file != NULL){
 			myMap = parseFile(file, myMap);
+			fclose(file);
 		}else{
 			printf("Unable to open file: %s\n", argv[1]);
 		}
