@@ -109,7 +109,7 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 	}
 
 	t = addToTable(t, currentWord);
-	currentWord = memset(currentWord, 0, sizeof(currentWord));
+	memset(currentWord, 0, sizeof(currentWord));
 
 	printf("%s2\n", t->list[5]->value);
 
@@ -117,7 +117,7 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 
 }
 
-void resetString(char str [], size){
+void resetString(char str [], int size){
 	int index = 0;
 	for(index = 0; index < size; index++){
 		str[index] = '\0';
