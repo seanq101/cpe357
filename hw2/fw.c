@@ -16,6 +16,7 @@ int main(int argc, char *argv[]) {
 	}
 	myMap = parseFileNames(argc, argv, myMap);
 	printTable(myMap);
+	printf("%d", strcmp(myMap->list[5]->value, myMap->list[63]->value))
 
 	return 0;
 }
@@ -109,6 +110,7 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 
 	t = addToTable(t, currentWord);
 	memset(currentWord, 0, sizeof(currentWord));
+
 	printf("%s2\n", t->list[5]->value);
 
 	return t;
