@@ -117,7 +117,7 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 
 }
 
-struct map_table * addToTable(struct map_table *t, char *currentWord){
+struct map_table * addToTable(struct map_table *t, char currentWord){
 
 	int key;
 	struct map_element *ele;
