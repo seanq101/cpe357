@@ -123,7 +123,7 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 	int quadratic = 1;
 	key = ht_hash(currentWord) % t->map_size;
 	
-	wordptr = malloc(sizeof(strlen(currentWord)));
+	wordptr = malloc(sizeof(char) * (strlen(currentWord) + 1 ));
 	strcpy(wordptr, currentWord);
 	if(t->list[key] && strcmp(t->list[key]->value, currentWord) == 0){
 		t->list[key]->frequency++;
