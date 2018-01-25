@@ -185,7 +185,7 @@ int ht_hash(char *key ) {
 
 void printTable(struct map_table *t){
 	int index;
-	char *currentword;
+	char *currentWord;
 	for (index = 0; index < t->map_size; index++){
 		if(t->list[index]){
 			currentWord = t->list[index]->value;
