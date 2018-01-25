@@ -116,22 +116,15 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 
 struct map_table * addToTable(struct map_table *t, char *currentWord){
 
-	
+	char *wordptr;
 	int key;
 	struct map_table *newMap;
-	char word [100];
 	int index = 0;
 	int quadratic = 1;
 	key = ht_hash(currentWord) % t->map_size;
-	/*
-	while(*currentWord){
-		word[index] = *currentWord;
-		currentWord++;
-		index++;
-	}
-	word[index] = '\0';
-	*/
-
+	
+	wordptr = malloc(sizeof(strlen(currentWord)));
+	strcpy(wordptr, currentWord);
 	if(t->list[key] && strcmp(t->list[key]->value, currentWord) == 0){
 		t->list[key]->frequency++;
 
@@ -145,7 +138,7 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 		}
 
 		t->list[key] = (struct map_element *)malloc(sizeof(struct map_element));
-		t->list[key]->value = currentWord;
+		t->list[key]->value = wordptr;
 		t->list[key]->frequency = 1;
 		printf("%s\n", currentWord);
 
