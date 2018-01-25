@@ -185,11 +185,11 @@ int ht_hash(char *key ) {
 
 void printTable(struct map_table *t){
 	int index;
-	int test = strcmp(t->list[63]->value, "because");
+	char *currentword;
 	for (index = 0; index < t->map_size; index++){
 		if(t->list[index]){
-			printf("Element:\t%d\tValue:\t%s\tFrequency:%d\n", index, t->list[index]->value, t->list[index]->frequency);
-			printf("%d\n",test );
+			currentWord = t->list[index]->value;
+			printf("Element:\t%d\tValue:\t%s\tFrequency:%d\n", index, currentWord, t->list[index]->frequency);
 		}
 	}
 }
