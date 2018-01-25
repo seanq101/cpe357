@@ -96,7 +96,7 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 		currentChar = fgetc(f);
 		if(currentChar == ' ' || currentChar == '\t' || currentChar == '\n'){
 			
-			t = addToTable(t, currentWord);
+			t = addToTable(t, &currentWord);
 			memset(currentWord, 0, sizeof(currentWord));
 			index = 0;
 
@@ -108,7 +108,7 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 		}
 	}
 
-	t = addToTable(t, currentWord);
+	t = addToTable(t, &currentWord);
 	memset(currentWord, 0, sizeof(currentWord));
 
 	printf("%s2\n", t->list[5]->value);
