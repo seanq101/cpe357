@@ -117,7 +117,7 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 
 }
 
-void resetString(char str [], int size){
+void resetString(char *str, int size){
 	int index = 0;
 	for(index = 0; index < size; index++){
 		str[index] = '\0';
