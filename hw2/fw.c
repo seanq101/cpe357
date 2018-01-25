@@ -154,7 +154,6 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 	}
 	
 	t->used_size = t->used_size + 1;
-	printf("%s\n", t->list[key]->value);
 
 	if( ((double) t->used_size / t->map_size ) >= .75) {
 		newMap = createBlankTable(t->map_size * 2);
