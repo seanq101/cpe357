@@ -138,7 +138,7 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 		t->list[key]->frequency++;
 	}else{
 		
-		while(t->list[key]) {
+		while(t->list[key] != NULL) {
 			
 			key = key + quadratic * quadratic;
 			key = key % t->map_size;
