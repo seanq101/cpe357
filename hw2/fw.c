@@ -71,7 +71,6 @@ struct map_table * parseFileNames(int argc, char *argv[],struct map_table *myMap
 			printf("Unable to open file: %s\n", argv[1]);
 		}
 	}
-		printf("%s1\n", myMap->list[5]->value);
 
 	return myMap;
 
@@ -113,8 +112,8 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 	}
 	currentWord[index] = '\0';
 	t = addToTable(t, currentWord);
-
-	printf("%s2\n", t->list[5]->value);
+	printf("%d\n", pcount++);
+	printTable(t);
 
 	return t;
 
@@ -147,8 +146,7 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 		ele->value = currentWord;
 		ele->frequency = 1;
 		t->list[key] = ele;
-		free(ele);
-			
+
 
 	}
 	
