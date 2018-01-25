@@ -66,6 +66,7 @@ struct map_table * parseFileNames(int argc, char *argv[]){
 		file = fopen(argv[index], "r");
 		if(file != NULL){
 			myMap = parseFile(file, myMap);
+			printf("%s\n", myMap->list[5]->value);
 		}else{
 			printf("Unable to open file: %s\n", argv[1]);
 		}
