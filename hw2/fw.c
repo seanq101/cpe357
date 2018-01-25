@@ -15,9 +15,10 @@ int main(int argc, char *argv[]) {
 		return 0;
 	}
 	myMap = parseFileNames(argc, argv, myMap);
-	printTable(myMap);
-	printf("%d", strcmp(myMap->list[5]->value, myMap->list[65]->value));
 
+	/*
+	printTable(myMap);
+	*/
 	return 0;
 }
 
@@ -98,7 +99,9 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 		if(currentChar == ' ' || currentChar == '\t' || currentChar == '\n'){
 			currentWord[index] = '\0';
 			t = addToTable(t, currentWord);
-			index = 0;
+			printf("%d\n", index);
+			printTable(t);
+			index ++;
 
 		}else{
 			if(currentChar != EOF){
