@@ -16,7 +16,7 @@ int main(int argc, char *argv[]) {
 	}
 	myMap = parseFileNames(argc, argv, myMap);
 	printTable(myMap);
-	printf("%d", strcmp(myMap->list[5]->value, myMap->list[63]->value))
+	printf("%d", strcmp(myMap->list[5]->value, myMap->list[63]->value));
 
 	return 0;
 }
