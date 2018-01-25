@@ -16,9 +16,9 @@ int main(int argc, char *argv[]) {
 	}
 	myMap = parseFileNames(argc, argv, myMap);
 
-	/*
+	
 	printTable(myMap);
-	*/
+	
 	return 0;
 }
 
@@ -110,7 +110,6 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 	}
 	currentWord[index] = '\0';
 	t = addToTable(t, currentWord);
-	printTable(t);
 
 	return t;
 
