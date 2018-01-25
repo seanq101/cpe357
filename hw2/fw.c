@@ -137,7 +137,7 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 		ele->value = currentWord;
 		ele->frequency = 1;
 		t->list[key] = ele;
-		printf("%d\n", key);	
+			
 
 	}
 	
@@ -185,10 +185,11 @@ int ht_hash(char *key ) {
 
 void printTable(struct map_table *t){
 	int index;
+	int test = strcmp(t->list[63]->value, "hello");
 	for (index = 0; index < t->map_size; index++){
 		if(t->list[index]){
 			printf("Element:\t%d\tValue:\t%s\tFrequency:%d\n", index, t->list[index]->value, t->list[index]->frequency);
-			printf("%s\n",t->list[index]->value );
+			printf("%d\n",test );
 		}
 	}
 }
