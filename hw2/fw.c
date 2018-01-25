@@ -15,7 +15,6 @@ int main(int argc, char *argv[]) {
 		return 0;
 	}
 	myMap = parseFileNames(argc, argv, myMap);
-	printf("%s\n", myMap->list[5]->value);
 	printTable(myMap);
 
 	return 0;
@@ -70,6 +69,8 @@ struct map_table * parseFileNames(int argc, char *argv[],struct map_table *myMap
 			printf("Unable to open file: %s\n", argv[1]);
 		}
 	}
+		printf("%s\n", myMap->list[5]->value);
+
 	return myMap;
 
 }
