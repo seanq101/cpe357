@@ -119,7 +119,6 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 	char *wordptr;
 	int key;
 	struct map_table *newMap;
-	int index = 0;
 	int quadratic = 1;
 	key = ht_hash(currentWord) % t->map_size;
 	
