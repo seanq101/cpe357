@@ -86,30 +86,29 @@ struct map_table * createBlankTable(int size){
 
 struct map_table * parseFile(FILE *f, struct map_table *t){
 
-	char currentWord[100];
+	char *currentWord;
+	char **wordStart;
 	char currentChar;
 	int index;
 
+	wordStart = &currentWord;
 
-	index = 0;
 	while( currentChar != EOF ) {
 		currentChar = fgetc(f);
 		if(currentChar == ' ' || currentChar == '\t' || currentChar == '\n'){
 			
 			t = addToTable(t, currentWord);
-			strcpy(currentWord, "");
-			index = 0;
+			currentWord = *wordStart;
 
 		}else{
 			if(currentChar != EOF){
-				currentWord[index] = currentChar;
-				index++;
+				*currentWord = currentChar;
+				currentWord++;
 			}
 		}
 	}
 
 	t = addToTable(t, currentWord);
-	memset(currentWord, 0, sizeof(currentWord));
 
 	printf("%s2\n", t->list[5]->value);
 
@@ -132,7 +131,7 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 	struct map_element *ele;
 	struct map_table *newMap;
 	int quadratic = 1;
-	printf("%s", currentWord);
+	printf("%s\n", currentWord);
 	key = ht_hash(currentWord) % t->map_size;
 	
 
