@@ -137,6 +137,7 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 		index++;
 	}
 	word[index] = '\0';
+	printf("WORD:%s\n",word );
 
 	if(t->list[key] && strcmp(t->list[key]->value, currentWord) == 0){
 		t->list[key]->frequency++;
@@ -148,7 +149,6 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 			key = key % t->map_size;
 			quadratic++;
 		}
-		printf("Key:%d\n", key);
 		t->list[key] = (struct map_element *)malloc(sizeof(struct map_element*));
 		t->list[key]->value = word;
 		t->list[key]->frequency = 1;
