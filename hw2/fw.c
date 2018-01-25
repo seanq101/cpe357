@@ -16,7 +16,7 @@ int main(int argc, char *argv[]) {
 	}
 	myMap = parseFileNames(argc, argv, myMap);
 	printTable(myMap);
-	printf("%d", strcmp(myMap->list[5]->value, myMap->list[63]->value));
+	printf("%d", strcmp(myMap->list[5]->value, myMap->list[65]->value))
 
 	return 0;
 }
@@ -96,7 +96,7 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 		currentChar = fgetc(f);
 		if(currentChar == ' ' || currentChar == '\t' || currentChar == '\n'){
 			
-			t = addToTable(t, &currentWord);
+			t = addToTable(t, currentWord);
 			memset(currentWord, 0, sizeof(currentWord));
 			index = 0;
 
@@ -108,7 +108,7 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 		}
 	}
 
-	t = addToTable(t, &currentWord);
+	t = addToTable(t, currentWord);
 	memset(currentWord, 0, sizeof(currentWord));
 
 	printf("%s2\n", t->list[5]->value);
@@ -117,8 +117,9 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 
 }
 
-struct map_table * addToTable(struct map_table *t, char currentWord){
+struct map_table * addToTable(struct map_table *t, char *currentWord){
 
+	printf("%s", currentWord);
 	int key;
 	struct map_element *ele;
 	struct map_table *newMap;
