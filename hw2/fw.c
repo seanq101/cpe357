@@ -90,7 +90,6 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 	char currentWord[100];
 	char currentChar;
 	int index;
-	int pcount = 0;
 
 
 	index = 0;
@@ -99,7 +98,6 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 		if(currentChar == ' ' || currentChar == '\t' || currentChar == '\n'){
 			currentWord[index] = '\0';
 			t = addToTable(t, currentWord);
-			printf("%d\n", pcount++);
 			printTable(t);
 			index = 0;
 
@@ -112,7 +110,6 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 	}
 	currentWord[index] = '\0';
 	t = addToTable(t, currentWord);
-	printf("%d\n", pcount++);
 	printTable(t);
 
 	return t;
@@ -126,10 +123,8 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 	int key;
 	struct map_table *newMap;
 	char word [100];
-	char *testptr;
 	int index = 0;
 	int quadratic = 1;
-	printf("%s\n", currentWord);
 	key = ht_hash(currentWord) % t->map_size;
 	
 	while(*currentWord){
@@ -152,10 +147,7 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 			quadratic++;
 		}
 		t->list[key] = (struct map_element *)malloc(sizeof(struct map_element*));
-		printf("WORD:%s\n",word );
-		printf("Test:%s", testptr);
-		t->list[key]->value = currentWord;
-		printf("Val:%s\n", t->list[key]->value);
+		t->list[key]->value = word;
 		t->list[key]->frequency = 1;
 
 
@@ -204,11 +196,9 @@ int ht_hash(char *key ) {
 
 void printTable(struct map_table *t){
 	int index;
-	char *currentWord;
 	for (index = 0; index < t->map_size; index++){
 		if(t->list[index]){
-			currentWord = t->list[index]->value;
-			printf("Element:\t%d\tValue:\t%s\tFrequency:%d\n", index, currentWord, t->list[index]->frequency);
+			printf("Element:\t%d\tValue:\t%s\tFrequency:%d\n", index, t->list[index]->value, t->list[index]->frequency);
 		}
 	}
 }
