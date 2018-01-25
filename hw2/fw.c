@@ -99,20 +99,17 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 			index = 0;
 
 		}else{
-			if(currentChar != EOF)
-			currentWord[index] = currentChar;
-			index++;
+			if(currentChar != EOF){
+				currentWord[index] = currentChar;
+				index++;
+			}
 		}
 	}
-	printf("%s2\n", t->list[5]->value);
 
 	t = addToTable(t, currentWord);
-	printf("%s3\n", t->list[5]->value);
+	printf("%s2\n", t->list[5]->value);
 
 	return t;
-	
-
-
 
 }
 
