@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
 		return 0;
 	}
 	myMap = parseFileNames(argc, argv, myMap);
-
+	printf("%s\n", myMap->list[5]->value);
 	printTable(myMap);
 
 	return 0;
@@ -105,7 +105,7 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 	}
 	
 	t = addToTable(t, currentWord);
-	printf("%s\n", t->list[5]->value);
+	
 	return t;
 	
 
@@ -144,7 +144,6 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 	
 	t->used_size = t->used_size + 1;
 
-	printf("%s\n", t->list[5]->value);
 	if( ((double) t->used_size / t->map_size ) >= .75) {
 		newMap = createBlankTable(t->map_size * 2);
 		t = reassignNewMap(newMap, t);
