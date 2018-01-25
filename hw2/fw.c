@@ -133,7 +133,6 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 		index++;
 	}
 	word[index] = '\0';
-	testptr = word;
 	
 
 	if(t->list[key] && strcmp(t->list[key]->value, currentWord) == 0){
