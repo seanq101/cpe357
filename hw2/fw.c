@@ -10,10 +10,11 @@
 int main(int argc, char *argv[]) {
 	
 	struct map_table *myMap;
+	myMap = createBlankTable(100);
 	if(checkArgs(argc, argv) == 1){
 		return 0;
 	}
-	myMap = parseFileNames(argc, argv);
+	myMap = parseFileNames(argc, argv, myMap);
 
 	printTable(myMap);
 
@@ -57,16 +58,14 @@ int isNumber(char *input){
 	return 0;
 }
 
-struct map_table * parseFileNames(int argc, char *argv[]){
+struct map_table * parseFileNames(int argc, char *argv[],s truct map_table *myMap){
 	FILE *file;
 	int index;
-	struct map_table *myMap;
-	myMap = createBlankTable(100);
+	
 	for(index = 1; index < argc; index++){
 		file = fopen(argv[index], "r");
 		if(file != NULL){
 			myMap = parseFile(file, myMap);
-			printf("%s\n", myMap->list[5]->value);
 		}else{
 			printf("Unable to open file: %s\n", argv[1]);
 		}
