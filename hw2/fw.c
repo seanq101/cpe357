@@ -96,6 +96,7 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 		if(currentChar == ' ' || currentChar == '\t' || currentChar == '\n'){
 			
 			t = addToTable(t, currentWord);
+			currentWord = "";
 			index = 0;
 
 		}else{
@@ -107,6 +108,7 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 	}
 
 	t = addToTable(t, currentWord);
+	currentWord = "";
 	printf("%s2\n", t->list[5]->value);
 
 	return t;
