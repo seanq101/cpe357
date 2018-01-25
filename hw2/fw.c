@@ -16,7 +16,7 @@ int main(int argc, char *argv[]) {
 	}
 	myMap = parseFileNames(argc, argv, myMap);
 	printTable(myMap);
-	printf("%d", strcmp(myMap->list[5]->value, myMap->list[65]->value))
+	printf("%d", strcmp(myMap->list[5]->value, myMap->list[65]->value));
 
 	return 0;
 }
@@ -119,12 +119,12 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 
 struct map_table * addToTable(struct map_table *t, char *currentWord){
 
-	printf("%s", currentWord);
+	
 	int key;
 	struct map_element *ele;
 	struct map_table *newMap;
 	int quadratic = 1;
-	
+	printf("%s", currentWord);
 	key = ht_hash(currentWord) % t->map_size;
 	
 
