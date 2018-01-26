@@ -155,8 +155,8 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 	if( ((double) t->used_size / t->map_size ) >= .90) {
 		/* newMap = createBlankTable(t->map_size * 2); */
 		t->list = (struct map_element **)realloc(t->list, sizeof(struct map_element) * t->map_size * 2);
-		printTable(t);
-		t = reassignNewMap(newMap, t);
+		t->map_size = t->map_size * 2;
+		t = reassignNewMap(t);
 	}
 	return t;
 
@@ -170,19 +170,18 @@ struct map_table * createBlankTable(int size){
 	return myMap;
 }
 
-struct map_table * reassignNewMap(struct map_table *blank, struct map_table *original){
+struct map_table * reassignNewMap(struct map_table *t){
 			printf("Hi\n");
 
 	int index;
 
-	for (index = 0; index < original->map_size; index++){
-		if(original->list[index]){
-			blank = addToTable(blank, original->list[index]->value);
+	for (index = 0; index < t->map_size; index++){
+		if(t->list[index]){
+			t = addToTable(t, t->list[index]->value);
 		}
-		free(original->list[index]);
 	}
 
-	return blank;
+	return t;
 }
 
 
