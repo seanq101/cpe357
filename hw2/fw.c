@@ -213,7 +213,7 @@ int ht_hash(char *key ) {
 void printTable(struct map_table *t){
 	int index;
 	int j;
-	struct map_element l, *vector = (map_element *)malloc(sizeof(struct map_element) * t->map_size);
+	struct map_element *vector = (struct map_element *)malloc(sizeof(struct map_element) * t->map_size);
 	j = 0;
 	for (index = 0; index < t->map_size; index++){
 		if(t->list[index]){
