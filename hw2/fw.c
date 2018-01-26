@@ -63,24 +63,7 @@ int isNumber(char *input){
 struct map_table * parseFileNames(int argc, char *argv[],struct map_table *myMap){
 	FILE *file;
 	int index;
-	/*
-	DIR *dir;
-	struct dirent *ent;
-	if ((dir = opendir ("c:\\src\\")) != NULL) {
-  	/* print all the files and directories within directory */
-  	/*
-  	while ((ent = readdir (dir)) != NULL) {
-    	printf ("%s\n", ent->d_name);
-  	}
-  	closedir (dir);
-	} else {
-  		/* could not open directory */
-	/*
-  		perror ("");
-  		return EXIT_FAILURE;
-	}
- */
-	
+		
 	for(index = 1; index < argc; index++){
 		file = fopen(argv[index], "r");
 		if(file != NULL){
@@ -238,10 +221,6 @@ void printTable(struct map_table *t){
 			printf("Element:\t%d\tValue:\t%s\tFrequency:%d\n", index, vector->value, vector->frequency);
 			vector++;
 		}
-
-		
-	
-
 	
 	/*
 	qsort(vector,t->map_size,sizeof(struct map_element),comparator);
