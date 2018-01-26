@@ -222,11 +222,9 @@ void printTable(struct map_table *t){
 			printf("Hi 1\n");
             vector[j++] = *(t->list[index]);
         }
-        printf("Hi 2\n");
         	
-
 	}
-
+	printf("Hi 2\n");
 
 	
 
