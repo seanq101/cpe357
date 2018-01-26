@@ -153,6 +153,7 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 		t->list[key]->frequency = 1;
 		printf("%s\n", t->list[key]->value);
 		t->used_size = t->used_size + 1;
+		printf("%d, %d", t->map_size,t->used_size);
 
 
 	}
