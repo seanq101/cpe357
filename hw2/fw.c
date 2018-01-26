@@ -154,7 +154,7 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 
 	if( ((double) t->used_size / t->map_size ) >= .90) {
 		/* newMap = createBlankTable(t->map_size * 2); */
-		t->list = realloc(t->list, sizeof(struct map_element) * t->map_size * 2);
+		t->list = (map_element **)realloc(t->list, sizeof(struct map_element) * t->map_size * 2);
 		t = reassignNewMap(newMap, t);
 	}
 	return t;
