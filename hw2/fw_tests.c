@@ -26,12 +26,11 @@ void test_isNumber(){
 		printf("fishsticks Failed\n");
 	}
 }
-
+/*
 void test_comparator(){
 	struct map_element * e1;
 	struct map_element * e2; 
 	struct map_element * e3;
-	int result;
 	e1 = (struct map_element *)malloc(sizeof(struct map_element));
 	e1->value = "abc";
 	e1->frequency = 2;
@@ -57,7 +56,7 @@ void test_comparator(){
 		printf("Test e2 and e3 failed\n");
 	}
 }
-
+*/
 int main(void)
 {
    test_isNumber();
