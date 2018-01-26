@@ -67,6 +67,7 @@ struct map_table * parseFileNames(int argc, char *argv[],struct map_table *myMap
 	for(index = 1; index < argc; index++){
 		file = fopen(argv[index], "r");
 		if(file != NULL){
+				printf("Hey\n");
 
 			myMap = parseFile(file, myMap);
 			fclose(file);
@@ -116,7 +117,6 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 	*/
 	
 	char *currentWord = readWord(f, 40);
-	printf("Hey\n");
 	t = addToTable(t, currentWord);
 	return t;
 
