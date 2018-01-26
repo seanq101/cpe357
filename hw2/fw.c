@@ -236,7 +236,7 @@ void printTable(struct map_table *t){
         	
 	}
 
-	for (index = 0; index < t->used_size; index++){
+	for (index = 0; index < 5; index++){
 		
 			printf("Element:\t%d\tValue:\t%s\tFrequency:%d\n", index, vector[index].value, vector[index].frequency);
 
@@ -250,11 +250,6 @@ void printTable(struct map_table *t){
 
 	printf("Hi 4\n");
 
-	for (index = 0; index < 5; index++){
-		
-			printf("Element:\t%d\tValue:\t%s\tFrequency:%d\n", index, vector[index].value, vector[index].frequency);
-		
-	}
 }
 
 int comparator(const void *p, const void *q) 
