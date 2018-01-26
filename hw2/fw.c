@@ -261,6 +261,7 @@ char *readWord(FILE *f, int buffSize){
 	c[i] = '\0';
 	i = strlen(c);
 	temp = realloc(c, sizeof(char) * (i+1));
+	printf("%s\n", temp);
 	return temp;
 
 }
