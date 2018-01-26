@@ -114,6 +114,7 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 	}
 	currentWord[index] = '\0';
 	*/
+	printf("Hey\n");
 	char *currentWord = readWord(f, 40);
 	t = addToTable(t, currentWord);
 	return t;
@@ -147,7 +148,7 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 		t->list[key] = (struct map_element *)malloc(sizeof(struct map_element));
 		t->list[key]->value = wordptr;
 		t->list[key]->frequency = 1;
-		printf("%s\n", t->list[key]->value);
+		char *readWord(FILE *f, int buffSize)
 		t->used_size = t->used_size + 1;
 
 
