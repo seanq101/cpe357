@@ -61,6 +61,6 @@ void test_comparator(){
 int main(void)
 {
    test_isNumber();
-
+   test_comparator();
    return 0;
  }
