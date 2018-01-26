@@ -28,7 +28,9 @@ void test_isNumber(){
 }
 
 void test_comparator(){
-	struct map_element * e1, e2, e3;
+	struct map_element * e1;
+	struct map_element * e2; 
+	struct map_element * e3;
 	int result;
 	e1 = (struct map_element *)malloc(sizeof(struct map_element));
 	e1->value = "abc";
