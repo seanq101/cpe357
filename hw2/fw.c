@@ -231,8 +231,7 @@ void printTable(struct map_table *t){
 
 }
 
-int comparator(const void *p, const void *q) 
-{
+int comparator(const void *p, const void *q) {
     int l = ((struct map_element *)p)->frequency;
     int r = ((struct map_element *)q)->frequency; 
     if(l - r == 0){
@@ -250,7 +249,7 @@ char *readWord(FILE *f, int buffSize){
 
 	c = malloc(sizeof(char) * size);
 	while((c[i] = getc(f)) != EOF){
-		if (isalpha(c)){
+		if (isalpha(c) != 0){
 			break;
 		}
 		i++;
