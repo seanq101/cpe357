@@ -216,6 +216,14 @@ void printTable(struct map_table *t){
 	struct map_element *vector = (struct map_element *)malloc(sizeof(struct map_element) * t->map_size);
 	j = 0;
 	printf("Hi 3\n");
+
+	for (index = 0; index < t->map_size; index++){
+		if(t->list[index]){
+			printf("Element:\t%d\tValue:\t%s\tFrequency:%d\n", index, t->list[index]->value, t->list[index]->frequency);
+
+		}
+	}
+
 	for (index = 0; index < t->map_size; index++){
 
 		if(t->list[index]){
@@ -226,17 +234,17 @@ void printTable(struct map_table *t){
 	}
 	printf("Hi 2\n");
 
-	for (index = 0; index < t->used_size; index++){
-		
-			printf("Element:\t%d\tValue:\t%s\tFrequency:%d\n", index, vector[index].value, vector[index].frequency);
-		
-	}
+	
 	
 	qsort(vector,t->map_size,sizeof(struct map_element),comparator);
 
 	printf("Hi 4\n");
 
-	
+	for (index = 0; index < t->used_size; index++){
+		
+			printf("Element:\t%d\tValue:\t%s\tFrequency:%d\n", index, vector[index].value, vector[index].frequency);
+		
+	}
 }
 
 int comparator(const void *p, const void *q) 
