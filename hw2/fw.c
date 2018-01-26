@@ -212,14 +212,23 @@ int ht_hash(char *key ) {
 
 void printTable(struct map_table *t){
 	int index;
-
-	printf("Hi 1\n");
-	qsort(t->list,t->map_size,sizeof(struct map_element),comparator);
-	printf("Hi 2\n");
+	int j;
+	struct map_element l, *vector = (map_element *)malloc(sizeof(struct map_element) * t->map_size);
+	j = 0;
 	for (index = 0; index < t->map_size; index++){
 		if(t->list[index]){
-			printf("Element:\t%d\tValue:\t%s\tFrequency:%d\n", index, t->list[index]->value, t->list[index]->frequency);
-		}
+            vector[j++] = t->list[index];
+        }
+	}
+
+
+	printf("Hi 1\n");
+	qsort(vector,t->map_size,sizeof(struct map_element),comparator);
+	printf("Hi 2\n");
+	for (index = 0; index < t->used_size; index++){
+		
+			printf("Element:\t%d\tValue:\t%s\tFrequency:%d\n", index, vector[index]->value, vector[index]->frequency);
+		
 	}
 }
 
