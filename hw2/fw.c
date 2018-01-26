@@ -117,7 +117,6 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 	*/
 	
 	char *currentWord = readWord(f, 40);
-	printf("%s\n", currentWord);
 	t = addToTable(t, currentWord);
 	return t;
 
@@ -251,7 +250,7 @@ char *readWord(FILE *f, int buffSize){
 
 	c = malloc(sizeof(char) * size);
 	while((c[i] = getc(f)) != EOF){
-		if (isalpha(c) != 0){
+		if (c[i] == '\n' || c[i] == ' ' || c[i] == '\t'){
 			break;
 		}
 		i++;
