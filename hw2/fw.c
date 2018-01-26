@@ -118,7 +118,6 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 		if(currentChar == ' ' || currentChar == '\t' || currentChar == '\n'){
 			currentWord[index] = '\0';
 			t = addToTable(t, currentWord);
-			printf("1: %s\n", currentWord);
 			index = 0;
 
 		}else{
@@ -130,7 +129,6 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 	}
 	currentWord[index] = '\0';
 	t = addToTable(t, currentWord);
-	printf("1: %s\n", currentWord);
 	return t;
 
 }
@@ -162,7 +160,6 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 		t->list[key] = (struct map_element *)malloc(sizeof(struct map_element));
 		t->list[key]->value = wordptr;
 		t->list[key]->frequency = 1;
-		printf("2: %s\n",wordptr);
 		
 		t->used_size = t->used_size + 1;
 
@@ -215,7 +212,6 @@ void printTable(struct map_table *t){
 	int j;
 	struct map_element *vector = (struct map_element *)malloc(sizeof(struct map_element) * t->used_size);
 	j = 0;
-	printf("Hi 3\n");
 
 	for (index = 0; index < t->map_size; index++){
 		if(t->list[index]){
@@ -228,7 +224,6 @@ void printTable(struct map_table *t){
 	for (index = 0; index < t->map_size; index++){
 
 		if(t->list[index]){
-			printf("Hi 1\n");
             vector[j].value = t->list[index]->value;
             vector[j].frequency = t->list[index]->frequency;
             j++;
@@ -244,13 +239,10 @@ void printTable(struct map_table *t){
 
 		
 	
-	printf("Hi 2\n");
 
 	
 	
 	qsort(vector,t->map_size,sizeof(struct map_element),comparator);
-
-	printf("Hi 4\n");
 
 }
 
