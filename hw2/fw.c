@@ -230,6 +230,8 @@ void printTable(struct map_table *t){
 
 	qsort(vector,t->map_size,sizeof(struct map_element),comparator);
 
+	printf("Hi 4\n");
+	
 	for (index = 0; index < t->used_size; index++){
 		
 			printf("Element:\t%d\tValue:\t%s\tFrequency:%d\n", index, vector[index].value, vector[index].frequency);
