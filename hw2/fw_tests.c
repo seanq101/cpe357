@@ -31,6 +31,7 @@ void test_comparator(){
 	struct map_element * e1;
 	struct map_element * e2; 
 	struct map_element * e3;
+	struct map_element * e4;
 	e1 = (struct map_element *)malloc(sizeof(struct map_element));
 	e1->value = "abc";
 	e1->frequency = 2;
@@ -40,6 +41,9 @@ void test_comparator(){
 	e3 = (struct map_element *)malloc(sizeof(struct map_element));
 	e3->value = "abc";
 	e3->frequency = 2;
+	e4 = (struct map_element *)malloc(sizeof(struct map_element));
+	e4->value = "abc";
+	e4->frequency = 1;
 	if(comparator(e1,e2) < 0){
 		printf("Test passed\n");
 	}else{
@@ -54,6 +58,10 @@ void test_comparator(){
 		printf("Test passed\n");
 	}else{
 		printf("Test e2 and e3 failed\n");
+	}if(comparator(e1,e4) < 0){
+		printf("Test passed\n");
+	}else{
+		printf("Test e1 and e4 failed\n");
 	}
 }
 
