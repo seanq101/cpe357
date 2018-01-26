@@ -243,9 +243,9 @@ void printTable(struct map_table *t){
 	
 
 	
-	
+	/*
 	qsort(vector,t->map_size,sizeof(struct map_element),comparator);
-
+	*/
 
 }
 
