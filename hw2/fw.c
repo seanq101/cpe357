@@ -178,8 +178,9 @@ struct map_table * reassignNewMap(struct map_table *blank, struct map_table *ori
 		}
 		free(original->list[index]->value);
 		free(original->list[index]);
-		free(original);
+		
 	}
+	free(original);
 
 	return blank;
 }
