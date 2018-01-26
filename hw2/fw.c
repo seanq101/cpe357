@@ -236,12 +236,14 @@ void printTable(struct map_table *t){
         	
 	}
 
-	for (index = 0; index < t->used_size; index++){
-		
-			printf("Element:\t%d\tValue:\t%s\tFrequency:%d\n", index, vector[index].value, vector[index].frequency);
+	
+		while (*value){
+			printf("Element:\t%d\tValue:\t%s\tFrequency:%d\n", index, vector.value, vector.frequency);
+			value++;
+		}
 
 		
-	}
+	
 	printf("Hi 2\n");
 
 	
