@@ -58,7 +58,7 @@ void test_comparator(){
 		printf("Test passed\n");
 	}else{
 		printf("Test e2 and e3 failed\n");
-	}if(comparator(e1,e4) < 0){
+	}if(comparator(e1,e4) > 0){
 		printf("Test passed\n");
 	}else{
 		printf("Test e1 and e4 failed\n");
