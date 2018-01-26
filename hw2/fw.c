@@ -164,12 +164,12 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 		t->list[key]->frequency = 1;
 		printf("2: %s\n",wordptr);
 		
-		
+		t->used_size = t->used_size + 1;
 
 
 	}
 	
-	t->used_size = t->used_size + 1;
+	
 
 	if( ((double) t->used_size / t->map_size ) >= .75) {
 		newMap = createBlankTable(t->map_size * 2);
@@ -236,7 +236,7 @@ void printTable(struct map_table *t){
         	
 	}
 
-	for (index = 0; index < 5; index++){
+	for (index = 0; index < t->used_size; index++){
 		
 			printf("Element:\t%d\tValue:\t%s\tFrequency:%d\n", index, vector[index].value, vector[index].frequency);
 
