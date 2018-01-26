@@ -117,6 +117,7 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 	*/
 	
 	char *currentWord = readWord(f, 40);
+	printf("%s\n", currentWord);
 	t = addToTable(t, currentWord);
 	return t;
 
