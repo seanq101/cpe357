@@ -85,7 +85,6 @@ struct map_table * parseFileNames(int argc, char *argv[],struct map_table *myMap
 	for(index = 1; index < argc; index++){
 		file = fopen(argv[index], "r");
 		if(file != NULL){
-			printf("hi1\n");
 
 			myMap = parseFile(file, myMap);
 			fclose(file);
@@ -211,7 +210,9 @@ int ht_hash(char *key ) {
 
 void printTable(struct map_table *t){
 	int index;
+	printf("Hi 1\n");
 	qsort(t->list,t->map_size,sizeof(struct map_element),comparator);
+	printf("Hi 2\n");
 	for (index = 0; index < t->map_size; index++){
 		if(t->list[index]){
 			printf("Element:\t%d\tValue:\t%s\tFrequency:%d\n", index, t->list[index]->value, t->list[index]->frequency);
