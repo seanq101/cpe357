@@ -170,17 +170,13 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 
 struct map_table * reassignNewMap(struct map_table *blank, struct map_table *original){
 	int index;
-	blank = createBlankTable(original->map_size * 2);
 
 	for (index = 0; index < original->map_size; index++){
 		if(original->list[index]){
 			blank = addToTable(blank, original->list[index]->value);
 		}
-		free(original->list[index]->value);
 		free(original->list[index]);
-		
 	}
-	free(original);
 
 	return blank;
 }
