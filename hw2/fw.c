@@ -81,14 +81,6 @@ struct map_table * parseFileNames(int argc, char *argv[],struct map_table *myMap
 
 }
 
-struct map_table * createBlankTable(int size){
-	struct map_table *myMap = (struct map_table *)malloc(sizeof(struct map_table));
-	myMap->map_size = size;
-	myMap->used_size = 0;
-	myMap->list = (struct map_element **)malloc(sizeof(struct map_element*) * myMap->map_size);
-	return myMap;
-}
-
 
 struct map_table * parseFile(FILE *f, struct map_table *t){
 /*
@@ -161,11 +153,20 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 	
 
 	if( ((double) t->used_size / t->map_size ) >= .90) {
-		newMap = createBlankTable(t->map_size * 2);
+		/* newMap = createBlankTable(t->map_size * 2); */
+		realloc(t, t->map_size * s);
 		t = reassignNewMap(newMap, t);
 	}
 	return t;
 
+}
+
+struct map_table * createBlankTable(int size){
+	struct map_table *myMap = (struct map_table *)malloc(sizeof(struct map_table));
+	myMap->map_size = size;
+	myMap->used_size = 0;
+	myMap->list = (struct map_element **)malloc(sizeof(struct map_element*) * myMap->map_size);
+	return myMap;
 }
 
 struct map_table * reassignNewMap(struct map_table *blank, struct map_table *original){
