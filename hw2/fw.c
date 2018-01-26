@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
 	}
 
 	myMap = parseFileNames(argc, argv, myMap);
-
+	printf("Hi 1\n");
 	
 	printTable(myMap);
 	
@@ -87,7 +87,7 @@ struct map_table * parseFileNames(int argc, char *argv[],struct map_table *myMap
 		if(file != NULL){
 
 			myMap = parseFile(file, myMap);
-			printf("Hi 1\n");
+			
 		}else{
 			printf("Unable to open file: %s\n", argv[1]);
 		}
@@ -212,10 +212,11 @@ int ht_hash(char *key ) {
 }
 
 void printTable(struct map_table *t){
-	
+	printf("Hi 2\n");
 	int index;
 	int j;
 	struct map_element *vector = (struct map_element *)malloc(sizeof(struct map_element) * t->map_size);
+	printf("Hi 3\n");
 	j = 0;
 	
 	for (index = 0; index < t->map_size; index++){
