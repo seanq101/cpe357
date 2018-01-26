@@ -219,16 +219,17 @@ void printTable(struct map_table *t){
 	for (index = 0; index < t->map_size; index++){
 
 		if(t->list[index]){
-
+			printf("Hi 1\n");
             vector[j++] = *(t->list[index]);
         }
+        	printf("Hi 3\n");
+
 	}
 
 
-	printf("Hi 1\n");
+	
 
 	qsort(vector,t->map_size,sizeof(struct map_element),comparator);
-	printf("Hi 3\n");
 
 	for (index = 0; index < t->used_size; index++){
 		
