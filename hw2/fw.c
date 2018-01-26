@@ -91,7 +91,7 @@ struct map_table * createBlankTable(int size){
 
 
 struct map_table * parseFile(FILE *f, struct map_table *t){
-
+/*
 	char currentWord[100];
 	char currentChar;
 	int index;
@@ -113,6 +113,8 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 		}
 	}
 	currentWord[index] = '\0';
+	*/
+	char *currentWord = readWord(f, 40);
 	t = addToTable(t, currentWord);
 	return t;
 
@@ -238,4 +240,27 @@ int comparator(const void *p, const void *q)
     return (l - r);
 }
 
+char *readWord(FILE *f, int buffSize){
+	int size;
+	char *c;
+	char *temp;
+	int i = 0;
+	size = buffSize;
 
+	c = malloc(sizeof(char) * size);
+	while((c[i] = getc(f)) != EOF){
+		if (c == ' ' || c == '\t' || c == '\n'){
+			break;
+		}
+		i++;
+		if(i * sizeof(char) >= size){
+			size += buffSize;
+			c = realloc(c, size);
+		}
+	}
+	c[i] = '\0';
+	i = strlen(c);
+	temp = realloc(c, sizeof(char) * (i+1));
+	return temp;
+
+}
