@@ -218,4 +218,14 @@ void printTable(struct map_table *t){
 	}
 }
 
+int comparator(const void *p, const void *q) 
+{
+    int l = ((struct map_element *)p)->frequency;
+    int r = ((struct map_element *)q)->frequency; 
+    if(l - r == 0){
+    	return strcmp(((struct map_element *)p)->value, ((struct map_element *)q)->value);
+    }
+    return (l - r);
+}
+
 
