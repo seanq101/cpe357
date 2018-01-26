@@ -176,7 +176,9 @@ struct map_table * reassignNewMap(struct map_table *blank, struct map_table *ori
 		if(original->list[index]){
 			blank = addToTable(blank, original->list[index]->value);
 		}
+		free(original->list[index]->value);
 		free(original->list[index]);
+		free(original);
 	}
 
 	return blank;
