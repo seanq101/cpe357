@@ -24,5 +24,6 @@ struct map_table * reassignNewMap(struct map_table *blank, struct map_table *ori
 int ht_hash(char *key );
 void printTable(struct map_table *t);
 int comparator(const void *p, const void *q);
-char *readWord(FILE *f, int buffSize)
+char *readWord(FILE *f, int buffSize);
+
 #endif
