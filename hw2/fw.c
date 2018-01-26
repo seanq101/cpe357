@@ -249,6 +249,7 @@ char *readWord(FILE *f, int buffSize){
 
 	c = malloc(sizeof(char) * size);
 	while((c[i] = getc(f)) != EOF){
+		printf("%d\n", (int)c[i]);
 		if (isalpha(c[i]) == 0){
 			if(c[i] == ' ' || c[i] == '\n' || c[i] == '\t'){
 				break;
