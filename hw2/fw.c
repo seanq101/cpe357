@@ -67,7 +67,6 @@ struct map_table * parseFileNames(int argc, char *argv[],struct map_table *myMap
 	for(index = 1; index < argc; index++){
 		file = fopen(argv[index], "r");
 		if(file != NULL){
-				printf("Hey\n");
 
 			myMap = parseFile(file, myMap);
 			fclose(file);
@@ -149,7 +148,7 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 		t->list[key] = (struct map_element *)malloc(sizeof(struct map_element));
 		t->list[key]->value = wordptr;
 		t->list[key]->frequency = 1;
-		
+		printf("%s\n", t->list[key]->value);
 		t->used_size = t->used_size + 1;
 
 
