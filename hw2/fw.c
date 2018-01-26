@@ -161,7 +161,7 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 		t->list[key]->value = wordptr;
 		t->list[key]->frequency = 1;
 		
-		printf("%s\n", currentWord);
+		printf("%s\n", wordptr);
 		
 
 
@@ -210,6 +210,7 @@ int ht_hash(char *key ) {
 
 void printTable(struct map_table *t){
 	int index;
+
 	printf("Hi 1\n");
 	qsort(t->list,t->map_size,sizeof(struct map_element),comparator);
 	printf("Hi 2\n");
