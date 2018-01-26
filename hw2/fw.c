@@ -143,7 +143,7 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 	struct map_table *newMap;
 	int quadratic = 1;
 	key = ht_hash(currentWord) % t->map_size;
-	printf("2: %s\n",currentWord);
+	
 	
 	wordptr = malloc(sizeof(char) * (strlen(currentWord) + 1 ));
 	strcpy(wordptr, currentWord);
@@ -162,7 +162,7 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 		t->list[key] = (struct map_element *)malloc(sizeof(struct map_element));
 		t->list[key]->value = wordptr;
 		t->list[key]->frequency = 1;
-		
+		printf("2: %s\n",wordptr);
 		
 		
 
@@ -227,11 +227,11 @@ void printTable(struct map_table *t){
 	printf("Hi 2\n");
 
 	
-	/*
+	
 	qsort(vector,t->map_size,sizeof(struct map_element),comparator);
 
 	printf("Hi 4\n");
-*/
+
 	for (index = 0; index < t->used_size; index++){
 		
 			printf("Element:\t%d\tValue:\t%s\tFrequency:%d\n", index, vector[index].value, vector[index].frequency);
