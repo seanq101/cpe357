@@ -129,7 +129,7 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 	int quadratic = 1;
 	key = ht_hash(currentWord) % t->map_size;
 	
-	printf("Hi, %s\n", currentWord);
+	
 	wordptr = malloc(sizeof(char) * (strlen(currentWord) + 1 ));
 	strcpy(wordptr, currentWord);
 	if(t->list[key] && strcmp(t->list[key]->value, currentWord) == 0){
@@ -249,7 +249,7 @@ char *readWord(FILE *f, int buffSize){
 
 	c = malloc(sizeof(char) * size);
 	while((c[i] = getc(f)) != EOF){
-		if (c == ' ' || c == '\t' || c == '\n'){
+		if (c == ' ' || c == '\t' || c == '\n' ||){
 			break;
 		}
 		i++;
