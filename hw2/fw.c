@@ -250,8 +250,13 @@ char *readWord(FILE *f, int buffSize){
 	c = malloc(sizeof(char) * size);
 	while((c[i] = getc(f)) != EOF){
 		if (isalpha(c[i]) == 0){
-			break;
-		}
+			if(c[i] = ' ' || c[i] = '\n' || c[i] == '\t'){
+				break;
+			}
+			else{
+				continue;
+			}
+		}	
 		i++;
 		if(i * sizeof(char) >= size){
 			size += buffSize;
