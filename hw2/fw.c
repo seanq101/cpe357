@@ -237,9 +237,9 @@ void printTable(struct map_table *t){
 	}
 
 	
-		while (*value){
+		while (*vector){
 			printf("Element:\t%d\tValue:\t%s\tFrequency:%d\n", index, (*vector).value, (*vector).frequency);
-			value++;
+			vector++;
 		}
 
 		
