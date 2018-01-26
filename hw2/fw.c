@@ -87,6 +87,7 @@ struct map_table * parseFileNames(int argc, char *argv[],struct map_table *myMap
 		if(file != NULL){
 
 			myMap = parseFile(file, myMap);
+			printf("Hi 1\n");
 		}else{
 			printf("Unable to open file: %s\n", argv[1]);
 		}
@@ -130,6 +131,7 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 	}
 	currentWord[index] = '\0';
 	t = addToTable(t, currentWord);
+	printf("1: %s\n", currentWord);
 	return t;
 
 }
@@ -210,7 +212,7 @@ int ht_hash(char *key ) {
 }
 
 void printTable(struct map_table *t){
-	printf("Hi 1\n");
+	
 	int index;
 	int j;
 	struct map_element *vector = (struct map_element *)malloc(sizeof(struct map_element) * t->map_size);
