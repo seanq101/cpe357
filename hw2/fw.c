@@ -217,7 +217,7 @@ void printTable(struct map_table *t){
 	j = 0;
 	for (index = 0; index < t->map_size; index++){
 		if(t->list[index]){
-            vector[j++] = t->list[index];
+            vector[j++] = *(t->list[index]);
         }
 	}
 
@@ -227,7 +227,7 @@ void printTable(struct map_table *t){
 	printf("Hi 2\n");
 	for (index = 0; index < t->used_size; index++){
 		
-			printf("Element:\t%d\tValue:\t%s\tFrequency:%d\n", index, vector[index]->value, vector[index]->frequency);
+			printf("Element:\t%d\tValue:\t%s\tFrequency:%d\n", index, vector[index].value, vector[index]->frequency);
 		
 	}
 }
