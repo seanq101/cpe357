@@ -213,7 +213,7 @@ int ht_hash(char *key ) {
 void printTable(struct map_table *t){
 	int index;
 	int j;
-	struct map_element *vector = (struct map_element *)malloc(sizeof(struct map_element) * t->map_size);
+	struct map_element *vector = (struct map_element *)malloc(sizeof(struct map_element) * t->used_size);
 	j = 0;
 	printf("Hi 3\n");
 
@@ -228,7 +228,9 @@ void printTable(struct map_table *t){
 
 		if(t->list[index]){
 			printf("Hi 1\n");
-            vector[j++] = *(t->list[index]);
+            vector[j].value = t->list[index]->value;
+            vector[j].frequency = t->list[index]->frequency;
+            j++;
         }
         	
 	}
