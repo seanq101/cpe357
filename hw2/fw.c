@@ -148,7 +148,7 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 		t->list[key] = (struct map_element *)malloc(sizeof(struct map_element));
 		t->list[key]->value = wordptr;
 		t->list[key]->frequency = 1;
-		char *readWord(FILE *f, int buffSize)
+		
 		t->used_size = t->used_size + 1;
 
 
