@@ -114,9 +114,9 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 	}
 	currentWord[index] = '\0';
 	*/
-	
-	char *currentWord = readWord(f, 40);
-	t = addToTable(t, currentWord);
+	char *currentWord;
+	while(currentWord = readWord(f, 40))
+		t = addToTable(t, currentWord);
 	return t;
 
 }
@@ -261,7 +261,6 @@ char *readWord(FILE *f, int buffSize){
 	c[i] = '\0';
 	i = strlen(c);
 	temp = realloc(c, sizeof(char) * (i+1));
-	printf("%s\n", temp);
 	return temp;
 
 }
