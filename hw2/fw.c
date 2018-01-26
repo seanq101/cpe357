@@ -211,7 +211,7 @@ int ht_hash(char *key ) {
 
 void printTable(struct map_table *t){
 	int index;
-	qsort(t->list,size,sizeof(map_element),comparator);
+	qsort(t->list,t->map_size,sizeof(struct map_element),comparator);
 	for (index = 0; index < t->map_size; index++){
 		if(t->list[index]){
 			printf("Element:\t%d\tValue:\t%s\tFrequency:%d\n", index, t->list[index]->value, t->list[index]->frequency);
