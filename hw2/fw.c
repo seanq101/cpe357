@@ -268,7 +268,7 @@ char *readWord(FILE *f, int buffSize){
 		}
 	}
 	if(c[i] == EOF){
-		return ".".
+		return ".";
 	}
 	c[i] = '\0';
 	i = strlen(c);
