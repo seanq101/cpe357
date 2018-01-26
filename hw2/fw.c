@@ -170,10 +170,10 @@ struct map_table * createBlankTable(int size){
 }
 
 struct map_table * reassignNewMap(struct map_table *t){
-			printf("Hi\n");
+			
 
 	int index;
-
+	printf("Hi\n");
 	for (index = 0; index < t->map_size; index++){
 		if(t->list[index]){
 			t = addToTable(t, t->list[index]->value);
