@@ -215,14 +215,14 @@ void printTable(struct map_table *t){
 	int j;
 	struct map_element *vector = (struct map_element *)malloc(sizeof(struct map_element) * t->map_size);
 	j = 0;
-
+	printf("Hi 3\n");
 	for (index = 0; index < t->map_size; index++){
 
 		if(t->list[index]){
 			printf("Hi 1\n");
             vector[j++] = *(t->list[index]);
         }
-        	printf("Hi 3\n");
+        	
 
 	}
 
