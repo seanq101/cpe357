@@ -121,6 +121,7 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 
 	char *wordptr;
 	int key;
+	struct map_table *newMap;
 	int quadratic = 1;
 	key = ht_hash(currentWord) % t->map_size;
 	
@@ -152,10 +153,8 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 	
 
 	if( ((double) t->used_size / t->map_size ) >= .90) {
-		/* newMap = createBlankTable(t->map_size * 2); */
-		t->list = (struct map_element **)realloc(t->list, sizeof(struct map_element) * t->map_size * 2);
-		t->map_size = t->map_size * 2;
-		t = reassignNewMap(t);
+		printTable(t);
+		t = reassignNewMap(newMap, t);
 	}
 	return t;
 
@@ -169,18 +168,23 @@ struct map_table * createBlankTable(int size){
 	return myMap;
 }
 
-struct map_table * reassignNewMap(struct map_table *t){
-			
-
+struct map_table * reassignNewMap( struct map_table *original){
 	int index;
-	printf("Hi\n");
-	for (index = 0; index < t->map_size; index++){
-		if(t->list[index]){
-			t = addToTable(t, t->list[index]->value);
-		}
-	}
+	struct map_element ** newList = original->list;
+	original->list = (struct map_element **)realloc(original->list, sizeof(struct map_element) * original->map_size * 2);
 
-	return t;
+
+	for (index = 0; index < original->map_size; index++){
+		if(original->list[index]){
+			newList = addToTable(newList, original->list[index]->value);
+		}
+		
+	}
+	free(original->list);
+	original->list = newList;
+	original->map_size = original->map_size * 2;
+
+	return original;
 }
 
 
