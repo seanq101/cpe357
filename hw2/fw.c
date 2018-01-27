@@ -181,7 +181,7 @@ struct map_table * reassignNewMap( struct map_table *original){
 
 	for (index = 0; index < original->map_size; index++){
 		if(original->list[index]){
-			tempMap = addToTable(tempMap, original->list[index]->value)->list;
+			tempMap = addToTable(tempMap, original->list[index]->value);
 		}
 		
 	}
