@@ -153,7 +153,7 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 
 	if( ((double) t->used_size / t->map_size ) >= .90) {
 		printTable(t);
-		t = reassignNewMap(t);
+		reassignNewMap(t);
 	}
 	return t;
 
@@ -171,7 +171,41 @@ struct map_table * createBlankTable(int size){
 
 
 
-struct map_table * reassignNewMap( struct map_table *original){
+void reassignNewMap( struct map_table *original){
+	struct map_element *item, *next, **currentEle, **newList;
+	size_t s, size;
+	int index, i, quadratic;
+
+	quadratic = 1;
+
+	currentEle = original->list;
+	s = original->map_size;
+	size = s << 1;
+
+	newList = calloc(size, sizeof(struct map_element *));
+
+	for (i = 0; i < s; i++){
+		if(currentEle[i]){
+			index = ht_hash(currentEle->value);
+			if(newList[index] == NULL)
+				newList[index] = currentEle[i];
+			else{
+				while(newList[index] != NULL) {
+					index = index + (quadratic * quadratic);
+					index = index % c;
+					quadratic++;
+
+				}
+				newList[index] = currentEle[i];
+			}
+		}
+	}
+	free(original->list);
+	original->list = newList;
+	original->size = size;
+
+
+/*
 	int index;
 	struct map_table *tempMap;
 	struct map_element ** newList = original->list;
@@ -191,6 +225,7 @@ struct map_table * reassignNewMap( struct map_table *original){
 	original->map_size = original->map_size * 2;
 
 	return original;
+	*/
 }
 
 
