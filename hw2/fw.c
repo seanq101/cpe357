@@ -160,27 +160,34 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 }
 
 struct map_table * createBlankTable(int size){
+
 	struct map_table *myMap = (struct map_table *)malloc(sizeof(struct map_table));
+
 	myMap->map_size = size;
 	myMap->used_size = 0;
 	myMap->list = (struct map_element **)malloc(sizeof(struct map_element*) * myMap->map_size);
 	return myMap;
 }
 
+
+
 struct map_table * reassignNewMap( struct map_table *original){
 	int index;
+	struct map_table *tempMap;
 	struct map_element ** newList = original->list;
 	original->list = (struct map_element **)realloc(original->list, sizeof(struct map_element) * original->map_size * 2);
-
+	tempMap = createBlankTable(2 * original->map_size);
+	tempMap->list = newList;
 
 	for (index = 0; index < original->map_size; index++){
 		if(original->list[index]){
-			newList = addToTable(newList, original->list[index]->value)->list;
+			tempMap = addToTable(tempMap, original->list[index]->value)->list;
 		}
 		
 	}
 	free(original->list);
-	original->list = newList;
+	original->list = tempMap->list;
+	free(tempMap);
 	original->map_size = original->map_size * 2;
 
 	return original;
