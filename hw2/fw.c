@@ -121,7 +121,6 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 
 	char *wordptr;
 	int key;
-	struct map_table *newMap;
 	int quadratic = 1;
 	key = ht_hash(currentWord) % t->map_size;
 	
@@ -154,7 +153,7 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 
 	if( ((double) t->used_size / t->map_size ) >= .90) {
 		printTable(t);
-		t = reassignNewMap(newMap, t);
+		t = reassignNewMap(t);
 	}
 	return t;
 
@@ -176,7 +175,7 @@ struct map_table * reassignNewMap( struct map_table *original){
 
 	for (index = 0; index < original->map_size; index++){
 		if(original->list[index]){
-			newList = addToTable(newList, original->list[index]->value);
+			newList = addToTable(newList, original->list[index]->value)->list;
 		}
 		
 	}
