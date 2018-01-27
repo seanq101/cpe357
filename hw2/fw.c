@@ -192,9 +192,8 @@ void reassignNewMap( struct map_table *original){
 			else{
 				while(newList[index] != NULL) {
 					index = index + (quadratic * quadratic);
-					index = index % c;
+					index = index % size;
 					quadratic++;
-
 				}
 				newList[index] = currentEle[i];
 			}
