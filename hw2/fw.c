@@ -172,7 +172,7 @@ struct map_table * createBlankTable(int size){
 
 
 void reassignNewMap( struct map_table *original){
-	struct map_element *item, *next, **currentEle, **newList;
+	struct map_element **currentEle, **newList;
 	size_t s, size;
 	int index, i, quadratic;
 
@@ -186,7 +186,7 @@ void reassignNewMap( struct map_table *original){
 
 	for (i = 0; i < s; i++){
 		if(currentEle[i]){
-			index = ht_hash(currentEle->value);
+			index = ht_hash(currentEle[i]->value);
 			if(newList[index] == NULL)
 				newList[index] = currentEle[i];
 			else{
@@ -201,7 +201,7 @@ void reassignNewMap( struct map_table *original){
 	}
 	free(original->list);
 	original->list = newList;
-	original->size = size;
+	original->map_size = size;
 
 
 /*
