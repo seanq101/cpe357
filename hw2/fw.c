@@ -170,7 +170,20 @@ struct map_table * createBlankTable(int size){
 }
 
 
+struct map_table * reassignNewMap(struct map_table *blank, struct map_table *original){
 
+	int index;
+
+	for (index = 0; index < original->map_size; index++){
+		if(original->list[index]){
+			blank = addToTable(blank, original->list[index]->value);
+		}
+		free(original->list[index]);
+	}
+
+	return blank;
+}
+/*
 void reassignNewMap( struct map_table *original){
 	struct map_element **currentEle, **newList;
 	size_t s, size;
@@ -204,7 +217,7 @@ void reassignNewMap( struct map_table *original){
 	original->map_size = size;
 
 
-/*
+
 	int index;
 	struct map_table *tempMap;
 	struct map_element ** newList = original->list;
