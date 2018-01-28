@@ -297,14 +297,14 @@ void printTable(struct map_table *t){
 			printf("Element:\t%d\tValue:\t%s\tFrequency:%d\n", index, vector->value, vector->frequency);
 			vector++;
 		}
-	*/
+	
 
 	qsort((void *)vector,t->map_size,sizeof(struct map_element),comparator);
 	for (index = 0; index < t->map_size; index++){
 			printf("Element:\t%d\tValue:\t%s\tFrequency:%d\n", index, vector[index]->value, vector[index]->frequency);
 		}
 		hashmap_free(t);
-	
+	*/
 }
 
 int comparator(const void *p, const void *q) {
