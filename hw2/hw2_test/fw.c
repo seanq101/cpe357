@@ -109,9 +109,11 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 	char *currentWord;
 	currentWord = readWord(f, 40);
 	while( strcmp(currentWord,".")){
+		printf("Hi\n");
 		addToTable(t, currentWord);
 		currentWord = readWord(f, 40);
 	}
+
 	return t;
 
 }
@@ -155,7 +157,6 @@ struct map_table * createBlankTable(int size){
 	myMap->map_size = size;
 	myMap->used_size = 0;
 	myMap->buckets = (struct map_element **)malloc(sizeof(struct map_element*) * myMap->map_size);
-	printf("Hi\n");
 	return myMap;
 }
 
