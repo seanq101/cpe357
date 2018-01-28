@@ -290,7 +290,7 @@ void printTable(struct map_table *t){
         	
 	}
 
-	void hashmap_free(struct map_table *t);
+	hashmap_free(t);
 
 	/*
 		while (vector != NULL){
