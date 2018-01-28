@@ -189,7 +189,7 @@ struct map_table * reassignNewMap(struct map_table *original){
 				while(tempMap->list[key] != NULL) {
 			
 					key = key + (quadratic * quadratic);
-					key = key % t->map_size;
+					key = key % tempMap->map_size;
 					quadratic++;
 				}
 
@@ -200,13 +200,14 @@ struct map_table * reassignNewMap(struct map_table *original){
 			tempMap = addToTable(tempMap, original->list[index]->value);
 			*/
 			}
-			free(original->list[index]);
+			
 		}
-		free(original->list);
-		original->list = tempMap->list;
-		free(tempMap);
-		return original;
+		free(original->list[index]);
 	}
+	free(original->list);
+	original->list = tempMap->list;
+	free(tempMap);
+	return original;
 }
 /*
 void reassignNewMap( struct map_table *original){
