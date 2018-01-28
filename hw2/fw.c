@@ -206,7 +206,6 @@ void reassignNewMap(struct map_table *original){
 	free(original->list);
 	original->list = tempMap->list;
 	free(tempMap);
-	return original;
 }
 /*
 void reassignNewMap( struct map_table *original){

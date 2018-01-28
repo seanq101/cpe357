@@ -17,7 +17,7 @@ struct map_table{
 int checkArgs(int argc, char *argv[]);
 int isNumber(char *input);
 void parseFileNames(int argc, char *argv[],struct map_table *myMap);
-void createBlankTable(int size);
+struct map_table * createBlankTable(int size);
 void parseFile(FILE *f, struct map_table *t);
 void* addToTable(struct map_table *t, char *currentWord);
 void reassignNewMap(struct map_table *original);
