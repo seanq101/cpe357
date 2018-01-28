@@ -131,6 +131,7 @@ void addToTable(struct map_table *t, char *currentWord){
 	for (item = *currentElement; item != NULL; item = item->next) {
 		if (strcmp(item->value, wordptr)) {/* key already exists */
 			item->frequency++;
+			printf("%s\n", wordptr);
 			return;
 		}
 		if(item->next == NULL){
@@ -141,7 +142,7 @@ void addToTable(struct map_table *t, char *currentWord){
 			t->used_size ++;
 		}
 	}
-
+	printf("%s\n", wordptr);
 
 	return;
 
