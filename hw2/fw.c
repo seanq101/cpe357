@@ -174,9 +174,9 @@ struct map_table * createBlankTable(int size){
 struct map_table * reassignNewMap(struct map_table *original){
 	int index;
 	struct map_element **newList;
-	struct map_table *tempTable;
+	struct map_table *tempMap;
 	tempMap = createBlankTable(original->map_size);
-	newList = (struct map_element **)realloc(t->list, sizeof(struct map_element) * t->map_size);
+	newList = (struct map_element **)realloc(t->list, sizeof(struct map_element) * original->map_size);
 	tempMap->list = newList;
 
 	
