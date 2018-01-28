@@ -181,7 +181,7 @@ struct map_table * reassignNewMap(struct map_table *original){
 	for (index = 0; index < original->map_size; index++){
 		if(original->list[index]){
 			key = ht_hash(original->list[index]->value) % tempMap->map_size;
-			if(tempMap->list[key] && strcmp(tempMap->list[key]->value, original->list[index]->value) == 0){
+			if(tempMap->list[key] && strcmp(tempMap->list[key]->value, tempMap->list[index]->value) == 0){
 				tempMap->list[key]->frequency++;
 
 			}else{
