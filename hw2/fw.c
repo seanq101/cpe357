@@ -296,8 +296,8 @@ void printTable(struct map_table *t){
 	*/
 
 	qsort((void *)vector,t->map_size,sizeof(struct map_element),comparator);
-	while (vector != NULL){
-			printf("Element:\t%d\tValue:\t%s\tFrequency:%d\n", index, vector->value, vector->frequency);
+	for (index = 0; index < t->map_size; index++){
+			printf("Element:\t%d\tValue:\t%s\tFrequency:%d\n", index, vector[index]->value, vector[index]->frequency);
 			vector++;
 		}
 		hashmap_free(t);
