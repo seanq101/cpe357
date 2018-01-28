@@ -264,7 +264,8 @@ int ht_hash(char *key ) {
 void printTable(struct map_table *t){
 	int index;
 	int j;
-	struct map_element *vector [100];
+	struct map_element **vector;
+	vector = malloc(sizeof(struct map_element *) * t->used_size);
 	
 	j = 0;
 
