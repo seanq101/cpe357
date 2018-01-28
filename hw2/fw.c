@@ -173,14 +173,9 @@ struct map_table * createBlankTable(int size){
 
 struct map_table * reassignNewMap(struct map_table *original){
 	int index;
-	struct map_element **newList;
 	struct map_table *tempMap;
 	tempMap = createBlankTable(original->map_size);
-	newList = (struct map_element **)malloc(sizeof(struct map_element) * original->map_size);
-	tempMap->list = newList;
-
 	
-
 	for (index = 0; index < original->map_size; index++){
 		if(original->list[index]){
 			tempMap = addToTable(tempMap, original->list[index]->value);
