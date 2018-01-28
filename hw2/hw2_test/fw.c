@@ -118,7 +118,7 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 
 
 struct map_table * addToTable(struct map_table *t, char *currentWord){
-	map_element **currentElement, *item, *newItem;
+	struct map_element **currentElement, *item, *newItem;
 	char *wordptr;
 	int key;
 	key = ht_hash(currentWord) % t->map_size;
@@ -269,7 +269,7 @@ char *readWord(FILE *f, int buffSize){
 void hashmap_free(struct map_table *hm)
 {
 	int i;
-	map_element *item, *next;
+	struct map_element *item, *next;
 
 	for (i = 0; i < hm->size; i++) {
 		for (item = hm->buckets[i]; item != NULL;) {
