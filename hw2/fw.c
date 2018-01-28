@@ -16,7 +16,7 @@ int main(int argc, char *argv[]) {
 		return 0;
 	}
 
-	myMap = parseFileNames(argc, argv, myMap);
+	parseFileNames(argc, argv, myMap);
 	
 	printTable(myMap);
 	
@@ -60,7 +60,7 @@ int isNumber(char *input){
 	return 0;
 }
 
-struct map_table * parseFileNames(int argc, char *argv[],struct map_table *myMap){
+void parseFileNames(int argc, char *argv[],struct map_table *myMap){
 	FILE *file;
 	int index;
 		
@@ -68,7 +68,7 @@ struct map_table * parseFileNames(int argc, char *argv[],struct map_table *myMap
 		file = fopen(argv[index], "r");
 		if(file != NULL){
 
-			myMap = parseFile(file, myMap);
+			parseFile(file, myMap);
 			fclose(file);
 			
 		}else{
@@ -77,12 +77,12 @@ struct map_table * parseFileNames(int argc, char *argv[],struct map_table *myMap
 		}
 	}
 
-	return myMap;
+	
 
 }
 
 
-struct map_table * parseFile(FILE *f, struct map_table *t){
+void parseFile(FILE *f, struct map_table *t){
 /*
 	char currentWord[100];
 	char currentChar;
@@ -109,15 +109,14 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 	char *currentWord;
 	currentWord = readWord(f, 40);
 	while( strcmp(currentWord,".")){
-		t = addToTable(t, currentWord);
+		addToTable(t, currentWord);
 		currentWord = readWord(f, 40);
 	}
-	return t;
 
 }
 
 
-struct map_table * addToTable(struct map_table *t, char *currentWord){
+void addToTable(struct map_table *t, char *currentWord){
 
 	char *wordptr;
 	int key;
@@ -154,9 +153,8 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 	if( ((double) t->used_size / t->map_size ) >= .90) {
 		t->list = (struct map_element **)realloc(t->list, sizeof(struct map_element) * t->map_size * 2);
 		t->map_size = t->map_size * 2;
-		t = reassignNewMap(t);
+		reassignNewMap(t);
 	}
-	return t;
 
 }
 
@@ -171,7 +169,7 @@ struct map_table * createBlankTable(int size){
 }
 
 
-struct map_table * reassignNewMap(struct map_table *original){
+void reassignNewMap(struct map_table *original){
 	int index;
 	struct map_table *tempMap;
 	int key;
@@ -298,6 +296,7 @@ void printTable(struct map_table *t){
 
 		}
 	}
+
 	printf("hi");
 	printf("%d,%d\n",t->map_size, t->used_size );
 	
