@@ -109,7 +109,7 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 	char *currentWord;
 	currentWord = readWord(f, 40);
 	while( strcmp(currentWord,".")){
-		t = addToTable(t, currentWord);
+		addToTable(t, currentWord);
 		currentWord = readWord(f, 40);
 	}
 	return t;
@@ -117,7 +117,7 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 }
 
 
-struct map_table * addToTable(struct map_table *t, char *currentWord){
+void addToTable(struct map_table *t, char *currentWord){
 	struct map_element **currentElement, *item, *newItem;
 	char *wordptr;
 	int key;
@@ -134,7 +134,7 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 			return;
 		}
 		if(item->next == NULL){
-			newItem = (struct map_element *)mallolc(sizeof(map_element));
+			newItem = (struct map_element *)malloc(sizeof(struct map_element));
 			newItem->value = wordptr;
 			newItem->frequency = 1;
 			item->next = newItem;
@@ -176,16 +176,15 @@ int ht_hash(char *key ) {
 }
 
 void printTable(struct map_table *t){
-	int index, i;
-	int j;
-	struct map_element **vector, *currentElement;
+	int index;
+	struct map_element *currentElement;
 	vector = malloc(sizeof(struct map_element *) * t->used_size);
 	
 	j = 0;
 
 	for (index = 0; index < t->map_size; index++){
 		if(t->buckets[index]){
-			for(currentElement = t->buckets[index], currentElement != NULL, currentElement = currentElement->next){
+			for(currentElement = t->buckets[index]; currentElement != NULL; currentElement = currentElement->next){
 				printf("Value:\t%s\tFrequency:%d\n", currentElement->value, currentElement->frequency);
 			}
 
