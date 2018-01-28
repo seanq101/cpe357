@@ -286,7 +286,7 @@ void printTable(struct map_table *t){
         	
 	}
 
-	hashmap_free(t);
+	
 
 	/*
 		while (vector != NULL){
@@ -300,6 +300,7 @@ void printTable(struct map_table *t){
 			printf("Element:\t%d\tValue:\t%s\tFrequency:%d\n", index, vector->value, vector->frequency);
 			vector++;
 		}
+		hashmap_free(t);
 	
 }
 
@@ -348,7 +349,6 @@ char *readWord(FILE *f, int buffSize){
 
 void hashmap_free(struct map_table *original){
 	int index;
-	struct map_element *item;
 
 	for (index = 0; index < original->map_size; index++){
 		if(original->list[index]){
