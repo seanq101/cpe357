@@ -25,5 +25,6 @@ int ht_hash(char *key );
 void printTable(struct map_table *t);
 int comparator(const void *p, const void *q);
 char *readWord(FILE *f, int buffSize);
+void hashmap_free(struct map_table *original);
 
 #endif
