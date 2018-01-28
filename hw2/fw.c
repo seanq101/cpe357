@@ -152,8 +152,9 @@ struct map_table * addToTable(struct map_table *t, char *currentWord){
 	
 
 	if( ((double) t->used_size / t->map_size ) >= .90) {
-		printTable(t);
-		reassignNewMap(t);
+		t->list = (struct map_element **)realloc(t->list, sizeof(struct map_element) * t->map_size * 2);
+		t->map_size = t->map_size * 2;
+		t = reassignNewMap(t);
 	}
 	return t;
 
@@ -170,18 +171,26 @@ struct map_table * createBlankTable(int size){
 }
 
 
-struct map_table * reassignNewMap(struct map_table *blank, struct map_table *original){
-
+struct map_table * reassignNewMap(struct map_table *original){
 	int index;
+	struct map_element **newList;
+	struct map_table *tempTable;
+	tempMap = createBlankTable(original->map_size);
+	newList = (struct map_element **)realloc(t->list, sizeof(struct map_element) * t->map_size);
+	tempMap->list = newList;
+
+	
 
 	for (index = 0; index < original->map_size; index++){
 		if(original->list[index]){
-			blank = addToTable(blank, original->list[index]->value);
+			tempMap = addToTable(tempMap, original->list[index]->value);
 		}
 		free(original->list[index]);
 	}
-
-	return blank;
+	free(original->list);
+	original->list = tempMap->list;
+	free(tempMap);
+	return original;
 }
 /*
 void reassignNewMap( struct map_table *original){
@@ -237,10 +246,10 @@ void reassignNewMap( struct map_table *original){
 	original->map_size = original->map_size * 2;
 
 	return original;
-	*/
+	
 }
 
-
+*/
 /* Hash a string for a particular hash table. */
 int ht_hash(char *key ) {
 
