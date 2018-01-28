@@ -278,9 +278,9 @@ void printTable(struct map_table *t){
 	printf("%d,%d\n",t->map_size, t->used_size );
 
 	for (index = 0; index < t->map_size; index++){
-
+printf("hi");
 		if(t->list[index] != NULL){
-			printf("hi");
+			
             vector[j]->value = t->list[index]->value;
             vector[j]->frequency = t->list[index]->frequency;
             j++;   
