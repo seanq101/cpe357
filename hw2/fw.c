@@ -285,6 +285,7 @@ void printTable(struct map_table *t){
 		if(t->list[index] != NULL){
 			
             vector[j]->value = t->list[index]->value;
+            printf("%s\n", vector[j]->value);
             vector[j]->frequency = t->list[index]->frequency;
             j++;   
         }
