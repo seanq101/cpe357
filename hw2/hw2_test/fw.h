@@ -5,7 +5,7 @@ int freqOutput;
 
 struct map_element {
 	struct map_element * next;
-	char *key;
+	char *value;
 	int frequency;
 };
 

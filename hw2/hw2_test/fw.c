@@ -271,7 +271,7 @@ void hashmap_free(struct map_table *hm)
 	int i;
 	struct map_element *item, *next;
 
-	for (i = 0; i < hm->size; i++) {
+	for (i = 0; i < hm->map_size; i++) {
 		for (item = hm->buckets[i]; item != NULL;) {
 			next = item->next;
 			free(item);
