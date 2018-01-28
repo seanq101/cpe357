@@ -282,6 +282,7 @@ void printTable(struct map_table *t){
             vector[j]->value = t->list[index]->value;
             vector[j]->frequency = t->list[index]->frequency;
             j++;
+            printf("hi");
         }
         	
 	}
