@@ -266,17 +266,19 @@ char *readWord(FILE *f, int buffSize){
 	return temp;
 
 }
+void hashmap_free(struct map_table *hm)
+{
+	int i;
+	map_element *item, *next;
 
-void hashmap_free(struct map_table *original){
-	int index;
-
-	for (index = 0; index < original->map_size; index++){
-		if(original->list[index]){
-			free(original->list[index]->value);
-			free(original->list[index]);
+	for (i = 0; i < hm->size; i++) {
+		for (item = hm->buckets[i]; item != NULL;) {
+			next = item->next;
+			free(item);
+			item = next;
 		}
 	}
 
-	free(original->list);
-	free(original);
+	free(hm->buckets);
+	free(hm);
 }
