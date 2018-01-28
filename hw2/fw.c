@@ -276,9 +276,11 @@ void printTable(struct map_table *t){
 		}
 	}
 	printf("%d,%d\n",t->map_size, t->used_size );
+	printf("hi");
 
 	for (index = 0; index < t->map_size; index++){
-printf("hi");
+				printf("hi1");
+
 		if(t->list[index] != NULL){
 			
             vector[j]->value = t->list[index]->value;
