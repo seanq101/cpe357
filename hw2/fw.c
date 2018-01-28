@@ -328,7 +328,8 @@ char *readWord(FILE *f, int buffSize){
 			else{
 				continue;
 			}
-		}	
+		}
+		c[i] = tolower(c[i]);	
 		i++;
 		if(i * sizeof(char) >= size){
 			size += buffSize;
