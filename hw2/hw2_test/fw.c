@@ -155,6 +155,7 @@ struct map_table * createBlankTable(int size){
 	myMap->map_size = size;
 	myMap->used_size = 0;
 	myMap->buckets = (struct map_element **)malloc(sizeof(struct map_element*) * myMap->map_size);
+	printf("Hi\n");
 	return myMap;
 }
 
