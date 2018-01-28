@@ -268,8 +268,9 @@ int ht_hash(char *key ) {
 
 void printTable(struct map_table *t){
 	int index;
-	int j;
+	int j;/*
 	struct map_element *vector = (struct map_element *)malloc(sizeof(struct map_element) * t->used_size);
+	*/
 	j = 0;
 
 	for (index = 0; index < t->map_size; index++){
@@ -279,7 +280,7 @@ void printTable(struct map_table *t){
 		}
 	}
 	printf("%d,%d\n",t->map_size, t->used_size );
-
+/*
 	for (index = 0; index < t->map_size; index++){
 
 		if(t->list[index]){
@@ -289,7 +290,7 @@ void printTable(struct map_table *t){
         }
         	
 	}
-
+*/
 	hashmap_free(t);
 
 	/*
@@ -352,6 +353,7 @@ void hashmap_free(struct map_table *original){
 
 	for (index = 0; index < original->map_size; index++){
 		if(original->list[index]){
+			free(original->list[index]->value);
 			free(original->list[index]);
 		}
 	}
