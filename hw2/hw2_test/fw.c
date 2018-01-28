@@ -2,7 +2,7 @@
 #include <stddef.h>
 #include "hashmap.h"
 
-static Hashmap_Item create_item(void *key, void *value)
+Hashmap_Item create_item(void *key, void *value)
 {
 	Hashmap_Item item = (Hashmap_Item) malloc(sizeof(struct hashmap_item));
 	item->key = key;
@@ -10,12 +10,12 @@ static Hashmap_Item create_item(void *key, void *value)
 	return item;
 }
 
-static int hash(void * ptr, int size)
+int hash(void * ptr, int size)
 {
 	return (int) (((long) ptr) % size);
 }
 
-static void rehash(Hashmap hm)
+void rehash(Hashmap hm)
 {
 	Hashmap_Item * current, * buckets;
 	Hashmap_Item item, next;
@@ -51,7 +51,7 @@ Hashmap hashmap_create(size_t size)
 	return hm;
 }
 
-void * hashmap_get(Hashmap hm, void *key)
+int hashmap_get(Hashmap hm, void *key)
 {
 	int index = hash(key, hm->size);
 	Hashmap_Item item;
