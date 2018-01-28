@@ -174,18 +174,39 @@ struct map_table * createBlankTable(int size){
 struct map_table * reassignNewMap(struct map_table *original){
 	int index;
 	struct map_table *tempMap;
+	int key;
+	int quadratic = 1;
 	tempMap = createBlankTable(original->map_size);
 	
 	for (index = 0; index < original->map_size; index++){
 		if(original->list[index]){
+			key = ht_hash(original->list[index]->value) % tempMap->map_size;
+			if(tempMap->list[key] && strcmp(tempMap->list[key]->value, original->list[index]->value) == 0){
+				tempMap->list[key]->frequency++;
+
+			}else{
+		
+				while(tempMap->list[key] != NULL) {
+			
+					key = key + (quadratic * quadratic);
+					key = key % t->map_size;
+					quadratic++;
+				}
+
+				tempMap->list[key] = (struct map_element *)malloc(sizeof(struct map_element));
+				tempMap->list[key]->value = original->list[index]->value;
+				tempMap->list[key]->frequency = 1;
+			/*
 			tempMap = addToTable(tempMap, original->list[index]->value);
+			*/
+			}
+			free(original->list[index]);
 		}
-		free(original->list[index]);
+		free(original->list);
+		original->list = tempMap->list;
+		free(tempMap);
+		return original;
 	}
-	free(original->list);
-	original->list = tempMap->list;
-	free(tempMap);
-	return original;
 }
 /*
 void reassignNewMap( struct map_table *original){
