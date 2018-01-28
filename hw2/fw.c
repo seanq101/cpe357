@@ -299,8 +299,8 @@ void printTable(struct map_table *t){
 			vector++;
 		}
 	*/
-	
-	qsort(vector,t->map_size,sizeof(struct map_element),comparator);
+
+	qsort((void *)vector,t->map_size,sizeof(struct map_element),comparator);
 	while (vector != NULL){
 			printf("Element:\t%d\tValue:\t%s\tFrequency:%d\n", index, vector->value, vector->frequency);
 			vector++;
