@@ -143,7 +143,7 @@ void addToTable(struct map_table *t, char *currentWord){
 	}
 
 
-	return t;
+	return;
 
 }
 
@@ -178,10 +178,7 @@ int ht_hash(char *key ) {
 void printTable(struct map_table *t){
 	int index;
 	struct map_element *currentElement;
-	vector = malloc(sizeof(struct map_element *) * t->used_size);
 	
-	j = 0;
-
 	for (index = 0; index < t->map_size; index++){
 		if(t->buckets[index]){
 			for(currentElement = t->buckets[index]; currentElement != NULL; currentElement = currentElement->next){
