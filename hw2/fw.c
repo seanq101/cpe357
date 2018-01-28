@@ -279,11 +279,11 @@ void printTable(struct map_table *t){
 
 	for (index = 0; index < t->map_size; index++){
 
-		if(t->list[index]){
+		if(t->list[index] != NULL){
+			printf("hi");
             vector[j]->value = t->list[index]->value;
             vector[j]->frequency = t->list[index]->frequency;
-            j++;
-            printf("hi");
+            j++;   
         }
         	
 	}
