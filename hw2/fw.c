@@ -308,11 +308,8 @@ size_t getHash( char* source)
 
 void printTable(struct map_table *t){
 	int index;
-	int j;
 	
-	struct map_element *vector[t->used_size];
 	
-	j = 0;
 	
 	for (index = 0; index < t->map_size; index++){
 		if(t->list[index]){
@@ -325,22 +322,6 @@ void printTable(struct map_table *t){
 	printf("hi");
 	printf("%d,%d\n",t->map_size, t->used_size );
 	
-/*
-	printf("Hi1\n");
-	for (index = 0; index < t->map_size; index++){
-		if(t->list[index] != NULL){
-			if(t->list[index]->value != NULL && strcmp(t->list[index]->value,"") != 0){
-				printf("Hello, %d, %d\n", j, index);
-				vector[j] = t->list[index];
-            	vector[j]->value = t->list[index]->value;
-            	vector[j]->frequency = t->list[index]->frequency;
-            	free(t->list[index]);
-            	j++;   
-            }
-        }
-        	
-	}
-	*/
 	printf("Hi2");
 		qsort((void *)t->list,t->map_size,sizeof(struct map_element*),comparator);
 
@@ -367,7 +348,7 @@ int comparator(const void *p, const void *q) {
     struct map_element * l = (*(struct map_element **)p);
     struct map_element * r = (*(struct map_element **)q); 
     if(p == NULL && q == NULL){
-    	reutn 0;
+    	return 0;
     }else if(p != NULL && q == NULL){
     	return -1;
     }else if(p == NULL && p != NULL){
