@@ -325,7 +325,7 @@ void printTable(struct map_table *t){
 	printf("hi");
 	printf("%d,%d\n",t->map_size, t->used_size );
 	
-
+/*
 	printf("Hi1\n");
 	for (index = 0; index < t->map_size; index++){
 		if(t->list[index] != NULL){
@@ -340,8 +340,9 @@ void printTable(struct map_table *t){
         }
         	
 	}
+	*/
 	printf("Hi2");
-		qsort(vector,t->map_size,sizeof(struct map_element),comparator);
+		qsort((void *)t->list,t->map_size,sizeof(struct map_element*),comparator);
 
 	/*
 	Basically I'm accessing somehting thats null and also my used_size isn't right because it only sometimes 
@@ -363,8 +364,16 @@ void printTable(struct map_table *t){
 	}
 
 int comparator(const void *p, const void *q) {
-    int l = (*(struct map_element **)p)->frequency;
-    int r = (*(struct map_element **)q)->frequency; 
+    struct map_element * l = (*(struct map_element **)p);
+    struct map_element * r = (*(struct map_element **)q); 
+    if(p == NULL && q == NULL){
+    	reutn 0;
+    }else if(p != NULL && q == NULL){
+    	return -1;
+    }else if(p == NULL && p != NULL){
+    	return 1;
+    }
+
     if(l - r == 0){
     	return strcmp(((struct map_element *)p)->value, ((struct map_element *)q)->value);
     }
