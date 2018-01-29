@@ -311,7 +311,6 @@ void printTable(struct map_table *t){
 	int j;
 	
 	struct map_element *vector[t->used_size];
-	vector = (struct map_element **)malloc(sizeof(struct map_element ) * t->used_size);
 	
 	j = 0;
 	
