@@ -104,11 +104,10 @@ void addToTable(struct map_table *t, char *currentWord){
 		t->list[key]->frequency++;
 
 	}else{
-		printf("Within add:%s\n", currentWord);
 
 		while(t->list[key] != NULL) {
 			index++;
-			if(( key + index) > t->map_size * 2){
+			if(( key + index) > t->map_size){
 				key = 0;
 				index = 0;
 			}
