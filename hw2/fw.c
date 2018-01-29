@@ -147,17 +147,13 @@ struct map_table * createBlankTable(int size){
 
 
 void reassignNewMap(struct map_table *original) {
-
+	int i;
 	struct map_table *newMap;
 	newMap = createBlankTable(original->map_size * 2);
-
-	int i, index;
-	int key;
-	index = 0;
 	
 	for (i = 0; i < original->map_size; i++){
 		if(original->list[i] != NULL){
-			addToTable(newList, original->list[i]->value);
+			addToTable(newMap, original->list[i]->value);
 			free(original->list[i]);
 		}
 	}
