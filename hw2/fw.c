@@ -343,7 +343,10 @@ void printTable(struct map_table *t){
 	printf("Hi2");
 		qsort(vector,t->map_size,sizeof(struct map_element),comparator);
 
-	
+	/*
+	Basically I'm accessing somehting thats null and also my used_size isn't right because it only sometimes 
+	recognizes it as a mathcing word
+	*/
 
 	/*
 		while (vector != NULL){
@@ -380,8 +383,12 @@ char *readWord(FILE *f, int buffSize){
 		if (isalpha(c[i]) == 0){
 			if(c[i] == ' ' || c[i] == '\n' || c[i] == '\t'){
 				break;
-			}
-			else{
+			}if(c[i] == '\''){
+				c[i] = '\0';
+				i = strlen(c);
+				temp = realloc(c, sizeof(char) * (i+1));
+				return temp;
+			}else{
 				continue;
 			}
 		}
