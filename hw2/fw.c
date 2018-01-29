@@ -85,6 +85,7 @@ struct map_table * parseFileNames(int argc, char *argv[],struct map_table *myMap
 struct map_table * parseFile(FILE *f, struct map_table *t){
 	char *currentWord;
 	currentWord = readWord(f, 40);
+
 	while( strcmp(currentWord,".") != 0){
 		t = addToTable(t, currentWord);
 		currentWord = readWord(f, 40);
@@ -119,8 +120,6 @@ struct map_table *addToTable(struct map_table *t, char *currentWord){
 		t->list[key]->frequency = 1;
 		
 		t->used_size = t->used_size + 1;
-		printf("%d, %d\n", t->map_size,t->used_size);
-		printf("%s, Key:%d\n", t->list[key]->value, key);
 
 
 	}
@@ -311,12 +310,9 @@ void printTable(struct map_table *t){
 	int index;
 	
 	sortMap(t);
-	
-	for (index = 0; index < t->map_size; index++){
-		if(t->list[index]){
-			printf("Element:\t%d\tValue:\t%s\tFrequency:%d\n", index, t->list[index]->value, t->list[index]->frequency);
-
-		}
+	printf("The top %i words (out of %i) are:\n", freqOutput, t->used_size);
+	for (index = 0; index < freqOutput; index++){
+			printf("\t%i\t%s\n", t->list[index]->frequency,t->list[index]->value);
 	}
 
 	hashmap_free(t);
