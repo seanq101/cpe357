@@ -322,6 +322,7 @@ void printTable(struct map_table *t){
 		}
 	}
 	/*
+	
 	printf("hi");
 	printf("%d,%d\n",t->map_size, t->used_size );
 	
