@@ -86,7 +86,7 @@ void parseFile(FILE *f, struct map_table *t){
 	char *currentWord;
 	currentWord = readWord(f, 40);
 	while( strcmp(currentWord,".") != 0){
-		printTable("Before add:%s\n", currentWord);
+		printf("Before add:%s\n", currentWord);
 		addToTable(t, currentWord);
 		currentWord = readWord(f, 40);
 	}
