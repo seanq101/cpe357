@@ -1,18 +1,19 @@
 #include <stdio.h>
 #include <string.h>
 
-#define one(x) x + x 
-#define two(a) printf("%dHi\n", a)
+#define one(x,y) (x + y) 
+#define two(a) (x * x) 
+
 
 int main(){
 	
-	int x=6;
-	int y=7;
+	int x=3;
+	int y=4;
 
-	printf("%d\n",one(2));
-	printf("%d\n",two(y++));
-	printf("%d\n",one(2) + one(2));
-	printf("%d\n",two(2 + 2));
+	printf("%d\n",one(2,3));
+	printf("%d\n",one(2*3,3*2));
+	printf("%d\n",two(two(2)));
+	printf("%d\n",two(one(++x,0)));
 
 	
 	return 0;
