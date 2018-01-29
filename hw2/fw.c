@@ -148,7 +148,7 @@ struct map_table * createBlankTable(int size){
 }
 
 
-struct map_table *  reassignNewMap(struct map_table *original) {
+struct map_table *reassignNewMap(struct map_table *original) {
 	int i;
 	struct map_table *newMap;
 	newMap = createBlankTable(original->map_size * 2);
@@ -161,6 +161,7 @@ struct map_table *  reassignNewMap(struct map_table *original) {
 	}
 	free(original->list);
 	original->list = newMap->list;
+	original->map_size = 2 * original->map_size;
 	free(newMap);
 	return original;
 }
