@@ -338,6 +338,7 @@ void printTable(struct map_table *t){
         }
         	
 	}
+	printf("Hi2");
 		qsort(vector,t->map_size,sizeof(struct map_element),comparator);
 
 	
