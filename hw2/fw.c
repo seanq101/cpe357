@@ -330,8 +330,8 @@ void printTable(struct map_table *t){
 	for (index = 0; index < t->map_size; index++){
 		if(t->list[index] != NULL){
 			printf("Hello, %d\n", j);
-            vector[j]->value = t->list[index]->value;
-            vector[j]->frequency = t->list[index]->frequency;
+			vector[j] = t->list[index];
+            
             j++;   
         }
         	
