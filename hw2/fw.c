@@ -318,12 +318,7 @@ void printTable(struct map_table *t){
 		}
 	}
 	
-
-	printf("hi");
-	printf("%d,%d\n",t->map_size, t->used_size );
-	
-	printf("Hi2");
-		qsort((void *)t->list,t->map_size,sizeof(struct map_element*),comparator);
+	qsort((void *)t->list,t->map_size,sizeof(struct map_element*),comparator);
 
 	/*
 	Basically I'm accessing somehting thats null and also my used_size isn't right because it only sometimes 
