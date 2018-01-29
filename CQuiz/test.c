@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <string.h>
+
 int main(){
 	int A = 2; 
 	char *cp = "abcdefg";
