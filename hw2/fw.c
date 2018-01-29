@@ -131,7 +131,7 @@ struct map_table *addToTable(struct map_table *t, char *currentWord){
 		t->list = (struct map_element **)realloc(t->list, sizeof(struct map_element) * t->map_size * 2);
 		t->map_size = t->map_size * 2;
 		*/
-		reassignNewMap(t);
+		t = reassignNewMap(t);
 	}
 	return t;
 
@@ -148,7 +148,7 @@ struct map_table * createBlankTable(int size){
 }
 
 
-void reassignNewMap(struct map_table *original) {
+struct map_table *  reassignNewMap(struct map_table *original) {
 	int i;
 	struct map_table *newMap;
 	newMap = createBlankTable(original->map_size * 2);
@@ -162,6 +162,7 @@ void reassignNewMap(struct map_table *original) {
 	free(original->list);
 	original->list = newMap->list;
 	free(newMap);
+	return original;
 }
 	/*
 	int index;

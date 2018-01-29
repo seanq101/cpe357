@@ -20,7 +20,7 @@ void parseFileNames(int argc, char *argv[],struct map_table *myMap);
 struct map_table * createBlankTable(int size);
 void parseFile(FILE *f, struct map_table *t);
 struct map_table *addToTable(struct map_table *t, char *currentWord);
-void reassignNewMap(struct map_table *original);
+struct map_table *reassignNewMap(struct map_table *original);
 int ht_hash(char *key );
 void printTable(struct map_table *t);
 int comparator(const void *p, const void *q);
