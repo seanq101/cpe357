@@ -166,8 +166,9 @@ void reassignNewMap(struct map_table *original) {
 					index = 0;
 				}
 			}
-			newList[key + index] = currentEle;
-
+			newList[key + index]->value = currentEle->value;
+			newList[key + index]->frequency = currentEle->frequency;
+			free(original->list[i]);
 		}
 	}
 	free(original->list);
