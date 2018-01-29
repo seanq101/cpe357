@@ -116,9 +116,10 @@ void addToTable(struct map_table *t, char *currentWord){
 		t->list[key] = (struct map_element *)malloc(sizeof(struct map_element));
 		t->list[key]->value = currentWord;
 		t->list[key]->frequency = 1;
-		printf("%s\n", t->list[key]->value);
+		
 		t->used_size = t->used_size + 1;
-		printf("%d, %d", t->map_size,t->used_size);
+		printf("%d, %d\n", t->map_size,t->used_size);
+		printf("%s, Key:%d\n", t->list[key]->value, key);
 
 
 	}
