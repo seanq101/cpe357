@@ -331,12 +331,14 @@ void printTable(struct map_table *t){
 		if(t->list[index] != NULL){
 			printf("Hello, %d\n", j);
 			vector[j] = t->list[index];
-            
+            vector[j]->value = t->list[index]->value;
+            vector[j]->frequency = t->list[index]->frequency;
+            free(t->list[index]);
             j++;   
         }
         	
 	}
-		qsort(t->list,t->map_size,sizeof(struct map_element),comparator);
+		qsort(vector,t->map_size,sizeof(struct map_element),comparator);
 
 	
 
