@@ -86,7 +86,6 @@ void parseFile(FILE *f, struct map_table *t){
 	char *currentWord;
 	currentWord = readWord(f, 40);
 	while( strcmp(currentWord,".") != 0){
-		printf("Before add:%s\n", currentWord);
 		addToTable(t, currentWord);
 		currentWord = readWord(f, 40);
 	}
@@ -105,7 +104,8 @@ void addToTable(struct map_table *t, char *currentWord){
 		t->list[key]->frequency++;
 
 	}else{
-		
+		printf("Within add:%s\n", currentWord);
+
 		while(t->list[key] != NULL) {
 			index++;
 			if(( key + index) > t->map_size * 2){
