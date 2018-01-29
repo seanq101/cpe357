@@ -85,7 +85,7 @@ void parseFileNames(int argc, char *argv[],struct map_table *myMap){
 void parseFile(FILE *f, struct map_table *t){
 	char *currentWord;
 	currentWord = readWord(f, 40);
-	while( strcmp(currentWord,".")){
+	while( strcmp(currentWord,".") != 0){
 		addToTable(t, currentWord);
 		currentWord = readWord(f, 40);
 	}
@@ -95,16 +95,11 @@ void parseFile(FILE *f, struct map_table *t){
 
 void addToTable(struct map_table *t, char *currentWord){
 
-	/*
-	char *wordptr;
-	*/
+	
 	int key, index;
 	key = getHash(currentWord) % t->map_size;
 	index = 0;
-	/*
-	wordptr = malloc(sizeof(char) * (strlen(currentWord) + 1 ));
-	strcpy(wordptr, currentWord);
-	*/
+
 	if(t->list[key] && strcmp(t->list[key]->value, currentWord) == 0){
 		t->list[key]->frequency++;
 
@@ -152,31 +147,23 @@ struct map_table * createBlankTable(int size){
 
 
 void reassignNewMap(struct map_table *original) {
-	struct map_element **newList;
-	struct map_element * currentEle;
+
+	struct map_table *newMap;
+	newMap = createBlankTable(original->map_size * 2);
+
 	int i, index;
 	int key;
 	index = 0;
-	newList = createBlankTable(original->map_size * 2)->list;
+	
 	for (i = 0; i < original->map_size; i++){
-		currentEle = original->list[i];
-		if(currentEle != NULL){
-			key = getHash(currentEle->value) % (original->map_size * 2);
-			while(newList[key + index] != NULL) {
-				index++;
-				if(( key + index) > original->map_size * 2){
-					key = 0;
-					index = 0;
-				}
-			}
-			newList[key + index]->value = currentEle->value;
-			newList[key + index]->frequency = currentEle->frequency;
+		if(original->list[i] != NULL){
+			addToTable(newList, original->list[i]->value);
 			free(original->list[i]);
 		}
 	}
 	free(original->list);
-	original->list = newList;
-
+	original->list = newMap->list;
+	free(newMap);
 }
 	/*
 	int index;
