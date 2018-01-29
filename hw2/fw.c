@@ -148,7 +148,35 @@ struct map_table * createBlankTable(int size){
 }
 
 
-void reassignNewMap(struct map_table *original){
+void reassignNewMap(struct map_table *original) {
+	struct map_element **newList;
+	struct map_element * currentEle;
+	int i, index, quadratic;
+	int key;
+	quadratic = 1;
+	index = 0;
+	newList = createBlankTable(original->map_size * 2)->list;
+	for (i = 0; i < original->map_size; i++){
+		currentEle = original->list[i];
+		if(currentEle != NULL){
+			key = ht_hash(currentEle->value) % (original->map_size * 2);
+			index = key;
+			while(newList[key + index] != NULL) {
+				index = index + (quadratic * quadratic);
+				if( (key + index) > (original->map_size * 2) ){
+					key = key % original->map_size * 2;
+				}
+				quadratic++;
+			}
+			newList[key + index] = currentEle;
+
+		}
+	}
+	free(original->list);
+	original->list = newList;
+
+}
+	/*
 	int index;
 	struct map_table *tempMap;
 	int key;
@@ -172,9 +200,9 @@ void reassignNewMap(struct map_table *original){
 				tempMap->list[key] = (struct map_element *)malloc(sizeof(struct map_element));
 				tempMap->list[key]->value = original->list[index]->value;
 				tempMap->list[key]->frequency = original->list[index]->frequency;
-			/*
-			tempMap = addToTable(tempMap, original->list[index]->value);
-			*/
+			
+			aroudn this guy    tempMap = addToTable(tempMap, original->list[index]->value);
+			
 			
 			
 		}
@@ -185,7 +213,7 @@ void reassignNewMap(struct map_table *original){
 	original->map_size = original->map_size * 2;
 	free(tempMap);
 	printTable(original);
-}
+}*/
 /*
 void reassignNewMap( struct map_table *original){
 	struct map_element **currentEle, **newList;
