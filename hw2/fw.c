@@ -174,17 +174,13 @@ void reassignNewMap(struct map_table *original){
 	struct map_table *tempMap;
 	int key;
 	int quadratic = 1;
-	tempMap = createBlankTable(original->map_size);
+	tempMap = createBlankTable(original->map_size * 2);
 	
 	for (index = 0; index < original->map_size; index++){
-		printf("Hello\n");
+
+		printf("Hello, %d\n", original->map_size);
 		if(original->list[index]){
 			key = ht_hash(original->list[index]->value) % tempMap->map_size;
-			if(tempMap->list[key] && strcmp(tempMap->list[key]->value, tempMap->list[index]->value) == 0){
-				tempMap->list[key]->frequency++;
-
-			}else{
-		
 				while(tempMap->list[key] != NULL) {
 			
 					key = key + (quadratic * quadratic);
@@ -198,7 +194,7 @@ void reassignNewMap(struct map_table *original){
 			/*
 			tempMap = addToTable(tempMap, original->list[index]->value);
 			*/
-			}
+			
 			
 		}
 		free(original->list[index]);
