@@ -356,9 +356,9 @@ int comparator(const void *p, const void *q) {
     }
 
     if(l->frequency - r->frequency == 0){
-    	return strcmp(((struct map_element *)l)->value, ((struct map_element *)r)->value);
+    	return strcmp( ((struct map_element *)r)->value, ((struct map_element *)l)->value );
     }
-    return (l->frequency - r->frequency);
+    return ( r->frequency - l->frequency );
 }
 
 char *readWord(FILE *f, int buffSize){
