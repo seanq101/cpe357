@@ -96,10 +96,10 @@ void parseFile(FILE *f, struct map_table *t){
 void addToTable(struct map_table *t, char *currentWord){
 
 	char *wordptr;
-	int key;
+	int key, index;
 	int quadratic = 1;
 	key = getHash(currentWord) % t->map_size;
-	
+	index = 0;
 	
 	wordptr = malloc(sizeof(char) * (strlen(currentWord) + 1 ));
 	strcpy(wordptr, currentWord);
@@ -109,10 +109,10 @@ void addToTable(struct map_table *t, char *currentWord){
 	}else{
 		
 		while(t->list[key] != NULL) {
-			
-			key = key + (quadratic * quadratic);
-			key = key % t->map_size;
-			quadratic++;
+			index++;
+			if(( key + index) > original->map_size * 2){
+				key = 0;
+				index = 0;
 		}
 
 		t->list[key] = (struct map_element *)malloc(sizeof(struct map_element));
@@ -151,9 +151,8 @@ struct map_table * createBlankTable(int size){
 void reassignNewMap(struct map_table *original) {
 	struct map_element **newList;
 	struct map_element * currentEle;
-	int i, index, quadratic;
+	int i, index;
 	int key;
-	quadratic = 1;
 	index = 0;
 	newList = createBlankTable(original->map_size * 2)->list;
 	for (i = 0; i < original->map_size; i++){
@@ -161,11 +160,11 @@ void reassignNewMap(struct map_table *original) {
 		if(currentEle != NULL){
 			key = getHash(currentEle->value) % (original->map_size * 2);
 			while(newList[key + index] != NULL) {
-				index = index + (quadratic * quadratic);
-				if( (key + index) > (original->map_size * 2) ){
-					key = key % original->map_size * 2;
+				index++;
+				if(( key + index) > original->map_size * 2){
+					key = 0;
+					index = 0;
 				}
-				quadratic++;
 			}
 			newList[key + index] = currentEle;
 
