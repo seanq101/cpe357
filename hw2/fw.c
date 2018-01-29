@@ -203,6 +203,7 @@ void reassignNewMap(struct map_table *original){
 	}
 	free(original->list);
 	original->list = tempMap->list;
+	original->map_size = original->map_size * 2;
 	free(tempMap);
 }
 /*
