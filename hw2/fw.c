@@ -309,7 +309,7 @@ size_t getHash( char* source)
 void printTable(struct map_table *t){
 	int index;
 	
-	
+	sortMap(t);
 	
 	for (index = 0; index < t->map_size; index++){
 		if(t->list[index]){
@@ -317,8 +317,14 @@ void printTable(struct map_table *t){
 
 		}
 	}
-	
+
+	hashmap_free(t);
+}
+
+void sortMap(struct map_table *t){
 	qsort((void *)t->list,t->map_size,sizeof(struct map_element*),comparator);
+}
+
 
 	/*
 	Basically I'm accessing somehting thats null and also my used_size isn't right because it only sometimes 
@@ -336,8 +342,7 @@ void printTable(struct map_table *t){
 			printf("Element:\t%d\tValue:\t%s\tFrequency:%d\n", index, vector[index]->value, vector[index]->frequency);
 		}*/
 
-		hashmap_free(t);
-	}
+		
 
 int comparator(const void *p, const void *q) {
     struct map_element * l = (*(struct map_element **)p);
