@@ -16,7 +16,7 @@ int main(int argc, char *argv[]) {
 		return 0;
 	}
 
-	parseFileNames(argc, argv, myMap);
+	myMap = parseFileNames(argc, argv, myMap);
 	
 	printTable(myMap);
 	
@@ -60,7 +60,7 @@ int isNumber(char *input){
 	return 0;
 }
 
-void parseFileNames(int argc, char *argv[],struct map_table *myMap){
+struct map_table * parseFileNames(int argc, char *argv[],struct map_table *myMap){
 	FILE *file;
 	int index;
 		
@@ -68,7 +68,7 @@ void parseFileNames(int argc, char *argv[],struct map_table *myMap){
 		file = fopen(argv[index], "r");
 		if(file != NULL){
 
-			parseFile(file, myMap);
+			 myMap = parseFile(file, myMap);
 			fclose(file);
 			
 		}else{
@@ -76,19 +76,20 @@ void parseFileNames(int argc, char *argv[],struct map_table *myMap){
 			fclose(file);
 		}
 	}
-
+	return myMap;
 	
 
 }
 
 
-void parseFile(FILE *f, struct map_table *t){
+struct map_table * parseFile(FILE *f, struct map_table *t){
 	char *currentWord;
 	currentWord = readWord(f, 40);
 	while( strcmp(currentWord,".") != 0){
 		t = addToTable(t, currentWord);
 		currentWord = readWord(f, 40);
 	}
+	return t;
 
 }
 
