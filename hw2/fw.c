@@ -356,7 +356,7 @@ int comparator(const void *p, const void *q) {
     }
 
     if(l->frequency - r->frequency == 0){
-    	return strcmp(((struct map_element *)p)->value, ((struct map_element *)q)->value);
+    	return strcmp(((struct map_element *)l)->value, ((struct map_element *)r)->value);
     }
     return (l->frequency - r->frequency);
 }
