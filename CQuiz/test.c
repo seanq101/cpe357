@@ -8,4 +8,6 @@ int main(){
 	int grade[5] = { 4, 3, 2, 1, 0 };
 
 	printf("%d, %d\n", (int)strlen(cp),(int) sizeof(grade));
+	printf("%d\n", (+A++ + ++B));
+	return 0;
 }
