@@ -178,7 +178,7 @@ void reassignNewMap(struct map_table *original){
 	
 	for (index = 0; index < original->map_size; index++){
 
-		printf("Hello, %d\n", original->map_size);
+		printf("Hello, %d, %d\n", original->map_size, tempMap->map_size);
 		if(original->list[index]){
 			key = ht_hash(original->list[index]->value) % tempMap->map_size;
 				while(tempMap->list[key] != NULL) {
