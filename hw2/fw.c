@@ -329,12 +329,14 @@ void printTable(struct map_table *t){
 	printf("Hi1\n");
 	for (index = 0; index < t->map_size; index++){
 		if(t->list[index] != NULL){
-			printf("Hello, %d\n", j);
-			vector[j] = t->list[index];
-            vector[j]->value = t->list[index]->value;
-            vector[j]->frequency = t->list[index]->frequency;
-            free(t->list[index]);
-            j++;   
+			if(t->list[index]->value != NULL && strcmp(t->list[index]->value,"")){
+				printf("Hello, %d\n", j);
+				vector[j] = t->list[index];
+            	vector[j]->value = t->list[index]->value;
+            	vector[j]->frequency = t->list[index]->frequency;
+            	free(t->list[index]);
+            	j++;   
+            }
         }
         	
 	}
