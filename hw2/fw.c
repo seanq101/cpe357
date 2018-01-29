@@ -110,9 +110,10 @@ void addToTable(struct map_table *t, char *currentWord){
 		
 		while(t->list[key] != NULL) {
 			index++;
-			if(( key + index) > original->map_size * 2){
+			if(( key + index) > t->map_size * 2){
 				key = 0;
 				index = 0;
+			}
 		}
 
 		t->list[key] = (struct map_element *)malloc(sizeof(struct map_element));
