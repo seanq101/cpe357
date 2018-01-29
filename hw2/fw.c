@@ -98,7 +98,7 @@ void addToTable(struct map_table *t, char *currentWord){
 	char *wordptr;
 	int key;
 	int quadratic = 1;
-	key = ht_hash(currentWord) % t->map_size;
+	key = getHash(currentWord) % t->map_size;
 	
 	
 	wordptr = malloc(sizeof(char) * (strlen(currentWord) + 1 ));
@@ -159,7 +159,7 @@ void reassignNewMap(struct map_table *original) {
 	for (i = 0; i < original->map_size; i++){
 		currentEle = original->list[i];
 		if(currentEle != NULL){
-			key = ht_hash(currentEle->value) % (original->map_size * 2);
+			key = getHash(currentEle->value) % (original->map_size * 2);
 			while(newList[key + index] != NULL) {
 				index = index + (quadratic * quadratic);
 				if( (key + index) > (original->map_size * 2) ){
@@ -286,6 +286,33 @@ int ht_hash(char *key ) {
 
 	return hashval;
 }
+
+size_t stringLength( char* source)
+{
+    if(source == NULL) { return 0; }
+
+    size_t length = 0;
+    while(*source != '\0') {
+        length++;
+        source++;
+    }
+    return length;  
+}
+
+size_t getHash( char* source)
+{
+    size_t length = stringLength(source);
+    size_t hash = 0;
+    for(size_t i = 0; i < length; i++) {
+        char c = source[i];
+        int a = c - '0';
+        hash = (hash * 10) + a;     
+    } 
+
+    return hash;
+}
+
+
 
 void printTable(struct map_table *t){
 	int index;
