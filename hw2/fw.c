@@ -308,38 +308,35 @@ size_t getHash( char* source)
 
 void printTable(struct map_table *t){
 	int index;
-	/*int j;
+	int j;
 	
-	struct map_element **vector;
+	struct map_element *vector[t->used_size];
 	vector = (struct map_element **)malloc(sizeof(struct map_element ) * t->used_size);
 	
 	j = 0;
-	*/
+	
 	for (index = 0; index < t->map_size; index++){
 		if(t->list[index]){
 			printf("Element:\t%d\tValue:\t%s\tFrequency:%d\n", index, t->list[index]->value, t->list[index]->frequency);
 
 		}
 	}
-	/*
 	
+
 	printf("hi");
 	printf("%d,%d\n",t->map_size, t->used_size );
 	
 
 	for (index = 0; index < t->map_size; index++){
-				printf("hi1");
-
 		if(t->list[index] != NULL){
 			
             vector[j]->value = t->list[index]->value;
-            printf("%s\n", vector[j]->value);
             vector[j]->frequency = t->list[index]->frequency;
             j++;   
         }
         	
 	}
-	*/
+	
 	
 
 	/*
