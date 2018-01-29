@@ -301,9 +301,10 @@ size_t stringLength( char* source)
 
 size_t getHash( char* source)
 {
-    size_t length = stringLength(source);
-    size_t hash = 0;
-    for(size_t i = 0; i < length; i++) {
+    size_t length, hash, i;
+    length = stringLength(source);
+    hash = 0;
+    for(i = 0; i < length; i++) {
         char c = source[i];
         int a = c - '0';
         hash = (hash * 10) + a;     
