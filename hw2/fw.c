@@ -160,7 +160,6 @@ void reassignNewMap(struct map_table *original) {
 		currentEle = original->list[i];
 		if(currentEle != NULL){
 			key = ht_hash(currentEle->value) % (original->map_size * 2);
-			index = key;
 			while(newList[key + index] != NULL) {
 				index = index + (quadratic * quadratic);
 				if( (key + index) > (original->map_size * 2) ){
