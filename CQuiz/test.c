@@ -2,7 +2,7 @@
 #include <string.h>
 
 #define one(x) x + x 
-#define two(a) printf("%d\n", a);
+#define two(a) printf("%d\n", a)
 
 int main(){
 	
