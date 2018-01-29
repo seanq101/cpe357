@@ -97,7 +97,6 @@ void addToTable(struct map_table *t, char *currentWord){
 
 	char *wordptr;
 	int key, index;
-	int quadratic = 1;
 	key = getHash(currentWord) % t->map_size;
 	index = 0;
 	
@@ -289,9 +288,10 @@ int ht_hash(char *key ) {
 
 size_t stringLength( char* source)
 {
+	size_t length = 0;
+
     if(source == NULL) { return 0; }
 
-    size_t length = 0;
     while(*source != '\0') {
         length++;
         source++;
