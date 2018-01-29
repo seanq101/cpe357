@@ -107,7 +107,7 @@ void addToTable(struct map_table *t, char *currentWord){
 
 		while(t->list[key + index] != NULL) {
 			index++;
-			if(( key + index) > t->map_size){
+			if(( key + index) >= t->map_size){
 				key = 0;
 				index = 0;
 			}
