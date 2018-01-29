@@ -1,13 +1,19 @@
 #include <stdio.h>
 #include <string.h>
 
-int main(){
-	int A = 2; 
-	char *cp = "abcdefg";
-	int B = -1; 
-	int grade[5] = { 4, 3, 2, 1, 0 };
+#define one(x) x + x 
+#define two(a) (a * x) 
 
-	printf("%d, %d\n", (int)strlen(cp),(int) sizeof(grade));
-	printf("%d\n", (+A++ + ++B));
+int main(){
+	
+	int x=6;
+	int y=7;
+
+	printf("%d\n",one(2));
+	printf("%d\n",two(y++));
+	printf("%d\n",one(2) + one(2));
+	printf("%d\n",two(2 + 2));
+
+	
 	return 0;
 }
