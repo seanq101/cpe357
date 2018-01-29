@@ -342,11 +342,11 @@ void printTable(struct map_table *t){
 int comparator(const void *p, const void *q) {
     struct map_element * l = (*(struct map_element **)p);
     struct map_element * r = (*(struct map_element **)q); 
-    if(p == NULL && q == NULL){
+    if(l == NULL && r == NULL){
     	return 0;
-    }else if(p != NULL && q == NULL){
+    }else if(l != NULL && r == NULL){
     	return -1;
-    }else if(p == NULL && p != NULL){
+    }else if(l == NULL && r != NULL){
     	return 1;
     }
 
