@@ -86,14 +86,14 @@ void parseFile(FILE *f, struct map_table *t){
 	char *currentWord;
 	currentWord = readWord(f, 40);
 	while( strcmp(currentWord,".") != 0){
-		addToTable(t, currentWord);
+		t = addToTable(t, currentWord);
 		currentWord = readWord(f, 40);
 	}
 
 }
 
 
-void addToTable(struct map_table *t, char *currentWord){
+struct map_table *addToTable(struct map_table *t, char *currentWord){
 
 	
 	int key, index;
@@ -102,7 +102,7 @@ void addToTable(struct map_table *t, char *currentWord){
 
 	if(t->list[key] && strcmp(t->list[key]->value, currentWord) == 0){
 		t->list[key]->frequency++;
-
+		return t;
 	}else{
 
 		while(t->list[key + index] != NULL) {
@@ -133,6 +133,7 @@ void addToTable(struct map_table *t, char *currentWord){
 		*/
 		reassignNewMap(t);
 	}
+	return t;
 
 }
 
