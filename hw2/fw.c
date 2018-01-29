@@ -83,29 +83,6 @@ void parseFileNames(int argc, char *argv[],struct map_table *myMap){
 
 
 void parseFile(FILE *f, struct map_table *t){
-/*
-	char currentWord[100];
-	char currentChar;
-	int index;
-
-
-	index = 0;
-	while( currentChar != EOF ) {
-		currentChar = fgetc(f);
-		if(currentChar == ' ' || currentChar == '\t' || currentChar == '\n'){
-			currentWord[index] = '\0';
-			t = addToTable(t, currentWord);
-			index = 0;
-
-		}else{
-			if(currentChar != EOF){
-				currentWord[index] = currentChar;
-				index++;
-			}
-		}
-	}
-	currentWord[index] = '\0';
-	*/
 	char *currentWord;
 	currentWord = readWord(f, 40);
 	while( strcmp(currentWord,".")){
@@ -166,7 +143,7 @@ struct map_table * createBlankTable(int size){
 
 	myMap->map_size = size;
 	myMap->used_size = 0;
-	myMap->list = (struct map_element **)malloc(sizeof(struct map_element*) * myMap->map_size);
+	myMap->list = (struct map_element **)malloc(sizeof(struct map_element) * myMap->map_size);
 	return myMap;
 }
 
@@ -182,7 +159,9 @@ void reassignNewMap(struct map_table *original){
 
 		printf("Hello, %d, %d\n", original->map_size, tempMap->map_size);
 		if(original->list[index]){
+
 			key = ht_hash(original->list[index]->value) % tempMap->map_size;
+
 				while(tempMap->list[key] != NULL) {
 			
 					key = key + (quadratic * quadratic);
