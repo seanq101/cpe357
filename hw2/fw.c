@@ -325,7 +325,6 @@ void printTable(struct map_table *t){
 	printf("hi");
 	printf("%d,%d\n",t->map_size, t->used_size );
 	
-	qsort(t->list,t->map_size,sizeof(struct map_element),comparator);
 
 	printf("Hi1\n");
 	for (index = 0; index < t->map_size; index++){
@@ -337,7 +336,8 @@ void printTable(struct map_table *t){
         }
         	
 	}
-	
+		qsort(t->list,t->map_size,sizeof(struct map_element),comparator);
+
 	
 
 	/*
