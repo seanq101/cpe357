@@ -267,7 +267,7 @@ char *readWord(FILE *f, int buffSize){
 
 	c = malloc(sizeof(char) * size);
 	while((c[i] = getc(f)) != EOF){
-		if (isalpha(c[i]) == 0){
+		if (isalpha(c[i]) == 0 && i != 0){
 			break;
 			/*
 			if((c[i] == ' ' || c[i] == '\n' || c[i] == '\t') && (i > 0) ) {
@@ -282,12 +282,15 @@ char *readWord(FILE *f, int buffSize){
 				continue;
 			}
 			*/
-		}
-		c[i] = tolower(c[i]);	
-		i++;
-		if(i * sizeof(char) >= size){
-			size += buffSize;
-			c = realloc(c, size);
+		}else if( isalpha(c[i]) == 0 && i == 0 ){
+			continue;
+		}else{
+			c[i] = tolower(c[i]);	
+			i++;
+			if(i * sizeof(char) >= size){
+				size += buffSize;
+				c = realloc(c, size);
+			}
 		}
 	}
 	if(i == 0 && c[i] == EOF){
@@ -299,6 +302,7 @@ char *readWord(FILE *f, int buffSize){
 	return temp;
 
 }
+
 void hashmap_free(struct map_table *original){
 	int index;
 
