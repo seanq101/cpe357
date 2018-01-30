@@ -361,6 +361,7 @@ int comparator(const void *p, const void *q) {
     }
     return ( r->frequency - l->frequency );
 }
+/*
 char *readWord(FILE *f, int buffSize){
 	int size;
 	char current;
@@ -383,7 +384,7 @@ char *readWord(FILE *f, int buffSize){
 	}
 
 }
-/*
+*/
 
 
 char *readWord(FILE *f, int buffSize){
@@ -423,9 +424,6 @@ char *readWord(FILE *f, int buffSize){
 	return temp;
 
 }
-*/
-
-
 void hashmap_free(struct map_table *original){
 	int index;
 
