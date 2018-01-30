@@ -95,7 +95,7 @@ void parseFile(FILE *f, struct map_table *t){
 }
 
 
-void addToTable(struct map_table *t, char *currentWord){
+int addToTable(struct map_table *t, char *currentWord){
 
 	int key, index;
 	key = getHash(currentWord) % t->map_size;
@@ -122,6 +122,7 @@ void addToTable(struct map_table *t, char *currentWord){
 			t->list[key + index]->frequency = 1;
 		
 			t->used_size = t->used_size + 1;
+
 		}	
 
 	}
@@ -135,8 +136,7 @@ void addToTable(struct map_table *t, char *currentWord){
 		*/
 		reassignNewMap(t);
 	}
-	return ;
-
+	return (key + index);
 }
 
 struct map_table * createBlankTable(int size){
@@ -151,13 +151,14 @@ struct map_table * createBlankTable(int size){
 
 
 void reassignNewMap(struct map_table *original) {
-	int i;
+	int i, newSpot;
 	struct map_table *newMap;
 	newMap = createBlankTable(original->map_size * 2);
 	
 	for (i = 0; i < original->map_size; i++){
 		if(original->list[i] != NULL){
-			addToTable(newMap, original->list[i]->value);
+			newSpot = addToTable(newMap, original->list[i]->value);
+			newMap->list[newSpot]->frequency = original->list[i]->frequency;
 			free(original->list[i]);
 		}
 	}
