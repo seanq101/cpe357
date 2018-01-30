@@ -104,7 +104,7 @@ int addToTable(struct map_table *t, char *currentWord){
 
 	if(t->list[key] && strcmp(t->list[key]->value, currentWord) == 0){
 		t->list[key]->frequency++;
-		return ;
+		return key;
 	}else{
 
 		while(t->list[key + index] != NULL && strcmp(t->list[key + index]->value, currentWord) != 0) {
