@@ -372,10 +372,10 @@ char *readWord(FILE *f, int buffSize){
 	for(index = 0; isalpha(current) && (current != EOF); current = getc(f)){
 		if(index >= size - 1){
 			size += buffSize;
-			word = realloc(c, size);
+			word = realloc(word, size);
 		}
 		word[index] = tolower(current);
-		index++:
+		index++;
 	}
 	if(index == 0){
 		return NULL;
