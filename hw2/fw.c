@@ -97,7 +97,6 @@ void parseFile(FILE *f, struct map_table *t){
 
 void addToTable(struct map_table *t, char *currentWord){
 
-	
 	int key, index;
 	key = getHash(currentWord) % t->map_size;
 	index = 0;
@@ -115,9 +114,8 @@ void addToTable(struct map_table *t, char *currentWord){
 				index = 0;
 			}
 		}
-		if( t->list[key + index] && strcmp(t->list[key + index]->value, currentWord) == 0 ){
+		if( t->list[key + index] ){
 			t->list[key + index]->frequency++;
-			return ;
 		}else{
 			t->list[key + index] = (struct map_element *)malloc(sizeof(struct map_element));
 			t->list[key + index]->value = currentWord;
@@ -130,7 +128,7 @@ void addToTable(struct map_table *t, char *currentWord){
 	
 	
 
-	if( ((double) t->used_size / t->map_size ) >= .90) {
+	if( ((double) t->used_size / t->map_size ) >= .75) {
 		/*
 		t->list = (struct map_element **)realloc(t->list, sizeof(struct map_element) * t->map_size * 2);
 		t->map_size = t->map_size * 2;
@@ -169,102 +167,7 @@ void reassignNewMap(struct map_table *original) {
 	free(newMap);
 	
 }
-	/*
-	int index;
-	struct map_table *tempMap;
-	int key;
-	int quadratic = 1;
-	tempMap = createBlankTable(original->map_size * 2);
-	
-	for (index = 0; index < original->map_size; index++){
 
-		printf("Hello, %d, %d\n", original->map_size, tempMap->map_size);
-		if(original->list[index]){
-
-			key = ht_hash(original->list[index]->value) % tempMap->map_size;
-
-				while(tempMap->list[key] != NULL) {
-			
-					key = key + (quadratic * quadratic);
-					key = key % tempMap->map_size;
-					quadratic++;
-				}
-
-				tempMap->list[key] = (struct map_element *)malloc(sizeof(struct map_element));
-				tempMap->list[key]->value = original->list[index]->value;
-				tempMap->list[key]->frequency = original->list[index]->frequency;
-			
-			aroudn this guy    tempMap = addToTable(tempMap, original->list[index]->value);
-			
-			
-			
-		}
-		free(original->list[index]);
-	}
-	free(original->list);
-	original->list = tempMap->list;
-	original->map_size = original->map_size * 2;
-	free(tempMap);
-	printTable(original);
-}*/
-/*
-void reassignNewMap( struct map_table *original){
-	struct map_element **currentEle, **newList;
-	size_t s, size;
-	int index, i, quadratic;
-
-	quadratic = 1;
-
-	currentEle = original->list;
-	s = original->map_size;
-	size = s << 1;
-
-	newList = calloc(size, sizeof(struct map_element *));
-
-	for (i = 0; i < s; i++){
-		if(currentEle[i]){
-			index = ht_hash(currentEle[i]->value);
-			if(newList[index] == NULL)
-				newList[index] = currentEle[i];
-			else{
-				while(newList[index] != NULL) {
-					index = index + (quadratic * quadratic);
-					index = index % size;
-					quadratic++;
-				}
-				newList[index] = currentEle[i];
-			}
-		}
-	}
-	free(original->list);
-	original->list = newList;
-	original->map_size = size;
-
-
-
-	int index;
-	struct map_table *tempMap;
-	struct map_element ** newList = original->list;
-	original->list = (struct map_element **)realloc(original->list, sizeof(struct map_element) * original->map_size * 2);
-	tempMap = createBlankTable(2 * original->map_size);
-	tempMap->list = newList;
-
-	for (index = 0; index < original->map_size; index++){
-		if(original->list[index]){
-			tempMap = addToTable(tempMap, original->list[index]->value);
-		}
-		
-	}
-	free(original->list);
-	original->list = tempMap->list;
-	free(tempMap);
-	original->map_size = original->map_size * 2;
-
-	return original;
-	
-}
-
-*/
 /* Hash a string for a particular hash table. */
 int ht_hash(char *key ) {
 
@@ -327,22 +230,6 @@ void sortMap(struct map_table *t){
 }
 
 
-	/*
-	Basically I'm accessing somehting thats null and also my used_size isn't right because it only sometimes 
-	recognizes it as a mathcing word
-	*/
-
-	/*
-		while (vector != NULL){
-			printf("Element:\t%d\tValue:\t%s\tFrequency:%d\n", index, vector->value, vector->frequency);
-			vector++;
-		}
-	
-
-	for (index = 0; index < t->map_size; index++){
-			printf("Element:\t%d\tValue:\t%s\tFrequency:%d\n", index, vector[index]->value, vector[index]->frequency);
-		}*/
-
 		
 
 int comparator(const void *p, const void *q) {
@@ -361,31 +248,6 @@ int comparator(const void *p, const void *q) {
     }
     return ( r->frequency - l->frequency );
 }
-/*
-char *readWord(FILE *f, int buffSize){
-	int size;
-	char current;
-	int index;
-	char *word = malloc(sizeof(char) * buffSize);
-	current = getc(f);
-	size = buffSize;
-	for(index = 0; isalpha(current) && (current != EOF); current = getc(f)){
-		if(index >= size - 1){
-			size += buffSize;
-			word = realloc(word, size);
-		}
-		word[index] = tolower(current);
-		index++;
-	}
-	if(index == 0){
-		return NULL;
-	}else{
-		return word;
-	}
-
-}
-*/
-
 
 char *readWord(FILE *f, int buffSize){
 	int size;
