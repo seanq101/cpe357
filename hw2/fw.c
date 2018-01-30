@@ -154,6 +154,7 @@ void reassignNewMap(struct map_table *original) {
 	int i, newSpot;
 	struct map_table *newMap;
 	newMap = createBlankTable(original->map_size * 2);
+
 	
 	for (i = 0; i < original->map_size; i++){
 		if(original->list[i] != NULL){
@@ -164,7 +165,8 @@ void reassignNewMap(struct map_table *original) {
 	}
 	free(original->list);
 	original->list = newMap->list;
-	original->map_size = 2 * original->map_size;
+	original->map_size = newMap->map_size;
+	original->used_size = newMap->used_size;
 	free(newMap);
 	
 }
