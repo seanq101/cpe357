@@ -6,17 +6,17 @@
 
 #include "fw.h"
 
-
+	struct map_table *myMap;
 int main(int argc, char *argv[]) {
 	
-	struct map_table *myMap;
+	
 	myMap = createBlankTable(100);
 
 	if(checkArgs(argc, argv) == 1){
 		return 0;
 	}
 
-	myMap = parseFileNames(argc, argv, myMap);
+	parseFileNames(argc, argv, myMap);
 	
 	printTable(myMap);
 	
@@ -60,7 +60,7 @@ int isNumber(char *input){
 	return 0;
 }
 
-struct map_table * parseFileNames(int argc, char *argv[],struct map_table *myMap){
+void parseFileNames(int argc, char *argv[],struct map_table *myMap){
 	FILE *file;
 	int index;
 		
@@ -68,7 +68,7 @@ struct map_table * parseFileNames(int argc, char *argv[],struct map_table *myMap
 		file = fopen(argv[index], "r");
 		if(file != NULL){
 
-			 myMap = parseFile(file, myMap);
+			myMap = parseFile(file, myMap);
 			fclose(file);
 			
 		}else{
@@ -76,13 +76,12 @@ struct map_table * parseFileNames(int argc, char *argv[],struct map_table *myMap
 			fclose(file);
 		}
 	}
-	return myMap;
 	
 
 }
 
 
-struct map_table * parseFile(FILE *f, struct map_table *t){
+void parseFile(FILE *f, struct map_table *t){
 	char *currentWord;
 	currentWord = readWord(f, 40);
 
@@ -91,12 +90,12 @@ struct map_table * parseFile(FILE *f, struct map_table *t){
 		currentWord = readWord(f, 40);
 
 	}
-	return t;
+	return;
 
 }
 
 
-struct map_table *addToTable(struct map_table *t, char *currentWord){
+void addToTable(struct map_table *t, char *currentWord){
 
 	
 	int key, index;
@@ -106,7 +105,7 @@ struct map_table *addToTable(struct map_table *t, char *currentWord){
 
 	if(t->list[key] && strcmp(t->list[key]->value, currentWord) == 0){
 		t->list[key]->frequency++;
-		return t;
+		return ;
 	}else{
 
 		while(t->list[key + index] != NULL && strcmp(t->list[key + index]->value, currentWord) != 0) {
@@ -118,7 +117,7 @@ struct map_table *addToTable(struct map_table *t, char *currentWord){
 		}
 		if( t->list[key + index] && strcmp(t->list[key + index]->value, currentWord) == 0 ){
 			t->list[key + index]->frequency++;
-			return t;
+			return ;
 		}else{
 			t->list[key + index] = (struct map_element *)malloc(sizeof(struct map_element));
 			t->list[key + index]->value = currentWord;
@@ -136,9 +135,9 @@ struct map_table *addToTable(struct map_table *t, char *currentWord){
 		t->list = (struct map_element **)realloc(t->list, sizeof(struct map_element) * t->map_size * 2);
 		t->map_size = t->map_size * 2;
 		*/
-		t = reassignNewMap(t);
+		reassignNewMap(t);
 	}
-	return t;
+	return ;
 
 }
 
@@ -153,7 +152,7 @@ struct map_table * createBlankTable(int size){
 }
 
 
-struct map_table *reassignNewMap(struct map_table *original) {
+void reassignNewMap(struct map_table *original) {
 	int i;
 	struct map_table *newMap;
 	newMap = createBlankTable(original->map_size * 2);
@@ -168,7 +167,7 @@ struct map_table *reassignNewMap(struct map_table *original) {
 	original->list = newMap->list;
 	original->map_size = 2 * original->map_size;
 	free(newMap);
-	return original;
+	
 }
 	/*
 	int index;
