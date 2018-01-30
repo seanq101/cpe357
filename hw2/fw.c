@@ -102,25 +102,29 @@ struct map_table *addToTable(struct map_table *t, char *currentWord){
 	key = getHash(currentWord) % t->map_size;
 	index = 0;
 
+
 	if(t->list[key] && strcmp(t->list[key]->value, currentWord) == 0){
 		t->list[key]->frequency++;
 		return t;
 	}else{
 
-		while(t->list[key + index] != NULL) {
+		while(t->list[key + index] != NULL && strcmp(t->list[key + index]->value, currentWord) != 0) {
 			index++;
 			if(( key + index) >= t->map_size){
 				key = 0;
 				index = 0;
 			}
 		}
-
-		t->list[key] = (struct map_element *)malloc(sizeof(struct map_element));
-		t->list[key]->value = currentWord;
-		t->list[key]->frequency = 1;
+		if( strcmp(t->list[key + index]->value, currentWord) != 0 ){
+			t->list[key + index]->frequency++;
+			return t;
+		}else{
+			t->list[key + index] = (struct map_element *)malloc(sizeof(struct map_element));
+			t->list[key + index]->value = currentWord;
+			t->list[key + index]->frequency = 1;
 		
-		t->used_size = t->used_size + 1;
-
+			t->used_size = t->used_size + 1;
+		}	
 
 	}
 	
@@ -360,6 +364,30 @@ int comparator(const void *p, const void *q) {
 
 char *readWord(FILE *f, int buffSize){
 	int size;
+	char current;
+	int index;
+	char *word = malloc(sizeof(char) * buffSize);
+	current = getc(f);
+	size = buffSize;
+	for(index = 0; isalpha(current) && (current != EOF); current = getc(f)){
+		if(index >= size - 1){
+			size += buffSize;
+			word = realloc(c, size);
+		}
+		word[index] = tolower(current);
+		index++:
+	}
+	if(index == 0){
+		return NULL;
+	}else{
+		return word;
+	}
+
+}
+
+/*
+char *readWord(FILE *f, int buffSize){
+	int size;
 	char *c;
 	char *temp;
 	int i = 0;
@@ -395,7 +423,7 @@ char *readWord(FILE *f, int buffSize){
 	return temp;
 
 }
-
+*/
 void hashmap_free(struct map_table *original){
 	int index;
 
