@@ -68,7 +68,7 @@ void parseFileNames(int argc, char *argv[],struct map_table *myMap){
 		file = fopen(argv[index], "r");
 		if(file != NULL){
 
-			myMap = parseFile(file, myMap);
+			parseFile(file, myMap);
 			fclose(file);
 			
 		}else{
@@ -86,7 +86,7 @@ void parseFile(FILE *f, struct map_table *t){
 	currentWord = readWord(f, 40);
 
 	while( currentWord != NULL ){
-		t = addToTable(t, currentWord);
+		addToTable(t, currentWord);
 		currentWord = readWord(f, 40);
 
 	}
