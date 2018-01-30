@@ -268,16 +268,20 @@ char *readWord(FILE *f, int buffSize){
 	c = malloc(sizeof(char) * size);
 	while((c[i] = getc(f)) != EOF){
 		if (isalpha(c[i]) == 0){
+			break;
+			/*
 			if((c[i] == ' ' || c[i] == '\n' || c[i] == '\t') && (i > 0) ) {
 				break;
-			}if(c[i] == '\''){
+			}if(c[i] == '\'' && (i > 0)){
 				c[i] = '\0';
 				i = strlen(c);
 				temp = realloc(c, sizeof(char) * (i+1));
 				return temp;
+
 			}else{
 				continue;
 			}
+			*/
 		}
 		c[i] = tolower(c[i]);	
 		i++;
@@ -288,7 +292,7 @@ char *readWord(FILE *f, int buffSize){
 	}
 	if(i == 0 && c[i] == EOF){
 		return NULL;
-	}else
+	}
 	c[i] = '\0';
 	i = strlen(c);
 	temp = realloc(c, sizeof(char) * (i+1));
