@@ -315,8 +315,7 @@ void printTable(struct map_table *t){
 	
 	sortMap(t);
 	printf("The top %i words (out of %i) are:\n", freqOutput, t->used_size);
-	for (index = 0; index < t->map_size; index++){
-		if(t->list[index] && strcmp(t->list[index]->value, "the") == 0)
+	for (index = 0; index < freqOutput; index++){
 			printf("\t%i\t%s\n", t->list[index]->frequency,t->list[index]->value);
 	}
 
