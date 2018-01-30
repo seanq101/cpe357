@@ -416,7 +416,7 @@ char *readWord(FILE *f, int buffSize){
 			c = realloc(c, size);
 		}
 	}
-	if(c == EOF){
+	if(i == 0 ){
 		return NULL;
 	}
 	c[i] = '\0';
