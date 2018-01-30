@@ -130,10 +130,6 @@ int addToTable(struct map_table *t, char *currentWord){
 	
 
 	if( ((double) t->used_size / t->map_size ) >= .75) {
-		/*
-		t->list = (struct map_element **)realloc(t->list, sizeof(struct map_element) * t->map_size * 2);
-		t->map_size = t->map_size * 2;
-		*/
 		reassignNewMap(t);
 	}
 	return (key + index);
@@ -214,8 +210,6 @@ size_t getHash( char* source)
     return hash;
 }
 
-
-
 void printTable(struct map_table *t){
 
 	int index;
@@ -226,7 +220,6 @@ void printTable(struct map_table *t){
 			printf("\t%i\t%s\n", t->list[index]->frequency,t->list[index]->value);
 	}
 */
-	
 	printf("The top %i words (out of %i) are:\n", freqOutput, t->used_size);
 	for (index = 0; index < freqOutput; index++){
 			printf("\t%i\t%s\n", t->list[index]->frequency,t->list[index]->value);
@@ -270,19 +263,6 @@ char *readWord(FILE *f, int buffSize){
 	while((c[i] = getc(f)) != EOF){
 		if (isalpha(c[i]) == 0 && i != 0){
 			break;
-			/*
-			if((c[i] == ' ' || c[i] == '\n' || c[i] == '\t') && (i > 0) ) {
-				break;
-			}if(c[i] == '\'' && (i > 0)){
-				c[i] = '\0';
-				i = strlen(c);
-				temp = realloc(c, sizeof(char) * (i+1));
-				return temp;
-
-			}else{
-				continue;
-			}
-			*/
 		}else if( isalpha(c[i]) == 0 && i == 0 ){
 			continue;
 		}else{
@@ -301,7 +281,6 @@ char *readWord(FILE *f, int buffSize){
 	i = strlen(c);
 	temp = realloc(c, sizeof(char) * (i+1));
 	return temp;
-
 }
 
 void hashmap_free(struct map_table *original){
@@ -317,3 +296,4 @@ void hashmap_free(struct map_table *original){
 	free(original->list);
 	free(original);
 }
+
