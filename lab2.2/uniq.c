@@ -10,7 +10,7 @@ int main(int argc, char *argv[]){
 char *last, *next;
 FILE *f;
 int index = 1;
-f = fopen(argv[1]);
+f = fopen(argv[1], "r");
 last = readline(f); /* read an initial line */
 /* now, keep reading lines until there are no more lines */
 for(index = 1; index < argc; index++){
