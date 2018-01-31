@@ -72,7 +72,7 @@ void parseFileNames(int argc, char *argv[],struct map_table *myMap){
 	FILE *file;
 	int index;
 		
-	for(index = 1; index < argc; index++){
+	for(index = 0; index < argc; index++){
 		file = fopen(argv[index], "r");
 		if(file != NULL){
 
