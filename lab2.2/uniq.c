@@ -8,16 +8,19 @@ int main(int argc, char *argv[]){
 * the previous line. If the same, discard the previous line.
 */ 
 char *last, *next;
-last = readline(stdin); /* read an initial line */
+int index = 1;
+last = readline(argv[1]); /* read an initial line */
 /* now, keep reading lines until there are no more lines */
-while ( (NULL != last) && (NULL != (next=readline(stdin)))) {
-if ( strcmp(last, next) ) { /* print the old line if different */
-fputs(last, stdout);
-}
-free(last); /* we’re done with last now */ 
-last = next;
+for(index = 1; index < argc; index++){
+	while ( (NULL != last) && (NULL != (next=readline(argv[index])))) {
+		if ( strcmp(last, next) ) { /* print the old line if different */
+			fputs(last, stdout);
+		}
+		free(last); /* we’re done with last now */ 
+		last = next;
+	}
 }
 if ( last ) /* print the last line if there is one */
-fputs(last, stdout);
-return 0;
+	fputs(last, stdout);
+	return 0;
 }
