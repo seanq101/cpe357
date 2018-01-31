@@ -24,5 +24,5 @@ for(index = 1; index < argc; index++){
 }
 if ( last ) /* print the last line if there is one */
 	fputs(last, stdout);
-	return 0;
+return 0;
 }

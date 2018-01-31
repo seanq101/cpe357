@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -ansi -pedantic
 MAIN = uniq
-OBJS = uniq.o
+OBJS = uniq.o readline.o
 all : $(MAIN)
 
 $(MAIN) : $(OBJS) readline.h
