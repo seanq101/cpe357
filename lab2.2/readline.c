@@ -14,7 +14,7 @@ char *ret;
 int size=0;
 char c;
 size=CHUNK;
-if(NULL==(buff=(char*)malloc(size * sizeof(char)))) { 20
+if(NULL==(buff=(char*)malloc(size * sizeof(char)))) { 
 perror( FUNCTION );
 exit(−1);
 }
@@ -24,7 +24,7 @@ size+=CHUNK;
 if(NULL==(buff=(char*)realloc(buff,size * sizeof(char)))) {
 perror( FUNCTION );
 exit(−1);
-} 30
+} 
 }
 buff[i++]=c;
 if ( c == ’\n’ )
@@ -33,7 +33,7 @@ break;
 if ( i ) { /* if there was a string read, copy it
 * into a new buffer. Otherwise, return
 * NULL to signal EOF
-*/ 40
+*/ 
 buff[i]=’\0’; /* final nul */
 if(NULL==(ret=(char*)malloc(i+1))) {
 perror( FUNCTION );
@@ -43,7 +43,7 @@ strcpy(ret,buff);
 } else {
 ret = NULL;
 }
-50
+
 free(buff);
 return ret;
 }
