@@ -219,18 +219,21 @@ void printTable(struct map_table *t){
 
 	int index;
 	
-	sortMap(t);
+	
 	/*
 	for (index = 0; index < t->used_size; index++){
 			printf("\t%i\t%s\n", t->list[index]->frequency,t->list[index]->value);
 	}
 */
 	printf("The top %i words (out of %i) are:\n", freqOutput, t->used_size);
-	for (index = 0; index < freqOutput; index++){
-			printf("\t%i\t%s\n", t->list[index]->frequency,t->list[index]->value);
-	}
+	if(t->used_size != 0){
+		sortMap(t);
+		for (index = 0; index < freqOutput; index++){
+				printf("\t%i\t%s\n", t->list[index]->frequency,t->list[index]->value);
+		}
 	
-	hashmap_free(t);
+		hashmap_free(t);
+	}
 }
 
 void sortMap(struct map_table *t){
