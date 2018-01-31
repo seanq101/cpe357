@@ -15,14 +15,13 @@ int size=0;
 char c;
 size=CHUNK;
 if(NULL==(buff=(char*)malloc(size * sizeof(char)))) { 
-	perror(FUNCTION);
+	
 	exit(-1);
 }
 for(i=0,c=getc(infile); c!=EOF ;c=getc(infile)) {
 	if(i>=size-1){ 
 		size+=CHUNK;
 		if(NULL==(buff=(char*)realloc(buff,size * sizeof(char)))) {
-			perror( FUNCTION );
 			exit(-1);
 		} 
 	}
