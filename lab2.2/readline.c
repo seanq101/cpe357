@@ -15,13 +15,14 @@ int size=0;
 char c;
 size=CHUNK;
 if(NULL==(buff=(char*)malloc(size * sizeof(char)))) { 
-	
+	perror(__FUNCTION__);
 	exit(-1);
 }
 for(i=0,c=getc(infile); c!=EOF ;c=getc(infile)) {
 	if(i>=size-1){ 
 		size+=CHUNK;
 		if(NULL==(buff=(char*)realloc(buff,size * sizeof(char)))) {
+			perror(__FUNCTION__);
 			exit(-1);
 		} 
 	}
@@ -35,7 +36,8 @@ if ( i ) { /* if there was a string read, copy it
 */ 
 buff[i] = '\0'; /* final nul */
 if(NULL==(ret=(char*)malloc(i+1))) {
-exit(-1);
+	perror(__FUNCTION__);
+	exit(-1);
 }
 strcpy(ret,buff);
 } else {
