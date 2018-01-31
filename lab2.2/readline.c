@@ -35,7 +35,6 @@ if ( i ) { /* if there was a string read, copy it
 */ 
 buff[i] = '\0'; /* final nul */
 if(NULL==(ret=(char*)malloc(i+1))) {
-perror( FUNCTION );
 exit(-1);
 }
 strcpy(ret,buff);
