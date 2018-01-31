@@ -39,7 +39,7 @@ int checkArgs(int argc, char *argv[]){
 	}
 
 	if(strcmp(argv[1], "-n") == 0 && isNumber(argv[2]) == 1){
-		printf("%s: not a well-formed number\nusage: fw [-n num] [ file1 [ file 2 ...] ]\nNo negative number inputs\n", argv[2]);
+		printf("%s: not a well-formed number\nusage: fw [-n num] [ file1 [ file 2 ...] ]\n", argv[2]);
 		return 1;
 	}
 
