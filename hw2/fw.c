@@ -45,9 +45,6 @@ int checkArgs(int argc, char *argv[]){
 
 	if(strcmp(argv[1], "-n") == 0 && isNumber(argv[2]) == 0 ){
 		freqOutput = atoi(argv[2]); 
-		argv++;
-		argv++;
-		argv++;
 	}else{
 		freqOutput = 10;
 	}
@@ -71,8 +68,11 @@ int isNumber(char *input){
 void parseFileNames(int argc, char *argv[],struct map_table *myMap){
 	FILE *file;
 	int index;
-		
-	for(index = 0; index < argc; index++){
+	index = 1;
+	if (freqOutput != 10){
+		index = 3;
+	}
+	for(index; index < argc; index++){
 		file = fopen(argv[index], "r");
 		if(file != NULL){
 
