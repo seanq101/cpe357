@@ -45,6 +45,9 @@ int checkArgs(int argc, char *argv[]){
 
 	if(strcmp(argv[1], "-n") == 0 && isNumber(argv[2]) == 0 ){
 		freqOutput = atoi(argv[2]); 
+		argv++;
+		argv++;
+		argv++;
 	}else{
 		freqOutput = 10;
 	}
