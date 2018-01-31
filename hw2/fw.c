@@ -25,17 +25,21 @@ int main(int argc, char *argv[]) {
 
 int checkArgs(int argc, char *argv[]){
 	if(argc < 2){
-		printf("usage1: fw [-n num] [ file1 [ file 2 ...] ]\n");
+		printf("usage: fw [-n num] [ file1 [ file 2 ...] ]\n");
 		return 1;
 	}
 	if (strcmp(argv[1], "-n") == 0 && argc < 4){
-		printf("usage2: fw [-n num] [ file1 [ file 2 ...] ]\n");
+		printf("usage: fw [-n num] [ file1 [ file 2 ...] ]\n");
 		return 1;
 	}
 
-	if(strcmp(argv[1], "-n") == 0 && isNumber(argv[2]) == 1 ) {
-		printf("usage3: fw [-n num] [ file1 [ file 2 ...] ]\nNo negative number inputs\n");
+	if(strcmp(argv[1], "-n") == 0 && isNumber(argv[2]) == -1 ) {
+		printf("//home/pn-cs357/demos/fw: It is not possible to count fewer than zero words\n");
 		return 1;
+	}
+
+	if(strcmp(argv[1], "-n") == 0 && isNumber(argv[2]) == 1){
+		printf("%s: not a well-formed number\nusage: fw [-n num] [ file1 [ file 2 ...] ]\nNo negative number inputs\n", argv[2]);
 	}
 
 	if(strcmp(argv[1], "-n") == 0 && isNumber(argv[2]) == 0 ){
@@ -49,7 +53,7 @@ int checkArgs(int argc, char *argv[]){
 int isNumber(char *input){
 	/* Checks for a negative number */
 	if(*input == '-'){
-		return 1;
+		return -1;
 	}
 	while(*input){
 		if( !(isdigit(*input)) ){
