@@ -8,7 +8,7 @@ int main(int argc, char *argv[]){
 * the previous line. If the same, discard the previous line.
 */ 
 char *last, *next;
-FILE *f
+FILE *f;
 int index = 1;
 f = fopen(argv[1]);
 last = readline(f); /* read an initial line */
