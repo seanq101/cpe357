@@ -4,11 +4,11 @@ MAIN = uniq
 OBJS = uniq.o
 all : $(MAIN)
 
-$(MAIN) : $(OBJS)
+$(MAIN) : $(OBJS) readline.h
 	$(CC) $(CFLAGS) -o $(MAIN) $(OBJS)
 
-uniq.o : uniq.c
-	$(CC) $(CFLAGS) -c uniq.c
+uniq.o : uniq.c readline.h
+	$(CC) $(CFLAGS) -c uniq.c 
 
 readline.o : readline.c
 	$(CC) $(CFLAGS) -c readline.c
