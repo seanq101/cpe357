@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -ansi -pedantic
-MAIN = htable
+MAIN = encode
 OBJS = encode.o
 all : $(MAIN)
 
