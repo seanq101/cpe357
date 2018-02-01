@@ -5,8 +5,9 @@
 #include "encode.h"
 
 int main(int argc, char* argv[]){
+	struct node **list;
 	makeTable();
-	struct node **list = (struct node **)malloc(sizeof(struct node) * 256);
+	
 	list = create_node_list();
 	qsort((void *)list,256,sizeof(struct node*),comparator);
 	printNodes(list);
@@ -21,7 +22,7 @@ void makeTable(){
 
 struct node ** create_node_list(){
 	int index;
-	struct node **res[256];
+	struct node **res[256] = (struct node **)malloc(sizeof(struct node) * 256);
 	for (index = 0; index < 256; index++){
 		if(freqArr[index] !=0){
 			struct node * current = malloc(sizeof(struct node));
