@@ -4,7 +4,7 @@
 
 #include "encode.h"
 
-int main(int argc, char* argv){
+int main(int argc, char* argv[]){
 	makeTable();
 	struct node **list = (struct node **)malloc(sizeof(struct node) * 256);
 	list = create_node_list();
@@ -23,16 +23,16 @@ struct node ** create_node_list(){
 	int index;
 	struct node **res[256];
 	for (index = 0; index < 256; index++){
-		if(freqArr[x] !=0){
+		if(freqArr[index] !=0){
 			struct node * current = malloc(sizeof(struct node));
-			current->value = char(x);
-			current->frequency = freqArr[x];
+			current->value = char(index);
+			current->frequency = freqArr[index];
 			current->right = NULL;
 			current->left = NULL;
 			res[index] = current;
 		}
 	}
-	return res
+	return res;
 }
 
 int comparator(const void *p, const void *q) {
@@ -47,7 +47,7 @@ int comparator(const void *p, const void *q) {
     }
 
     if(l->frequency - r->frequency == 0){
-    	return strcmp(  l->value, r->value );
+    	return (strcmp( l->value, r->value ));
     }
     return ( l->frequency - r->frequency );
 }
