@@ -7,7 +7,9 @@
 int main(int argc, char* argv[]){
 	struct node **list;
 	makeTable();
-	
+	printTable();
+
+
 	list = create_node_list();
 	qsort((void *)list,256,sizeof(struct node*),comparator);
 	printNodes(list);
@@ -18,6 +20,15 @@ void makeTable(){
 	char c;
 	while((c = getchar()) != EOF){
 			freqArr[(int)c] = freqArr[(int)c] + 1;
+	}
+}
+
+void printTable(){
+	int index;
+	for(index = 0; index < 256; index++){
+		if(freqArr[index] !=0){
+			printf("%i\n", freqArr[index]);
+		}
 	}
 }
 
