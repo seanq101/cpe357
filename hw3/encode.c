@@ -12,6 +12,7 @@ int main(int argc, char* argv[]){
 
 	list = create_node_list();
 	qsort((void *)list,256,sizeof(struct node*),comparator);
+	printf("Hi2");
 	printNodes(list);
 	return 0;
 }
@@ -19,7 +20,7 @@ int main(int argc, char* argv[]){
 void makeTable(){
 	char c;
 	while((c = getchar()) != EOF){
-			freqArr[(int)c] = freqArr[(int)c] + 1;
+		freqArr[(int)c] = freqArr[(int)c] + 1;
 	}
 }
 
@@ -41,6 +42,7 @@ struct node ** create_node_list(){
 			res[index]->frequency = freqArr[index];
 			res[index]->right = NULL;
 			res[index]->left = NULL;
+			printf("Hi1\n");
 		}
 	}
 	return res;
@@ -66,6 +68,7 @@ int comparator(const void *p, const void *q) {
 void printNodes(struct node ** list){
 	int index = 0;
 	for (index = 0; index < 256; index++){
+		printf("Hi3\n");
 		if(list[index] != NULL){
 			printf("Frequency: %i\tValue:%c\n",list[index]->frequency, list[index]->value );
 		}else{
