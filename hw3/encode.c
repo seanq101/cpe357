@@ -23,15 +23,13 @@ void makeTable(){
 
 struct node ** create_node_list(){
 	int index;
-	struct node **res[256] = (struct node **)malloc(sizeof(struct node) * 256);
+	struct node **res = (struct node **)malloc(sizeof(struct node) * 256);
 	for (index = 0; index < 256; index++){
 		if(freqArr[index] !=0){
-			struct node * current = malloc(sizeof(struct node));
-			current->value = (char)index;
-			current->frequency = freqArr[index];
-			current->right = NULL;
-			current->left = NULL;
-			res[index] = current;
+			res[index]->value = (char)index;
+			res[index]->frequency = freqArr[index];
+			res[index]->right = NULL;
+			res[index]->left = NULL;
 		}
 	}
 	return res;
