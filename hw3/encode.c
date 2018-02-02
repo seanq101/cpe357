@@ -38,6 +38,7 @@ struct node ** create_node_list(){
 	struct node **res = (struct node **)malloc(sizeof(struct node) * 256);
 	for (index = 0; index < 256; index++){
 		if(freqArr[index] !=0){
+			res[index] = (struct node *)malloc(sizeof(struct node));
 			res[index]->value = (char)index;
 			res[index]->frequency = freqArr[index];
 			res[index]->right = NULL;
