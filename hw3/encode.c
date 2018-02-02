@@ -11,6 +11,7 @@ int main(int argc, char* argv[]){
 	list = create_node_list();
 	qsort((void *)list,256,sizeof(struct node*),comparator);
 	printNodes(list);
+	return 0;
 }
 
 void makeTable(){
@@ -22,7 +23,7 @@ void makeTable(){
 
 struct node ** create_node_list(){
 	int index;
-	struct node **res[256] = (struct node **)malloc(sizeof(struct node *) * 256);
+	struct node **res[256] = (struct node **)malloc(sizeof(struct node) * 256);
 	for (index = 0; index < 256; index++){
 		if(freqArr[index] !=0){
 			struct node * current = malloc(sizeof(struct node));
@@ -48,7 +49,7 @@ int comparator(const void *p, const void *q) {
     }
 
     if(l->frequency - r->frequency == 0){
-    	return (strcmp( l->value, r->value ));
+    	return ( l->value - r->value );
     }
     return ( l->frequency - r->frequency );
 }
