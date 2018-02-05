@@ -10,6 +10,7 @@ struct node {
 	struct node *right;
 	int justAdded;
 	char code [20];
+	int codelen;
 };
 
 int freqArr [256];
