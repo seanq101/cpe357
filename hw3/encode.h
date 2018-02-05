@@ -12,7 +12,7 @@ struct node {
 };
 
 int freqArr [256];
-char ** codeArr[256];
+char * codeArr[256];
 
 void makeTable();
 struct node ** create_node_list();

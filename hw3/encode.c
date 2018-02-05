@@ -9,8 +9,6 @@ int main(int argc, char* argv[]){
 	struct node **list;
 	makeTable();
 	
-	free(freqArr);
-
 	list = create_node_list();
 	qsort((void *)list,256,sizeof(struct node*),comparator);
 	form_tree(list);
