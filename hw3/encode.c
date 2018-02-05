@@ -15,6 +15,7 @@ int main(int argc, char* argv[]){
 	buffer = (char *)malloc(sizeof(char) * 20);
 	recursiveHuffCode(list[0], buffer, 0);
 	printTable();
+	printRecursive(list);
 	return 0;
 }
 
@@ -174,7 +175,7 @@ void recursiveHuffCode(struct node * node, char *buffer, int depth){
 
 void printRecursive(struct node *current){
 	if(current != NULL){
-		printf("Value:%s\tFreq:%i\n", current->value, current->frequency);
+		printf("Value:%c\tFreq:%i\n", current->value, current->frequency);
 	}
 	printRecursive(current->right);
 	printRecursive(current->left);
