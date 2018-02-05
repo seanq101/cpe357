@@ -79,7 +79,7 @@ struct node ** create_node_list(){
 			res[index]->right = NULL;
 			res[index]->left = NULL;
 			res[index]->justAdded = 0;
-			res[index]->code = "";
+			res[index]->code = (char *)malloc(sizeof(char) * 20);
 			res[index]->codelen = 0;
 		}
 	}

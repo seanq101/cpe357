@@ -9,7 +9,7 @@ struct node {
 	struct node *left;
 	struct node *right;
 	int justAdded;
-	char code [20];
+	char *code;
 	int codelen;
 };
 
