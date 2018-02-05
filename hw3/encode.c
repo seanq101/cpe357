@@ -5,7 +5,6 @@
 #include "encode.h"
 
 int main(int argc, char* argv[]){
-	char buffer[20];
 	struct node **list;
 	makeTable();
 	
@@ -115,7 +114,7 @@ void printNodes(struct node ** list){
 	int index = 0;
 	for (index = 0; index < 256; index++){
 		if(list[index] != NULL){
-			printf("Frequency: %i\tValue:%c\n",list[index]->frequency, list[index]->value );
+			printf("Value:%c\tFreq:%i\tCode:%s\n", current->value, current->frequency, current->code);
 		}else{
 			break;
 		}
