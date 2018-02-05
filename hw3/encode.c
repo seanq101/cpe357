@@ -12,11 +12,41 @@ int main(int argc, char* argv[]){
 
 	list = create_node_list();
 	qsort((void *)list,256,sizeof(struct node*),comparator);
-	printf("Hi2");
-	printNodes(list);
+	form_tree(list);
 	return 0;
 }
 
+/*
+int main(int argc, char* argv[]){
+	int infd, outfd;
+	infd = open(argv[1], O_RONLY);
+	if(intfd == -1){
+		perror(argv[1]);
+		exit(EXIT_FAILURE);
+	}
+	outfd = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 200);
+	if(outfd == -1){
+		perror(argv[2]);
+		exit(EXIT_FAILURE);
+	}
+	unix_makeTable(infd, outfd);
+}
+
+void unix_makeTable(int fdin, int fdout){
+	char buf[SIZE];
+	int n;
+	while( (n = read(fdin, buf, SIZE)) > 0 ){
+		if( write(fdout, buf, n) == -1  ){
+			perror();
+			exit(EXIT_FAILURE);
+		}
+		if( n < 0 ){
+			perror();
+			exit(EXIT_FAILURE);
+		}
+	}
+}
+*/
 void makeTable(){
 	char c;
 	while((c = getchar()) != EOF){
@@ -43,11 +73,13 @@ struct node ** create_node_list(){
 			res[index]->frequency = freqArr[index];
 			res[index]->right = NULL;
 			res[index]->left = NULL;
-			printf("Hi1\n");
+			res[index]->justAdded = 0;
 		}
 	}
 	return res;
 }
+
+
 
 int comparator(const void *p, const void *q) {
     struct node * l = (*(struct node **)p);
@@ -61,7 +93,13 @@ int comparator(const void *p, const void *q) {
     }
 
     if(l->frequency - r->frequency == 0){
-    	return ( l->value - r->value );
+    	if(l->justAdded == 1){
+    		return -1;
+    	}else if(r->justAdded == 1){
+    		return 1;
+    	}else{
+    		return ( l->value - r->value );
+    	}
     }
     return ( l->frequency - r->frequency );
 }
@@ -69,7 +107,6 @@ int comparator(const void *p, const void *q) {
 void printNodes(struct node ** list){
 	int index = 0;
 	for (index = 0; index < 256; index++){
-		printf("Hi3\n");
 		if(list[index] != NULL){
 			printf("Frequency: %i\tValue:%c\n",list[index]->frequency, list[index]->value );
 		}else{
@@ -78,6 +115,47 @@ void printNodes(struct node ** list){
 	}
 
 }
+
+/*Forms a Huffman tree with a given list of pointers to nodes sorted in ascending order*/
+struct node * form_tree(struct node ** list){
+	struct node * temp;
+	temp = (struct node *)malloc(sizeof(struct node));
+	if(list[1] == NULL){
+		return list[0];
+	}
+	else{
+		while(list[1] != NULL){
+			temp = take_two_lowest(list);
+			free(list[0]);
+			free(list[1]);
+			list[0] = temp;
+			list[1] = NULL;
+			qsort((void *)list,256,sizeof(struct node*),comparator);
+			temp->justAdded = 0;
+			printNodes(list);
+			printf("Hello\n");
+		}
+	}
+}
+/*
+list --> Node
+#Finds the first two leaves/nodes in the tree and returns a node made out of both of them
+*/
+struct node * take_two_lowest(struct node **list){
+	struct node  *res;
+	first = (struct node *)malloc(sizeof(struct node));
+	second = (struct node *)malloc(sizeof(struct node));
+	res = (struct node *)malloc(sizeof(struct node));
+	res->frequency = list[0]->frequency;
+	res->left = list[0];
+	res->right = list[1];
+	res->frequency += list[1]->frequency;
+	res->justAdded = 1;
+
+	return res;
+}
+
+
 
 
 
