@@ -5,14 +5,18 @@
 #include "encode.h"
 
 int main(int argc, char* argv[]){
+	char *buffer;
 	struct node **list;
 	makeTable();
-	printTable();
-
+	
+	free(freqArr);
 
 	list = create_node_list();
 	qsort((void *)list,256,sizeof(struct node*),comparator);
 	form_tree(list);
+	buffer = malloc[20]
+	recursiveHuffCode(list[0], buffer, 0);
+	printTable();
 	return 0;
 }
 
@@ -57,8 +61,8 @@ void makeTable(){
 void printTable(){
 	int index;
 	for(index = 0; index < 256; index++){
-		if(freqArr[index] !=0){
-			printf("%i\n", freqArr[index]);
+		if(codeArr[index] !=0){
+			printf("%s\n", codeArr[index]);
 		}
 	}
 }
@@ -150,8 +154,22 @@ struct node * take_two_lowest(struct node **list){
 	res->right = list[1];
 	res->frequency += list[1]->frequency;
 	res->justAdded = 1;
+	res->value = '';
 
 	return res;
+}
+
+void recursiveHuffCode(struct node * node, char *buffer, int depth){
+	if(node != NULL){
+		if(node->value != ''){
+			codeArr[(int)(node->value)] = buffer;
+		}else{
+			buffer[depth] = '0';
+			recursiveHuffCode(node->left, buffer, depth + 1);
+			buffer[depth] = '1';
+			recursiveHuffCode(node->right, buffer, depth + 1);
+		}
+	}
 }
 
 
