@@ -136,6 +136,7 @@ struct node * form_tree(struct node ** list){
 			printf("Hello\n");
 		}
 	}
+	return list[0];
 }
 /*
 list --> Node
@@ -143,8 +144,6 @@ list --> Node
 */
 struct node * take_two_lowest(struct node **list){
 	struct node  *res;
-	first = (struct node *)malloc(sizeof(struct node));
-	second = (struct node *)malloc(sizeof(struct node));
 	res = (struct node *)malloc(sizeof(struct node));
 	res->frequency = list[0]->frequency;
 	res->left = list[0];
