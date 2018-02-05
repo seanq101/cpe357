@@ -129,8 +129,6 @@ struct node * form_tree(struct node ** list){
 	else{
 		while(list[1] != NULL){
 			temp = take_two_lowest(list);
-			free(list[0]);
-			free(list[1]);
 			list[0] = temp;
 			list[1] = NULL;
 			qsort((void *)list,256,sizeof(struct node*),comparator);
