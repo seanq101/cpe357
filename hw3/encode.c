@@ -114,7 +114,7 @@ void printNodes(struct node ** list){
 	int index = 0;
 	for (index = 0; index < 256; index++){
 		if(list[index] != NULL){
-			printf("Value:%c\tFreq:%i\tCode:%s\n", current->value, current->frequency, current->code);
+			printf("Value:%c\tFreq:%i\tCode:%s\n", list[index]->value, list[index]->frequency, list[index]->code);
 		}else{
 			break;
 		}
