@@ -179,6 +179,7 @@ void printRecursive(struct node *current){
 		printRecursive(current->right);
 		printRecursive(current->left);
 	}
+	return;
 	
 }
 
