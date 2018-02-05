@@ -59,7 +59,7 @@ void makeTable(){
 void printTable(){
 	int index;
 	for(index = 0; index < 256; index++){
-		if(codeArr[index] !=0){
+		if(codeArr[index] != NULL){
 			printf("%s\n", codeArr[index]);
 		}
 	}
@@ -168,6 +168,7 @@ void recursiveHuffCode(struct node * node, char *buffer, int depth){
 			recursiveHuffCode(node->right, buffer, depth + 1);
 		}
 	}
+
 }
 
 
