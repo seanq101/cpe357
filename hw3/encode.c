@@ -14,7 +14,7 @@ int main(int argc, char* argv[]){
 	list = create_node_list();
 	qsort((void *)list,256,sizeof(struct node*),comparator);
 	form_tree(list);
-	buffer = malloc[20]
+	buffer = (char *)malloc(sizeof(char) * 20);
 	recursiveHuffCode(list[0], buffer, 0);
 	printTable();
 	return 0;
@@ -154,14 +154,14 @@ struct node * take_two_lowest(struct node **list){
 	res->right = list[1];
 	res->frequency += list[1]->frequency;
 	res->justAdded = 1;
-	res->value = '';
+	res->value = '\0';
 
 	return res;
 }
 
 void recursiveHuffCode(struct node * node, char *buffer, int depth){
 	if(node != NULL){
-		if(node->value != ''){
+		if(node->value != '\0'){
 			codeArr[(int)(node->value)] = buffer;
 		}else{
 			buffer[depth] = '0';

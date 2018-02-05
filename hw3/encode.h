@@ -21,5 +21,6 @@ void printNodes(struct node ** list);
 void printTable();
 struct node * form_tree(struct node ** list);
 struct node * take_two_lowest(struct node **list);
+void recursiveHuffCode(struct node * node, char *buffer, int depth);
 
 #endif
