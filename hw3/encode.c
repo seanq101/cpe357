@@ -5,14 +5,13 @@
 #include "encode.h"
 
 int main(int argc, char* argv[]){
-	char *buffer;
+	char *buffer[20];
 	struct node **list;
 	makeTable();
 	
 	list = create_node_list();
 	qsort((void *)list,256,sizeof(struct node*),comparator);
 	form_tree(list);
-	buffer = (char *)malloc(sizeof(char) * 20);
 	recursiveHuffCode(list[0], buffer, 0);
 	printTable();
 	printRecursive(list[0]);
