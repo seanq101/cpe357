@@ -15,7 +15,7 @@ int main(int argc, char* argv[]){
 	buffer = (char *)malloc(sizeof(char) * 20);
 	recursiveHuffCode(list[0], buffer, 0);
 	printTable();
-	printRecursive(list);
+	printRecursive(list[0]);
 	return 0;
 }
 
