@@ -176,9 +176,10 @@ void recursiveHuffCode(struct node * node, char *buffer, int depth){
 void printRecursive(struct node *current){
 	if(current != NULL){
 		printf("Value:%c\tFreq:%i\n", current->value, current->frequency);
+		printRecursive(current->right);
+		printRecursive(current->left);
 	}
-	printRecursive(current->right);
-	printRecursive(current->left);
+	
 }
 
 
