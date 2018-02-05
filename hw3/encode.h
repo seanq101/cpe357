@@ -9,6 +9,7 @@ struct node {
 	struct node *left;
 	struct node *right;
 	int justAdded;
+	char code [20];
 };
 
 int freqArr [256];

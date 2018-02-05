@@ -12,8 +12,11 @@ int main(int argc, char* argv[]){
 	list = create_node_list();
 	qsort((void *)list,256,sizeof(struct node*),comparator);
 	form_tree(list);
+/*
 	recursiveHuffCode(list[0], buffer, 0);
+	
 	printTable();
+*/
 	printRecursive(list[0]);
 	return 0;
 }
@@ -76,6 +79,8 @@ struct node ** create_node_list(){
 			res[index]->right = NULL;
 			res[index]->left = NULL;
 			res[index]->justAdded = 0;
+			res[index]->code = "";
+			res[index]->codelen = 0;
 		}
 	}
 	return res;
@@ -147,21 +152,29 @@ struct node * take_two_lowest(struct node **list){
 	res = (struct node *)malloc(sizeof(struct node));
 	res->frequency = list[0]->frequency;
 	res->left = list[0];
+	list[0]->code[list[0]->codelen] = '0';
+	list[0]->codelen += 1;
+	list[0]->code[list[0]->codelen] = '\0';
+
 	res->right = list[1];
+	list[1]->code[list[1]->codelen] = '1';
+	list[1]->codelen += 1;
+	list[1]->code[list[1]->codelen] = '\0';
+
 	res->frequency += list[1]->frequency;
 	res->justAdded = 1;
 	res->value = '\0';
 
 	return res;
 }
-
+/*
 void recursiveHuffCode(struct node * node, char *buffer, int depth){
 	if(node != NULL){
 		if(node->value != '\0'){
 			buffer[depth] = '\0';
 			codeArr[(int)(node->value)] = buffer;
 		}else{
-			buffer[depth] = '0';
+			buffer + depth = '0';
 			recursiveHuffCode(node->left, buffer, depth + 1);
 			buffer[depth] = '1';
 			recursiveHuffCode(node->right, buffer, depth + 1);
@@ -169,10 +182,11 @@ void recursiveHuffCode(struct node * node, char *buffer, int depth){
 	}
 
 }
+*/
 
 void printRecursive(struct node *current){
 	if(current != NULL){
-		printf("Value:%c\tFreq:%i\n", current->value, current->frequency);
+		printf("Value:%c\tFreq:%i\tCode:%s\n", current->value, current->frequency, current->code);
 		printRecursive(current->right);
 		printRecursive(current->left);
 	}
