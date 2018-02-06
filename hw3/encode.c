@@ -177,7 +177,7 @@ void recursiveHuffCode(struct node * node, char *buffer, int depth){
 			buffer[depth] = '\0';
 
 			
-			codeArr[(int)(node->value)] = newbuf
+			codeArr[(int)(node->value)] = newbuf;
 			/*
 			codeArr[(int)(node->value)] = newbuf;
 			dont undertand why above line wont compile, even tho it should return a pointer and copy directly
