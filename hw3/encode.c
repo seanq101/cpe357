@@ -67,7 +67,7 @@ void printCodesList(){
 	int index;
 	for(index = 0; index < lenCodesList; index++){
 		if(strcmp(codesList[index].code, "\0") != 0){
-			printf("%s\n", codesList[index].code);
+			printf("%s\n", codesList[index].letter);
 		}
 	}
 }
