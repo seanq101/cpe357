@@ -63,7 +63,7 @@ void printTable(){
 	int index;
 	for(index = 0; index < 256; index++){
 		if(codeArr[index] != NULL){
-			printf("Char:%c, %s\n", (char)index, codeArr[index]);
+			printf("%s, Char:%c\n", codeArr[index],(char)index);
 		}
 	}
 }
