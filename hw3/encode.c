@@ -69,6 +69,7 @@ void printTable(){
 
 struct node ** create_node_list(){
 	int index;
+	char * c;
 	struct node **res = (struct node **)malloc(sizeof(struct node) * 256);
 	for (index = 0; index < 256; index++){
 		if(freqArr[index] !=0){
@@ -78,7 +79,8 @@ struct node ** create_node_list(){
 			res[index]->right = NULL;
 			res[index]->left = NULL;
 			res[index]->justAdded = 0;
-			res[index]->code = (char *)malloc(sizeof(char) * 20);
+			c = (char *)malloc(sizeof(char) * 20);
+			res[index]->code[0] = '\0';
 			res[index]->codelen = 0;
 		}
 	}
