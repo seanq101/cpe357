@@ -170,23 +170,27 @@ struct node * take_two_lowest(struct node **list){
 
 void recursiveHuffCode(struct node * node, char *buffer, int depth){
 	char newbuf[20];
+	strcpy(newbuf, buffer);
 	if(node != NULL){
 		printf("Que?%s\t", buffer);
 		if(node->value != '\0'){
 			buffer[depth] = '\0';
 
-			strcpy(codeArr[(int)(node->value)], buffer);
+			
+			codeArr[(int)(node->value)] = newbuf
 			/*
-			codeArr[(int)(node->value)] = newbuf;*/
+			codeArr[(int)(node->value)] = newbuf;
+			dont undertand why above line wont compile, even tho it should return a pointer and copy directly
+			*/
 			printf("Si!%s\t", codeArr[(int)(node->value)]);
 			if(codeArr[98] != NULL)
 				printf("m:%s\n", codeArr[98]);
 		}
-		buffer[depth] = '0';
-		buffer[depth + 1] = '\0';
-		recursiveHuffCode(node->left, buffer, depth + 1);
-		buffer[depth] = '1';
-		recursiveHuffCode(node->right, buffer, depth + 1);
+		newbuf[depth] = '0';
+		newbuf[depth + 1] = '\0';
+		recursiveHuffCode(node->left, newbuf, depth + 1);
+		newbuf[depth] = '1';
+		recursiveHuffCode(node->right, newbuf, depth + 1);
 		
 	}
 
