@@ -61,7 +61,7 @@ void makeTable(){
 void printTable(){
 	int index;
 	for(index = 0; index < 256; index++){
-		if(freq[index] != 0){
+		if(freqArr[index] != 0){
 			printf("%i\n", codeArr[index]);
 		}
 	}
