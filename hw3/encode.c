@@ -166,7 +166,7 @@ struct node * take_two_lowest(struct node **list){
 }
 
 void codeWrapper(struct node * node){
-	char *p = "aaaaaaaaaaaaaaaaaaaa";
+	char p[20];
 	recursiveHuffCode(node, p, 0);
 }
 
@@ -176,7 +176,7 @@ void recursiveHuffCode(struct node * node, char *buffer, int depth){
 		if(node->value != '\0'){
 			buffer[depth] = '\0';
 		
-			codesList[lenCodesList - 1].code = buffer;
+			strcpy(codesList[lenCodesList - 1].code, buffer);
 			codesList[lenCodesList - 1].letter = (int)(node->value);
 			lenCodesList++;
 			codesList = (struct code *)realloc(codesList,sizeof(struct code) * lenCodesList);
