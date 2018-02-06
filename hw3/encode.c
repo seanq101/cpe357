@@ -18,7 +18,7 @@ int main(int argc, char* argv[]){
 	qsort((void *)list,256,sizeof(struct node*),comparator);
 	form_tree(list);
 
-	recursiveHuffCode(list[0],buff,0);
+	recursiveHuffCode(list[0],0);
 	
 	printCodesList();
 
@@ -83,8 +83,8 @@ struct node ** create_node_list(){
 			res[index]->right = NULL;
 			res[index]->left = NULL;
 			res[index]->justAdded = 0;
-			res[index]->code = (char *)malloc(sizeof(char) * 20);
-			res[index]->code[0] = '\0';
+			res[index]->code = '\0';
+			res[index]->parent = NULL;
 		}
 	}
 	return res;
@@ -156,7 +156,9 @@ struct node * take_two_lowest(struct node **list){
 	res = (struct node *)malloc(sizeof(struct node));
 	res->frequency = list[0]->frequency;
 	res->left = list[0];
+	list[0]->code = '0';
 	res->right = list[1];
+	list[1]->code = '1';
 
 	res->frequency += list[1]->frequency;
 	res->justAdded = 1;
@@ -167,10 +169,20 @@ struct node * take_two_lowest(struct node **list){
 
 
 
-void recursiveHuffCode(struct node * node, char *buffer, int depth){
-	char * newbuf;
+void recursiveHuffCode(struct node * node, int depth){
+	char buffer[20];
+	int index;
+	struct node *par;
 	if(node != NULL){
 		if(node->value != '\0'){
+			index = 0;
+			par = node->parent;
+			while(par != NULL){
+				buffer[index] = node->code;
+				index++;
+				par = par->parent;
+			}
+			buffer [index] = '\0';
 			codeArr[(int)node->value] = buffer;
 			return;
 			/*
@@ -188,6 +200,9 @@ void recursiveHuffCode(struct node * node, char *buffer, int depth){
 			printf("Hi:%s\n", codesList[lenCodesList].code);
 			*/
 		}else{
+			recursiveHuffCode(node->left, depth + 1);
+			recursiveHuffCode(node->right, depth + 1);
+			/*
 			buffer[depth] = '0';
 			buffer[depth + 1] = '\0';
 			recursiveHuffCode(node->left, buffer, depth + 1);
@@ -195,6 +210,7 @@ void recursiveHuffCode(struct node * node, char *buffer, int depth){
 			buffer[depth] = '1';
 			buffer[depth + 1] = '\0';
 			recursiveHuffCode(node->right, buffer, depth + 1);
+			*/
 		}
 	}
 }
