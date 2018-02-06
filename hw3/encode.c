@@ -69,7 +69,6 @@ void printTable(){
 
 struct node ** create_node_list(){
 	int index;
-	char * c;
 	struct node **res = (struct node **)malloc(sizeof(struct node) * 256);
 	for (index = 0; index < 256; index++){
 		if(freqArr[index] !=0){
@@ -79,7 +78,6 @@ struct node ** create_node_list(){
 			res[index]->right = NULL;
 			res[index]->left = NULL;
 			res[index]->justAdded = 0;
-			c = (char *)malloc(sizeof(char) * 20);
 			res[index]->code[0] = '\0';
 			res[index]->codelen = 0;
 		}
@@ -154,12 +152,12 @@ struct node * take_two_lowest(struct node **list){
 	res->frequency = list[0]->frequency;
 	res->left = list[0];
 	list[0]->code[list[0]->codelen] = '0';
-	list[0]->codelen += 1;
+	list[0]->codelen = list[0]->codelen + 1;
 	list[0]->code[list[0]->codelen] = '\0';
 
 	res->right = list[1];
 	list[1]->code[list[1]->codelen] = '1';
-	list[1]->codelen += 1;
+	list[1]->codelen = list[1]->codelen + 1;
 	list[1]->code[list[1]->codelen] = '\0';
 
 	res->frequency += list[1]->frequency;
