@@ -17,6 +17,7 @@ struct code{
 	char letter;
 };
 
+struct code *codesList;
 
 int freqArr [SIZE];
 int lenCodesList;

@@ -19,7 +19,7 @@ int main(int argc, char* argv[]){
 
 	recursiveHuffCode(list[0],buff, 0);
 	
-	printTable();
+	printCodesList();
 
 	return 0;
 }
