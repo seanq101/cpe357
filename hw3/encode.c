@@ -155,10 +155,14 @@ struct node * take_two_lowest(struct node **list){
 	struct node  *res;
 	res = (struct node *)malloc(sizeof(struct node));
 	res->frequency = list[0]->frequency;
+	
 	res->left = list[0];
 	list[0]->code = '0';
+	list[0]->parent = res;
+
 	res->right = list[1];
 	list[1]->code = '1';
+	list[1]->parent = res;
 
 	res->frequency += list[1]->frequency;
 	res->justAdded = 1;
