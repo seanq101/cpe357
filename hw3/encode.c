@@ -10,7 +10,6 @@ int main(int argc, char* argv[]){
 	
 	lenCodesList = 1;
 	codesList = (struct code *)malloc(sizeof(struct code));
-	codesList[lenCodesList - 1] = NULL;
 
 	makeTable();
 	
@@ -66,7 +65,7 @@ void makeTable(){
 void printCodesList(){
 	int index;
 	for(index = 0; index < lenCodesList; index++){
-		if(codesList[index] != NULL){
+		if(codesList[index]){
 			printf("%s\n", codesList[lenCodesList - 1].code);
 		}
 	}
@@ -173,8 +172,7 @@ void recursiveHuffCode(struct node * node, char *buffer, int depth){
 			codesList[lenCodesList - 1].code = buffer;
 			codesList[lenCodesList - 1].letter = (int)(node->value);
 			lenCodesList++;
-			codesList = (struct code *)realloc(sizeof(struct code) * lenCodesList);
-			codesList[lenCodesList - 1] = NULL;
+			codesList = (struct code *)realloc(codesList,sizeof(struct code) * lenCodesList);
 			
 			printf("Hi:%s\n", codesList[lenCodesList - 1].code);
 		}else{
