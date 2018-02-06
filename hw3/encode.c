@@ -66,8 +66,8 @@ void makeTable(){
 void printCodesList(){
 	int index;
 	for(index = 0; index < lenCodesList; index++){
-		if(strcmp(codesList[index].code, "\0") != 0){
-			printf("%c\n", codesList[index].letter);
+		if(codeArr[index] != NULL){
+			printf("%s\n", codeArr[index]);
 		}
 	}
 }
@@ -171,16 +171,22 @@ void recursiveHuffCode(struct node * node, char *buffer, int depth){
 	char * newbuf;
 	if(node != NULL){
 		if(node->value != '\0'){
+			codeArr[(int)node->value] = buffer;
+			return;
+			/*
 			buffer[depth] = '\0';
 			printf("Why hello\n");
 			strcpy(newbuf, buffer);
+
 			codesList[lenCodesList].code = newbuf;
+
 			printf("Que?\n");
-			codesList[lenCodesList].letter = (int)(node->value);
+			codesList[lenCodesList].letter = (node->value);
 			lenCodesList++;
 			codesList = (struct code *)realloc(codesList,sizeof(struct code) * (lenCodesList + 1));
 			codesList[lenCodesList].code = "\0";
 			printf("Hi:%s\n", codesList[lenCodesList].code);
+			*/
 		}else{
 			buffer[depth] = '0';
 			buffer[depth + 1] = '\0';
