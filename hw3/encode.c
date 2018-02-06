@@ -63,7 +63,7 @@ void printTable(){
 	int index;
 	for(index = 0; index < 256; index++){
 		if(codeArr[index] != NULL){
-			printf("%s\n", codeArr[index]);
+			printf("%i\n", codeArr[index]);
 		}
 	}
 }
@@ -168,29 +168,22 @@ struct node * take_two_lowest(struct node **list){
 	return res;
 }
 
-void recursiveHuffCode(struct node * node, char *buffer, int depth){
-	char newbuf[20];
-	strcpy(newbuf, buffer);
+void recursiveHuffCode(struct node * node, int code_table){
+	
 	if(node != NULL){
-		printf("Que?%s\t", buffer);
 		if(node->value != '\0'){
-			buffer[depth] = '\0';
 
 			
-			codeArr[(int)(node->value)] = newbuf;
+			codeArr[(int)(node->value)] = code_table;
 			/*
 			codeArr[(int)(node->value)] = newbuf;
 			dont undertand why above line wont compile, even tho it should return a pointer and copy directly
 			*/
-			printf("Si!%s\t", codeArr[(int)(node->value)]);
-			if(codeArr[98] != NULL)
-				printf("m:%s\n", codeArr[98]);
+			
 		}
-		newbuf[depth] = '0';
-		newbuf[depth + 1] = '\0';
-		recursiveHuffCode(node->left, newbuf, depth + 1);
-		newbuf[depth] = '1';
-		recursiveHuffCode(node->right, newbuf, depth + 1);
+		
+		recursiveHuffCode(node->left, code_table << 1 + 0);
+		recursiveHuffCode(node->right, code_table << 1 + 1);
 		
 	}
 
