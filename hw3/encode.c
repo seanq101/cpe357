@@ -172,7 +172,7 @@ void recursiveHuffCode(struct node * node, char *buffer, int depth){
 	if(node != NULL){
 		if(node->value != '\0'){
 			buffer[depth] = '\0';
-		
+			printf("Why hello\n");
 			strcpy(codesList[lenCodesList - 1].code, buffer);
 			codesList[lenCodesList - 1].letter = (int)(node->value);
 			lenCodesList++;
