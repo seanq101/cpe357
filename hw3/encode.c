@@ -81,7 +81,6 @@ struct node ** create_node_list(){
 			res[index]->justAdded = 0;
 			res[index]->code = (char *)malloc(sizeof(char) * 20);
 			res[index]->code[0] = '\0';
-			res[index]->codelen = 0;
 		}
 	}
 	return res;
