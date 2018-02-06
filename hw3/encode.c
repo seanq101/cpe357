@@ -175,11 +175,12 @@ void recursiveHuffCode(struct node * node, char *buffer, int depth){
 		if(node->value != '\0'){
 			buffer[depth] = '\0';
 
-			strcpy(newbuf, buffer);
-			codeArr[(int)(node->value)] = newbuf;
+			strcpy(codeArr[(int)(node->value)], buffer);
+			/*
+			codeArr[(int)(node->value)] = newbuf;*/
 			printf("Si!%s\t", codeArr[(int)(node->value)]);
-			if(codeArr[109] != NULL)
-				printf("m:%s\n", codeArr[109]);
+			if(codeArr[98] != NULL)
+				printf("m:%s\n", codeArr[98]);
 		}
 		buffer[depth] = '0';
 		buffer[depth + 1] = '\0';
