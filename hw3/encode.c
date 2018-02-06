@@ -169,7 +169,7 @@ struct node * take_two_lowest(struct node **list){
 }
 
 void recursiveHuffCode(struct node * node, char *buffer, int depth){
-	char * newbuf;
+	char  newbuf[20];
 	if(node != NULL){
 		if(node->value != '\0'){
 			buffer[depth] = '\0';
