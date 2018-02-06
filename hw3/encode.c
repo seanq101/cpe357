@@ -5,6 +5,7 @@
 #include "encode.h"
 
 int main(int argc, char* argv[]){
+	char buffer [20];
 	struct node **list;
 	makeTable();
 	
