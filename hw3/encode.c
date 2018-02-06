@@ -170,13 +170,15 @@ struct node * take_two_lowest(struct node **list){
 void recursiveHuffCode(struct node * node, char *buffer, int depth){
 	char rightbuf[20];
 	char leftbuf[20];
+	char * finalbuf;
 	strcpy(rightbuf, buffer);
 	strcpy(leftbuf, buffer);
 	if(node != NULL){
 		if(node->value != '\0'){
 			rightbuf[depth] = '\0';
-			
-			codeArr[(int)(node->value)] = rightbuf;
+			finalbuf = (char *)malloc(sizeof(rightbuf));
+			finalbuf = rightbuf;
+			codeArr[(int)(node->value)] = finalbuf;
 			printf("Hi:%s\n", codeArr[(int)(node->value)]);
 			printTable();
 		}else{
