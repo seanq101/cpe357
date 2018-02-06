@@ -79,6 +79,7 @@ struct node ** create_node_list(){
 			res[index]->right = NULL;
 			res[index]->left = NULL;
 			res[index]->justAdded = 0;
+			res[index]->code = (char *)malloc(sizeof(char) * 20);
 			res[index]->code[0] = '\0';
 			res[index]->codelen = 0;
 		}
@@ -152,14 +153,7 @@ struct node * take_two_lowest(struct node **list){
 	res = (struct node *)malloc(sizeof(struct node));
 	res->frequency = list[0]->frequency;
 	res->left = list[0];
-	res->left->code[list[0]->codelen] = '0';
-	res->left->codelen = list[0]->codelen + 1;
-	res->left->code[list[0]->codelen] = '\0';
-
 	res->right = list[1];
-	res->right->code[list[1]->codelen] = '1';
-	res->right->codelen = list[1]->codelen + 1;
-	res->right->code[list[1]->codelen] = '\0';
 
 	res->frequency += list[1]->frequency;
 	res->justAdded = 1;
@@ -173,8 +167,8 @@ void recursiveHuffCode(struct node * node, char *buffer, int depth){
 		if(node->value != '\0'){
 			buffer[depth] = '\0';
 		
-			codeArr[(int)(node->value)] = (char *)malloc(sizeof(buffer));
-			codeArr[(int)(node->value)] = buffer;
+			node->code = buffer;
+			codeArr[(int)(node->value)] = node->code;
 			printf("Hi:%s\n", codeArr[(int)(node->value)]);
 		}else{
 			buffer[depth] = '0';
@@ -190,15 +184,7 @@ void recursiveHuffCode(struct node * node, char *buffer, int depth){
 
 
 
-void printRecursive(struct node *current){
-	if(current != NULL){
-		printf("Value:%c\tFreq:%i\tCode:%s\n", current->value, current->frequency, current->code);
-		printRecursive(current->right);
-		printRecursive(current->left);
-	}
-	return;
-	
-}
+
 
 
 
