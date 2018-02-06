@@ -119,7 +119,7 @@ void printNodes(struct node ** list){
 	int index = 0;
 	for (index = 0; index < 256; index++){
 		if(list[index] != NULL){
-			printf("Value:%c\tFreq:%i\tCode:%s\n", list[index]->value, list[index]->frequency, list[index]->code);
+			printf("Value:%c\tFreq:%i\t\n", list[index]->value, list[index]->frequency);
 		}else{
 			break;
 		}
@@ -166,7 +166,7 @@ struct node * take_two_lowest(struct node **list){
 }
 
 void codeWrapper(struct node * node){
-	char *p = "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0";
+	char *p = "aaaaaaaaaaaaaaaaaaaa";
 	recursiveHuffCode(node, p, 0);
 }
 
