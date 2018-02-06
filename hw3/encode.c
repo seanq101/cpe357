@@ -179,6 +179,7 @@ void recursiveHuffCode(struct node * node, char *buffer, int depth){
 			codeArr[(int)(node->value)] = newbuf;
 		}else{
 			buffer[depth] = '0';
+			buffer[depth + 1] = '\0';
 			recursiveHuffCode(node->left, buffer, depth + 1);
 			buffer[depth] = '1';
 			recursiveHuffCode(node->right, buffer, depth + 1);
