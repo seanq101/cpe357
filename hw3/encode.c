@@ -17,7 +17,6 @@ int main(int argc, char* argv[]){
 	
 	printTable();
 
-	printRecursive(list[0]);
 	return 0;
 }
 
