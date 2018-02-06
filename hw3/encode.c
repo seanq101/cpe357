@@ -155,7 +155,7 @@ struct node * take_two_lowest(struct node **list){
 	struct node  *res;
 	res = (struct node *)malloc(sizeof(struct node));
 	res->frequency = list[0]->frequency;
-	
+
 	res->left = list[0];
 	list[0]->code = '0';
 	list[0]->parent = res;
@@ -188,6 +188,7 @@ void recursiveHuffCode(struct node * node, int depth){
 			}
 			buffer [index] = '\0';
 			codeArr[(int)node->value] = buffer;
+			printf("hi:%s\n", codeArr[(int)node->value]);
 			return;
 			/*
 			buffer[depth] = '\0';
