@@ -18,7 +18,7 @@ int main(int argc, char* argv[]){
 	qsort((void *)list,256,sizeof(struct node*),comparator);
 	form_tree(list);
 
-	recursiveHuffCode(list[0],buff, 0);
+	codeWrapper(list[0]);
 	
 	printCodesList();
 
@@ -164,6 +164,12 @@ struct node * take_two_lowest(struct node **list){
 
 	return res;
 }
+
+void codeWrapper(struct node * node){
+	char *p = "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0";
+	recursiveHuffCode(node, p, 0);
+}
+
 void recursiveHuffCode(struct node * node, char *buffer, int depth){
 
 	if(node != NULL){
