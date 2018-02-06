@@ -174,6 +174,7 @@ void recursiveHuffCode(struct node * node, char *buffer, int depth){
 			buffer[depth] = '\0';
 			printf("Why hello\n");
 			strcpy(codesList[lenCodesList - 1].code, buffer);
+			printf("Que?\n");
 			codesList[lenCodesList - 1].letter = (int)(node->value);
 			lenCodesList++;
 			codesList = (struct code *)realloc(codesList,sizeof(struct code) * lenCodesList);
