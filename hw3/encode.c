@@ -65,7 +65,7 @@ void makeTable(){
 
 void printCodesList(){
 	int index;
-	for(index = 0; index < lenCodesList; index++){
+	for(index = 0; index < SIZE; index++){
 		if(codeArr[index] != NULL){
 			printf("%s\n", codeArr[index]);
 		}
