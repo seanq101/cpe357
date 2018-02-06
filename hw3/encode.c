@@ -5,7 +5,6 @@
 #include "encode.h"
 
 int main(int argc, char* argv[]){
-	char buffer [20];
 	struct node **list;
 	makeTable();
 	
@@ -13,7 +12,7 @@ int main(int argc, char* argv[]){
 	qsort((void *)list,256,sizeof(struct node*),comparator);
 	form_tree(list);
 
-	recursiveHuffCode(list[0], buffer, 0);
+	recursiveHuffCode(list[0], 0);
 	
 	printTable();
 
@@ -62,7 +61,7 @@ void makeTable(){
 void printTable(){
 	int index;
 	for(index = 0; index < 256; index++){
-		if(codeArr[index] != NULL){
+		if(freq[index] != 0){
 			printf("%i\n", codeArr[index]);
 		}
 	}
@@ -182,8 +181,8 @@ void recursiveHuffCode(struct node * node, int code_table){
 			
 		}
 		
-		recursiveHuffCode(node->left, code_table << 1 + 0);
-		recursiveHuffCode(node->right, code_table << 1 + 1);
+		recursiveHuffCode(node->left, ((code_table << 1) + 0));
+		recursiveHuffCode(node->right, ((code_table << 1) + 1));
 		
 	}
 
