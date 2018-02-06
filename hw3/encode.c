@@ -8,7 +8,7 @@ int main(int argc, char* argv[]){
 	char buff[20];
 	struct node **list;
 	
-	lenCodesList = 1;
+	lenCodesList = 0;
 	codesList = (struct code *)malloc(sizeof(struct code));
 	codesList[0].code = "\0";
 
@@ -173,13 +173,13 @@ void recursiveHuffCode(struct node * node, char *buffer, int depth){
 		if(node->value != '\0'){
 			buffer[depth] = '\0';
 			printf("Why hello\n");
-			codesList[lenCodesList - 1].code = strcpy(codesList[lenCodesList - 1].code, buffer);
+			strcpy(codesList[lenCodesList].code, buffer);
 			printf("Que?\n");
-			codesList[lenCodesList - 1].letter = (int)(node->value);
+			codesList[lenCodesList].letter = (int)(node->value);
 			lenCodesList++;
-			codesList = (struct code *)realloc(codesList,sizeof(struct code) * lenCodesList);
-			codesList[lenCodesList - 1].code = "\0";
-			printf("Hi:%s\n", codesList[lenCodesList - 1].code);
+			codesList = (struct code *)realloc(codesList,sizeof(struct code) * (lenCodesList + 1));
+			codesList[lenCodesList].code = "\0";
+			printf("Hi:%s\n", codesList[lenCodesList].code);
 		}else{
 			buffer[depth] = '0';
 			buffer[depth + 1] = '\0';
