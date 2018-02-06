@@ -168,23 +168,21 @@ struct node * take_two_lowest(struct node **list){
 	return res;
 }
 void recursiveHuffCode(struct node * node, char *buffer, int depth){
-	char leftbuf[20],rightbuf[20];
-	strcpy(leftbuf, buffer);
-	strcpy(rightbuf, buffer);
+	char newbuf[20];
+	strcpy(newbuf, buffer);
 	if(node != NULL){
 		if(node->value != '\0'){
-			buffer[depth] = '\0';
+			newbuf[depth] = '\0';
 			
-			codeArr[(int)(node->value)] = buffer;
+			codeArr[(int)(node->value)] = newbuf;
 			printf("Hi:%s\n", codeArr[(int)(node->value)]);
 			printf("a:%s\n", codeArr[98]);
 		}else{
-		leftbuf[depth] = '0';
-		leftbuf[depth + 1] = '\0';
-		recursiveHuffCode(node->left, leftbuf, depth + 1);
-		rightbuf[depth] = '1';
-		rightbuf[depth + 1] = '\0';
-		recursiveHuffCode(node->right, rightbuf, depth + 1);
+		newbuf[depth] = '0';
+		newbuf[depth + 1] = '\0';
+		recursiveHuffCode(node->left, newbuf, depth + 1);
+		newbuf[depth] = '1';
+		recursiveHuffCode(node->right, newbuf, depth + 1);
 		}
 	}
 }
