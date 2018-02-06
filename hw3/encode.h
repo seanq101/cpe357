@@ -12,14 +12,21 @@ struct node {
 	char *code;
 };
 
-int freqArr [256];
-char* codeArr[256];
+struct code{
+	char *code;
+	char letter;
+};
+
+
+int freqArr [SIZE];
+int lenCodesList;
+char* codeArr[SIZE];
 
 void makeTable();
 struct node ** create_node_list();
 int comparator(const void *p, const void *q);
 void printNodes(struct node ** list);
-void printTable();
+void printCodesList();
 struct node * form_tree(struct node ** list);
 struct node * take_two_lowest(struct node **list);
 void recursiveHuffCode(struct node * node, char *buffer, int depth);
