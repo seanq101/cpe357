@@ -22,7 +22,6 @@ int main(int argc, char* argv[]){
 	
 	printCodesList();
 
-	freeEverything(list[0]);
 
 	printf("%i\n", numOfMallocs);
 	return 0;
@@ -210,7 +209,7 @@ void recursiveHuffCode(struct node * node, int curCode[20],int depth){
 		}
 	}
 }
-
+/*
 void freeEverything(struct node* list){
 	if(list != NULL){
 		if(list->value != '\0'){
@@ -221,5 +220,5 @@ void freeEverything(struct node* list){
 		free(list);
 	}
 }
-
+*/
 
