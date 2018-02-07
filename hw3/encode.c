@@ -7,14 +7,13 @@
 int main(int argc, char* argv[]){
 	int buff[20];
 	struct node **list;
-	struct freqNode* freqArr;
-	freqArr = (struct freqNode*)malloc(sizeof(freqArr) * 256);
+
 	initCodeArr();
 
 
-	makeTable(&freqArr);
+	makeTable();
 	
-	list = create_node_list(&freqArr);
+	list = create_node_list();
 	qsort((void *)list,256,sizeof(struct node*),comparator);
 	form_tree(list);
 
@@ -22,7 +21,6 @@ int main(int argc, char* argv[]){
 	
 	printCodesList();
 	freeEverything(list[0]);
-	free(freqArr);
 	return 0;
 }
 
@@ -41,7 +39,6 @@ int main(int argc, char* argv[]){
 	}
 	unix_makeTable(infd, outfd);
 }
-
 void unix_makeTable(int fdin, int fdout){
 	char buf[SIZE];
 	int n;
@@ -57,10 +54,10 @@ void unix_makeTable(int fdin, int fdout){
 	}
 }
 */
-void makeTable(struct freqNode* freqArr){
+void makeTable(){
 	char c;
 	while((c = getchar()) != EOF){
-		freqArr[(int)c].frequency = freqArr[(int)c].frequency + 1;
+		freqArr[(int)c] = freqArr[(int)c] + 1;
 	}
 }
 
@@ -85,14 +82,14 @@ void printCodesList(){
 	}
 }
 
-struct node ** create_node_list(struct freqNode* freqArr){
+struct node ** create_node_list(){
 	int index;
 	struct node **res = (struct node **)malloc(sizeof(struct node) * 256);
 	for (index = 0; index < 256; index++){
-		if(freqArr[index].frequency !=0){
+		if(freqArr[index] !=0){
 			res[index] = (struct node *)malloc(sizeof(struct node));
 			res[index]->value = (char)index;
-			res[index]->frequency = freqArr[index].frequency;
+			res[index]->frequency = freqArr[index];
 			res[index]->right = NULL;
 			res[index]->left = NULL;
 			res[index]->justAdded = 0;
@@ -202,7 +199,6 @@ void recursiveHuffCode(struct node * node, int curCode[20],int depth){
 }
 
 void freeEverything(struct node* list){
-	
 	if(list != NULL){
 		if(list->value != '\0'){
 			free(list);
@@ -212,18 +208,5 @@ void freeEverything(struct node* list){
 		free(list);
 	}
 }
-/*
-void freeFreqArr(struct freqNode* freqArr){
-	int index;
-	for(index = 0; index < 256; index++){
-		free(freqArr[index]);
-	}
-	
-}
-*/
-
-
-
-
 
 

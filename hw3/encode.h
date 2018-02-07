@@ -11,8 +11,7 @@ struct node {
 	int justAdded;
 };
 
-
-int freqArr[256];
+int freqArr [SIZE];
 int codeArr[SIZE][20];
 
 void makeTable();
