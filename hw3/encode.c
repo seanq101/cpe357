@@ -22,7 +22,7 @@ int main(int argc, char* argv[]){
 	
 	printCodesList();
 	freeEverything(list[0]);
-	frequency(&freqArr);
+	free(freqArr);
 	return 0;
 }
 
@@ -212,15 +212,15 @@ void freeEverything(struct node* list){
 		free(list);
 	}
 }
-
+/*
 void freeFreqArr(struct freqNode* freqArr){
 	int index;
 	for(index = 0; index < 256; index++){
 		free(freqArr[index]);
 	}
-	free(freqArr);
+	
 }
-
+*/
 
 
 
