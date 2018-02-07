@@ -21,7 +21,7 @@ int main(int argc, char* argv[]){
 	recursiveHuffCode(list[0], buff, 0);
 	
 	printCodesList();
-	freeEverything(list[0]);
+	freeEverything(list[0], &freqArr);
 	return 0;
 }
 
