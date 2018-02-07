@@ -93,7 +93,6 @@ struct node ** create_node_list(){
 			res[index]->right = NULL;
 			res[index]->left = NULL;
 			res[index]->justAdded = 0;
-			res[index]->code = -1;
 		}
 	}
 	return res;
