@@ -20,7 +20,7 @@ int main(int argc, char* argv[]){
 	recursiveHuffCode(list[0], buff, 0);
 	
 	printCodesList();
-
+	freeEverything(list[0]);
 	return 0;
 }
 
@@ -74,7 +74,7 @@ void printCodesList(){
 	int i;
 	for(index = 0; index < SIZE; index++){
 		if(codeArr[index][0] != -1){
-			printf("x%x: ", (int)index);
+			printf("0x%x: ", (int)index);
 			for(i = 0; codeArr[index][i] != -1; i++){
 				printf("%i", codeArr[index][i]);
 			}
@@ -189,35 +189,24 @@ void recursiveHuffCode(struct node * node, int curCode[20],int depth){
 			}
 				codeArr[(int)node->value][index] = -1;
 			return;
-			/*
-			buffer[depth] = '\0';
-			printf("Why hello\n");
-			strcpy(newbuf, buffer);
-
-			codesList[lenCodesList].code = newbuf;
-
-			printf("Que?\n");
-			codesList[lenCodesList].letter = (node->value);
-			lenCodesList++;
-			codesList = (struct code *)realloc(codesList,sizeof(struct code) * (lenCodesList + 1));
-			codesList[lenCodesList].code = "\0";
-			printf("Hi:%s\n", codesList[lenCodesList].code);
-			*/
 		}else{
 			curCode[depth] = 0;
 			recursiveHuffCode(node->left, curCode, depth + 1);
 			curCode[depth] = 1;
 			recursiveHuffCode(node->right, curCode, depth + 1);
-			/*
-			buffer[depth] = '0';
-			buffer[depth + 1] = '\0';
-			recursiveHuffCode(node->left, buffer, depth + 1);
 			
-			buffer[depth] = '1';
-			buffer[depth + 1] = '\0';
-			recursiveHuffCode(node->right, buffer, depth + 1);
-			*/
 		}
+	}
+}
+
+void freeEverything(struct node* list){
+	if(node != NULL){
+		if(node->value != '\0'){
+			free(node);
+		}
+		freeEverything(node->left);
+		freeEverything(node->right);
+		free(node);
 	}
 }
 
