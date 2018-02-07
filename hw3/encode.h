@@ -9,8 +9,6 @@ struct node {
 	struct node *left;
 	struct node *right;
 	int justAdded;
-	int code;
-	struct node * parent;
 };
 
 int freqArr [SIZE];
