@@ -7,6 +7,7 @@
 int main(int argc, char* argv[]){
 	int buff[20];
 	struct node **list;
+	numOfMallocs = 0;
 
 	initCodeArr();
 
@@ -20,6 +21,8 @@ int main(int argc, char* argv[]){
 	recursiveHuffCode(list[0], buff, 0);
 	
 	printCodesList();
+
+	printf("%i\n", numOfMallocs);
 	return 0;
 }
 
@@ -86,9 +89,11 @@ void printCodesList(){
 struct node ** create_node_list(){
 	int index;
 	struct node **res = (struct node **)malloc(sizeof(struct node) * 256);
+	numOfMallocs += 1;
 	for (index = 0; index < 256; index++){
 		if(freqArr[index] !=0){
 			res[index] = (struct node *)malloc(sizeof(struct node));
+			numOfMallocs += 1;
 			res[index]->value = (char)index;
 			res[index]->frequency = freqArr[index];
 			res[index]->right = NULL;
@@ -140,6 +145,7 @@ void printNodes(struct node ** list){
 struct node * form_tree(struct node ** list){
 	struct node * temp;
 	temp = (struct node *)malloc(sizeof(struct node));
+	numOfMallocs += 1;
 	if(list[1] == NULL){
 		return list[0];
 	}
@@ -163,6 +169,7 @@ list --> Node
 struct node * take_two_lowest(struct node **list){
 	struct node  *res;
 	res = (struct node *)malloc(sizeof(struct node));
+	numOfMallocs += 1;
 	res->frequency = list[0]->frequency;
 
 	res->left = list[0];
