@@ -74,6 +74,7 @@ void printCodesList(){
 	int i;
 	for(index = 0; index < SIZE; index++){
 		if(codeArr[index][0] != -1){
+			printf("x%x: ", (int)index);
 			for(i = 0; codeArr[index][i] != -1; i++){
 				printf("%i", codeArr[index][i]);
 			}
