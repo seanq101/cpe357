@@ -11,10 +11,8 @@ struct node {
 	int justAdded;
 };
 
-struct freqNode{
-	int frequency;
-};
 
+int freqArr[256];
 int codeArr[SIZE][20];
 
 void makeTable();
@@ -27,5 +25,5 @@ struct node * take_two_lowest(struct node **list);
 void recursiveHuffCode(struct node * node, int curCode[20],int depth);
 void initCodeArr();
 void freeEverything(struct node* list);
-void freeFreqArr(struct freqNode* freqArr);
+
 #endif
