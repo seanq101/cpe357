@@ -22,6 +22,8 @@ int main(int argc, char* argv[]){
 	
 	printCodesList();
 
+	freeEverything(list[0]);
+
 	printf("%i\n", numOfMallocs);
 	return 0;
 }
@@ -144,8 +146,11 @@ void printNodes(struct node ** list){
 /*Forms a Huffman tree with a given list of pointers to nodes sorted in ascending order*/
 struct node * form_tree(struct node ** list){
 	struct node * temp;
-	temp = (struct node *)malloc(sizeof(struct node));
+
+	/*temp = (struct node *)malloc(sizeof(struct node));
+	
 	numOfMallocs += 1;
+	*/
 	if(list[1] == NULL){
 		return list[0];
 	}
@@ -205,7 +210,7 @@ void recursiveHuffCode(struct node * node, int curCode[20],int depth){
 		}
 	}
 }
-/*
+
 void freeEverything(struct node* list){
 	if(list != NULL){
 		if(list->value != '\0'){
@@ -217,4 +222,4 @@ void freeEverything(struct node* list){
 	}
 }
 
-*/
+
