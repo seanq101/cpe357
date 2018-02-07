@@ -12,9 +12,9 @@ int main(int argc, char* argv[]){
 	initCodeArr();
 
 
-	makeTable();
+	makeTable(&freqArr);
 	
-	list = create_node_list();
+	list = create_node_list(&freqArr);
 	qsort((void *)list,256,sizeof(struct node*),comparator);
 	form_tree(list);
 
@@ -56,7 +56,7 @@ void unix_makeTable(int fdin, int fdout){
 	}
 }
 */
-void makeTable(){
+void makeTable(struct freqNode* freqArr){
 	char c;
 	while((c = getchar()) != EOF){
 		freqArr[(int)c].frequency = freqArr[(int)c].frequency + 1;
@@ -84,7 +84,7 @@ void printCodesList(){
 	}
 }
 
-struct node ** create_node_list(){
+struct node ** create_node_list(struct freqNode* freqArr){
 	int index;
 	struct node **res = (struct node **)malloc(sizeof(struct node) * 256);
 	for (index = 0; index < 256; index++){
