@@ -200,7 +200,7 @@ void recursiveHuffCode(struct node * node, int curCode[20],int depth){
 	}
 }
 
-void freeEverything(struct node* list){
+void freeEverything(struct node* list, struct freqNode* freqArr){
 	int index;
 	for(index = 0; index < 256; index++){
 		free(freqArr[index]);
