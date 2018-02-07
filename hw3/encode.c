@@ -7,7 +7,6 @@
 int main(int argc, char* argv[]){
 	int buff[20];
 	struct node **list;
-	numOfMallocs = 0;
 
 	initCodeArr();
 
@@ -23,7 +22,6 @@ int main(int argc, char* argv[]){
 	printCodesList();
 
 	freeEverything(list[0]);
-	printf("%i\n", numOfMallocs);
 	free(list);
 	return 0;
 }
@@ -91,11 +89,9 @@ void printCodesList(){
 struct node ** create_node_list(){
 	int index;
 	struct node **res = (struct node **)malloc(sizeof(struct node) * 256);
-	numOfMallocs += 1;
 	for (index = 0; index < 256; index++){
 		if(freqArr[index] !=0){
 			res[index] = (struct node *)malloc(sizeof(struct node));
-			numOfMallocs += 1;
 			res[index]->value = (char)index;
 			res[index]->frequency = freqArr[index];
 			res[index]->right = NULL;
@@ -170,7 +166,6 @@ list --> Node
 struct node * take_two_lowest(struct node **list){
 	struct node  *res;
 	res = (struct node *)malloc(sizeof(struct node));
-	numOfMallocs += 1;
 	res->frequency = list[0]->frequency;
 
 	res->left = list[0];
@@ -211,12 +206,10 @@ void freeEverything(struct node* list){
 	if(list != NULL){
 		if(list->value != '\0'){
 			free(list);
-			printf("1\n");
 		}else{
 			freeEverything(list->left);
 			freeEverything(list->right);
 			free(list);
-			printf("2\n");
 		}
 	}
 }

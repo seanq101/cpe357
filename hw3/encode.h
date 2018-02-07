@@ -13,7 +13,6 @@ struct node {
 
 int freqArr [SIZE];
 int codeArr[SIZE][20];
-int numOfMallocs;
 
 void makeTable();
 struct node ** create_node_list();
