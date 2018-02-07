@@ -7,6 +7,7 @@
 int main(int argc, char* argv[]){
 	int buff[20];
 	struct node **list;
+	numberUnique = 0;
 
 	initCodeArr();
 
@@ -55,10 +56,10 @@ void unix_makeTable(int fdin, int fdout){
 */
 void makeTable(){
 	char c;
-	numberUnique = 0;
+	
 	while((c = getchar()) != EOF){
 		if(freqArr[(int)c] == 0){
-			numberUnique++;
+			numberUnique += 1;
 		}
 		freqArr[(int)c] = freqArr[(int)c] + 1;
 	}
