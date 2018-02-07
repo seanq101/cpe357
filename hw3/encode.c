@@ -55,7 +55,11 @@ void unix_makeTable(int fdin, int fdout){
 */
 void makeTable(){
 	char c;
+	numberUnique = 0;
 	while((c = getchar()) != EOF){
+		if(freqArr[(int)c] == 0){
+			numberUnique++;
+		}
 		freqArr[(int)c] = freqArr[(int)c] + 1;
 	}
 }
@@ -83,7 +87,7 @@ void printCodesList(){
 
 struct node ** create_node_list(){
 	int index;
-	struct node **res = (struct node **)malloc(sizeof(struct node) * 256);
+	struct node **res = (struct node **)malloc(sizeof(struct node) * numberUnique);
 	for (index = 0; index < 256; index++){
 		if(freqArr[index] !=0){
 			res[index] = (struct node *)malloc(sizeof(struct node));
