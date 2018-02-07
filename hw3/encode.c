@@ -215,6 +215,7 @@ void freeEverything(struct node* list){
 			freeEverything(list->left);
 			freeEverything(list->right);
 			free(list);
+			printf("2\n");
 		}
 	}
 }
