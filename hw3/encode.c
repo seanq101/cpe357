@@ -181,6 +181,8 @@ void recursiveHuffCode(struct node * node, int depth){
 		if(node->value != '\0'){
 			index = 0;
 			par = node->parent;
+			buffer[index] = node->code;
+			index++;
 			while(par != NULL){
 				buffer[index] = par->code;
 				index++;
