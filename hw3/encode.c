@@ -26,7 +26,7 @@ int main(int argc, char* argv[]){
 	return 0;
 }
 
-/*
+
 int main(int argc, char* argv[]){
 	int infd, outfd;
 	infd = open(argv[1], O_RONLY);
@@ -41,6 +41,7 @@ int main(int argc, char* argv[]){
 	}
 	unix_makeTable(infd, outfd);
 }
+
 void unix_makeTable(int fdin, int fdout){
 	char buf[SIZE];
 	int n;
@@ -55,7 +56,7 @@ void unix_makeTable(int fdin, int fdout){
 		}
 	}
 }
-*/
+
 
 void makeTable(){
 	char c;
