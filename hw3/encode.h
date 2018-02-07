@@ -9,20 +9,12 @@ struct node {
 	struct node *left;
 	struct node *right;
 	int justAdded;
-	char code;
+	int code;
 	struct node * parent;
 };
 
-struct code{
-	char *code;
-	char letter;
-};
-
-struct code *codesList;
-
 int freqArr [SIZE];
-int lenCodesList;
-char* codeArr[SIZE];
+int codeArr[SIZE][20];
 
 void makeTable();
 struct node ** create_node_list();
@@ -31,6 +23,6 @@ void printNodes(struct node ** list);
 void printCodesList();
 struct node * form_tree(struct node ** list);
 struct node * take_two_lowest(struct node **list);
-void recursiveHuffCode(struct node * node, int depth);
+void recursiveHuffCode(struct node * node, int curCode[20],int depth);
 
 #endif
