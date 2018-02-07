@@ -200,13 +200,13 @@ void recursiveHuffCode(struct node * node, int curCode[20],int depth){
 }
 
 void freeEverything(struct node* list){
-	if(node != NULL){
-		if(node->value != '\0'){
-			free(node);
+	if(list != NULL){
+		if(list->value != '\0'){
+			free(list);
 		}
-		freeEverything(node->left);
-		freeEverything(node->right);
-		free(node);
+		freeEverything(list->left);
+		freeEverything(list->right);
+		free(list);
 	}
 }
 
