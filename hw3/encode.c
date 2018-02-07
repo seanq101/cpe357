@@ -22,7 +22,7 @@ int main(int argc, char* argv[]){
 	
 	printCodesList();
 
-
+	void freeEverything(list[0]);
 	printf("%i\n", numOfMallocs);
 	return 0;
 }
@@ -146,10 +146,6 @@ void printNodes(struct node ** list){
 struct node * form_tree(struct node ** list){
 	struct node * temp;
 
-	/*temp = (struct node *)malloc(sizeof(struct node));
-	
-	numOfMallocs += 1;
-	*/
 	if(list[1] == NULL){
 		return list[0];
 	}
@@ -209,16 +205,17 @@ void recursiveHuffCode(struct node * node, int curCode[20],int depth){
 		}
 	}
 }
-/*
+
 void freeEverything(struct node* list){
 	if(list != NULL){
 		if(list->value != '\0'){
 			free(list);
+			printf("1\n");
 		}
 		freeEverything(list->left);
 		freeEverything(list->right);
 		free(list);
 	}
 }
-*/
+
 
