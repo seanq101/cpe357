@@ -65,15 +65,19 @@ void makeTable(){
 void initCodeArr(){
 	int index;
 	for (index = 0; index < 256; index++){
-		codeArr[index] = -1;
+		codeArr[index][0] = -1;
 	}
 }
 
 void printCodesList(){
 	int index;
+	int i;
 	for(index = 0; index < SIZE; index++){
-		if(codeArr[index] != -1){
-			printf("%s\n", codeArr[index]);
+		if(codeArr[index][0] != -1){
+			for(i = 0; codeArr[index][i] != -1; i++){
+				printf("%i", codeArr[index][i]);
+			}
+			printf("\n");
 		}
 	}
 }
@@ -181,7 +185,6 @@ struct node * take_two_lowest(struct node **list){
 
 void recursiveHuffCode(struct node * node, int curCode[20],int depth){
 	int index;
-	struct node *par;
 	if(node != NULL){
 		if(node->value != '\0'){
 			index = 0;
@@ -189,6 +192,7 @@ void recursiveHuffCode(struct node * node, int curCode[20],int depth){
 				codeArr[(int)node->value][index] = curCode[index];
 				index++;
 			}
+				codeArr[(int)node->value][index] = -1;
 				printf("hi:%s\n", codeArr[(int)node->value]);
 			return;
 			/*
