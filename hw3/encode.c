@@ -193,7 +193,6 @@ void recursiveHuffCode(struct node * node, int curCode[20],int depth){
 				index++;
 			}
 				codeArr[(int)node->value][index] = -1;
-				printf("hi:%s\n", codeArr[(int)node->value]);
 			return;
 			/*
 			buffer[depth] = '\0';
