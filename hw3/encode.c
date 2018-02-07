@@ -21,7 +21,8 @@ int main(int argc, char* argv[]){
 	recursiveHuffCode(list[0], buff, 0);
 	
 	printCodesList();
-	freeEverything(list[0], &freqArr);
+	freeEverything(list[0]);
+	frequency(&freqArr);
 	return 0;
 }
 
@@ -200,12 +201,8 @@ void recursiveHuffCode(struct node * node, int curCode[20],int depth){
 	}
 }
 
-void freeEverything(struct node* list, struct freqNode* freqArr){
-	int index;
-	for(index = 0; index < 256; index++){
-		free(freqArr[index]);
-	}
-	free(freqArr);
+void freeEverything(struct node* list){
+	
 	if(list != NULL){
 		if(list->value != '\0'){
 			free(list);
@@ -216,7 +213,13 @@ void freeEverything(struct node* list, struct freqNode* freqArr){
 	}
 }
 
-
+void freeFreqArr(struct freqNode* freqArr){
+	int index;
+	for(index = 0; index < 256; index++){
+		free(freqArr[index]);
+	}
+	free(freqArr);
+}
 
 
 
