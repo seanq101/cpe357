@@ -211,10 +211,11 @@ void freeEverything(struct node* list){
 		if(list->value != '\0'){
 			free(list);
 			printf("1\n");
+		}else{
+			freeEverything(list->left);
+			freeEverything(list->right);
+			free(list);
 		}
-		freeEverything(list->left);
-		freeEverything(list->right);
-		free(list);
 	}
 }
 
