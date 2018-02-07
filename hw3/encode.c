@@ -54,9 +54,17 @@ void unix_makeTable(int fdin, int fdout){
 	}
 }
 */
+
+void zeroFreqArr(){
+	int index;
+	for(index = 0; index < SIZE; index++){
+		freqArr[index] = 0;
+	}
+}
+
 void makeTable(){
 	char c;
-	
+	zeroFreqArr();
 	while((c = getchar()) != EOF){
 		if(freqArr[(int)c] == 0){
 			numberUnique += 1;
