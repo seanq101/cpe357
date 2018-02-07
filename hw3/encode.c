@@ -22,7 +22,7 @@ int main(int argc, char* argv[]){
 	
 	printCodesList();
 
-	void freeEverything(list[0]);
+	freeEverything(list[0]);
 	printf("%i\n", numOfMallocs);
 	return 0;
 }
