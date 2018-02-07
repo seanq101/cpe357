@@ -12,10 +12,8 @@ struct node {
 };
 
 int freqArr [SIZE];
-int numberUnique;
 int codeArr[SIZE][20];
 
-void zeroFreqArr();
 void makeTable();
 struct node ** create_node_list();
 int comparator(const void *p, const void *q);

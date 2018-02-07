@@ -7,7 +7,6 @@
 int main(int argc, char* argv[]){
 	int buff[20];
 	struct node **list;
-	numberUnique = 0;
 
 	initCodeArr();
 
@@ -55,20 +54,10 @@ void unix_makeTable(int fdin, int fdout){
 }
 */
 
-void zeroFreqArr(){
-	int index;
-	for(index = 0; index < SIZE; index++){
-		freqArr[index] = 0;
-	}
-}
-
 void makeTable(){
 	char c;
-	zeroFreqArr();
 	while((c = getchar()) != EOF){
-		if(freqArr[(int)c] == 0){
-			numberUnique += 1;
-		}
+		
 		freqArr[(int)c] = freqArr[(int)c] + 1;
 	}
 }
@@ -96,7 +85,7 @@ void printCodesList(){
 
 struct node ** create_node_list(){
 	int index;
-	struct node **res = (struct node **)malloc(sizeof(struct node) * numberUnique);
+	struct node **res = (struct node **)malloc(sizeof(struct node) * 256);
 	for (index = 0; index < 256; index++){
 		if(freqArr[index] !=0){
 			res[index] = (struct node *)malloc(sizeof(struct node));
