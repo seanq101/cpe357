@@ -7,7 +7,8 @@
 int main(int argc, char* argv[]){
 	int buff[20];
 	struct node **list;
-
+	struct freqNode* freqArr;
+	freqArr = (struct freqNode*)malloc(sizeof(freqArr) * 256);
 	initCodeArr();
 
 
@@ -58,7 +59,7 @@ void unix_makeTable(int fdin, int fdout){
 void makeTable(){
 	char c;
 	while((c = getchar()) != EOF){
-		freqArr[(int)c] = freqArr[(int)c] + 1;
+		freqArr[(int)c].frequency = freqArr[(int)c].frequency + 1;
 	}
 }
 
@@ -87,10 +88,10 @@ struct node ** create_node_list(){
 	int index;
 	struct node **res = (struct node **)malloc(sizeof(struct node) * 256);
 	for (index = 0; index < 256; index++){
-		if(freqArr[index] !=0){
+		if(freqArr[index].frequency !=0){
 			res[index] = (struct node *)malloc(sizeof(struct node));
 			res[index]->value = (char)index;
-			res[index]->frequency = freqArr[index];
+			res[index]->frequency = freqArr[index].frequency;
 			res[index]->right = NULL;
 			res[index]->left = NULL;
 			res[index]->justAdded = 0;
@@ -200,6 +201,11 @@ void recursiveHuffCode(struct node * node, int curCode[20],int depth){
 }
 
 void freeEverything(struct node* list){
+	int index;
+	for(index = 0; index < 256; index++){
+		free(freqArr[index]);
+	}
+	free(freqArr);
 	if(list != NULL){
 		if(list->value != '\0'){
 			free(list);
