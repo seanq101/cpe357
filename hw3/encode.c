@@ -7,10 +7,10 @@
 int main(int argc, char* argv[]){
 	int buff[20];
 	struct node **list;
-
+	uniqueCount = 0;
 	
 
-	int infd;
+	int infd, outfd;
 	infd = open(argv[1], O_RONLY);
 	if(intfd == -1){
 		perror(argv[1]);
@@ -28,6 +28,13 @@ int main(int argc, char* argv[]){
 	recursiveHuffCode(list[0], buff, 0);
 	
 	printCodesList();
+
+
+	outfd = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 200);
+	if(outfd == -1){
+		perror(argv[2]);
+		exit(EXIT_FAILURE);
+	}
 
 	freeEverything(list[0]);
 	free(list);
@@ -70,18 +77,15 @@ void makeUnixTable(int fdin){
 	int index;
 	while( (n = read(fdin, buf, SIZE)) > 0 ){
 		for(index = 0; index < n; index++){
+			if(freqArr[(int)buf[index]]  == 0){
+				uniqueCount++;
+			}
 			freqArr[(int)buf[index]] = freqArr[(int)buf[index]] + 1;
 		}
 	}
+	printf("%i\n", uniqueCount);
 }
 
-void makeTable(){
-	char c;
-	while((c = getchar()) != EOF){
-		
-		freqArr[(int)c] = freqArr[(int)c] + 1;
-	}
-}
 
 void initCodeArr(){
 	int index;
