@@ -79,8 +79,9 @@ void unix_makeTable(int fdin, int fdout){
 }
 */
 
-void unixWriteToFile(int fdout){
+void unixWriteToFile(int fdout, int fdin){
 	int index;
+	int depth;
 	int buf[5];
 	/*Write how many chars are present*/
 	buf[0] = uniqueCount;
@@ -95,6 +96,17 @@ void unixWriteToFile(int fdout){
 			buf[0] = freqArr[index];
 			write(fdout, buf, 4);
 
+		}
+	}
+
+	/* Write the body */
+	while( (n = read(fdin, buf, SIZE)) > 0 ){
+		for(index = 0; index < n; index++){
+			depth = 0;
+			while(codeArr[(int)buf[index]][depth] != -1){
+				codeArr[(int)buf[index]][depth];
+			}
+			
 		}
 	}
 }

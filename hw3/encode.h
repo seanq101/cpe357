@@ -16,7 +16,7 @@ int freqArr [SIZE];
 int codeArr[SIZE][20];
 
 void makeUnixTable(int fdin);
-void unixWriteToFile(int fdout);
+void unixWriteToFile(int fdout, int fdin);
 void makeTable();
 struct node ** create_node_list();
 int comparator(const void *p, const void *q);
