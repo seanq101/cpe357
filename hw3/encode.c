@@ -80,10 +80,21 @@ void unix_makeTable(int fdin, int fdout){
 */
 
 void unixWriteToFile(int fdout){
+	int index;
 	int buf[5];
 	/*Write how many chars are present*/
 	buf[0] = uniqueCount;
 	write(fdout, buf, 4);
+
+	/* Fish header by writing each char and its frequency */
+	for(index = 0; index < 256; index++){
+		if(freqArr[index]!= 0){
+			buf[0] = index;
+			write(fdout, buf, 1);
+			buf = freqArr[index];
+			write(fdout, buf, 4);
+		}
+	}
 }
 
 
