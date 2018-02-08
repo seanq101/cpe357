@@ -7,10 +7,10 @@
 int main(int argc, char* argv[]){
 	int buff[20];
 	struct node **list;
-	uniqueCount = 0;
-	
-
+	int uniqueCount;
 	int infd, outfd;
+
+	uniqueCount = 0;
 	infd = open(argv[1], O_RONLY);
 	if(intfd == -1){
 		perror(argv[1]);
@@ -19,7 +19,7 @@ int main(int argc, char* argv[]){
 
 	initCodeArr();
 
-	makeUnixTable(infd);
+	makeUnixTable(infd, &uniqueCount);
 	
 	list = create_node_list();
 	qsort((void *)list,256,sizeof(struct node*),comparator);
@@ -71,19 +71,19 @@ void unix_makeTable(int fdin, int fdout){
 	}
 }
 */
-void makeUnixTable(int fdin){
+void makeUnixTable(int fdin, int *count){
 	char buf[SIZE];
 	int n;
 	int index;
 	while( (n = read(fdin, buf, SIZE)) > 0 ){
 		for(index = 0; index < n; index++){
 			if(freqArr[(int)buf[index]]  == 0){
-				uniqueCount++;
+				*count++;
 			}
 			freqArr[(int)buf[index]] = freqArr[(int)buf[index]] + 1;
 		}
 	}
-	printf("%i\n", uniqueCount);
+	printf("%i\n", *count);
 }
 
 
