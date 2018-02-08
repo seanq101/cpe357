@@ -77,11 +77,15 @@ void printCodesList(){
 	int i;
 	for(index = 0; index < SIZE; index++){
 		if(codeArr[index][0] != -1){
-			printf("0x%x: ", (int)index);
-			for(i = 0; codeArr[index][i] != -1; i++){
-				printf("%i", codeArr[index][i]);
+			if(codeArr[index][0] != -2){
+				printf("0x%x: ", (int)index);
+				for(i = 0; codeArr[index][i] != -1; i++){
+					printf("%i", codeArr[index][i]);
+				}
+				printf("\n");
+			}else{
+				printf("0x%x: \n", (int)index);
 			}
-			printf("\n");
 		}
 	}
 }
@@ -186,12 +190,16 @@ void recursiveHuffCode(struct node * node, int curCode[20],int depth){
 	if(node != NULL){
 		if(node->value != '\0'){
 			index = 0;
-			while(index < depth){
-				codeArr[(int)node->value][index] = curCode[index];
-				index++;
+			if(depth != 0){
+				while(index < depth){
+					codeArr[(int)node->value][index] = curCode[index];
+					index++;
+				}
+					codeArr[(int)node->value][index] = -1;
+				return;
+			}else{
+				codeArr[(int)node->value][index] = -2;
 			}
-				codeArr[(int)node->value][index] = -1;
-			return;
 		}else{
 			curCode[depth] = 0;
 			recursiveHuffCode(node->left, curCode, depth + 1);
