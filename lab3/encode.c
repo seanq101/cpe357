@@ -157,8 +157,6 @@ struct node * form_tree(struct node ** list){
 			list[1] = NULL;
 			qsort((void *)list,256,sizeof(struct node*),comparator);
 			temp->justAdded = 0;
-			printNodes(list);
-			printf("Hello\n");
 		}
 	}
 	return list[0];

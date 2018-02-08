@@ -8,10 +8,18 @@ int main(int argc, char* argv[]){
 	int buff[20];
 	struct node **list;
 
+	
+
+	int infd;
+	infd = open(argv[1], O_RONLY);
+	if(intfd == -1){
+		perror(argv[1]);
+		exit(EXIT_FAILURE);
+	}
+
 	initCodeArr();
 
-
-	makeTable();
+	makeUnixTable(infd);
 	
 	list = create_node_list();
 	qsort((void *)list,256,sizeof(struct node*),comparator);
@@ -26,7 +34,7 @@ int main(int argc, char* argv[]){
 	return 0;
 }
 
-
+/*
 int main(int argc, char* argv[]){
 	int infd, outfd;
 	infd = open(argv[1], O_RONLY);
@@ -41,7 +49,6 @@ int main(int argc, char* argv[]){
 	}
 	unix_makeTable(infd, outfd);
 }
-
 void unix_makeTable(int fdin, int fdout){
 	char buf[SIZE];
 	int n;
@@ -56,7 +63,17 @@ void unix_makeTable(int fdin, int fdout){
 		}
 	}
 }
-
+*/
+void makeUnixTable(int fdin){
+	char buf[SIZE];
+	int n;
+	int index;
+	while( (n = read(fdin, buf, SIZE)) > 0 ){
+		for(index = 0; index < n; index++){
+			freqArr[(int)buf[index]] = freqArr[(int)buf[index]] + 1;
+		}
+	}
+}
 
 void makeTable(){
 	char c;
@@ -78,11 +95,15 @@ void printCodesList(){
 	int i;
 	for(index = 0; index < SIZE; index++){
 		if(codeArr[index][0] != -1){
-			printf("0x%x: ", (int)index);
-			for(i = 0; codeArr[index][i] != -1; i++){
-				printf("%i", codeArr[index][i]);
+			if(codeArr[index][0] != -2){
+				printf("0x%x: ", (int)index);
+				for(i = 0; codeArr[index][i] != -1; i++){
+					printf("%i", codeArr[index][i]);
+				}
+				printf("\n");
+			}else{
+				printf("0x%x: \n", (int)index);
 			}
-			printf("\n");
 		}
 	}
 }
@@ -154,8 +175,6 @@ struct node * form_tree(struct node ** list){
 			list[1] = NULL;
 			qsort((void *)list,256,sizeof(struct node*),comparator);
 			temp->justAdded = 0;
-			printNodes(list);
-			printf("Hello\n");
 		}
 	}
 	return list[0];
@@ -187,12 +206,16 @@ void recursiveHuffCode(struct node * node, int curCode[20],int depth){
 	if(node != NULL){
 		if(node->value != '\0'){
 			index = 0;
-			while(index < depth){
-				codeArr[(int)node->value][index] = curCode[index];
-				index++;
+			if(depth != 0){
+				while(index < depth){
+					codeArr[(int)node->value][index] = curCode[index];
+					index++;
+				}
+					codeArr[(int)node->value][index] = -1;
+				return;
+			}else{
+				codeArr[(int)node->value][index] = -2;
 			}
-				codeArr[(int)node->value][index] = -1;
-			return;
 		}else{
 			curCode[depth] = 0;
 			recursiveHuffCode(node->left, curCode, depth + 1);
