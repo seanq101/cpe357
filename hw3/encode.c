@@ -41,7 +41,8 @@ int main(int argc, char* argv[]){
 		perror(argv[2]);
 		exit(EXIT_FAILURE);
 	}
-
+	unixWriteToFile(int outfd);
+	
 	freeEverything(list[0]);
 	free(list);
 	return 0;
@@ -77,6 +78,16 @@ void unix_makeTable(int fdin, int fdout){
 	}
 }
 */
+
+void unixWriteToFile(int fdout){
+	int buf[5];
+	/*Write how many chars are present*/
+	buf[0] = uniqueCount;
+	write(fdout, buf, 4);
+}
+
+
+
 void makeUnixTable(int fdin){
 	char buf[SIZE];
 	int n;
