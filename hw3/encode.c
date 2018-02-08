@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-
+#include <unistd.h>
 #include "encode.h"
 
 int main(int argc, char* argv[]){
