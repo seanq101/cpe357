@@ -91,7 +91,7 @@ void unixWriteToFile(int fdout){
 		if(freqArr[index]!= 0){
 			buf[0] = index;
 			write(fdout, buf, 1);
-			buf = freqArr[index];
+			buf[0] = freqArr[index];
 			write(fdout, buf, 4);
 		}
 	}
