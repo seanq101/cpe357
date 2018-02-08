@@ -2,6 +2,10 @@
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+
 #include "encode.h"
 
 int main(int argc, char* argv[]){
@@ -29,7 +33,7 @@ int main(int argc, char* argv[]){
 	
 	printCodesList();
 
-	
+
 	outfd = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 200);
 	if(outfd == -1){
 		perror(argv[2]);
