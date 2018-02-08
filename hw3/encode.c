@@ -15,8 +15,8 @@ int main(int argc, char* argv[]){
 	int infd, outfd;
 
 	
-	infd = open(argv[1], O_RONLY);
-	if(intfd == -1){
+	infd = open(argv[1], O_RDONLY);
+	if(infd == -1){
 		perror(argv[1]);
 		exit(EXIT_FAILURE);
 	}
