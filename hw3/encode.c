@@ -10,13 +10,13 @@ int main(int argc, char* argv[]){
 	int uniqueCount;
 	int infd, outfd;
 
-	uniqueCount = 0;
+	
 	infd = open(argv[1], O_RONLY);
 	if(intfd == -1){
 		perror(argv[1]);
 		exit(EXIT_FAILURE);
 	}
-
+	uniqueCount = 0;
 	initCodeArr();
 
 	makeUnixTable(infd, &uniqueCount);
@@ -29,7 +29,7 @@ int main(int argc, char* argv[]){
 	
 	printCodesList();
 
-
+	
 	outfd = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 200);
 	if(outfd == -1){
 		perror(argv[2]);
