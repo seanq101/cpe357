@@ -41,8 +41,8 @@ int main(int argc, char* argv[]){
 		perror(argv[2]);
 		exit(EXIT_FAILURE);
 	}
-	unixWriteToFile(int outfd);
-	
+	unixWriteToFile(outfd);
+
 	freeEverything(list[0]);
 	free(list);
 	return 0;
