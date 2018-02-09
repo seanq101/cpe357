@@ -102,6 +102,11 @@ void unixWriteToFile(int fdout, int fdin){
 		}
 	}
 
+	infd = open(argv[1], O_RDONLY);
+	if(infd == -1){
+		perror(argv[1]);
+		exit(EXIT_FAILURE);
+	}
 	/* Write the body */
 	while( (n = read(fdin, buf, SIZE)) > 0 ){
 		for(index = 0; index < n; index++){
