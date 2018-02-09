@@ -120,7 +120,7 @@ void write_code(char letter, int fdout){
 	int index = 0;
 	depth = 0;
 	bit = codeArr[(int)letter][depth];
-	printf("%i\n", bit);
+	printf("%c\n", letter);
     while ( bit != -1){
 
          if (bit == 1) {
