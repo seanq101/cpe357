@@ -122,9 +122,10 @@ void unixWriteToFile(int fdout, char* argv1){
 }
 
 void write_code(char letter, int fdout){
-	static int count = 0;
+	
 	int bit, depth;
 	char outputBuf[1];
+	static int count = 0;
 	depth = 0;
 	bit = codeArr[(int)letter][depth];
 	printf("%c\n", letter);
