@@ -85,6 +85,7 @@ void unix_makeTable(int fdin, int fdout){
 void unixWriteToFile(int fdout, char* argv1){
 	int index;
 	int buf[5];
+	char readingbuffer[50];
 	int n, infd;
 	/*Write how many chars are present*/
 	buf[0] = uniqueCount;
@@ -107,12 +108,12 @@ void unixWriteToFile(int fdout, char* argv1){
 		perror(argv1);
 		exit(EXIT_FAILURE);
 	}
-	lseek(infd, SEEK_SET); 
+	lseek(infd,0, SEEK_SET); 
 	/* Write the body */
-	while( (n = read(infd, buf, SIZE)) > 0 ){
-		printf("%s\n", buf);
+	while( (n = read(infd, readingbuffer, SIZE)) > 0 ){
+		printf("%s\n", readingbuffer);
 		for(index = 0; index < n; index++){
-			write_code(buf[index], fdout);/* Try passing buf[index] which is a char */
+			write_code(readingbuffer[index], fdout);/* Try passing buf[index] which is a char */
 		}
 	}
 	/* Once the file is done, you must write whatever was left in byte  */
