@@ -122,8 +122,10 @@ void write_code(int *code, int fdout){
 
          if (bit == 1) {
             byte[n_bits] = 1;
+            printf("Hi1\n");
          }
          if (n_bits == 7){
+         	printf("Hi2\n");
             write(fdout, byte, 1); 
             for(index = 0; index < 8; index ++){
             	byte[index] = 0;
@@ -131,6 +133,7 @@ void write_code(int *code, int fdout){
             n_bits = 0;
         }else{
             n_bits += 1;
+            printf("Hi3\n");
         }
         code++;
     }
