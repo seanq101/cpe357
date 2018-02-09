@@ -110,15 +110,16 @@ void unixWriteToFile(int fdout, char* argv1){
 	/* Write the body */
 	while( (n = read(infd, buf, SIZE)) > 0 ){
 		for(index = 0; index < n; index++){
-			write_code(&(codeArr[(int)buf[index]]), fdout);
+			write_code(buf[index], fdout);/* Try passing buf[index] which is a char */
 		}
 	}
 }
 
-void write_code(int *code, int fdout){
-	int bit;
+void write_code(char letter, int fdout){
+	int bit, depth;
 	int index = 0;
-	bit = *code;
+	depth = 0;
+	bit = codeArr[(int)letter][depth];
 	printf("%i\n", bit);
     while ( bit != -1){
 
@@ -137,8 +138,8 @@ void write_code(int *code, int fdout){
             n_bits += 1;
             printf("Hi3\n");
         }
-        code++;
-        bit = *code;
+        depth++;
+        bit = codeArr[(int)letter][depth];
     }
 }
 
