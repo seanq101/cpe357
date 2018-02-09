@@ -9,7 +9,7 @@
 #include "encode.h"
 
 int uniqueCount;
-int byte[8];
+char byte;
 int n_bits;
 
 int main(int argc, char* argv[]){
@@ -129,19 +129,18 @@ void write_code(char letter, int fdout){
     while ( bit != -1){
 
          if (bit == 1) {
-            byte[n_bits] = 1;
+            byte += 1;
             printf("Hi1\n");
          }
          if (n_bits == 7){
          	printf("Hi2\n");
             write(fdout, byte, 1); 
-            for(index = 0; index < 8; index ++){
-            	byte[index] = 0;
-            }
+           	byte = 0;
             n_bits = 0;
 
         }else{
             n_bits += 1;
+            byte = byte << 1;
             printf("Hi3\n");
         }
         depth++;
