@@ -9,6 +9,7 @@
 #include "encode.h"
 
 int uniqueCount;
+int byte, n_bits;
 
 int main(int argc, char* argv[]){
 	int buff[20];
@@ -23,6 +24,8 @@ int main(int argc, char* argv[]){
 		exit(EXIT_FAILURE);
 	}
 	uniqueCount = 0;
+	byte = 0;
+	n_bits = 0;
 	initCodeArr();
 
 	makeUnixTable(infd);
@@ -83,6 +86,7 @@ void unixWriteToFile(int fdout, int fdin){
 	int index;
 	int depth;
 	int buf[5];
+	int runningTot;
 	/*Write how many chars are present*/
 	buf[0] = uniqueCount;
 	write(fdout, buf, 4);
@@ -102,15 +106,28 @@ void unixWriteToFile(int fdout, int fdin){
 	/* Write the body */
 	while( (n = read(fdin, buf, SIZE)) > 0 ){
 		for(index = 0; index < n; index++){
-			depth = 0;
-			while(codeArr[(int)buf[index]][depth] != -1){
-				codeArr[(int)buf[index]][depth];
-			}
-			
+			write_code(codeArr[(int)buf[index]], fdout);
 		}
 	}
 }
 
+void write_code(int *code, int fdout){
+	int bit;
+	int index = 0;
+    while (bit = code[index] != -1){
+         if (bit == 1) {
+            byte += 1;
+         }
+         if (n_bits == 7){
+            write(fdout, byte, 1); 
+            byte = 0;
+            n_bits = 0;
+        }else{
+            byte = byte << 1;
+            n_bits += 1;
+        }
+    }
+}
 
 
 void makeUnixTable(int fdin){

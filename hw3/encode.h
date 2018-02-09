@@ -17,6 +17,7 @@ int codeArr[SIZE][20];
 
 void makeUnixTable(int fdin);
 void unixWriteToFile(int fdout, int fdin);
+void write_code(int *code, int fdout);
 void makeTable();
 struct node ** create_node_list();
 int comparator(const void *p, const void *q);
