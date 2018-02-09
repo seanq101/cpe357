@@ -117,12 +117,11 @@ void unixWriteToFile(int fdout, char* argv1){
 		}
 	}
 	/* Once the file is done, you must write whatever was left in byte  */
-	write(fdout, byte, 1);
+	write(fdout, (char *)byte, 1);
 }
 
 void write_code(char letter, int fdout){
 	int bit, depth;
-	int index = 0;
 	depth = 0;
 	bit = codeArr[(int)letter][depth];
 	printf("%c\n", letter);
@@ -134,7 +133,7 @@ void write_code(char letter, int fdout){
          }
          if (n_bits == 7){
          	printf("Hi2\n");
-            write(fdout, byte, 1); 
+            write(fdout, (char *)byte, 1); 
            	byte = 0;
             n_bits = 0;
 
