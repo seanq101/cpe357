@@ -107,12 +107,16 @@ void unixWriteToFile(int fdout, char* argv1){
 		perror(argv1);
 		exit(EXIT_FAILURE);
 	}
+	lseek(infd, SEEK_SET); 
 	/* Write the body */
 	while( (n = read(infd, buf, SIZE)) > 0 ){
+		printf("%s\n", buf);
 		for(index = 0; index < n; index++){
 			write_code(buf[index], fdout);/* Try passing buf[index] which is a char */
 		}
 	}
+	/* Once the file is done, you must write whatever was left in byte  */
+	write(fdout, byte, 1);
 }
 
 void write_code(char letter, int fdout){
@@ -134,7 +138,7 @@ void write_code(char letter, int fdout){
             	byte[index] = 0;
             }
             n_bits = 0;
-            
+
         }else{
             n_bits += 1;
             printf("Hi3\n");
