@@ -117,13 +117,13 @@ void unixWriteToFile(int fdout, char* argv1){
 		}
 	}
 	/* Once the file is done, you must write whatever was left in byte  */
-	readingbuffer[0] = letter;
+	readingbuffer[0] = byte;
 	write(fdout, readingbuffer, 1);
 }
 
 void write_code(char letter, int fdout){
 	int bit, depth;
-	char * outputBuf;
+	char outputBuf[1];
 	depth = 0;
 	bit = codeArr[(int)letter][depth];
 	printf("%c\n", letter);
