@@ -11,13 +11,14 @@
 int uniqueCount;
 char byte;
 int n_bits;
+int singlechar;
 
 int main(int argc, char* argv[]){
 	int buff[20];
 	struct node **list;
 	
 	int infd, outfd;
-
+	singlechar = 0;
 	
 	infd = open(argv[1], O_RDONLY);
 	if(infd == -1){
@@ -118,7 +119,9 @@ void unixWriteToFile(int fdout, char* argv1){
 	}
 	/* Once the file is done, you must write whatever was left in byte  */
 	readingbuffer[0] = byte;
-	if(byte != 0){
+	if(byte != 0 && singlechar != 1){
+		write(fdout, readingbuffer, 1);
+	}else if(byte == 0 && singlechar == 1){
 		write(fdout, readingbuffer, 1);
 	}
 }
@@ -152,6 +155,9 @@ void write_code(char letter, int fdout){
         depth++;
         bit = codeArr[(int)letter][depth];
     }
+   	if(bit == -2){
+   		 singlechar = 1;
+   	}
     printf("%i\n", count);
     count++;
 }
