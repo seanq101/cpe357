@@ -134,6 +134,7 @@ void write_code(char letter, int fdout){
             	byte[index] = 0;
             }
             n_bits = 0;
+            depth = 0;
         }else{
             n_bits += 1;
             printf("Hi3\n");
