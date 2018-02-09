@@ -135,7 +135,7 @@ void write_code(char letter, int fdout){
          }
          if (n_bits == 7){
          	printf("Hi2\n");
-         	outputBuf = byte;
+         	outputBuf[0] = byte;
             write(fdout, outputBuf, 1); 
            	byte = 0;
             n_bits = 0;
