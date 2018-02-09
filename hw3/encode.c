@@ -134,7 +134,7 @@ void write_code(char letter, int fdout){
 	depth = 0;
 	bit = codeArr[(int)letter][depth];
 	printf("%c\n", letter);
-    while ( bit != -1 || bit != -2){
+    while ( bit != -1 && bit != -2){
 
          if (bit == 1) {
             byte += 1;
