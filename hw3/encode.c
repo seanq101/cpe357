@@ -110,7 +110,9 @@ void unixWriteToFile(int fdout, char* argv1){
 	/* Write the body */
 	while( (n = read(infd, buf, SIZE)) > 0 ){
 		for(index = 0; index < n; index++){
+			printf("Hi1\n");
 			write_code(codeArr[(int)buf[index]], fdout);
+			printf("2\n");
 		}
 	}
 }
