@@ -121,8 +121,6 @@ void unixWriteToFile(int fdout, char* argv1){
 	readingbuffer[0] = byte;
 	if(byte != 0 && singlechar != 1){
 		write(fdout, readingbuffer, 1);
-	}else if(byte == 0 && singlechar == 1){
-		write(fdout, readingbuffer, 1);
 	}
 }
 
