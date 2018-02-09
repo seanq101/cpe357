@@ -118,8 +118,7 @@ void unixWriteToFile(int fdout, char* argv1){
 void write_code(int *code, int fdout){
 	int bit;
 	int index = 0;
-	printf("%i\n", code[index]);
-    while ((bit = code[index]) != -1){
+    while ((bit = *code) != -1){
 
          if (bit == 1) {
             byte[n_bits] = 1;
@@ -133,6 +132,7 @@ void write_code(int *code, int fdout){
         }else{
             n_bits += 1;
         }
+        code++;
     }
 }
 
