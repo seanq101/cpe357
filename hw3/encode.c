@@ -44,7 +44,7 @@ int main(int argc, char* argv[]){
 		perror(argv[2]);
 		exit(EXIT_FAILURE);
 	}
-	unixWriteToFile(outfd, infd);
+	unixWriteToFile(outfd, argv[1]);
 
 	freeEverything(list[0]);
 	free(list);
@@ -82,7 +82,7 @@ void unix_makeTable(int fdin, int fdout){
 }
 */
 
-void unixWriteToFile(int fdout, int fdin){
+void unixWriteToFile(int fdout, char* argv1){
 	int index;
 	int buf[5];
 	int n;
@@ -102,9 +102,9 @@ void unixWriteToFile(int fdout, int fdin){
 		}
 	}
 
-	infd = open(argv[1], O_RDONLY);
+	infd = open(argv1, O_RDONLY);
 	if(infd == -1){
-		perror(argv[1]);
+		perror(argv1);
 		exit(EXIT_FAILURE);
 	}
 	/* Write the body */
