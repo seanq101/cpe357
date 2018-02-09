@@ -44,7 +44,7 @@ int main(int argc, char* argv[]){
 		perror(argv[2]);
 		exit(EXIT_FAILURE);
 	}
-	unixWriteToFile(outfd);
+	unixWriteToFile(outfd, infd);
 
 	freeEverything(list[0]);
 	free(list);
@@ -84,9 +84,8 @@ void unix_makeTable(int fdin, int fdout){
 
 void unixWriteToFile(int fdout, int fdin){
 	int index;
-	int depth;
 	int buf[5];
-	int runningTot;
+	int n;
 	/*Write how many chars are present*/
 	buf[0] = uniqueCount;
 	write(fdout, buf, 4);
@@ -114,12 +113,12 @@ void unixWriteToFile(int fdout, int fdin){
 void write_code(int *code, int fdout){
 	int bit;
 	int index = 0;
-    while (bit = code[index] != -1){
+    while ((bit = code[index]) != -1){
          if (bit == 1) {
             byte += 1;
          }
          if (n_bits == 7){
-            write(fdout, byte, 1); 
+            write(fdout, (int *)byte, 1); 
             byte = 0;
             n_bits = 0;
         }else{
