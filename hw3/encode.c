@@ -118,7 +118,9 @@ void unixWriteToFile(int fdout, char* argv1){
 	}
 	/* Once the file is done, you must write whatever was left in byte  */
 	readingbuffer[0] = byte;
-	write(fdout, readingbuffer, 1);
+	if(byte != 0){
+		write(fdout, readingbuffer, 1);
+	}
 }
 
 void write_code(char letter, int fdout){
