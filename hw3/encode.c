@@ -119,6 +119,7 @@ void write_code(int *code, int fdout){
 	int bit;
 	int index = 0;
 	bit = *code;
+	printf("Helo\n");
 	printf("%i\n", bit);
     while ( bit != -1){
 
