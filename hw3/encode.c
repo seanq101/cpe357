@@ -108,7 +108,7 @@ void unixWriteToFile(int fdout, char* argv1){
 		exit(EXIT_FAILURE);
 	}
 	/* Write the body */
-	while( (n = read(fdin, buf, SIZE)) > 0 ){
+	while( (n = read(infd, buf, SIZE)) > 0 ){
 		for(index = 0; index < n; index++){
 			write_code(codeArr[(int)buf[index]], fdout);
 		}
