@@ -25,7 +25,6 @@ int main(int argc, char* argv[]){
 		exit(EXIT_FAILURE);
 	}
 	uniqueCount = 0;
-	byte = 0;
 	n_bits = 0;
 	initCodeArr();
 
