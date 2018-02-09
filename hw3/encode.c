@@ -85,7 +85,7 @@ void unix_makeTable(int fdin, int fdout){
 void unixWriteToFile(int fdout, char* argv1){
 	int index;
 	int buf[5];
-	char readingbuffer[50];
+	char readingbuffer[SIZE];
 	int n, infd;
 	/*Write how many chars are present*/
 	buf[0] = uniqueCount;
