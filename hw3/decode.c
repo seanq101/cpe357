@@ -58,10 +58,20 @@ void readHeader(int fdin){
 		c = (char)buf[0];
 		/* buf[0] is now the frequency */
 		read(fdin, buf, 4);
-		freqArr[(int)c] = buf[0];
+		freqArr[(int)c] = (int)buf[0];
 		printf("%i\n", freqArr[98]);
 	}
+	void printFreqArr();
 	printf("Done\n");
+}
+
+void printFreqArr(){
+	int index;
+	for(index = 0; index < SIZE; index++){
+		if(freqArr[index] != 0){
+			printf("%c:%i\n", char(index), freqArr[index]);
+		}
+	}
 }
 
 void readBody(int fdin, int fdout, struct node * currentNode, struct node * root){
