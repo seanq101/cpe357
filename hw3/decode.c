@@ -69,7 +69,7 @@ void printFreqArr(){
 	int index;
 	for(index = 0; index < SIZE; index++){
 		if(freqArr[index] != 0){
-			printf("%c:%i\n", char(index), freqArr[index]);
+			printf("%c:%i\n", (char)index, freqArr[index]);
 		}
 	}
 }
