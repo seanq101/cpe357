@@ -11,7 +11,6 @@
 #include "decode.h"
 
 int main(int argc, char* argv[]){
-	int buff[20];
 	struct node **list;
 	
 	int infd, outfd;
@@ -37,7 +36,7 @@ int main(int argc, char* argv[]){
 	qsort((void *)list,256,sizeof(struct node*),comparator);
 	form_tree(list);
 
-	readBody(intfd, outfd, list[0], list[0]);	
+	readBody(infd, outfd, list[0], list[0]);	
 
 
 	freeEverything(list[0]);
@@ -49,9 +48,8 @@ int main(int argc, char* argv[]){
 void readHeader(int fdin){
 	char buf[SIZE];
 	char c;
-	int n;
 	int index;
-	n = read(fdin, buf, 4);
+	read(fdin, buf, 4);
 	/* buf[0] is the number of unique characters in the file */
 	for (index = 0; index < buf[0]; index++){
 		/* buf[0] is the char currently being read */
@@ -65,9 +63,9 @@ void readHeader(int fdin){
 }
 
 void readBody(int fdin, int fdout, struct node * currentNode, struct node * root){
-	char * buf;
+	char buf[1];
 	if(currentNode->left == NULL && currentNode->right == NULL){
-		buf = currentNode->value;
+		buf[0] = currentNode->value;
 		write(fdout, buf, 1);
 		currentNode = root;
 		readBody(fdin, fdout, currentNode, root);
