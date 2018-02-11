@@ -53,7 +53,7 @@ void readHeader(int fdin){
 	/* buf[0] is the number of unique characters in the file */
 	for (index = 0; index < buf[0]; index++){
 		/* buf[0] is the char currently being read */
-		n = read(fdin, buf, 1);
+		read(fdin, buf, 1);
 		c = buf[0];
 		/* buf[0] is now the frequency */
 		n = read(fdin, buf, 4);
