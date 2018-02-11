@@ -56,7 +56,7 @@ void readHeader(int fdin){
 		read(fdin, buf, 1);
 		c = buf[0];
 		/* buf[0] is now the frequency */
-		n = read(fdin, buf, 4);
+		read(fdin, buf, 4);
 		freqArr[(int)c] = buf[0];
 
 	}
