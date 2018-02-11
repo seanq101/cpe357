@@ -58,7 +58,7 @@ void readHeader(int fdin){
 		c = (char)buf[0];
 		/* buf[0] is now the frequency */
 		read(fdin, buf, 4);
-		freqArr[(int)c] = (int)buf[0];
+		freqArr[(int)c] = (unsigned int)buf[0];
 		printf("%i\n", freqArr[98]);
 	}
 	printFreqArr();
