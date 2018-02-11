@@ -51,7 +51,7 @@ void readHeader(int fdin){
 	int index;
 	read(fdin, buf, 4);
 	/* buf[0] is the number of unique characters in the file */
-	printf("Header\n");
+	printf("Header:%i\n", (int)buf[0]);
 	for (index = 0; index < buf[0]; index++){
 		/* buf[0] is the char currently being read */
 		read(fdin, buf, 1);
