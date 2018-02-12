@@ -27,7 +27,7 @@ int main(int argc, char* argv[]){
 		exit(EXIT_FAILURE);
 	}
 	uniqueCount = 0;
-	n_bits = 0;
+	n_bits = 7;
 	initCodeArr();
 
 	readHeader(infd);
