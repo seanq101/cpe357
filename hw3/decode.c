@@ -77,7 +77,7 @@ void readHeader(int fdin){
 		else
 			temp3 = 256 * 256 * 256 * buf[4];
 
-		printf("%c, %i,%i,%i,%i\n", c, temp1, temp2, temp3, temp4);
+		
 		freqArr[(int)c] = temp1 + temp2 + temp3 + temp4;
 	}
 	printFreqArr();
