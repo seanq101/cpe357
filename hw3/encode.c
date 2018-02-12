@@ -12,7 +12,7 @@ int uniqueCount;
 char byte;
 int n_bits;
 int singlechar;
-/*
+
 int main(int argc, char* argv[]){
 	int buff[20];
 	struct node **list;
@@ -51,7 +51,7 @@ int main(int argc, char* argv[]){
 	free(list);
 	return 0;
 }
-*/
+
 
 /*
 int main(int argc, char* argv[]){
