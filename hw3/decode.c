@@ -9,7 +9,7 @@
 #include "encode.c"
 #include "encode.h"
 #include "decode.h"
-/*
+
 int main(int argc, char* argv[]){
 	struct node **list;
 	
@@ -43,7 +43,7 @@ int main(int argc, char* argv[]){
 	free(list);
 	return 0;
 }
-*/
+
 
 void readHeader(int fdin){
 	char buf[SIZE];
