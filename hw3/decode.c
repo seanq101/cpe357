@@ -95,18 +95,20 @@ void readBody(int fdin, int fdout, struct node * currentNode, struct node * root
 	char temp;
 	char buf[1];
 	if(currentNode->left == NULL && currentNode->right == NULL){
-		printf("Found\n");
-		
-		buf[0] = currentNode->value;
-		temp = buf[0];
-		write(fdout, buf, 1);
-		currentNode = root;
-		
+	
 		if(freqArr[(int)temp] > 0 && root->left == NULL && root->right == NULL){
+			buf[0] = currentNode->value;
+			temp = buf[0];
+			write(fdout, buf, 1);
+			currentNode = root;
 			printf("%c\n", temp);
 			freqArr[(int)temp] = freqArr[(int)temp] - 1;
 			readBody(fdin, fdout, currentNode, root);
 		}else if(root->left != NULL){
+			buf[0] = currentNode->value;
+			temp = buf[0];
+			write(fdout, buf, 1);
+			currentNode = root;
 			readBody(fdin, fdout, currentNode, root);
 		}
 	}else{
