@@ -96,8 +96,9 @@ void readBody(int fdin, int fdout, struct node * currentNode, struct node * root
 	char buf[1];
 	if(currentNode->left == NULL && currentNode->right == NULL){
 		printf("Found\n");
-		temp = buf[0];
+		
 		buf[0] = currentNode->value;
+		temp = buf[0];
 		write(fdout, buf, 1);
 		currentNode = root;
 		
