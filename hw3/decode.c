@@ -9,7 +9,7 @@
 #include "encode.c"
 #include "encode.h"
 #include "decode.h"
-char mask;
+int mask;
 int main(int argc, char* argv[]){
 	struct node **list;
 	
