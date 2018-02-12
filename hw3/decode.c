@@ -56,7 +56,6 @@ void readHeader(int fdin){
 	for (index = 0; index < buf[0]; index++){
 		/* buf[0] is the char currently being read */
 		
-		
 		/* buf[1] is now the frequency */
 		read(fdin, buf, 5);
 		c = (char)buf[0];
