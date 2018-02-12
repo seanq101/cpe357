@@ -9,6 +9,7 @@
 #include "encode.c"
 #include "encode.h"
 #include "decode.h"
+
 int mask;
 int main(int argc, char* argv[]){
 	struct node **list;
@@ -99,7 +100,7 @@ void readBody(int fdin, int fdout, struct node * currentNode, struct node * root
 	if(currentNode->left == NULL && currentNode->right == NULL){
 		buf[0] = currentNode->value;
 		temp = buf[0];
-		if(freqArr[(int)temp] > 0 && root->left == NULL && root->right == NULL){
+		if(freqArr[(int)temp]>0 && root->left == NULL && root->right == NULL){
 			
 			write(fdout, buf, 1);
 			currentNode = root;

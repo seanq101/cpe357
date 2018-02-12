@@ -114,7 +114,7 @@ void unixWriteToFile(int fdout, char* argv1){
 	/* Write the body */
 	while( (n = read(infd, readingbuffer, SIZE)) > 0 ){
 		for(index = 0; index < n; index++){
-			write_code(readingbuffer[index], fdout);/* Try passing buf[index] which is a char */
+			write_code(readingbuffer[index], fdout);/*Try passing buf[index]*/
 		}
 	}
 	/* Once the file is done, you must write whatever was left in byte  */
