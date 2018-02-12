@@ -94,7 +94,6 @@ void printFreqArr(){
 void readBody(int fdin, int fdout, struct node * currentNode, struct node * root){
 	char temp;
 	char buf[1];
-	printf("Hi1\n");
 	if(currentNode->left == NULL && currentNode->right == NULL){
 		printf("Found\n");
 		temp = buf[0];
@@ -103,13 +102,14 @@ void readBody(int fdin, int fdout, struct node * currentNode, struct node * root
 		currentNode = root;
 		
 		if(freqArr[(int)temp] > 0 && root->left == NULL && root->right == NULL){
+			printf("%c\n", temp);
 			freqArr[(int)temp] = freqArr[(int)temp] - 1;
 			readBody(fdin, fdout, currentNode, root);
-		}else{
+		}else if(root->left != NULL){
 			readBody(fdin, fdout, currentNode, root);
 		}
 	}else{
-		printf("Hi2\n");
+		
 		read(fdin, buf, 1);
 		if(buf[0] == '0'){
 			readBody(fdin, fdout, currentNode->left, root);
