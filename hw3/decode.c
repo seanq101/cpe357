@@ -48,13 +48,13 @@ int main(int argc, char* argv[]){
 void readHeader(int fdin){
 	char buf[SIZE];
 	char c;
-	int index, unique;
+	int index, totUnique;
 	int temp1, temp2, temp3, temp4;
 	read(fdin, buf, 4);
 	/* buf[0] is the number of unique characters in the file */
-	int unique = buf[0];
+	totUnique = buf[0];
 	printf("Header:\n");
-	for (index = 0; index < unique; index++){
+	for (index = 0; index < totUnique; index++){
 		/* buf[0] is the char currently being read */
 		
 		/* buf[1] is now the frequency */
