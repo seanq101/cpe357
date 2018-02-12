@@ -113,9 +113,7 @@ void unixWriteToFile(int fdout, char* argv1){
 	lseek(infd,0, SEEK_SET); 
 	/* Write the body */
 	while( (n = read(infd, readingbuffer, SIZE)) > 0 ){
-		printf("%s\n", readingbuffer);
 		for(index = 0; index < n; index++){
-			printf("%c\n", readingbuffer[index]);
 			write_code(readingbuffer[index], fdout);/* Try passing buf[index] which is a char */
 		}
 	}
@@ -123,6 +121,7 @@ void unixWriteToFile(int fdout, char* argv1){
 	readingbuffer[0] = byte;
 	if(byte != 0 && singlechar != 1){
 		while(n_bits < 7){
+			printf("Hi\n");
 			byte = byte << 1;
 			n_bits++;
 		}
@@ -144,7 +143,6 @@ void write_code(char letter, int fdout){
             byte += 1;
          }
          if (n_bits == 7){
-         	printf("Hi2\n");
          	outputBuf[0] = byte;
             write(fdout, outputBuf, 1); 
            	byte = 0;
@@ -153,7 +151,6 @@ void write_code(char letter, int fdout){
         }else{
             n_bits += 1;
             byte = byte << 1;
-            printf("Hi3\n");
         }
         depth++;
         bit = codeArr[(int)letter][depth];
