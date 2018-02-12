@@ -27,7 +27,7 @@ int main(int argc, char* argv[]){
 		exit(EXIT_FAILURE);
 	}
 	uniqueCount = 0;
-	n_bits = 7;
+	n_bits = 8;
 	initCodeArr();
 
 	readHeader(infd);
@@ -35,7 +35,7 @@ int main(int argc, char* argv[]){
 	list = create_node_list();
 	qsort((void *)list,256,sizeof(struct node*),comparator);
 	form_tree(list);
-	mask = (char)128;
+	mask = 256;
 	readBody(infd, outfd, list[0], list[0]);	
 
 
@@ -117,11 +117,12 @@ void readBody(int fdin, int fdout, struct node * currentNode, struct node * root
 		if(n_bits == 0){
 			read(fdin, buf, 1);
 			byte = buf[0];
-			mask = (char)128;
+			mask = 128;
 			n_bits = 7;
 		}else{
 			mask = mask / 2;
-			n_bits--;
+			n_bits -= 1;
+			printf("Hello\n");
 		}
 		res = byte & mask;
 		/* Right shift byte until its gone THEN read more */
