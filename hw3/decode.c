@@ -9,7 +9,7 @@
 #include "encode.c"
 #include "encode.h"
 #include "decode.h"
-
+char mask;
 int main(int argc, char* argv[]){
 	struct node **list;
 	
@@ -35,7 +35,7 @@ int main(int argc, char* argv[]){
 	list = create_node_list();
 	qsort((void *)list,256,sizeof(struct node*),comparator);
 	form_tree(list);
-
+	mask = (char)128;
 	readBody(infd, outfd, list[0], list[0]);	
 
 
@@ -96,6 +96,7 @@ void printFreqArr(){
 void readBody(int fdin, int fdout, struct node * currentNode, struct node * root){
 	char temp;
 	char buf[1];
+	int res;
 	if(currentNode->left == NULL && currentNode->right == NULL){
 		buf[0] = currentNode->value;
 		temp = buf[0];
@@ -114,9 +115,18 @@ void readBody(int fdin, int fdout, struct node * currentNode, struct node * root
 			readBody(fdin, fdout, currentNode, root);
 		}
 	}else{
-		
-		read(fdin, buf, 1);
-		if(buf[0] == '0'){
+		if(n_bits == 0){
+			read(fdin, buf, 1);
+			byte = buf[0];
+			mask = (char)128;
+			n_bits = 7;
+		}else{
+			mask = mask / 2;
+			n_bits--;
+		}
+		res = byte & mask;
+		/* Right shift byte until its gone THEN read more */
+		if(res == 0){
 			readBody(fdin, fdout, currentNode->left, root);
 		}else{
 			readBody(fdin, fdout, currentNode->right, root);
