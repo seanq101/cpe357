@@ -114,10 +114,11 @@ void unixWriteToFile(int fdout, char* argv1){
 	/* Write the body */
 	while( (n = read(infd, readingbuffer, SIZE)) > 0 ){
 		for(index = 0; index < n; index++){
-			write_code(readingbuffer[index], fdout);/*Try passing buf[index]*/
+			write_code(readingbuffer[index], fdout);
 		}
 	}
-	/* Once the file is done, you must write whatever was left in byte  */
+	/* Once the file is done, you must write whatever 
+	was left in byte  */
 	
 	if(byte != 0 && singlechar != 1){
 		while(n_bits < 7){
@@ -203,7 +204,7 @@ void printCodesList(){
 
 struct node ** create_node_list(){
 	int index;
-	struct node **res = (struct node **)malloc(sizeof(struct node) * 256);
+	struct node **res =(struct node **)malloc(sizeof(struct node)*256);
 	for (index = 0; index < 256; index++){
 		if(freqArr[index] !=0){
 			res[index] = (struct node *)malloc(sizeof(struct node));
@@ -242,19 +243,8 @@ int comparator(const void *p, const void *q) {
     return ( l->frequency - r->frequency );
 }
 
-void printNodes(struct node ** list){
-	int index = 0;
-	for (index = 0; index < 256; index++){
-		if(list[index] != NULL){
-			printf("Value:%c\tFreq:%i\t\n", list[index]->value, list[index]->frequency);
-		}else{
-			break;
-		}
-	}
-
-}
-
-/*Forms a Huffman tree with a given list of pointers to nodes sorted in ascending order*/
+/*Forms a Huffman tree with a given list of 
+pointers to nodes sorted in ascending order*/
 struct node * form_tree(struct node ** list){
 	struct node * temp;
 
@@ -274,7 +264,8 @@ struct node * form_tree(struct node ** list){
 }
 /*
 list --> Node
-#Finds the first two leaves/nodes in the tree and returns a node made out of both of them
+#Finds the first two leaves/nodes in the tree and 
+returns a node made out of both of them
 */
 struct node * take_two_lowest(struct node **list){
 	struct node  *res;

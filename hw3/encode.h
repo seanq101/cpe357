@@ -21,7 +21,6 @@ void write_code(char letter, int fdout);
 void makeTable();
 struct node ** create_node_list();
 int comparator(const void *p, const void *q);
-void printNodes(struct node ** list);
 void printCodesList();
 struct node * form_tree(struct node ** list);
 struct node * take_two_lowest(struct node **list);
