@@ -59,7 +59,7 @@ void readHeader(int fdin){
 		c = (char)buf[0];
 		/* buf[0] is now the frequency */
 		read(fdin, buf, 4);
-		temp = buf[0];
+		temp = (unsigned int)buf[0];
 		freqArr[(int)c] = temp + (unsigned int)buf[1];
 	}
 	printFreqArr();
