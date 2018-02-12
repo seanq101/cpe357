@@ -115,10 +115,13 @@ void readBody(int fdin, int fdout, struct node * currentNode, struct node * root
 		}
 	}else{
 		if(n_bits == 0){
-			read(fdin, buf, 1);
-			byte = buf[0];
-			mask = 128;
-			n_bits = 7;
+			if(read(fdin, buf, 1) > 0){
+				byte = buf[0];
+				mask = 128;
+				n_bits = 7;
+			}else{
+				return;
+			}
 		}else{
 			mask = mask / 2;
 			n_bits -= 1;
