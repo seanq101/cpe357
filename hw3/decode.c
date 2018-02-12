@@ -126,15 +126,12 @@ void readBody(int fdin, int fdout, struct node * currentNode, struct node * root
 		}else{
 			mask = mask / 2;
 			n_bits -= 1;
-			printf("Hello\n");
 		}
 		res = byte & mask;
 		/* Right shift byte until its gone THEN read more */
 		if(res == 0){
-			printf("Hi1\n");
 			readBody(fdin, fdout, currentNode->left, root);
 		}else{
-			printf("Hi2\n");
 			readBody(fdin, fdout, currentNode->right, root);
 		}
 	}
