@@ -133,7 +133,6 @@ void write_code(char letter, int fdout){
 	
 	int bit, depth;
 	char outputBuf[1];
-	static int count = 0;
 	depth = 0;
 	bit = codeArr[(int)letter][depth];
 	printf("%c\n", letter);
