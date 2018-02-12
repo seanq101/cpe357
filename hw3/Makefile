@@ -1,14 +1,14 @@
 CC = gcc
 CFLAGS = -Wall -ansi -pedantic
-MAIN = encode
-OBJS = encode.o
+MAIN = decode
+OBJS = decode.o
 all : $(MAIN)
 
-$(MAIN) : $(OBJS) encode.h 
+$(MAIN) : $(OBJS) decode.h 
 	$(CC) $(CFLAGS) -o $(MAIN) $(OBJS)
 
-encode.o : encode.c encode.h
-	$(CC) $(CFLAGS) -c encode.c
+decode.o : decode.c decode.h
+	$(CC) $(CFLAGS) -c decode.c
 
 
 
