@@ -65,11 +65,11 @@ void readHeader(int fdin){
 		if(buf[1] < 0)
 			temp2 = 256 * (256 + buf[1]);
 		if(buf[2] < 0)
-			temp2 = 256 * 256 * (256 + buf[2]);
+			temp3 = 256 * 256 * (256 + buf[2]);
 		if(buf[3] < 0)
-			temp2 = 256 * 256 * 256 *(256 + buf[3]);
+			temp4 = 256 * 256 * 256 *(256 + buf[3]);
 
-		freqArr[(int)c] = temp + (unsigned int)buf[1];
+		freqArr[(int)c] = temp1 + temp2 + temp3 + temp4;
 	}
 	printFreqArr();
 	printf("Done\n");
