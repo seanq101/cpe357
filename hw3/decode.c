@@ -99,7 +99,13 @@ void readBody(int fdin, int fdout, struct node * currentNode, struct node * root
 		buf[0] = currentNode->value;
 		write(fdout, buf, 1);
 		currentNode = root;
-		readBody(fdin, fdout, currentNode, root);
+		
+		if(freqArr[(int)buf[0]] > 0 && root->left == NULL %% root->right == NULL){
+			freqArr[(int)buf[0]] -= 1;
+			readBody(fdin, fdout, currentNode, root);
+		}else{
+			readBody(fdin, fdout, currentNode, root);
+		}
 	}else{
 		printf("Hi2\n");
 		read(fdin, buf, 1);
