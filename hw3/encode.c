@@ -118,13 +118,14 @@ void unixWriteToFile(int fdout, char* argv1){
 		}
 	}
 	/* Once the file is done, you must write whatever was left in byte  */
-	readingbuffer[0] = byte;
+	
 	if(byte != 0 && singlechar != 1){
 		while(n_bits < 7){
 			printf("Hi, %i\n", (int)byte);
 			byte = byte << 1;
 			n_bits++;
 		}
+		readingbuffer[0] = byte;
 		write(fdout, readingbuffer, 1);
 	}
 }
