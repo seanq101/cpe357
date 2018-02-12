@@ -100,7 +100,7 @@ void readBody(int fdin, int fdout, struct node * currentNode, struct node * root
 		write(fdout, buf, 1);
 		currentNode = root;
 		
-		if(freqArr[(int)buf[0]] > 0 && root->left == NULL %% root->right == NULL){
+		if(freqArr[(int)buf[0]] > 0 && root->left == NULL && root->right == NULL){
 			freqArr[(int)buf[0]] -= 1;
 			readBody(fdin, fdout, currentNode, root);
 		}else{
