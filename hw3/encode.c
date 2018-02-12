@@ -115,12 +115,17 @@ void unixWriteToFile(int fdout, char* argv1){
 	while( (n = read(infd, readingbuffer, SIZE)) > 0 ){
 		printf("%s\n", readingbuffer);
 		for(index = 0; index < n; index++){
+			printf("%c\n", readingbuffer[index]);
 			write_code(readingbuffer[index], fdout);/* Try passing buf[index] which is a char */
 		}
 	}
 	/* Once the file is done, you must write whatever was left in byte  */
 	readingbuffer[0] = byte;
 	if(byte != 0 && singlechar != 1){
+		while(n_bits < 7){
+			byte = byte << 1;
+			n_bits++;
+		}
 		write(fdout, readingbuffer, 1);
 	}
 }
@@ -137,7 +142,6 @@ void write_code(char letter, int fdout){
 
          if (bit == 1) {
             byte += 1;
-            printf("Hi1\n");
          }
          if (n_bits == 7){
          	printf("Hi2\n");
@@ -157,8 +161,6 @@ void write_code(char letter, int fdout){
    	if(bit == -2){
    		 singlechar = 1;
    	}
-    printf("%i\n", count);
-    count++;
 }
 
 
