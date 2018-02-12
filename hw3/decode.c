@@ -103,12 +103,13 @@ void readBody(int fdin, int fdout, struct node * currentNode, struct node * root
 			
 			write(fdout, buf, 1);
 			currentNode = root;
-			printf("%c\n", temp);
+			
 			freqArr[(int)temp] = freqArr[(int)temp] - 1;
 			readBody(fdin, fdout, currentNode, root);
 		}else if(root->left != NULL){
 			buf[0] = currentNode->value;
 			temp = buf[0];
+			printf("%c\n", temp);
 			write(fdout, buf, 1);
 			currentNode = root;
 			readBody(fdin, fdout, currentNode, root);
