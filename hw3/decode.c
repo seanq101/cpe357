@@ -59,15 +59,22 @@ void readHeader(int fdin){
 		c = (char)buf[0];
 		/* buf[0] is now the frequency */
 		read(fdin, buf, 4);
-		temp = (unsigned int)buf[0];
 		if(buf[0] < 0)
 			temp1 = 256 + buf[0];
+		else
+			temp1 = buf[0];
 		if(buf[1] < 0)
 			temp2 = 256 * (256 + buf[1]);
+		else
+			temp2 = 256 * buf[1];
 		if(buf[2] < 0)
 			temp3 = 256 * 256 * (256 + buf[2]);
+		else
+			temp3 = 256 * 256 * buf[2];
 		if(buf[3] < 0)
 			temp4 = 256 * 256 * 256 *(256 + buf[3]);
+		else
+			temp3 = 256 * 256 * 256 * buf[3];
 
 		freqArr[(int)c] = temp1 + temp2 + temp3 + temp4;
 	}
