@@ -292,8 +292,8 @@ void recursiveHuffCode(struct node * node, int curCode[20],int depth){
 			index = 0;
 			if(depth != 0){
 				while(index < depth){
-					codeArr[(int)node->value][index] = curCode[index];
-					index++;
+				codeArr[(int)node->value][index]=curCode[index];
+				index++;
 				}
 					codeArr[(int)node->value][index] = -1;
 				return;

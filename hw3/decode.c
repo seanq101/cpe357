@@ -84,15 +84,6 @@ void readHeader(int fdin){
 	printf("Done\n");
 }
 
-void printFreqArr(){
-	int index;
-	for(index = 0; index < SIZE; index++){
-		if(freqArr[index] != 0){
-			printf("%c:%i:%i\n", (char)index, freqArr[index], index);
-		}
-	}
-}
-
 void readBody(int fdin,int fdout,struct node *currentNode,struct node *root){
 	char temp;
 	char buf[1];
