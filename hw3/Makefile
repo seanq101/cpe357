@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -ansi -pedantic
-MAIN = decode encode
+MAIN = decode encode huffShare
 all : $(MAIN)
 
 decode.o : decode.c decode.h huffShare.h
