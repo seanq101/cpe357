@@ -51,7 +51,7 @@ int main(int argc, char* argv[]){
 		tempBuf[2] = '\0';
 		tempBuf[3] = '\0';
 
-		write(fdout, tempBuf, 4);
+		write(outfd, tempBuf, 4);
 	}
 	return 0;
 }
