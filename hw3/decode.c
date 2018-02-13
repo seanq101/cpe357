@@ -11,8 +11,9 @@
 int mask;
 char byte;
 int n_bits;
-
+int empty = 0;
 int main(int argc, char* argv[]){
+	char tempBuf[4];
 	struct node **list;
 	
 	int infd, outfd;
@@ -31,16 +32,27 @@ int main(int argc, char* argv[]){
 	initCodeArr();
 
 	readHeader(infd);
+	if(empty == 0){
+		list = create_node_list();
+		qsort((void *)list,256,sizeof(struct node*),comparator);
+		form_tree(list);
+		mask = 256;
 	
-	list = create_node_list();
-	qsort((void *)list,256,sizeof(struct node*),comparator);
-	form_tree(list);
-	mask = 256;
-	readBody(infd, outfd, list[0], list[0]);	
+		readBody(infd, outfd, list[0], list[0]);
 
 
-	freeEverything(list[0]);
-	free(list);
+
+
+		freeEverything(list[0]);
+		free(list);
+	}else if(empty == 1){
+		tempBuf[0] = '\0';
+		tempBuf[1] = '\0';
+		tempBuf[2] = '\0';
+		tempBuf[3] = '\0';
+
+		write(fdout, tempBuf, 4);
+	}
 	return 0;
 }
 
@@ -53,6 +65,9 @@ void readHeader(int fdin){
 	read(fdin, buf, 4);
 	/* buf[0] is the number of unique characters in the file */
 	totUnique = buf[0];
+	if(totUnique == 0){
+		empty = 1;
+	}
 	for (index = 0; index < totUnique; index++){
 		/* buf[0] is the char currently being read */
 		
