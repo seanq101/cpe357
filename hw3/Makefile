@@ -4,7 +4,7 @@ MAIN = decode encode
 all : $(MAIN)
 
 decode.o : decode.c decode.h
-	$(CC) $(CFLAGS) -c decode.c encode.c
+	$(CC) $(CFLAGS) -c decode.c
 
 encode.c: encode.c encode.h
 	$(CC) $(CFLAGS) -c encode.c
