@@ -6,8 +6,8 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-#include "encode.c"
-#include "encode.h"
+#include "huffShare.c"
+#include "huffShare.h"
 #include "decode.h"
 
 int mask;
