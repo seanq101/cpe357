@@ -24,6 +24,7 @@ int main(int argc, char* argv[]){
 	if(infd == -1){
 		perror(argv[1]);
 		exit(EXIT_FAILURE);
+		printf("Hi\n");
 	}
 	uniqueCount = 0;
 	n_bits = 0;
