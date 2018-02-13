@@ -46,7 +46,7 @@ int main(int argc, char* argv[]){
 		freeEverything(list[0]);
 		free(list);
 	}else if(empty == 1){
-		tempBuf[0] = '';
+		tempBuf[0] = '\0';
 
 		write(outfd, tempBuf, 1);
 	}
