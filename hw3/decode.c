@@ -7,7 +7,6 @@
 #include <fcntl.h>
 
 #include "huffShare.c"
-#include "huffShare.h"
 #include "decode.h"
 
 int mask;

@@ -20,8 +20,6 @@ void unixWriteToFile(int fdout, char* argv1);
 void write_code(char letter, int fdout);
 void makeTable();
 void printCodesList();
-struct node * form_tree(struct node ** list);
-struct node * take_two_lowest(struct node **list);
 void recursiveHuffCode(struct node * node, int curCode[20],int depth);
 
 

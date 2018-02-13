@@ -7,6 +7,7 @@
 #include <fcntl.h>
 
 #include "encode.h"
+#include "huffShare.h"
 
 int uniqueCount;
 char byte;
