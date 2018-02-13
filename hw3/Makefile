@@ -13,10 +13,10 @@ huffShare.c: huffShare.c huffShare.h encode.h
 	$(CC) $(CFLAGS) -c huffShare.c
 
 encode : encode.o
-	$(CC) $(CFLAGS) -o hencode encode.o huffShare.c
+	$(CC) $(CFLAGS) -o hencode encode.o huffShare.o
 
 decode : decode.o
-	$(CC) $(CFLAGS) -o hdecode decode.o huffShare.c
+	$(CC) $(CFLAGS) -o hdecode decode.o huffShare.o
 
 
 
