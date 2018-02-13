@@ -10,10 +10,10 @@ encode.c: encode.c encode.h
 	$(CC) $(CFLAGS) -c encode.c
 
 encode : encode.o
-     $(CC) $(CFLAGS) -o hencode encode.o
+    $(CC) $(CFLAGS) -o hencode encode.o
 
 decode : decode.o
-     $(CC) $(CFLAGS) -o hdecode decode.o
+    $(CC) $(CFLAGS) -o hdecode decode.o
 
 clean :
 	rm *.o $(MAIN) core
