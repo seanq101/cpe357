@@ -21,7 +21,7 @@ int main(int argc, char* argv[]){
 	singlechar = 0;
 	
 	if(argc < 2){
-		perror("usage: //home/pn-cs357/demos/hencode infile [ outfile ]");
+	perror("usage: //home/pn-cs357/demos/hencode infile [ outfile ]");
 		return 0;
 	}
 	infd = open(argv[1], O_RDONLY, 400);
