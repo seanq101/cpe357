@@ -3,6 +3,9 @@ CFLAGS = -Wall -ansi -pedantic
 MAIN = decode encode
 all : $(MAIN)
 
+huffShare.o: huffShare.c huffShare.h encode.h
+	$(CC) $(CFLAGS) -c huffShare.c
+
 decode.o : decode.c decode.h huffShare.h
 	$(CC) $(CFLAGS) -c decode.c huffShare.c
 
