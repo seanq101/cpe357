@@ -84,6 +84,7 @@ void readHeader(int fdin){
 	printf("Done\n");
 }
 
+
 void readBody(int fdin,int fdout,struct node *currentNode,struct node *root){
 	char temp;
 	char buf[1];

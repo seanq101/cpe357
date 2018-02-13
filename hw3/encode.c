@@ -284,7 +284,6 @@ struct node * take_two_lowest(struct node **list){
 }
 
 
-
 void recursiveHuffCode(struct node * node, int curCode[20],int depth){
 	int index;
 	if(node != NULL){
