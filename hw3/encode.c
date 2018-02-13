@@ -20,7 +20,7 @@ int main(int argc, char* argv[]){
 	int infd, outfd;
 	singlechar = 0;
 	
-	infd = open(argv[1], O_RDONLY, 600);
+	infd = open(argv[1], O_RDONLY, 400);
 	if(infd == -1){
 		perror(argv[1]);
 		exit(EXIT_FAILURE);
