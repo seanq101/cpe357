@@ -134,7 +134,6 @@ void write_code(char letter, int fdout){
 	char outputBuf[1];
 	depth = 0;
 	bit = codeArr[(int)letter][depth];
-	printf("%c\n", letter);
     while ( bit != -1 && bit != -2){
 
          if (bit == 1) {
@@ -171,30 +170,7 @@ void makeUnixTable(int fdin){
 			freqArr[(int)buf[index]] = freqArr[(int)buf[index]] + 1;
 		}
 	}
-	printf("%i\n", uniqueCount);
 }
-
-
-
-
-void printCodesList(){
-	int index;
-	int i;
-	for(index = 0; index < SIZE; index++){
-		if(codeArr[index][0] != -1){
-			if(codeArr[index][0] != -2){
-				printf("0x%x: ", (int)index);
-				for(i = 0; codeArr[index][i] != -1; i++){
-					printf("%i", codeArr[index][i]);
-				}
-				printf("\n");
-			}else{
-				printf("0x%x: \n", (int)index);
-			}
-		}
-	}
-}
-
 
 
 

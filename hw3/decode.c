@@ -53,7 +53,6 @@ void readHeader(int fdin){
 	read(fdin, buf, 4);
 	/* buf[0] is the number of unique characters in the file */
 	totUnique = buf[0];
-	printf("Header:\n");
 	for (index = 0; index < totUnique; index++){
 		/* buf[0] is the char currently being read */
 		
@@ -80,7 +79,6 @@ void readHeader(int fdin){
 		
 		freqArr[(int)c] = temp1 + temp2 + temp3 + temp4;
 	}
-	printf("Done\n");
 }
 
 
@@ -101,7 +99,6 @@ void readBody(int fdin,int fdout,struct node *currentNode,struct node *root){
 		}else if(root->left != NULL){
 			buf[0] = currentNode->value;
 			temp = buf[0];
-			printf("%c\n", temp);
 			write(fdout, buf, 1);
 			currentNode = root;
 			readBody(fdin, fdout, currentNode, root);
