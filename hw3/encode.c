@@ -20,6 +20,9 @@ int main(int argc, char* argv[]){
 	int infd, outfd;
 	singlechar = 0;
 	
+	if(argc < 2){
+		perror("usage: //home/pn-cs357/demos/hencode infile [ outfile ]");
+	}
 	infd = open(argv[1], O_RDONLY, 400);
 	if(infd == -1){
 		perror(argv[1]);
