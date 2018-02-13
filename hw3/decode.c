@@ -105,11 +105,14 @@ void readBody(int fdin,int fdout,struct node *currentNode,struct node *root){
 			freqArr[(int)temp] = freqArr[(int)temp] - 1;
 			readBody(fdin, fdout, currentNode, root);
 		}else if(root->left != NULL){
-			buf[0] = currentNode->value;
-			temp = buf[0];
-			write(fdout, buf, 1);
-			currentNode = root;
-			readBody(fdin, fdout, currentNode, root);
+			if(freqArr[(int)currentNode->value] != 0){
+				freqArr[(int)currentNode->value] -= 1;
+				buf[0] = currentNode->value;
+				temp = buf[0];
+				write(fdout, buf, 1);
+				currentNode = root;
+				readBody(fdin, fdout, currentNode, root);
+			}
 		}
 	}else{
 		if(n_bits == 0){
