@@ -38,7 +38,7 @@ int main(int argc, char* argv[]){
 	recursiveHuffCode(list[0], buff, 0);
 	
 
-	outfd = open(argv[2], O_WRONLY|O_CREAT|O_TRUNC|S_IRUSR|S_IWUSR, 200);
+	outfd = open(argv[2], O_WRONLY|O_CREAT|O_TRUNC|S_IRUSR|S_IWUSR, 600);
 	if(outfd == -1){
 		perror(argv[2]);
 		exit(EXIT_FAILURE);
