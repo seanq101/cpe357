@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -ansi -pedantic
-MAIN = decode encode huffShare
+MAIN = decode encode
 all : $(MAIN)
 
 decode.o : decode.c decode.h huffShare.h
@@ -8,9 +8,6 @@ decode.o : decode.c decode.h huffShare.h
 
 encode.o: encode.c encode.h huffShare.h
 	$(CC) $(CFLAGS) -c encode.c huffShare.c
-
-huffShare.c: huffShare.c huffShare.h encode.h
-	$(CC) $(CFLAGS) -c huffShare.c
 
 encode : encode.o
 	$(CC) $(CFLAGS) -o hencode encode.o huffShare.o
