@@ -6,7 +6,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-
+#include "encode.h"
 int uniqueCount;
 char byte;
 int n_bits;
