@@ -6,7 +6,7 @@ all : $(MAIN)
 decode.o : decode.c decode.h huffShare.h
 	$(CC) $(CFLAGS) -c decode.c huffShare.c
 
-encode.c: encode.c encode.h huffShare.h
+encode.o: encode.c encode.h huffShare.h
 	$(CC) $(CFLAGS) -c encode.c huffShare.c
 
 huffShare.c: huffShare.c huffShare.h encode.h
