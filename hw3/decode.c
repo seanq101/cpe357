@@ -31,6 +31,7 @@ int main(int argc, char* argv[]){
 	initCodeArr();
 
 	readHeader(infd);
+	printf("Header\n");
 	if(empty == 0){
 		list = create_node_list();
 		qsort((void *)list,256,sizeof(struct node*),comparator);
@@ -90,6 +91,7 @@ void readHeader(int fdin){
 
 
 void readBody(int fdin,int fdout,struct node *currentNode,struct node *root){
+	printf("Body\n");
 	char temp;
 	char buf[1];
 	int res;
