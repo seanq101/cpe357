@@ -3,6 +3,10 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <sys/stat.h>
+#include <unistd.h>
+
+#include "mypwd.h"
 
 int main(int argc, char * argv[]){
 	list_dir(".");
