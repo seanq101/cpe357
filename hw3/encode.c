@@ -122,6 +122,9 @@ void unixWriteToFile(int fdout, char* argv1){
 	/* Write the body */
 	while( (n = read(infd, readingbuffer, SIZE)) > 0 ){
 		for(index = 0; index < n; index++){
+			if((int)readingbuffer[index] < 0){
+				readingbuffer[index] = ((int)readingbuffer[index] * -1) + 127;
+			}
 			write_code(readingbuffer[index], fdout);
 		}
 	}
