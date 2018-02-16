@@ -17,6 +17,7 @@ int main(int argc, char * argv[]){
 void list_dir (char * wholeName)
 {
     DIR * d;
+    char* temp;
     struct dirent *e;
     struct stat sb;
     struct stat sb2;
@@ -36,10 +37,10 @@ void list_dir (char * wholeName)
 
     /* get parent dir name */
 
-    strcat(wholeName, "/..");
-    d = opendir(wholeName);
-
-       printf("Hi3\n");
+    temp = strcat("/..",wholeName);
+    d = opendir(temp);
+    strcpy(wholeName,temp);
+    printf("Hi3\n");
 
     stat(parent, &sb2);
     if (stat(parent, &sb2) == -1) {
