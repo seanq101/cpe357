@@ -120,7 +120,7 @@ void unixWriteToFile(int fdout, char* argv1){
 
 
 	/* Write the body */
-	while( (n = read(infd, readingbuffer, SIZE)) > 0 ){
+	while( (n = read(infd, readingbuffer, 1)) > 0 ){
 		for(index = 0; index < n; index++){
 			if((int)readingbuffer[index] < 0){
 				readingbuffer[index] 
@@ -180,7 +180,7 @@ void makeUnixTable(int fdin){
 	char buf[SIZE];
 	int n;
 	int index;
-	while( (n = read(fdin, buf, SIZE)) > 0 ){
+	while( (n = read(fdin, buf, 1)) > 0 ){
 		for(index = 0; index < n; index++){
 			if((int)buf[index] < 0){
 				buf[index] = ((int)buf[index] * -1) + 127;
