@@ -91,7 +91,6 @@ void readHeader(int fdin){
 
 
 void readBody(int fdin,int fdout,struct node *currentNode,struct node *root){
-	printf("Body\n");
 	if(currentNode == NULL){
 		print("Null");
 	}
