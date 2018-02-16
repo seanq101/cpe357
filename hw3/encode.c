@@ -93,7 +93,7 @@ void unix_makeTable(int fdin, int fdout){
 void unixWriteToFile(int fdout, char* argv1){
 	int index;
 	int buf[5];
-	unsigned int readingbuffer[SIZE];
+	char readingbuffer[SIZE];
 	int n, infd;
 	/*Write how many chars are present*/
 	buf[0] = uniqueCount;
@@ -120,10 +120,13 @@ void unixWriteToFile(int fdout, char* argv1){
 
 
 	/* Write the body */
-	while( (n = read(infd, readingbuffer, 1)) > 0 ){
+	while( (n = read(infd, readingbuffer, SIZE)) > 0 ){
 		for(index = 0; index < n; index++){
-			
-			write_code((char)readingbuffer[index], fdout);
+			if((int)readingbuffer[index] < 0){
+				readingbuffer[index] 
+				= ((int)readingbuffer[index] * -1) + 127;
+			}
+			write_code(readingbuffer[index], fdout);
 		}
 	}
 	
@@ -143,7 +146,7 @@ void unixWriteToFile(int fdout, char* argv1){
 void write_code(char letter, int fdout){
 	
 	int bit, depth;
-	unsigned int outputBuf[1];
+	char outputBuf[1];
 	depth = 0;
 	bit = codeArr[(int)letter][depth];
     while ( bit != -1 && bit != -2){
@@ -162,7 +165,9 @@ void write_code(char letter, int fdout){
             byte = byte << 1;
         }
         depth++;
-        
+        if((int)letter < 0){
+				letter = ((int)letter * -1) + 127;
+			}
         bit = codeArr[(int)letter][depth];
     }
    	if(bit == -2){
@@ -172,11 +177,14 @@ void write_code(char letter, int fdout){
 
 
 void makeUnixTable(int fdin){
-	unsigned int buf[SIZE];
+	char buf[SIZE];
 	int n;
 	int index;
 	while( (n = read(fdin, buf, 1)) > 0 ){
 		for(index = 0; index < n; index++){
+			if((int)buf[index] < 0){
+				buf[index] = ((int)buf[index] * -1) + 127;
+			}
 			if(freqArr[(int)buf[index]]  == 0){
 				uniqueCount++;
 			}
