@@ -91,12 +91,13 @@ void readHeader(int fdin){
 
 
 void readBody(int fdin,int fdout,struct node *currentNode,struct node *root){
-	if(currentNode == NULL){
-		print("Null");
-	}
+	
 	char temp;
 	char buf[1];
 	int res;
+	if(currentNode == NULL){
+		printf("Null");
+	}
 	if(currentNode->left == NULL && currentNode->right == NULL){
 		buf[0] = currentNode->value;
 		temp = buf[0];
