@@ -9,29 +9,35 @@
 #include "mypwd.h"
 
 int main(int argc, char * argv[]){
-	list_dir(".");
+	list_dir("", ".");
 	return 0;
 }
 
 
-void list_dir (const char * dir_name)
+void list_dir (char * wholeName)
 {
     DIR * d;
-    struct dirent *e1, *e2;
+    struct dirent *e;
+    struct stat sb;
+    struct stat sb2;
+    long childIno;
+    long parentIno;
     char parent[200];
 
-    d = opendir(dir_name);
+    stat(wholeName, &sb);
+    if (stat(wholeName, &sb) == -1) {
+        perror("stat");
+        exit(EXIT_FAILURE);
+    }
 
-    e1 = readdir(d);
-    e2 = readdir(d);
-    parent = strncpy(parent, e2->d_name);
-    closedir(dir_name);
+    childIno = (long) sb.st_ino;
 
-    list_dir(parent);
-}
+    /* get parent dir name */
+
+    strncat(wholeName, "../");
+    d = opendir(wholeName);
 
 
-/*
     stat(parent, &sb2);
     if (stat(parent, &sb2) == -1) {
         perror("stat2");
@@ -45,6 +51,7 @@ void list_dir (const char * dir_name)
         printf("Cannot open dircetory '%s'\n", parent);
     }
 
+    /*below code is really messed up*/
     if (childIno == parentIno) {
         while ((e = readdir(d)) != NULL) {
             printf("base case %s\n", e->d_name);
@@ -52,11 +59,12 @@ void list_dir (const char * dir_name)
          }
 
     }else{
-        list_dir(parent);
+        list_dir(wholeName);
 
     }
-*/
+
     /*code above here is really messed up*/
 
     /* After going through all the entries, close the directory. */
- 
+    closedir (d);
+}
