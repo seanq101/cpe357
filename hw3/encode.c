@@ -117,12 +117,15 @@ void unixWriteToFile(int fdout, char* argv1){
 		exit(EXIT_FAILURE);
 	}
 	lseek(infd,0, SEEK_SET); 
+
+
 	/* Write the body */
 	while( (n = read(infd, readingbuffer, SIZE)) > 0 ){
 		for(index = 0; index < n; index++){
 			write_code(readingbuffer[index], fdout);
 		}
 	}
+	
 	/* Once the file is done, you must write whatever 
 	was left in byte  */
 	
@@ -172,6 +175,9 @@ void makeUnixTable(int fdin){
 	int index;
 	while( (n = read(fdin, buf, SIZE)) > 0 ){
 		for(index = 0; index < n; index++){
+			if((int)buf[index] < 0){
+				buf[index] = ((int)buf[index] * -1) + 127;
+			}
 			if(freqArr[(int)buf[index]]  == 0){
 				uniqueCount++;
 			}
