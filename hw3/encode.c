@@ -161,6 +161,9 @@ void write_code(char letter, int fdout){
             byte = byte << 1;
         }
         depth++;
+        if((int)letter < 0){
+				letter = ((int)letter * -1) + 127;
+			}
         bit = codeArr[(int)letter][depth];
     }
    	if(bit == -2){
