@@ -31,14 +31,16 @@ void list_dir (char * wholeName)
         perror("stat");
         exit(EXIT_FAILURE);
     }
-    	printf("Hi2\n");
+    printf("Hi2\n");
 
     childIno = (long) sb.st_ino;
 
     /* get parent dir name */
-
+  printf("Hi3\n");
     temp = strcat("/..",wholeName);
+      printf("Hi3\n");
     d = opendir(temp);
+      printf("Hi3\n");
     strcpy(wholeName,temp);
     printf("Hi3\n");
 
