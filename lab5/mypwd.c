@@ -36,10 +36,10 @@ void list_dir (char * wholeName)
 
     /* get parent dir name */
 
-    strcat(wholeName, "../");
+    strcat(wholeName, "/..");
     d = opendir(wholeName);
 
-        	printf("Hi3\n");
+       printf("Hi3\n");
 
     stat(parent, &sb2);
     if (stat(parent, &sb2) == -1) {
