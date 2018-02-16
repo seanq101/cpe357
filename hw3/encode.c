@@ -123,7 +123,7 @@ void unixWriteToFile(int fdout, char* argv1){
 	while( (n = read(infd, readingbuffer, 1)) > 0 ){
 		for(index = 0; index < n; index++){
 			
-			write_code(readingbuffer[index], fdout);
+			write_code((char)readingbuffer[index], fdout);
 		}
 	}
 	
@@ -143,7 +143,7 @@ void unixWriteToFile(int fdout, char* argv1){
 void write_code(char letter, int fdout){
 	
 	int bit, depth;
-	char outputBuf[1];
+	unsigned int outputBuf[1];
 	depth = 0;
 	bit = codeArr[(int)letter][depth];
     while ( bit != -1 && bit != -2){
