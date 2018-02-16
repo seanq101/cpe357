@@ -23,12 +23,14 @@ void list_dir (char * wholeName)
     long childIno;
     long parentIno;
     char parent[200];
+    printf("Hi1\n");
 
     stat(wholeName, &sb);
     if (stat(wholeName, &sb) == -1) {
         perror("stat");
         exit(EXIT_FAILURE);
     }
+    	printf("Hi2\n");
 
     childIno = (long) sb.st_ino;
 
@@ -37,6 +39,7 @@ void list_dir (char * wholeName)
     strcat(wholeName, "../");
     d = opendir(wholeName);
 
+        	printf("Hi3\n");
 
     stat(parent, &sb2);
     if (stat(parent, &sb2) == -1) {
