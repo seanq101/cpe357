@@ -1,6 +1,8 @@
 #include <sys/types.h>
 #include <dirent.h>
-
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 int main(int argc, char * argv[]){
 	list_dir(".");
@@ -8,9 +10,7 @@ int main(int argc, char * argv[]){
 }
 
 
-
-
-static void list_dir (const char * dir_name)
+void list_dir (const char * dir_name)
 {
     DIR * d;
     struct dirent *e;
