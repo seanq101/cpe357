@@ -17,27 +17,21 @@ int main(int argc, char * argv[]){
 void list_dir (const char * dir_name)
 {
     DIR * d;
-    struct dirent *e;
-    struct stat sb;
-    struct stat sb2;
-    long childIno;
-    long parentIno;
+    struct dirent *e1, *e2;
     char parent[200];
 
-    stat(dir_name, &sb);
-    if (stat(dir_name, &sb) == -1) {
-        perror("stat");
-        exit(EXIT_FAILURE);
-    }
+    d = opendir(dir_name);
 
-    childIno = (long) sb.st_ino;
+    e1 = readdir(d);
+    e2 = readdir(d);
+    parent = strncpy(parent, e2->d_name);
+    closedir(dir_name);
 
-    /* get parent dir name */
-
-    snprintf(parent, sizeof(parent), "%s/..", dir_name);
-    d = opendir(parent);
+    list_dir(parent);
+}
 
 
+/*
     stat(parent, &sb2);
     if (stat(parent, &sb2) == -1) {
         perror("stat2");
@@ -51,7 +45,6 @@ void list_dir (const char * dir_name)
         printf("Cannot open dircetory '%s'\n", parent);
     }
 
-    /*below code is really messed up*/
     if (childIno == parentIno) {
         while ((e = readdir(d)) != NULL) {
             printf("base case %s\n", e->d_name);
@@ -62,9 +55,8 @@ void list_dir (const char * dir_name)
         list_dir(parent);
 
     }
-
+*/
     /*code above here is really messed up*/
 
     /* After going through all the entries, close the directory. */
-    closedir (d);
-}
+ 
