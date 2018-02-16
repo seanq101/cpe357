@@ -95,7 +95,7 @@ void readBody(int fdin,int fdout,struct node *currentNode,struct node *root){
 	char temp;
 	char buf[1];
 	int res;
-	if(currentNode == NULL){
+	if(currentNode == NULL || root == NULL){
 		printf("Null");
 	}
 	if(currentNode->left == NULL && currentNode->right == NULL){
