@@ -9,7 +9,7 @@
 #include "mypwd.h"
 
 int main(int argc, char * argv[]){
-	list_dir("", ".");
+	list_dir(".");
 	return 0;
 }
 
@@ -34,7 +34,7 @@ void list_dir (char * wholeName)
 
     /* get parent dir name */
 
-    strncat(wholeName, "../");
+    strcat(wholeName, "../");
     d = opendir(wholeName);
 
 
