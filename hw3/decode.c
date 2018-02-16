@@ -13,7 +13,6 @@ char byte;
 int n_bits;
 int empty = 0;
 int main(int argc, char* argv[]){
-	char tempBuf[4];
 	struct node **list;
 	
 	int infd, outfd;
