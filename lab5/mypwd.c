@@ -16,7 +16,7 @@ int main(int argc, char * argv[]){
 		exit(EXIT_FAILURE);
 	}
 	
-	listDir("");
+	listDir(".");
 
 	return 0;
 }
