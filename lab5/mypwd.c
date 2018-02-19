@@ -34,10 +34,14 @@ void listDir(char *path){
 	ent1 = readdir(d);
 	ent2 = readdir(d);
 	if(ent1->d_ino != ent2->d_ino){
-		strcpy(buf, readdir(d)->d_name);
-		buf[PATH_MAX + 1] = '\0';
-		strncat(buf, path, PATH_MAX);
-	
+		while(ent2 = readdir(d) != NULL){
+			if(ent2->d_ino == ent1->d_ino){
+				strcpy(buf, ent2->d_name);
+				buf[PATH_MAX + 1] = '\0';
+				strncat(buf, path, PATH_MAX);
+				break;
+			}
+		}
 		listDir(buf);
 	}else{
 		printf("%s\n", path);
