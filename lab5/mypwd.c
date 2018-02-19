@@ -9,68 +9,36 @@
 #include "mypwd.h"
 
 int main(int argc, char * argv[]){
-	list_dir(".");
+	struct stat sb;
+	i = stat(".", &sb);
+	if( i != 0){
+		perror("Wrong\n");
+		exit(EXIT_FAILURE);
+	}
+	
+	listDir("");
+
 	return 0;
 }
 
+void listDir(char *path){
+	char buf[PATH_MAX + 1];
+	DIR * d;
+	struct dirent *ent1, *ent2;
+	if(opendir(path) == NULL){
+		perror("Bad path\n");
+		exit(EXIT_FAILURE);
+	}
+	ent1 = readdir(d);
+	ent2 = readdir(d);
+	if(ent1.ino_t != ent2.ino_t){
+		strncpy(buf, ent1->d_name);
+		buf[PATH_MAX + 1] = '\0';
+		strncat(buf, path, PATH_MAX);
+		listDir(buf);
+	}else{
+		printf("%s\n", path);
+	}
 
-void list_dir (char * wholeName)
-{
-    DIR * d;
-    char* temp;
-    struct dirent *e;
-    struct stat sb;
-    struct stat sb2;
-    long childIno;
-    long parentIno;
-    char parent[200];
-    printf("Hi1\n");
-
-    stat(wholeName, &sb);
-    if (stat(wholeName, &sb) == -1) {
-        perror("stat");
-        exit(EXIT_FAILURE);
-    }
-    printf("Hi2\n");
-
-    childIno = (long) sb.st_ino;
-
-    /* get parent dir name */
-  printf("Hi3\n");
-    temp = strcat("/..",wholeName);
-      printf("Hi3\n");
-    d = opendir(temp);
-      printf("Hi3\n");
-    strcpy(wholeName,temp);
-    printf("Hi3\n");
-
-    stat(parent, &sb2);
-    if (stat(parent, &sb2) == -1) {
-        perror("stat2");
-        printf("parent name: \n");
-        exit(EXIT_FAILURE);
-    }
-    parentIno = (long) sb2.st_ino;
-
-
-    if (d == NULL) {
-        printf("Cannot open dircetory '%s'\n", parent);
-    }
-
-    /*below code is really messed up*/
-    if (childIno == parentIno) {
-        while ((e = readdir(d)) != NULL) {
-            printf("base case %s\n", e->d_name);
-        break;
-         }
-
-    }else{
-        list_dir(wholeName);
-
-    }
-
-    /*code above here is really messed up*/
-
-    /* After going through all the entries, close the directory. */
-    closedir (d);
+	
 }
