@@ -25,6 +25,7 @@ void listDir(char *path){
 	char buf[PATH_MAX + 1];
 	DIR * d;
 	struct dirent *ent1, *ent2;
+	printf("%s\n", path);
 	if((d = opendir(path)) == NULL){
 		perror("Bad path\n");
 		exit(EXIT_FAILURE);
