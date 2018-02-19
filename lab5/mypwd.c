@@ -25,10 +25,11 @@ void listDir(char *path){
 	char buf[PATH_MAX + 1];
 	DIR * d;
 	struct dirent *ent1, *ent2;
-	if(opendir(path) == NULL){
+	if((d = opendir(path)) == NULL){
 		perror("Bad path\n");
 		exit(EXIT_FAILURE);
 	}
+
 	ent1 = readdir(d);
 	ent2 = readdir(d);
 	if(ent1->d_ino != ent2->d_ino){
