@@ -10,7 +10,7 @@
 
 int main(int argc, char * argv[]){
 	struct stat sb;
-	i = stat(".", &sb);
+	int i = stat(".", &sb);
 	if( i != 0){
 		perror("Wrong\n");
 		exit(EXIT_FAILURE);
@@ -31,10 +31,11 @@ void listDir(char *path){
 	}
 	ent1 = readdir(d);
 	ent2 = readdir(d);
-	if(ent1.ino_t != ent2.ino_t){
-		strncpy(buf, ent1->d_name);
+	if(ent1->ino_t != ent2->ino_t){
+		strcpy(buf, ent1->d_name);
 		buf[PATH_MAX + 1] = '\0';
 		strncat(buf, path, PATH_MAX);
+	
 		listDir(buf);
 	}else{
 		printf("%s\n", path);
