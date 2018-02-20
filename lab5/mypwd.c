@@ -37,7 +37,7 @@ int main(int argc, char * argv[]){
 			break;
 		}
 		while((ent = readdir(d)) != NULL){
-			printf("%i, %d, %s\n", i, (uint)ent->d_ino, ent->d_name);
+			printf("%i, %d, %s\n", i, (uint32_t) (ent->d_ino), ent->d_name);
 			if(ent->d_ino == i){
 				/* Basically appends the previous directory's name to fron tof the current string */
 				buf[0] = '/';
