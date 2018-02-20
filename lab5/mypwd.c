@@ -36,7 +36,7 @@ int main(int argc, char * argv[]){
 			break;
 		}
 		while((ent = readdir(d)) != NULL){
-			printf("%i, %i\n", i, (int)ent->d_ino);
+			printf("%i, %i, %s\n", i, (int)ent->d_ino, ent->d_name);
 			if((int)ent->d_ino == i){
 				buf[0] = '/';
 				buf[1] = '\0';
