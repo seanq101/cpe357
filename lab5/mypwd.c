@@ -15,7 +15,6 @@ int main(int argc, char * argv[]){
 	DIR * d;
 	char *buf;
 	char result[4096], temp[100];
-	result = "";
 	count = 0;
 	while(count < 4){
 		printf("Hi, %s\n", result);
