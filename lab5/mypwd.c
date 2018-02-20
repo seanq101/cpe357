@@ -26,7 +26,7 @@ int main(int argc, char * argv[]){
 		chdir("..");
 		d = opendir(".");
 
-		while(ent = readdir(d) != NULL){
+		while((ent = readdir(d)) != NULL){
 			if(ent->d_ino == i){
 				strcpy(buf, ent->d_name);
 				buf[strlen(ent->d_name)] = '\\';
