@@ -16,7 +16,7 @@ int main(int argc, char * argv[]){
 	char buf[4096];
 	char result[4096], temp[100];
 	int done;
-	__ino_t iNode;
+	ino_t iNode;
 
 	done = 0;
 	while(done != 1){
