@@ -16,7 +16,7 @@ int main(int argc, char * argv[]){
 	char buf[PATH_MAX + 1];
 	char *result, *temp;
 	result = "";
-	while(result[0] != '/'){
+	while(result[1] != '/'){
 		printf("Hi, %s\n", result);
 		i = stat(".", &sb);
 		if( i != 0){
