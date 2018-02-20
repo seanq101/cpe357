@@ -13,7 +13,7 @@ int main(int argc, char * argv[]){
 	struct dirent *ent;
 	int i,count ;
 	DIR * d;
-	char *buf;
+	char buf[4096];
 	char result[4096], temp[100];
 	count = 0;
 	while(count < 4){
@@ -31,7 +31,8 @@ int main(int argc, char * argv[]){
 			
 			if((int)ent->d_ino == i){
 				printf("Hi1\n");
-				buf = "/";
+				buf[0] = '/';
+				buf[1] = '\0';
 				strcpy(temp, ent->d_name);
 				printf("Hi2\n");
 				temp[strlen(ent->d_name)] = '\0';
