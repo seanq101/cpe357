@@ -30,7 +30,7 @@ int main(int argc, char * argv[]){
 		d = opendir(".");
 		printf("Hi1,%i\n", i);
 		while((ent = readdir(d)) != NULL){
-			printf("Hi2, %i, %s\n", ent->d_ino, ent->d_name);
+			printf("Hi2, %i, %s\n", (int)ent->d_ino, ent->d_name);
 			if(ent->d_ino == i){
 				buf[0] = '/';
 				temp = strcpy(temp, ent->d_name);
