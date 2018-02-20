@@ -30,7 +30,7 @@ int main(int argc, char * argv[]){
 		d = opendir(".");
 		while((ent = readdir(d)) != NULL){
 			
-			if(ent->d_ino == i){
+			if((int)ent->d_ino == i){
 				buf = "/";
 				temp = strcpy(temp, ent->d_name);
 				strcat(buf, temp);
