@@ -36,6 +36,10 @@ int main(int argc, char * argv[]){
 		if(sb.st_ino == iNode){
 			done = 1;
 			closedir(d);
+			buf[0] = '/';
+			buf[1] = '\0';
+			strncat(buf, result, PATH_MAX);
+			strcpy(result, buf);
 			break;
 		}
 		while((ent = readdir(d)) != NULL){
