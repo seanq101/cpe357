@@ -38,18 +38,13 @@ int main(int argc, char * argv[]){
 		while((ent = readdir(d)) != NULL){
 			
 			if((int)ent->d_ino == i){
-				printf("Hi1\n");
 				buf[0] = '/';
 				buf[1] = '\0';
 				strcpy(temp, ent->d_name);
-				printf("Hi2\n");
 				temp[strlen(ent->d_name)] = '\0';
-				printf("2.5,%s\n", temp);
 				strncat(buf, temp, strlen(temp));
-				printf("Hi3\n");
 				strncat(buf, result, PATH_MAX);
 				strcpy(result, buf);
-				printf("Hi4\n");
 				break;
 			}
 		}
