@@ -21,7 +21,7 @@ int main(int argc, char * argv[]){
 	done = 0;
 	while(done != 1){
 		printf("Hi, %s\n", result);
-		i = 
+		i = stat(".", &sb);
 		if( i != 0){
 			perror("Wrong\n");
 			exit(EXIT_FAILURE);
