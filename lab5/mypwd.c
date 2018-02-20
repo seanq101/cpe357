@@ -10,44 +10,38 @@
 
 int main(int argc, char * argv[]){
 	struct stat sb;
-	int i = stat(".", &sb);
-	if( i != 0){
-		perror("Wrong\n");
-		exit(EXIT_FAILURE);
+	struct dirent *ent;
+	int i ;
+	DIR * d;
+	char buf[PATH_MAX + 1];
+	char * result;
+	while(result[0] != '\\'){
+		i = stat(".", &sb);
+		if( i != 0){
+			perror("Wrong\n");
+			exit(EXIT_FAILURE);
+		}
+
+		i = sb.st_ino;
+		chdir("..");
+		d = opendir(".");
+
+		while(ent = readdir(d) != NULL){
+			if(ent->d_ino == i){
+				strcpy(buf, ent->d_name);
+				buf[strlen(ent->d_name)] = '\\';
+				result = strncat(buf, result, PATH_MAX);
+				break;
+			}
+		}
 	}
 	
-	listDir(".");
 
 	return 0;
 }
 
-void listDir(char *path){
-	char buf[PATH_MAX + 1];
-	DIR * d;
-	struct dirent *ent1, *ent2;
-	struct stat sb;
-	printf("%s\n", path);
-	if((d = opendir(path)) == NULL){
-		perror("Bad path\n");
-		exit(EXIT_FAILURE);
-	}
-
-	ent1 = readdir(d);
-	ent2 = readdir(d);
-	if(ent1->d_ino != ent2->d_ino){
-		while((ent2 = readdir(d)) != NULL){
-			stat(ent2->d_name, &sb);
-			if(S_ISDIR(sb.mode) && ent2->d_ino == ent1->d_ino){
-				strcpy(buf, ent2->d_name);
-				buf[PATH_MAX + 1] = '\0';
-				strncat(buf, path, PATH_MAX);
-				break;
-			}
-		}
-		listDir(buf);
-	}else{
-		printf("%s\n", path);
-	}
-
-	
-}
+/*
+stat on dot, get its i node from struct stat
+	chdir .. then opendir ., find folder whose i node is same as 
+	stop if name of directory
+*/
