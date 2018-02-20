@@ -11,13 +11,12 @@
 int main(int argc, char * argv[]){
 	struct stat sb;
 	struct dirent *ent;
-	int i,count ;
+	int i ;
 	DIR * d;
 	char buf[4096];
 	char result[4096], temp[100];
 	int done;
 
-	count = 0;
 	done = 0;
 	while(done != 1){
 		printf("%s\n", result);
@@ -31,13 +30,15 @@ int main(int argc, char * argv[]){
 		chdir("..");
 		d = opendir(".");
 		stat(".", &sb);
+		/* tests if the child's i node is the same as the current, meaning you're in same dir */
 		if(sb.st_ino == i){
 			done = 1;
 			break;
 		}
 		while((ent = readdir(d)) != NULL){
-			printf("%i, %i, %s\n", i, (int)ent->d_ino, ent->d_name);
+			printf("%i, %i, %s\n", i, (int)ent->d_ino, ent->d_namen);
 			if((int)ent->d_ino == i){
+				/* Basically appends the previous directory's name to fron tof the current string */
 				buf[0] = '/';
 				buf[1] = '\0';
 				strcpy(temp, ent->d_name);
@@ -49,7 +50,7 @@ int main(int argc, char * argv[]){
 				break;
 			}
 		}
-		count++;
+		closedir(d);
 	}
 	
 

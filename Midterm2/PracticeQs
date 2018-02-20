@@ -1,0 +1,14 @@
+5.System calls are for the kernel, used for stuff your don't do yourself/dont have permission for
+7.Symbolic links are used to reach across file sustems(which are built)
+13. No the owner can kill all files.
+48.
+	tf:OneinX
+	------------
+	tf:OnetwoX
+	------------
+	tf:three
+	------------
+	tf:Streeo
+
+Be able to use stat to find permissions of files and directories
+Know how to redirect input/output of files
