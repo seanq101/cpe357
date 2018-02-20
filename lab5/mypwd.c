@@ -41,6 +41,7 @@ int main(int argc, char * argv[]){
 				buf[0] = '/';
 				buf[1] = '\0';
 				strcpy(temp, ent->d_name);
+				printf("%s\n",temp );
 				temp[strlen(ent->d_name)] = '\0';
 				strncat(buf, temp, strlen(temp));
 				strncat(buf, result, PATH_MAX);
