@@ -14,9 +14,9 @@ int main(int argc, char * argv[]){
 	int i ;
 	DIR * d;
 	char buf[PATH_MAX + 1];
-	char *result;
+	char *result, *temp;
 	result = "";
-	while(result[0] != '\\'){
+	while(result[0] != '/'){
 		printf("Hi, %s\n", result);
 		i = stat(".", &sb);
 		if( i != 0){
@@ -30,8 +30,9 @@ int main(int argc, char * argv[]){
 
 		while((ent = readdir(d)) != NULL){
 			if(ent->d_ino == i){
-				strcpy(buf, ent->d_name);
-				buf[strlen(ent->d_name)] = '\\';
+				buf[0] = '/';
+				strcpy(temp, ent->d_name);
+				strcat(buf, temp);
 				result = strncat(buf, result, PATH_MAX);
 				break;
 			}
