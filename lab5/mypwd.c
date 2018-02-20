@@ -31,7 +31,7 @@ int main(int argc, char * argv[]){
 		while((ent = readdir(d)) != NULL){
 			if(ent->d_ino == i){
 				buf[0] = '/';
-				strcpy(temp, ent->d_name);
+				temp = strcpy(temp, ent->d_name);
 				strcat(buf, temp);
 				result = strncat(buf, result, PATH_MAX);
 				break;
