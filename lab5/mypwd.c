@@ -40,7 +40,8 @@ int main(int argc, char * argv[]){
 		}
 		while((ent = readdir(d)) != NULL){
 			printf("%i, %i, %s\n", (int) iNode, (int) (ent->d_ino), ent->d_name);
-			if(ent->d_ino == iNode){
+			stat(ent->d_name, &sb);
+			if(sb.st_ino == iNode){
 				/* Basically appends the previous directory's name to fron tof the current string */
 				buf[0] = '/';
 				buf[1] = '\0';
