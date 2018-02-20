@@ -14,8 +14,8 @@ int main(int argc, char * argv[]){
 	int i ;
 	DIR * d;
 	char buf[PATH_MAX + 1];
-	char result[PATH_MAX + 1];
-	result[0] = '\0';
+	char *result;
+	result = "";
 	while(result[0] != '\\'){
 		printf("Hi\n");
 		i = stat(".", &sb);
