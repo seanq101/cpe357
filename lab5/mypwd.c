@@ -16,6 +16,7 @@ int main(int argc, char * argv[]){
 	char buf[4096];
 	char result[4096], temp[100];
 	int done;
+	__ino_t iNode;
 
 	done = 0;
 	while(done != 1){
@@ -26,19 +27,19 @@ int main(int argc, char * argv[]){
 			exit(EXIT_FAILURE);
 		}
 		
-		i = sb.st_ino;
+		iNode = sb.st_ino;
 		chdir("..");
 		d = opendir(".");
 		stat(".", &sb);
 		/* tests if the child's i node is the same as the current, meaning you're in same dir */
-		if(sb.st_ino == i){
+		if(sb.st_ino == iNode){
 			done = 1;
 			closedir(d);
 			break;
 		}
 		while((ent = readdir(d)) != NULL){
-			printf("%i, %d, %s\n", i, (uint32_t) (ent->d_ino), ent->d_name);
-			if(ent->d_ino == i){
+			printf("%i, %d, %s\n", (int) i, (int) (ent->d_ino), ent->d_name);
+			if(ent->d_ino == iNode){
 				/* Basically appends the previous directory's name to fron tof the current string */
 				buf[0] = '/';
 				buf[1] = '\0';
