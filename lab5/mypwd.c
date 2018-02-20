@@ -30,13 +30,16 @@ int main(int argc, char * argv[]){
 		while((ent = readdir(d)) != NULL){
 			
 			if((int)ent->d_ino == i){
+				printf("Hi1\n");
 				buf = "/";
 				strcpy(temp, ent->d_name);
+				printf("Hi2\n");
 				temp[strlen(ent->d_name)] = '\0';
 				strcat(buf, temp);
-				
+				printf("Hi3\n");
 				strncat(buf, result, PATH_MAX);
 				strcpy(result, buf);
+				printf("Hi4\n");
 				break;
 			}
 		}
