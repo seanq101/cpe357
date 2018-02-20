@@ -21,7 +21,6 @@ int main(int argc, char * argv[]){
 	done = 0;
 	while(done != 1){
 
-		printf("%s\n", result);
 		i = stat(".", &sb);
 		if( i != 0){
 			perror("Wrong\n");
@@ -43,14 +42,12 @@ int main(int argc, char * argv[]){
 			break;
 		}
 		while((ent = readdir(d)) != NULL){
-			printf("%i, %i, %s\n", (int) iNode, (int) (ent->d_ino), ent->d_name);
 			stat(ent->d_name, &sb);
 			if(sb.st_ino == iNode){
 				/* Basically appends the previous directory's name to fron tof the current string */
 				buf[0] = '/';
 				buf[1] = '\0';
 				strcpy(temp, ent->d_name);
-				printf("%s\n",temp );
 				temp[strlen(ent->d_name)] = '\0';
 				strncat(buf, temp, strlen(temp));
 				strncat(buf, result, PATH_MAX);
