@@ -17,7 +17,7 @@ int main(int argc, char * argv[]){
 	char *result;
 	result = "";
 	while(result[0] != '\\'){
-		printf("Hi\n");
+		printf("Hi, %s\n", result);
 		i = stat(".", &sb);
 		if( i != 0){
 			perror("Wrong\n");
