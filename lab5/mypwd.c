@@ -16,6 +16,7 @@ int main(int argc, char * argv[]){
 	char buf[PATH_MAX + 1];
 	char * result;
 	while(result[0] != '\\'){
+		printf("Hi\n");
 		i = stat(".", &sb);
 		if( i != 0){
 			perror("Wrong\n");
