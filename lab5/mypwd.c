@@ -9,7 +9,7 @@
 #include "mypwd.h"
 
 int main(int argc, char * argv[]){
-	struct stat *sb;
+	struct stat sb;
 	struct dirent *ent;
 	int i ;
 	DIR * d;
@@ -17,23 +17,23 @@ int main(int argc, char * argv[]){
 	char result[4096], temp[100];
 	int done;
 	ino_t iNode;
-	sb = (struct stat*)malloc(sizeof(struct stat));
+	
 	done = 0;
 	while(done != 1){
 
 		printf("%s\n", result);
-		i = stat(".", sb);
+		i = stat(".", &sb);
 		if( i != 0){
 			perror("Wrong\n");
 			exit(EXIT_FAILURE);
 		}
 		
-		iNode = sb->st_ino;
+		iNode = sb.st_ino;
 		chdir("..");
 		d = opendir(".");
-		stat(".", sb);
+		stat(".", &sb);
 		/* tests if the child's i node is the same as the current, meaning you're in same dir */
-		if(sb->st_ino == iNode){
+		if(sb.st_ino == iNode){
 			done = 1;
 			closedir(d);
 			break;
@@ -53,10 +53,8 @@ int main(int argc, char * argv[]){
 				break;
 			}
 		}
-		memset(sb, 0, sizeof(struct stat));
 		closedir(d);
 	}
-	free (sb);
 
 	return 0;
 }
