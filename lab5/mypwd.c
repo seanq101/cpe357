@@ -13,7 +13,7 @@ int main(int argc, char * argv[]){
 	struct dirent *ent;
 	int i,count ;
 	DIR * d;
-	char buf[PATH_MAX + 1];
+	char *buf;
 	char *result, *temp;
 	result = "";
 	count = 0;
@@ -28,14 +28,15 @@ int main(int argc, char * argv[]){
 		i = sb.st_ino;
 		chdir("..");
 		d = opendir(".");
-		printf("Hi1,%i\n", i);
 		while((ent = readdir(d)) != NULL){
-			printf("Hi2, %i, %s\n", (int)ent->d_ino, ent->d_name);
+			
 			if(ent->d_ino == i){
-				buf[0] = '/';
+				buf = "/";
 				temp = strcpy(temp, ent->d_name);
 				strcat(buf, temp);
-				result = strncat(buf, result, PATH_MAX);
+				
+				strncat(buf, result, PATH_MAX);
+				strcpy(result, buf);
 				break;
 			}
 		}
