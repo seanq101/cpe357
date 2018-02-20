@@ -60,7 +60,7 @@ int main(int argc, char * argv[]){
 		}
 		closedir(d);
 	}
-
+	printf("%s\n", result);
 	return 0;
 }
 
