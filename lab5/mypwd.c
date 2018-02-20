@@ -24,13 +24,13 @@ int main(int argc, char * argv[]){
 			perror("Wrong\n");
 			exit(EXIT_FAILURE);
 		}
-		printf("Hi1\n");
+		
 		i = sb.st_ino;
 		chdir("..");
 		d = opendir(".");
-
+		printf("Hi1,%i\n", i);
 		while((ent = readdir(d)) != NULL){
-			printf("Hi2\n");
+			printf("Hi2, %i, %s\n", ent->d_ino, ent->d_name);
 			if(ent->d_ino == i){
 				buf[0] = '/';
 				temp = strcpy(temp, ent->d_name);
