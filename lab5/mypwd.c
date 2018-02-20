@@ -33,6 +33,7 @@ int main(int argc, char * argv[]){
 		/* tests if the child's i node is the same as the current, meaning you're in same dir */
 		if(sb.st_ino == i){
 			done = 1;
+			closedir(d);
 			break;
 		}
 		while((ent = readdir(d)) != NULL){
