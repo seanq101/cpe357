@@ -14,7 +14,7 @@ int main(int argc, char * argv[]){
 	int i,count ;
 	DIR * d;
 	char *buf;
-	char *result, *temp;
+	char result[4096], temp[100];
 	result = "";
 	count = 0;
 	while(count < 4){
@@ -33,6 +33,7 @@ int main(int argc, char * argv[]){
 			if((int)ent->d_ino == i){
 				buf = "/";
 				strcpy(temp, ent->d_name);
+				temp[strlen(ent->d_name)] = '\0';
 				strcat(buf, temp);
 				
 				strncat(buf, result, PATH_MAX);
