@@ -20,7 +20,7 @@ int main(int argc, char * argv[]){
 	count = 0;
 	done = 0;
 	while(done != 1){
-		printf("Hi, %s\n", result);
+		printf("%s\n", result);
 		i = stat(".", &sb);
 		if( i != 0){
 			perror("Wrong\n");
