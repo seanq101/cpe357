@@ -32,7 +32,7 @@ int main(int argc, char * argv[]){
 			
 			if((int)ent->d_ino == i){
 				buf = "/";
-				temp = strcpy(temp, ent->d_name);
+				strcpy(temp, ent->d_name);
 				strcat(buf, temp);
 				
 				strncat(buf, result, PATH_MAX);
