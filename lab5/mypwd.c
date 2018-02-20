@@ -15,10 +15,13 @@ int main(int argc, char * argv[]){
 	DIR * d;
 	char buf[4096];
 	char result[4096], temp[100];
+	int done;
+
 	count = 0;
-	while(count < 4){
+	done = 0;
+	while(done != 1){
 		printf("Hi, %s\n", result);
-		i = stat(".", &sb);
+		i = 
 		if( i != 0){
 			perror("Wrong\n");
 			exit(EXIT_FAILURE);
@@ -27,6 +30,11 @@ int main(int argc, char * argv[]){
 		i = sb.st_ino;
 		chdir("..");
 		d = opendir(".");
+		stat(".", &sb);
+		if(sb.st_ino == i){
+			done = 1;
+			break;
+		}
 		while((ent = readdir(d)) != NULL){
 			
 			if((int)ent->d_ino == i){
