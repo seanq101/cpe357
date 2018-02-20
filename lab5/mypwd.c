@@ -35,7 +35,8 @@ int main(int argc, char * argv[]){
 				strcpy(temp, ent->d_name);
 				printf("Hi2\n");
 				temp[strlen(ent->d_name)] = '\0';
-				strcat(buf, temp);
+				printf("2.5\n");
+				strncat(buf, temp, strlen(temp));
 				printf("Hi3\n");
 				strncat(buf, result, PATH_MAX);
 				strcpy(result, buf);
