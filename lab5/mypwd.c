@@ -17,9 +17,10 @@ int main(int argc, char * argv[]){
 	char result[4096], temp[100];
 	int done;
 	ino_t iNode;
-
+	sb = (struct stat*)malloc(sizeof(struct stat));
 	done = 0;
 	while(done != 1){
+
 		printf("%s\n", result);
 		i = stat(".", sb);
 		if( i != 0){
@@ -55,7 +56,7 @@ int main(int argc, char * argv[]){
 		memset(sb, 0, sizeof(struct stat));
 		closedir(d);
 	}
-	
+	free (sb);
 
 	return 0;
 }
