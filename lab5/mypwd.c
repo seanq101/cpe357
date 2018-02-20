@@ -11,12 +11,13 @@
 int main(int argc, char * argv[]){
 	struct stat sb;
 	struct dirent *ent;
-	int i ;
+	int i,count ;
 	DIR * d;
 	char buf[PATH_MAX + 1];
 	char *result, *temp;
 	result = "";
-	while(result[1] != '/'){
+	count = 0;
+	while(count < 4){
 		printf("Hi, %s\n", result);
 		i = stat(".", &sb);
 		if( i != 0){
@@ -37,6 +38,7 @@ int main(int argc, char * argv[]){
 				break;
 			}
 		}
+		count++;
 	}
 	
 
