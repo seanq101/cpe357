@@ -10,5 +10,20 @@
 	------------
 	tf:Streeo
 
+24. umask tells you what things are masked off, ie not allowed for the user
+rwx for user, rx for group, x for other
+							534
+Tring to get:				rwx r-x --x
+What umask doesnt allow:	101 011 100
+
+			  result is: 
+							-w- r-- --x
+							2   4   1
+This means owner can still rwx, group can rx, and other can x
+
+52.
+
+
+
 Be able to use stat to find permissions of files and directories
 Know how to redirect input/output of files

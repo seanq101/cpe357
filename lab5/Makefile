@@ -6,7 +6,7 @@ all : $(MAIN)
 
 
 mypwd.o : mypwd.c mypwd.h
-	$(CC) $(CFLAGS) -c mypwd.c
+	$(CC) $(CFLAGS) -c -g mypwd.c
 
 mypwd : mypwd.o
 	$(CC) $(CFLAGS) -o mypwd mypwd.o
