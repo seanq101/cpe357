@@ -18,7 +18,7 @@ int main(int argc, char * argv[]){
 	int done;
 	ino_t iNode;
 	
-	done = 0;
+	done = 0; 
 	while(done != 1){
 
 		i = stat(".", &sb);
