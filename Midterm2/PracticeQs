@@ -22,7 +22,8 @@ What umask doesnt allow:	101 011 100
 This means owner can still rwx, group can rx, and other can x
 
 52.
-
+if you O_TRUNC on a file that has already been written, it just puts all \0's
+in the file and keeps all the other fd's position pointers where they are
 
 
 Be able to use stat to find permissions of files and directories
