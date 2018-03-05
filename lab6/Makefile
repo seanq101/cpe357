@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -ansi -pedantic
+CFLAGS = -Wall -std=gnu99 -pedantic
 MAIN = timeit
 OBJS = timeit.o
 all : $(MAIN)
