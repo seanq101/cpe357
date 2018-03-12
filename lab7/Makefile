@@ -4,10 +4,10 @@ MAIN = forkit
 OBJS = forkit.o
 all : $(MAIN)
 
-$(MAIN) : $(OBJS) 
+$(MAIN) : $(OBJS) forkit.h
 	$(CC) $(CFLAGS) -o $(MAIN) $(OBJS)
 
-forkit.o : forkit.c
+forkit.o : forkit.c forkit.h
 	$(CC) $(CFLAGS) -c forkit.c
 
 clean :
