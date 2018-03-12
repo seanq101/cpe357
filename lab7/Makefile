@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -std=gnu99 -pedantic
+CFLAGS = -Wall -pedantic
 MAIN = forkit
 OBJS = forkit.o
 all : $(MAIN)
