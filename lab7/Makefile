@@ -1,14 +1,11 @@
 CC = gcc
 CFLAGS = -Wall -pedantic
 MAIN = forkit
-OBJS = forkit.o
+OBJS = forkit.c
 all : $(MAIN)
 
-$(MAIN) : $(OBJS) forkit.h
-	$(CC) $(CFLAGS) -o $(MAIN) $(OBJS)
-
-forkit.o : forkit.c forkit.h
-	$(CC) $(CFLAGS) -c forkit.c
+$(MAIN) : forkit.c forkit.h
+	$(CC) $(CFLAGS) -o $(MAIN) forkit.c
 
 clean :
 	rm *.o $(MAIN) core
