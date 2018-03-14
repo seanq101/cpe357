@@ -11,8 +11,7 @@ int main (int argc, char * argv[]){
     int wstatus;
 
     if(argc != 2){
-        perror("usage: tryit command\n");
-        exit(EXIT_FAILURE);
+        fprintf(stderr, "usage: tryit command\n");
         return 0;
     }
 
