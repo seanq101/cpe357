@@ -13,6 +13,7 @@ int main (int argc, char * argv[]){
     if(argc != 2){
         perror("usage: tryit command\n");
         exit(EXIT_FAILURE);
+        return 0;
     }
 
 
