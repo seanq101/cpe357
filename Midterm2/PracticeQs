@@ -1,15 +1,21 @@
-5.System calls are for the kernel, used for stuff your don't do yourself/dont have permission for
-7.Symbolic links are used to reach across file sustems(which are built)
-13. No the owner can kill all files.
-48.
-	tf:OneinX
-	------------
-	tf:OnetwoX
-	------------
-	tf:three
-	------------
-	tf:Streeo
-
+2.struct passwd *getpwnam(const char *name); then call .pw_dir to get the home directory
+4.It's encrypted
+5.System calls are for the kernel, used for stuff your don't do yourself/dont have permission for.
+Also system calls arethe only way to get data from physical hardware.
+6.You cannot change owner, but you can change the group id if you are a member of another group.
+7.
+	A - Symbolic links are used to reach across file systems whereas hard links can only access files
+		on the same disk partition. Hard links make another reference to an inode, but since a symbolic
+		links can link to another disk partition it can't link directly to an inode on it because it may not be the same file the programmer originally thoguht it would be.
+	B - hard links: "original" can be moved or deleted without breaking other hard links to the same inode
+		sym links: will break if original is moved or deleted. 
+12. No its impossible because you can always chmod() and give yourself write permissions even if you lose it somehow
+13. Yes, they may not have write permissions to the directory it is in.
+17. Call stat on the files in the folder, st_mtime (modification time) is when it was received and st_atime(last access)
+is when they last opened it.
+18. The person ran out of i nodes so they cannot make any more files, although there is memory left
+19. They might have used off_t lseek(int fd, 50000000, SEEK_END) and made 50MB worth nulls characters 
+with one legit char at the end
 24. umask tells you what things are masked off, ie not allowed for the user
 rwx for user, rx for group, x for other
 							534
@@ -20,6 +26,33 @@ What umask doesnt allow:	101 011 100
 							-w- r-- --x
 							2   4   1
 This means owner can still rwx, group can rx, and other can x
+29. 
+mask: 126, open("examfile", O WRONLY | O CREAT | O TRUNC, S IRUSR | S IWUSR | S IRGRP | S IWGRP | S IROTH);
+	
+	A - rw- rw- r--
+		001 010 110
+result:	rw- r-- ---
+		6	4	0
+	B - QUESTION ON PART B
+
+36. I think the process will not be abe to read the file because it does not have the appropriate
+effective user/group id
+41.Done
+42.Done
+44.Done
+
+
+
+48.
+	tf:OneinX
+	------------
+	tf:OnetwoX
+	------------
+	tf:three
+	------------
+	tf:Streeo
+
+
 
 52.
 if you O_TRUNC on a file that has already been written, it just puts all \0's
@@ -28,3 +61,5 @@ in the file and keeps all the other fd's position pointers where they are
 
 Be able to use stat to find permissions of files and directories
 Know how to redirect input/output of files
+
+65.Done
